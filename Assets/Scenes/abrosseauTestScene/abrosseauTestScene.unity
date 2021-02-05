@@ -502,6 +502,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &419177925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7980028756267822006, guid: fbd7fcfc18e34de4eb2fe11a53167a4b, type: 3}
+  m_PrefabInstance: {fileID: 1559931817037005899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2675de3721f1b9149bcff22ce6248d25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &650302490 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7980028757472154911, guid: fbd7fcfc18e34de4eb2fe11a53167a4b, type: 3}
@@ -732,11 +743,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3273880920628319126, guid: 6c968c5859b04da40aaec796fe8de3db, type: 3}
-      propertyPath: leftHandCC
+      propertyPath: inGameDebugCanvas
+      value: 
+      objectReference: {fileID: 419177925}
+    - target: {fileID: 3273880920628319126, guid: 6c968c5859b04da40aaec796fe8de3db, type: 3}
+      propertyPath: leftHandDebugCanvas
       value: 
       objectReference: {fileID: 650302490}
     - target: {fileID: 3273880920628319126, guid: 6c968c5859b04da40aaec796fe8de3db, type: 3}
-      propertyPath: rightHandCC
+      propertyPath: rightHandDebugCanvas
       value: 
       objectReference: {fileID: 1847741337}
     m_RemovedComponents: []
