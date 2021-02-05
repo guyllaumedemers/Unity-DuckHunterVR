@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputDebug : MonoBehaviour
+public class DebugScript : MonoBehaviour
 {
+    public CCCanvas inGameDebugCanvas;
+
     List<UnityEngine.XR.InputDevice> leftHandedControllers;
-    public CCCanvas leftHandCC;
+    public CCCanvas leftHandDebugCanvas;
 
     List<UnityEngine.XR.InputDevice> rightHandedControllers;
-    public CCCanvas rightHandCC;
+    public CCCanvas rightHandDebugCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
         ConnectControllers();
+        InGameDebugCanvas("Debug line 1\n" + "Debug line 2");
     }
 
     // Update is called once per frame
@@ -54,45 +57,64 @@ public class InputDebug : MonoBehaviour
         bool triggerValue;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
         {
-            string debugText = leftHandedControllers[0].name + " Trigger button is pressed.";
+            string debugText = leftHandedControllers[0].name + "\nTrigger button is pressed.";
+
             Debug.Log(debugText);
-            leftHandCC.CCText.text = debugText;
+            leftHandDebugCanvas.CCText.text = debugText;
         }
 
         bool gripValue;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out gripValue) && gripValue)
         {
-            Debug.Log(leftHandedControllers[0].name + " Grip button is pressed.");
+            string debugText = leftHandedControllers[0].name + "\nGrip button is pressed.";
+            
+            Debug.Log(debugText);
+            leftHandDebugCanvas.CCText.text = debugText;
         }
 
         bool primaryButton;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out primaryButton) && primaryButton)
         {
-            Debug.Log(leftHandedControllers[0].name + " Primary button (X) is pressed.");
+            string debugText = leftHandedControllers[0].name + "\nPrimary button (X) is pressed.";
+            
+            Debug.Log(debugText);
+            leftHandDebugCanvas.CCText.text = debugText;
         }
 
         bool secondaryButton;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out secondaryButton) && secondaryButton)
         {
-            Debug.Log(leftHandedControllers[0].name + " Secondary button (Y) is pressed.");
+            string debugText = leftHandedControllers[0].name + "\nSecondary button (Y) is pressed.";
+            
+            Debug.Log(debugText);
+            leftHandDebugCanvas.CCText.text = debugText;
         }
 
         bool menuButton;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out menuButton) && menuButton)
         {
-            Debug.Log(leftHandedControllers[0].name + " Menu button is pressed.");
+            string debugText = leftHandedControllers[0].name + "\nMenu button is pressed.";
+            
+            Debug.Log(debugText);
+            leftHandDebugCanvas.CCText.text = debugText;
         }
 
         bool primary2DAxisClick;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out primary2DAxisClick) && primary2DAxisClick)
         {
-            Debug.Log(leftHandedControllers[0].name + " Joystick click button is pressed.");
+            string debugText = leftHandedControllers[0].name + "\nJoystick click button is pressed.";
+            
+            Debug.Log(debugText);
+            leftHandDebugCanvas.CCText.text = debugText;
         }
 
         bool primary2DAxisTouch;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisTouch, out primary2DAxisTouch) && primary2DAxisTouch)
         {
-            Debug.Log(leftHandedControllers[0].name + " Joystick is moved.");
+            string debugText = leftHandedControllers[0].name + "\nJoystick is moved.";
+            
+            Debug.Log(debugText);
+            leftHandDebugCanvas.CCText.text = debugText;
         }
     }
 
@@ -101,43 +123,48 @@ public class InputDebug : MonoBehaviour
         bool triggerValue;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
         {
-            Debug.Log(rightHandedControllers[0].name + " Trigger button is pressed.");
+            Debug.Log(rightHandedControllers[0].name + " - Trigger button is pressed.");
         }
 
         bool gripValue;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out gripValue) && gripValue)
         {
-            Debug.Log(rightHandedControllers[0].name + " Grip button is pressed.");
+            Debug.Log(rightHandedControllers[0].name + " - Grip button is pressed.");
         }
 
         bool primaryButton;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out primaryButton) && primaryButton)
         {
-            Debug.Log(rightHandedControllers[0].name + " Primary button (A) is pressed.");
+            Debug.Log(rightHandedControllers[0].name + " - Primary button (A) is pressed.");
         }
 
         bool secondaryButton;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out secondaryButton) && secondaryButton)
         {
-            Debug.Log(rightHandedControllers[0].name + " Secondary button (B) is pressed.");
+            Debug.Log(rightHandedControllers[0].name + " - Secondary button (B) is pressed.");
         }
 
         bool menuButton;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out menuButton) && menuButton)
         {
-            Debug.Log(rightHandedControllers[0].name + " Menu button is pressed.");
+            Debug.Log(rightHandedControllers[0].name + " - Menu button is pressed.");
         }
 
         bool primary2DAxisClick;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out primary2DAxisClick) && primary2DAxisClick)
         {
-            Debug.Log(rightHandedControllers[0].name + " Joystick click button is pressed.");
+            Debug.Log(rightHandedControllers[0].name + " - Joystick click button is pressed.");
         }
 
         bool primary2DAxisTouch;
         if (rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisTouch, out primary2DAxisTouch) && primary2DAxisTouch)
         {
-            Debug.Log(rightHandedControllers[0].name + " Joystick is moved.");
+            Debug.Log(rightHandedControllers[0].name + " - Joystick is moved.");
         }
+    }
+
+    public void InGameDebugCanvas(string message)
+    {
+        inGameDebugCanvas.CCText.text = message;
     }
 }
