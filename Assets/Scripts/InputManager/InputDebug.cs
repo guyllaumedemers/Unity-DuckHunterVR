@@ -5,7 +5,10 @@ using UnityEngine;
 public class InputDebug : MonoBehaviour
 {
     List<UnityEngine.XR.InputDevice> leftHandedControllers;
+    public CCCanvas leftHandCC;
+
     List<UnityEngine.XR.InputDevice> rightHandedControllers;
+    public CCCanvas rightHandCC;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +54,9 @@ public class InputDebug : MonoBehaviour
         bool triggerValue;
         if (leftHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
         {
-            Debug.Log(leftHandedControllers[0].name + " Trigger button is pressed.");
+            string debugText = leftHandedControllers[0].name + " Trigger button is pressed.";
+            Debug.Log(debugText);
+            leftHandCC.CCText.text = debugText;
         }
 
         bool gripValue;
