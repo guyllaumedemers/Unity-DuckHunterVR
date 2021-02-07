@@ -78,7 +78,7 @@ public class ButtonWatcher : MonoBehaviour
             secondaryLastButtonState = secondaryTempState;
         }
 
-        Debug.Log(currentController.name + " Primary Button: " + primaryButtonState);
-        Debug.Log(currentController.name + " Secondary Button: " + secondaryButtonState);
+        //Debug.Log(currentController.name + " Primary Button: " + primaryButtonState);
+        //Debug.Log(currentController.name + " Secondary Button: " + secondaryButtonState);
     }
 }
