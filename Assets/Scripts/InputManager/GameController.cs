@@ -2,15 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugScript : MonoBehaviour
+public class GameController : MonoBehaviour
 {
+    #region Singleton
+    private static GameController instance;
+
+    private GameController() { }
+
+    public static GameController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameController();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
     public CCCanvas inGameDebugCanvas;
 
-    List<UnityEngine.XR.InputDevice> leftHandedControllers;
+    public List<UnityEngine.XR.InputDevice> leftHandedControllers;
     public CCCanvas leftHandDebugCanvas;
 
-    List<UnityEngine.XR.InputDevice> rightHandedControllers;
+    public List<UnityEngine.XR.InputDevice> rightHandedControllers;
     public CCCanvas rightHandDebugCanvas;
+
+    private void Awake()
+    {
+        instance = this;
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +46,8 @@ public class DebugScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckLeftHandedInputs();
-        CheckRightHandedInputs();
+        //CheckLeftHandedInputs();
+        //CheckRightHandedInputs();
     }
 
     void ConnectControllers()
