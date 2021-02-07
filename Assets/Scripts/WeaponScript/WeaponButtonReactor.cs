@@ -7,8 +7,8 @@ public class WeaponButtonReactor : MonoBehaviour
 {
     public ButtonWatcher m_buttonWatcher;
     private XRGrabInteractable m_xRGrabInteractable;
-    public bool PrimaryIsPressed = false;
-    public bool SecondaryIsPressed = false;
+    public bool m_primaryIsPressed = false;
+    public bool m_secondaryIsPressed = false;
 
     private Renderer m_renderer;
 
@@ -21,23 +21,35 @@ public class WeaponButtonReactor : MonoBehaviour
 
     public void onPrimaryButtonEvent(bool pressed)
     {
-        PrimaryIsPressed = pressed;
+        m_primaryIsPressed = pressed;
 
         if (pressed)
         {
             m_renderer.material.color = new Color(0, 255, 0);
-            //Debug.Log("WeaponButtonReactor Primary Pressed");
+            
+            if (InputDebugger.Instance.m_inputDebugEnabled)
+            {
+                string debugMessage = name + " Primary Button Event Fired";
+                Debug.Log(debugMessage);
+                InputDebugger.Instance.DebugLogInGame(debugMessage);
+            }
         }
     }
 
     public void onSecondaryButtonEvent(bool pressed)
     {
-        SecondaryIsPressed = pressed;
+        m_secondaryIsPressed = pressed;
 
         if (pressed)
         {
             m_renderer.material.color = new Color(255, 0, 0);
-            //Debug.Log("WeaponButtonReactor Secondary Pressed");
+
+            if (InputDebugger.Instance.m_inputDebugEnabled)
+            {
+                string debugMessage = name + " Secondary Button Event Fired";
+                Debug.Log(debugMessage);
+                InputDebugger.Instance.DebugLogInGame(debugMessage);
+            }
         }
     }
 

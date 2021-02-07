@@ -7,14 +7,11 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using XRController = UnityEngine.InputSystem.XR.XRController;
 
-[System.Serializable]
 public class PrimaryButtonEvent : UnityEvent<bool> { }
-[System.Serializable]
 public class SecondaryButtonEvent : UnityEvent<bool> { }
 
 public class ButtonWatcher : MonoBehaviour
 {
-    [field: SerializeField]
     public XRBaseController m_xRBaseController;
     public InputDevice m_inputDevice;
 
@@ -23,43 +20,54 @@ public class ButtonWatcher : MonoBehaviour
     private bool m_primaryLastButtonState = false;
     private bool m_secondaryLastButtonState = false;
 
-    private void Awake()
+    void Awake()
     {
         m_xRBaseController = GetComponent<XRBaseController>();
 
         if (e_primaryButtonPress == null)
-        {
             e_primaryButtonPress = new PrimaryButtonEvent();
-        }
+
 
         if (e_secondaryButtonPress == null)
-        {
             e_secondaryButtonPress = new SecondaryButtonEvent();
-        }
     }
 
-    private void Start()
+    void Start()
     {
-        if (GameController.Instance.RightHandControllers.Count > 0)
+        if (m_xRBaseController.name.Contains("Left"))
         {
-            if (m_xRBaseController.name.Contains("Right"))
+            if (GameController.Instance.m_leftHandController != null)
+                m_inputDevice = GameController.Instance.m_leftHandController;
+
+            if (m_inputDevice != null)
             {
-                m_inputDevice = GameController.Instance.RightHandControllers[0];
-                //Debug.Log("ButtonWatcher has been linked to: " + m_inputDevice.name);
+                if (InputDebugger.Instance.m_inputDebugEnabled)
+                    Debug.Log("ButtonWatcher has been linked to: " + m_inputDevice.name);
+            }
+            else
+            {
+                Debug.LogError("Unable to link ButtonWatcher to Left Controller.");
             }
         }
 
-        if (GameController.Instance.LeftHandControllers.Count > 0)
+        if (m_xRBaseController.name.Contains("Right"))
         {
-            if (m_xRBaseController.name.Contains("Left"))
+            if (GameController.Instance.m_rightHandController != null)
+                m_inputDevice = GameController.Instance.m_rightHandController;
+
+            if (m_inputDevice != null)
             {
-                m_inputDevice = GameController.Instance.LeftHandControllers[0];
-                //Debug.Log("ButtonWatcher has been linked to: " + m_inputDevice.name);
+                if (InputDebugger.Instance.m_inputDebugEnabled)
+                    Debug.Log("ButtonWatcher has been linked to: " + m_inputDevice.name);
+            }
+            else
+            {
+                Debug.LogError("Unable to link ButtonWatcher to Right Controller.");
             }
         }
     }
 
-    private void Update()
+    void Update()
     {
         bool primaryTempState = false;
         bool primaryButtonState = false;
@@ -82,8 +90,5 @@ public class ButtonWatcher : MonoBehaviour
             e_secondaryButtonPress.Invoke(secondaryTempState);
             m_secondaryLastButtonState = secondaryTempState;
         }
-
-        //Debug.Log(currentController.name + " Primary Button: " + primaryButtonState);
-        //Debug.Log(currentController.name + " Secondary Button: " + secondaryButtonState);
     }
 }
