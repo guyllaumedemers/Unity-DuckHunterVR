@@ -5,15 +5,18 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class WeaponButtonReactor : MonoBehaviour
 {
-    public ButtonWatcher watcher;
-    private XRGrabInteractable xRGrabInteractable;
+    public ButtonWatcher m_buttonWatcher;
+    private XRGrabInteractable m_xRGrabInteractable;
     public bool PrimaryIsPressed = false;
     public bool SecondaryIsPressed = false;
+
+    private Renderer m_renderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        xRGrabInteractable = GetComponent<XRGrabInteractable>();              
+        m_renderer = GetComponent<Renderer>();
+        m_xRGrabInteractable = GetComponent<XRGrabInteractable>();
     }
 
     public void onPrimaryButtonEvent(bool pressed)
@@ -22,7 +25,8 @@ public class WeaponButtonReactor : MonoBehaviour
 
         if (pressed)
         {
-            Debug.Log("WeaponButtonReactor Primary Pressed");
+            m_renderer.material.color = new Color(0, 255, 0);
+            //Debug.Log("WeaponButtonReactor Primary Pressed");
         }
     }
 
@@ -32,24 +36,25 @@ public class WeaponButtonReactor : MonoBehaviour
 
         if (pressed)
         {
-            Debug.Log("WeaponButtonReactor Secondary Pressed");
+            m_renderer.material.color = new Color(255, 0, 0);
+            //Debug.Log("WeaponButtonReactor Secondary Pressed");
         }
     }
 
     public void AssignWatcher()
     {
-        XRBaseInteractor xRBaseInteractor = xRGrabInteractable.selectingInteractor;
+        XRBaseInteractor xRBaseInteractor = m_xRGrabInteractable.selectingInteractor;
         GameObject interactor = xRBaseInteractor.gameObject;
-        watcher = GameObject.Find(interactor.gameObject.name).GetComponent<ButtonWatcher>();
+        m_buttonWatcher = GameObject.Find(interactor.gameObject.name).GetComponent<ButtonWatcher>();
 
-        watcher.primaryButtonPress.AddListener(onPrimaryButtonEvent);
-        watcher.secondaryButtonPress.AddListener(onSecondaryButtonEvent);
+        m_buttonWatcher.e_primaryButtonPress.AddListener(onPrimaryButtonEvent);
+        m_buttonWatcher.e_secondaryButtonPress.AddListener(onSecondaryButtonEvent);
     }
 
     public void ClearWatcher()
     {
-        watcher.primaryButtonPress.RemoveAllListeners();
-        watcher.secondaryButtonPress.RemoveAllListeners();
-        watcher = null;
+        m_buttonWatcher.e_primaryButtonPress.RemoveAllListeners();
+        m_buttonWatcher.e_secondaryButtonPress.RemoveAllListeners();
+        m_buttonWatcher = null;
     }
 }

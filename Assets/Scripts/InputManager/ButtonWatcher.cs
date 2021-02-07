@@ -15,42 +15,47 @@ public class SecondaryButtonEvent : UnityEvent<bool> { }
 public class ButtonWatcher : MonoBehaviour
 {
     [field: SerializeField]
-    public XRBaseController currentController;
-    public InputDevice currentDevice;
+    public XRBaseController m_xRBaseController;
+    public InputDevice m_inputDevice;
 
-    public PrimaryButtonEvent primaryButtonPress;
-    public SecondaryButtonEvent secondaryButtonPress;
-
-    private bool primaryLastButtonState = false;
-    private bool secondaryLastButtonState = false;    
+    public PrimaryButtonEvent e_primaryButtonPress;
+    public SecondaryButtonEvent e_secondaryButtonPress;
+    private bool m_primaryLastButtonState = false;
+    private bool m_secondaryLastButtonState = false;
 
     private void Awake()
     {
-        currentController = GetComponent<XRBaseController>();
+        m_xRBaseController = GetComponent<XRBaseController>();
 
-        if (primaryButtonPress == null)
+        if (e_primaryButtonPress == null)
         {
-            primaryButtonPress = new PrimaryButtonEvent();
+            e_primaryButtonPress = new PrimaryButtonEvent();
         }
 
-        if (secondaryButtonPress == null)
+        if (e_secondaryButtonPress == null)
         {
-            secondaryButtonPress = new SecondaryButtonEvent();
+            e_secondaryButtonPress = new SecondaryButtonEvent();
         }
     }
 
     private void Start()
     {
-        if (currentController.name.Contains("Right"))
+        if (GameController.Instance.RightHandControllers.Count > 0)
         {
-            currentDevice = GameController.Instance.rightHandedControllers[0];
-            Debug.Log("Added ButtonWatcher to " + currentDevice.name);
+            if (m_xRBaseController.name.Contains("Right"))
+            {
+                m_inputDevice = GameController.Instance.RightHandControllers[0];
+                //Debug.Log("ButtonWatcher has been linked to: " + m_inputDevice.name);
+            }
         }
 
-        if (currentController.name.Contains("Left"))
+        if (GameController.Instance.LeftHandControllers.Count > 0)
         {
-            currentDevice = GameController.Instance.leftHandedControllers[0];
-            Debug.Log("Added ButtonWatcher to " + currentDevice.name);
+            if (m_xRBaseController.name.Contains("Left"))
+            {
+                m_inputDevice = GameController.Instance.LeftHandControllers[0];
+                //Debug.Log("ButtonWatcher has been linked to: " + m_inputDevice.name);
+            }
         }
     }
 
@@ -62,20 +67,20 @@ public class ButtonWatcher : MonoBehaviour
         bool secondaryTempState = false;
         bool secondaryButtonState = false;
 
-        primaryTempState = currentDevice.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonState) && primaryButtonState || primaryTempState;
+        primaryTempState = m_inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonState) && primaryButtonState || primaryTempState;
 
-        if (primaryTempState != primaryLastButtonState)
+        if (primaryTempState != m_primaryLastButtonState)
         {
-            primaryButtonPress.Invoke(primaryTempState);
-            primaryLastButtonState = primaryTempState;
+            e_primaryButtonPress.Invoke(primaryTempState);
+            m_primaryLastButtonState = primaryTempState;
         }
 
-        secondaryTempState = currentDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out secondaryButtonState) && secondaryButtonState || secondaryTempState;
+        secondaryTempState = m_inputDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out secondaryButtonState) && secondaryButtonState || secondaryTempState;
 
-        if (secondaryTempState != secondaryLastButtonState)
+        if (secondaryTempState != m_secondaryLastButtonState)
         {
-            secondaryButtonPress.Invoke(secondaryTempState);
-            secondaryLastButtonState = secondaryTempState;
+            e_secondaryButtonPress.Invoke(secondaryTempState);
+            m_secondaryLastButtonState = secondaryTempState;
         }
 
         //Debug.Log(currentController.name + " Primary Button: " + primaryButtonState);
