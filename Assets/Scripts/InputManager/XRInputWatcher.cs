@@ -38,7 +38,7 @@ public class XRInputWatcher : MonoBehaviour
             if (XRInputManager.Instance.leftHandController != null)
                 _inputDevice = XRInputManager.Instance.leftHandController;
 
-            if (_inputDevice != null)
+            if (_inputDevice.name != null)
             {
                 if (XRInputDebugger.Instance.inputDebugEnabled)
                     Debug.Log("ButtonWatcher has been linked to: " + _inputDevice.name);
@@ -54,7 +54,7 @@ public class XRInputWatcher : MonoBehaviour
             if (XRInputManager.Instance.rightHandController != null)
                 _inputDevice = XRInputManager.Instance.rightHandController;
 
-            if (_inputDevice != null)
+            if (_inputDevice.name != null)
             {
                 if (XRInputDebugger.Instance.inputDebugEnabled)
                     Debug.Log("ButtonWatcher has been linked to: " + _inputDevice.name);
