@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 1f5a20cf402ae624e969edbaf519daf6
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -11,12 +11,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TheMaterial
-    second: {fileID: 2100000, guid: b087163334465c846aaae5f8ba363f50, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: b087163334465c846aaae5f8ba363f50, type: 2}
+    second: {fileID: 2100000, guid: da6baece365b62c4a9028cac5c82306d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1
@@ -108,6 +103,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

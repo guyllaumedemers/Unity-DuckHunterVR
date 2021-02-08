@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: bf3939cad79ab9040bd9b59ee6829398
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 20200
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: HologramHands
-    second: {fileID: 2100000, guid: 1438716ce8eb73644994f7ca060bee40, type: 2}
+    second: {fileID: 2100000, guid: 48c697b23e80cf24c811b12cffee8026, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1
@@ -100,6 +100,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
