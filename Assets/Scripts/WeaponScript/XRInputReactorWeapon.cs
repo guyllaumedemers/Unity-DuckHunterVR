@@ -3,29 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class WeaponButtonReactor : MonoBehaviour
+public class XRInputReactorWeapon : MonoBehaviour
 {
-    public XRButtonWatcher buttonWatcher;
+    [SerializeField]
+    private XRInputWatcher _xRInputWatcher;
     private XRGrabInteractable _xRGrabInteractable;
-    public bool primaryIsPressed = false;
-    public bool secondaryIsPressed = false;
+    [SerializeField]
+    private bool _primaryIsPressed = false, _secondaryIsPressed = false;
 
-    private Renderer m_renderer;
+    private Renderer _renderer;
 
-    // Start is called before the first frame update
     private void Start()
     {
-        m_renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
         _xRGrabInteractable = GetComponent<XRGrabInteractable>();
     }
 
     public void onPrimaryButtonEvent(bool pressed)
     {
-        primaryIsPressed = pressed;
+        _primaryIsPressed = pressed;
 
         if (pressed)
         {
-            m_renderer.material.color = new Color(0, 255, 0);
+            _renderer.material.color = new Color(0, 255, 0);
             
             if (XRInputDebugger.Instance.inputDebugEnabled)
             {
@@ -38,11 +38,11 @@ public class WeaponButtonReactor : MonoBehaviour
 
     public void onSecondaryButtonEvent(bool pressed)
     {
-        secondaryIsPressed = pressed;
+        _secondaryIsPressed = pressed;
 
         if (pressed)
         {
-            m_renderer.material.color = new Color(255, 0, 0);
+            _renderer.material.color = new Color(255, 0, 0);
 
             if (XRInputDebugger.Instance.inputDebugEnabled)
             {
@@ -56,17 +56,16 @@ public class WeaponButtonReactor : MonoBehaviour
     public void AssignWatcher()
     {
         XRBaseInteractor xRBaseInteractor = _xRGrabInteractable.selectingInteractor;
-        GameObject interactor = xRBaseInteractor.gameObject;
-        buttonWatcher = GameObject.Find(interactor.gameObject.name).GetComponent<XRButtonWatcher>();
+        _xRInputWatcher = GameObject.Find(xRBaseInteractor.gameObject.name).GetComponent<XRInputWatcher>();
 
-        buttonWatcher.primaryButtonPressEvent.AddListener(onPrimaryButtonEvent);
-        buttonWatcher.secondaryButtonPressEvent.AddListener(onSecondaryButtonEvent);
+        _xRInputWatcher.primaryButtonPressEvent.AddListener(onPrimaryButtonEvent);
+        _xRInputWatcher.secondaryButtonPressEvent.AddListener(onSecondaryButtonEvent);
     }
 
     public void ClearWatcher()
     {
-        buttonWatcher.primaryButtonPressEvent.RemoveAllListeners();
-        buttonWatcher.secondaryButtonPressEvent.RemoveAllListeners();
-        buttonWatcher = null;
+        _xRInputWatcher.primaryButtonPressEvent.RemoveAllListeners();
+        _xRInputWatcher.secondaryButtonPressEvent.RemoveAllListeners();
+        _xRInputWatcher = null;
     }
 }

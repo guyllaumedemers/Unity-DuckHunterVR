@@ -8,19 +8,21 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class PrimaryButtonEvent : UnityEvent<bool> { }
 public class SecondaryButtonEvent : UnityEvent<bool> { }
 
-public class XRButtonWatcher : MonoBehaviour
+public class XRInputWatcher : MonoBehaviour
 {
-    public XRBaseController xRBaseController;
-    public InputDevice inputDevice;
+    [SerializeField]
+    private XRBaseController _xRBaseController;
+    private InputDevice _inputDevice;
 
     public PrimaryButtonEvent primaryButtonPressEvent;
     public SecondaryButtonEvent secondaryButtonPressEvent;
+
     private bool _primaryLastButtonState = false;
     private bool _secondaryLastButtonState = false;
 
     private void Awake()
     {
-        xRBaseController = GetComponent<XRBaseController>();
+        _xRBaseController = GetComponent<XRBaseController>();
 
         if (primaryButtonPressEvent == null)
             primaryButtonPressEvent = new PrimaryButtonEvent();
@@ -31,15 +33,15 @@ public class XRButtonWatcher : MonoBehaviour
 
     private void Start()
     {
-        if (xRBaseController.name.Contains("Left"))
+        if (_xRBaseController.name.Contains("Left"))
         {
             if (XRInputManager.Instance.leftHandController != null)
-                inputDevice = XRInputManager.Instance.leftHandController;
+                _inputDevice = XRInputManager.Instance.leftHandController;
 
-            if (inputDevice != null)
+            if (_inputDevice != null)
             {
                 if (XRInputDebugger.Instance.inputDebugEnabled)
-                    Debug.Log("ButtonWatcher has been linked to: " + inputDevice.name);
+                    Debug.Log("ButtonWatcher has been linked to: " + _inputDevice.name);
             }
             else
             {
@@ -47,15 +49,15 @@ public class XRButtonWatcher : MonoBehaviour
             }
         }
 
-        if (xRBaseController.name.Contains("Right"))
+        if (_xRBaseController.name.Contains("Right"))
         {
             if (XRInputManager.Instance.rightHandController != null)
-                inputDevice = XRInputManager.Instance.rightHandController;
+                _inputDevice = XRInputManager.Instance.rightHandController;
 
-            if (inputDevice != null)
+            if (_inputDevice != null)
             {
                 if (XRInputDebugger.Instance.inputDebugEnabled)
-                    Debug.Log("ButtonWatcher has been linked to: " + inputDevice.name);
+                    Debug.Log("ButtonWatcher has been linked to: " + _inputDevice.name);
             }
             else
             {
@@ -72,7 +74,7 @@ public class XRButtonWatcher : MonoBehaviour
         bool secondaryTempState = false;
         bool secondaryButtonState = false;
 
-        primaryTempState = inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonState) && primaryButtonState || primaryTempState;
+        primaryTempState = _inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonState) && primaryButtonState || primaryTempState;
 
         if (primaryTempState != _primaryLastButtonState)
         {
@@ -80,7 +82,7 @@ public class XRButtonWatcher : MonoBehaviour
             _primaryLastButtonState = primaryTempState;
         }
 
-        secondaryTempState = inputDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out secondaryButtonState) && secondaryButtonState || secondaryTempState;
+        secondaryTempState = _inputDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out secondaryButtonState) && secondaryButtonState || secondaryTempState;
 
         if (secondaryTempState != _secondaryLastButtonState)
         {
