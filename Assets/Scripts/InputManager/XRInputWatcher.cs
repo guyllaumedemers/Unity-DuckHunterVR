@@ -41,11 +41,11 @@ public class XRInputWatcher : MonoBehaviour
             if (_inputDevice.name != null)
             {
                 if (XRInputDebugger.Instance.inputDebugEnabled)
-                    Debug.Log("ButtonWatcher has been linked to: " + _inputDevice.name);
+                    Debug.Log("XR InputWatcher has been linked to: " + _inputDevice.name);
             }
             else
             {
-                Debug.LogError("Unable to link ButtonWatcher to Left Controller.");
+                Debug.LogError("Unable to link XR InputWatcher to Left Controller.");
             }
         }
 
@@ -57,11 +57,11 @@ public class XRInputWatcher : MonoBehaviour
             if (_inputDevice.name != null)
             {
                 if (XRInputDebugger.Instance.inputDebugEnabled)
-                    Debug.Log("ButtonWatcher has been linked to: " + _inputDevice.name);
+                    Debug.Log("XR InputWatcher has been linked to: " + _inputDevice.name);
             }
             else
             {
-                Debug.LogError("Unable to link ButtonWatcher to Right Controller.");
+                Debug.LogError("Unable to link XR InputWatcher to Right Controller.");
             }
         }
     }
