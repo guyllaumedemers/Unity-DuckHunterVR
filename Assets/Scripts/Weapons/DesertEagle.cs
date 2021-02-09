@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Pistol : MonoBehaviour, IWeapon
+public class DesertEagle : MonoBehaviour, IWeapon
 {
-    [field: SerializeField] public GameObject GunTip { get; set; }
+    public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletLineRenderer { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
@@ -13,7 +13,7 @@ public class Pistol : MonoBehaviour, IWeapon
 
     void Awake()
     {
-        GunTip = GameObject.Find("PistolGunTip");
+        GunTip = GameObject.Find("DesertEagleGunTip");
     }
 
     void Start()
