@@ -8,6 +8,7 @@ public interface IWeapon
     public LineRenderer BulletLineRenderer { get; set; }
     public ParticleSystem MuzzleFlashParticles { get; set; }
     public ParticleSystem CartridgeEjectionParticles { get; set; }
+    public LayerMask GunHitLayers { get; set; }
 
     void Shoot();
     void Reload();
