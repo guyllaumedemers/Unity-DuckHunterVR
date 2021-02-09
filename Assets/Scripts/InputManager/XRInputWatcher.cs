@@ -33,7 +33,7 @@ public class XRInputWatcher : MonoBehaviour
 
     private void Start()
     {
-        if (_xRBaseController.name.Contains("Left"))
+        if (_xRBaseController.tag == ("LeftController"))
         {
             if (XRInputManager.Instance.leftHandController != null)
                 _inputDevice = XRInputManager.Instance.leftHandController;
@@ -49,7 +49,7 @@ public class XRInputWatcher : MonoBehaviour
             }
         }
 
-        if (_xRBaseController.name.Contains("Right"))
+        if (_xRBaseController.tag == ("RightController"))
         {
             if (XRInputManager.Instance.rightHandController != null)
                 _inputDevice = XRInputManager.Instance.rightHandController;
