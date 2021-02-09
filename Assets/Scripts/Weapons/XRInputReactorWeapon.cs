@@ -11,11 +11,11 @@ public class XRInputReactorWeapon : MonoBehaviour
     [SerializeField]
     private bool _primaryIsPressed = false, _secondaryIsPressed = false;
 
-    private IWeaponComponents _weaponComponents;
+    private IWeapon _iWeapon;
 
     private void Start()
     {
-        _weaponComponents = (IWeaponComponents)GetComponent(typeof(IWeaponComponents));
+        _iWeapon = (IWeapon)GetComponent(typeof(IWeapon));
         _xRGrabInteractable = GetComponent<XRGrabInteractable>();
     }
 
@@ -25,14 +25,14 @@ public class XRInputReactorWeapon : MonoBehaviour
 
         if (pressed)
         {
-            _weaponComponents.Reload();
+            _iWeapon.Reload();
             
-            if (XRInputDebugger.Instance.inputDebugEnabled)
+            /*if (XRInputDebugger.Instance.inputDebugEnabled)
             {
                 string debugMessage = name + " Primary Button Event Fired";
                 Debug.Log(debugMessage);
-                //XRInputDebugger.Instance.DebugLogInGame(debugMessage);
-            }
+                XRInputDebugger.Instance.DebugLogInGame(debugMessage);
+            }*/
         }
     }
 
@@ -42,12 +42,12 @@ public class XRInputReactorWeapon : MonoBehaviour
 
         if (pressed)
         {
-            if (XRInputDebugger.Instance.inputDebugEnabled)
+            /*if (XRInputDebugger.Instance.inputDebugEnabled)
             {
                 string debugMessage = name + " Secondary Button Event Fired";
                 Debug.Log(debugMessage);
                 XRInputDebugger.Instance.DebugLogInGame(debugMessage);
-            }
+            }*/
         }
     }
 

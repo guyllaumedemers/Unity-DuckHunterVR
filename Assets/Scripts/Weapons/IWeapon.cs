@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IWeaponComponents
+public interface IWeapon
 {
     public GameObject GunTip { get; set; }
     public LineRenderer BulletLineRenderer { get; set; }

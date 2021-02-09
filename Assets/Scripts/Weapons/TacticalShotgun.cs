@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Pistol : MonoBehaviour, IWeapon
+public class TacticalShotgun : MonoBehaviour, IWeapon
 {
     [field: SerializeField] public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletLineRenderer { get; set; }
@@ -12,12 +11,12 @@ public class Pistol : MonoBehaviour, IWeapon
 
     void Start()
     {
-
+        
     }
 
     void Update()
     {
-
+        
     }
 
     public void Shoot()

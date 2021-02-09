@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Pistol : MonoBehaviour, IWeapon
+public class SubmachineGun : MonoBehaviour, IWeapon
 {
     [field: SerializeField] public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletLineRenderer { get; set; }
