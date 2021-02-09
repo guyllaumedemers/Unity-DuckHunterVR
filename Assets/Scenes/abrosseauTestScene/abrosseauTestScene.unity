@@ -1002,10 +1002,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1882754503, guid: 41542d6a587f01d4e888bec7364faa6c, type: 3}
-      propertyPath: <GunHitLayers>k__BackingField.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 7128623116118394623, guid: 41542d6a587f01d4e888bec7364faa6c,
         type: 3}
       propertyPath: m_RootOrder
