@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: fbef31027e5e1d2429ba396ccd9dd77f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Molecula - Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b3e0b0f54c171c547ac8be0bcb7f29b1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
