@@ -8,6 +8,12 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
 
+    public void Start()
+    {
+        mainMenu.SetActive(true);
+        settingsMenu.SetActive(false);
+    }
+
     public void LaunchGame()
     {
         SceneManager.LoadScene("gdemersTestScene", LoadSceneMode.Single);
@@ -21,6 +27,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void ExitGame()
     {
-
+        Debug.Log("Application.Quit");
+        Application.Quit();
     }
 }
