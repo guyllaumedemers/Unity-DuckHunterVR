@@ -5,6 +5,7 @@ using UnityEngine;
 public class SubmachineGun : MonoBehaviour, IWeapon
 {
     [field: SerializeField] public float GunRange { get; set; } = 50f;
+    [field: SerializeField] public float BulletTrailSize { get; set; } = 0.01f;
     public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }

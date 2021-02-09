@@ -341,6 +341,7 @@ MonoBehaviour:
   nbPellets: 12
   pelletSpread: 0.1
   <GunRange>k__BackingField: 50
+  <BulletTrailSize>k__BackingField: 0.005
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 0}

@@ -7,6 +7,7 @@ public class TacticalShotgun : MonoBehaviour, IWeapon
     [SerializeField] private int nbPellets = 12;
     [SerializeField] private float pelletSpread = 0.1f;
     [field: SerializeField] public float GunRange { get; set; } = 50f;
+    [field: SerializeField] public float BulletTrailSize { get; set; } = 0.005f;
     public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
@@ -48,6 +49,7 @@ public class TacticalShotgun : MonoBehaviour, IWeapon
             }
 
             LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
+            bulletTrailClone.widthMultiplier = BulletTrailSize;
             bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
 
             StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
