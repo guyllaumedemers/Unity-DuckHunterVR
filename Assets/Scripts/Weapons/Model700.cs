@@ -5,7 +5,7 @@ using UnityEngine;
 public class Model700 : MonoBehaviour, IWeapon
 {
     [field: SerializeField] public float GunRange { get; set; } = 50f;
-    [field: SerializeField] public GameObject GunTip { get; set; }
+    public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
@@ -14,11 +14,6 @@ public class Model700 : MonoBehaviour, IWeapon
     void Start()
     {
         GunTip = GameObject.Find("Model700GunTip");
-    }
-
-    void Update()
-    {
-        
     }
 
     public void Shoot()

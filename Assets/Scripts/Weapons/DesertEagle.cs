@@ -4,9 +4,9 @@ using UnityEngine;
 
 [System.Serializable]
 public class DesertEagle : MonoBehaviour, IWeapon
-{
-    [field: SerializeField] public float GunRange { get; set; } = 50f;
-    public GameObject GunTip { get; set; }
+{    
+    [field: SerializeField] public float GunRange { get; set; } = 50f;    
+    public GameObject GunTip { get; set; }    
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
@@ -17,19 +17,10 @@ public class DesertEagle : MonoBehaviour, IWeapon
         GunTip = GameObject.Find("DesertEagleGunTip");
     }
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
     public void Shoot()
     {
-        Ray ray = new Ray(GunTip.transform.position, GunTip.transform.TransformDirection(Vector3.forward));
+        Vector3 bulletDirection = GunTip.transform.TransformDirection(Vector3.forward);
+        Ray ray = new Ray(GunTip.transform.position, bulletDirection);
         RaycastHit raycastHit;
         Vector3 lineRendererEnd;
 

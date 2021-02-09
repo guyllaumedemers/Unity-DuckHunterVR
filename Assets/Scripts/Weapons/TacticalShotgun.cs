@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TacticalShotgun : MonoBehaviour, IWeapon
 {
+    [SerializeField] private int nbPellets = 12;
+    [SerializeField] private float pelletSpread = 0.1f;
     [field: SerializeField] public float GunRange { get; set; } = 50f;
     public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
@@ -16,18 +18,39 @@ public class TacticalShotgun : MonoBehaviour, IWeapon
         GunTip = GameObject.Find("TacticalShotgunGunTip");
     }
 
-    void Update()
-    {
-        
-    }
-
     public void Shoot()
     {
-        if (XRInputDebugger.Instance.inputDebugEnabled)
+        for (int i = 0; i < nbPellets; i++)
         {
-            string debugMessage = name + " Shoot";
-            Debug.Log(debugMessage);
-            XRInputDebugger.Instance.DebugLogInGame(debugMessage);
+            Vector3 bullerDirection = GunTip.transform.TransformDirection(Vector3.forward);
+            Vector3 spread = Random.insideUnitCircle * pelletSpread;
+            bullerDirection += spread.x * GunTip.transform.right;
+            bullerDirection += spread.y * GunTip.transform.up;
+
+            Ray ray = new Ray(GunTip.transform.position, bullerDirection);
+            RaycastHit raycastHit;
+            Vector3 lineRendererEnd;
+
+            if (Physics.Raycast(ray, out raycastHit, GunRange, GunHitLayers.value))
+            {
+                lineRendererEnd = raycastHit.point;
+
+                if (XRInputDebugger.Instance.inputDebugEnabled)
+                {
+                    string debugMessage = "Raycast on: " + raycastHit.transform.name;
+                    Debug.Log(debugMessage);
+                    XRInputDebugger.Instance.DebugLogInGame(debugMessage);
+                }
+            }
+            else
+            {
+                lineRendererEnd = ray.origin + ray.direction * GunRange;
+            }
+
+            LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
+            bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
+
+            StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
         }
     }
 
