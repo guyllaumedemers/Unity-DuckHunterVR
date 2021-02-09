@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -26,21 +27,32 @@ public class MainMenuScript : MonoBehaviour
     {
         SwitchBetweenMenuButton();
     }
+    /// <summary>
+    /// Retrieve the left hand controller and acces his primary 2d Axis to return a Vector2d
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 GetJoystickAxisValues()
+    {
+        Vector2 joystickRetrieve = new Vector2();
+        InputDevice inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystickRetrieve);
+        return joystickRetrieve;
+    }
 
     public void SwitchBetweenMenuButton()
     {
-        float yInput = Input.GetAxisRaw("Vertical");
-        yInput = Mathf.Clamp(yInput, -1, 1);
+        Vector2 joystickRetrieve = GetJoystickAxisValues();
+        joystickRetrieve.y = Mathf.Clamp(joystickRetrieve.y, -1, 1);
         // positive value registered by the joystick
         //
-        if (yInput > 0.5f && isAllowedToSwitchButton)
+        if (joystickRetrieve.y > 0.5f && isAllowedToSwitchButton)
         {
             currentIndexButton++;
             ChangeIndexButtonSelected(); // need to stay inside to prevent to switch between button insanly fast
         }
         // negative value registered by the joystick
         //
-        else if (yInput < -0.5f && isAllowedToSwitchButton)
+        else if (joystickRetrieve.y < -0.5f && isAllowedToSwitchButton)
         {
             currentIndexButton--;
             ChangeIndexButtonSelected();
