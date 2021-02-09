@@ -338,10 +338,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098360ff44e0fa347a40cf056da7f108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <GunTip>k__BackingField: {fileID: 0}
-  <BulletLineRenderer>k__BackingField: {fileID: 0}
+  nbPellets: 12
+  pelletSpread: 0.1
+  <GunRange>k__BackingField: 50
+  <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
+    type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 0}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
