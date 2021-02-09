@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class TacticalShotgun : MonoBehaviour, IWeapon
 {
-    [field: SerializeField] public GameObject GunTip { get; set; }
-    [field: SerializeField] public LineRenderer BulletLineRenderer { get; set; }
+    [field: SerializeField] public float GunRange { get; set; } = 50f;
+    public GameObject GunTip { get; set; }
+    [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
 
     void Start()
     {
-        
+        GunTip = GameObject.Find("TacticalShotgunGunTip");
     }
 
     void Update()
