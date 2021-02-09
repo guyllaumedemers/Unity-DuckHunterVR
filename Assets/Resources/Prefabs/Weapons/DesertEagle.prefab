@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <GunRange>k__BackingField: 50
+  <BulletTrailSize>k__BackingField: 0.01
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 0}

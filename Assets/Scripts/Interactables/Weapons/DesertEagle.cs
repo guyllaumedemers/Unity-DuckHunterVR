@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class DesertEagle : MonoBehaviour, IWeapon
 {    
-    [field: SerializeField] public float GunRange { get; set; } = 50f;    
+    [field: SerializeField] public float GunRange { get; set; } = 50f;
+    [field: SerializeField] public float BulletTrailSize { get; set; } = 0.1f;
     public GameObject GunTip { get; set; }    
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
@@ -41,6 +42,7 @@ public class DesertEagle : MonoBehaviour, IWeapon
         }        
 
         LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
+        bulletTrailClone.widthMultiplier = BulletTrailSize;
         bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
 
         StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
