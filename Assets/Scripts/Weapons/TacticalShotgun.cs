@@ -8,6 +8,7 @@ public class TacticalShotgun : MonoBehaviour, IWeapon
     [field: SerializeField] public LineRenderer BulletLineRenderer { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
+    [field: SerializeField] public LayerMask GunHitLayers { get; set; }
 
     void Start()
     {
