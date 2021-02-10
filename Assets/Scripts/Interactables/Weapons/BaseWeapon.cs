@@ -20,6 +20,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (Time.time >= TimeBeforeNextShot)
         {
+            MuzzleFlashParticles.Play();
+
             for (int i = 0; i < nbBullets; i++)
             {
                 Vector3 bulletDirection = GunTip.transform.TransformDirection(Vector3.forward);
