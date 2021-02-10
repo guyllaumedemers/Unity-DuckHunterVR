@@ -25,6 +25,21 @@ public class MainMenuScript : MonoBehaviour
 
     public void Update()
     {
+        if (GetRightHandPrimaryButtonTriggerValue() == true)
+        {
+            switch (currentIndexButton)
+            {
+                case 0:
+                    LaunchGame();
+                    break;
+                case 1:
+                    AccessSettings();
+                    break;
+                case 2:
+                    ExitGame();
+                    break;
+            }
+        }
         SwitchBetweenMenuButton();
     }
     /// <summary>
@@ -37,6 +52,14 @@ public class MainMenuScript : MonoBehaviour
         InputDevice inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystickRetrieve);
         return joystickRetrieve;
+    }
+
+    public bool GetRightHandPrimaryButtonTriggerValue()
+    {
+        bool isRightHandPrimaryButtonPress;
+        InputDevice inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out isRightHandPrimaryButtonPress);
+        return isRightHandPrimaryButtonPress;
     }
 
     public void SwitchBetweenMenuButton()
