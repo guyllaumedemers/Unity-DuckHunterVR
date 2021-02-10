@@ -904,6 +904,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6502930564488062534, guid: bf49ce9c7dd1bd94581630e5feb4e1c8,
+        type: 3}
+      propertyPath: m_Name
+      value: BulletEjectEffect
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf49ce9c7dd1bd94581630e5feb4e1c8, type: 3}
 --- !u!1001 &8936007190371981894
@@ -921,7 +926,7 @@ PrefabInstance:
     - target: {fileID: 8936007190284865394, guid: 9fb0b1a19ded4a147ac668eaf9eb927f,
         type: 3}
       propertyPath: inputDebugEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8936007190284865394, guid: 9fb0b1a19ded4a147ac668eaf9eb927f,
         type: 3}
@@ -1061,6 +1066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DesertEagle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159967999151821088, guid: 41542d6a587f01d4e888bec7364faa6c,
+        type: 3}
+      propertyPath: m_Name
+      value: BulletEjectEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41542d6a587f01d4e888bec7364faa6c, type: 3}

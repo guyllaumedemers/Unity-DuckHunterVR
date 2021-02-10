@@ -6,6 +6,8 @@ public interface IWeapon
 {
     public float GunRange { get; set; }
     public float BulletTrailSize { get; set; }
+    public float RateOfFire { get; set; }
+    public float TimeBeforeNextShot { get; set; }
     public GameObject GunTip { get; set; }
     public LineRenderer BulletTrailPrefab { get; set; }
     public ParticleSystem MuzzleFlashParticles { get; set; }
