@@ -20,12 +20,12 @@ public class MainMenuScript : MonoBehaviour
         settingsMenu.SetActive(false);
         currentIndexButton = 0;
         isAllowedToSwitchButton = true;
-        buttons[currentIndexButton].GetComponent<Button>().Select();
     }
 
     public void Update()
     {
-        if (GetRightHandPrimaryButtonTriggerValue() == true)
+        bool isRightPrimaryButtonTriggered = false;
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primaryButton, out isRightPrimaryButtonTriggered) && isRightPrimaryButtonTriggered)
         {
             switch (currentIndexButton)
             {
@@ -42,29 +42,11 @@ public class MainMenuScript : MonoBehaviour
         }
         SwitchBetweenMenuButton();
     }
-    /// <summary>
-    /// Retrieve the left hand controller and acces his primary 2d Axis to return a Vector2d
-    /// </summary>
-    /// <returns></returns>
-    public Vector2 GetJoystickAxisValues()
-    {
-        Vector2 joystickRetrieve = new Vector2();
-        InputDevice inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystickRetrieve);
-        return joystickRetrieve;
-    }
-
-    public bool GetRightHandPrimaryButtonTriggerValue()
-    {
-        bool isRightHandPrimaryButtonPress;
-        InputDevice inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out isRightHandPrimaryButtonPress);
-        return isRightHandPrimaryButtonPress;
-    }
 
     public void SwitchBetweenMenuButton()
     {
-        Vector2 joystickRetrieve = GetJoystickAxisValues();
+        Vector2 joystickRetrieve = new Vector2();
+        XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystickRetrieve);
         joystickRetrieve.y = Mathf.Clamp(joystickRetrieve.y, -1, 1);
         // positive value registered by the joystick
         //
