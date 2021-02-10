@@ -326,6 +326,7 @@ MonoBehaviour:
   _xRInputWatcher: {fileID: 0}
   _primaryIsPressed: 0
   _secondaryIsPressed: 0
+  _triggerIsPressed: 0
 --- !u!114 &8724316238214113189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,8 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098360ff44e0fa347a40cf056da7f108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbPellets: 12
-  pelletSpread: 0.1
+  nbBullets: 12
+  bulletSpread: 0.1
+  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.005
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,

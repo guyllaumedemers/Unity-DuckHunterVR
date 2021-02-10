@@ -75,8 +75,8 @@ GameObject:
   - component: {fileID: 2157443199799477055}
   - component: {fileID: 2157443199799477057}
   - component: {fileID: 2157443199799477056}
-  - component: {fileID: 1882754503}
   - component: {fileID: 4957893477079764862}
+  - component: {fileID: 1882754503}
   m_Layer: 0
   m_Name: DesertEagle
   m_TagString: Untagged
@@ -264,7 +264,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1882754503}
-        m_TargetAssemblyTypeName: Pistol, Assembly-CSharp
+        m_TargetAssemblyTypeName: DesertEagle, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
@@ -311,27 +311,6 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 1
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
---- !u!114 &1882754503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7128623116118891231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34f95d05ca968e44090bf7dcb92dddf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GunRange>k__BackingField: 50
-  <BulletTrailSize>k__BackingField: 0.01
-  <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
-    type: 3}
-  <MuzzleFlashParticles>k__BackingField: {fileID: 0}
-  <CartridgeEjectionParticles>k__BackingField: {fileID: 0}
-  <GunHitLayers>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &4957893477079764862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,3 +326,28 @@ MonoBehaviour:
   _xRInputWatcher: {fileID: 0}
   _primaryIsPressed: 0
   _secondaryIsPressed: 0
+  _triggerIsPressed: 0
+--- !u!114 &1882754503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128623116118891231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f95d05ca968e44090bf7dcb92dddf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbBullets: 1
+  bulletSpread: 0
+  <RateOfFire>k__BackingField: 0
+  <GunRange>k__BackingField: 50
+  <BulletTrailSize>k__BackingField: 0.01
+  <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
+    type: 3}
+  <MuzzleFlashParticles>k__BackingField: {fileID: 0}
+  <CartridgeEjectionParticles>k__BackingField: {fileID: 0}
+  <GunHitLayers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 512

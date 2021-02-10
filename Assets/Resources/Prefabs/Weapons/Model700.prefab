@@ -264,7 +264,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2923243095291636197}
-        m_TargetAssemblyTypeName: Model700, Assembly-CSharp
+        m_TargetAssemblyTypeName: BaseWeapon, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
@@ -326,6 +326,7 @@ MonoBehaviour:
   _xRInputWatcher: {fileID: 0}
   _primaryIsPressed: 0
   _secondaryIsPressed: 0
+  _triggerIsPressed: 0
 --- !u!114 &2923243095291636197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,8 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6a0d38f10bb284cbd505b4cfd86f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nbBullets: 1
+  bulletSpread: 0
+  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
-  <BulletTrailSize>k__BackingField: 0.015
+  <BulletTrailSize>k__BackingField: 0.02
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 0}

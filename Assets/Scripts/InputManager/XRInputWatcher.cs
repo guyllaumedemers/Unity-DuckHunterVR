@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PrimaryButtonEvent : UnityEvent<bool> { }
 public class SecondaryButtonEvent : UnityEvent<bool> { }
+public class TriggerButtonEvent : UnityEvent<bool> { }
 
 public class XRInputWatcher : MonoBehaviour
 {
@@ -16,9 +17,11 @@ public class XRInputWatcher : MonoBehaviour
 
     public PrimaryButtonEvent primaryButtonPressEvent;
     public SecondaryButtonEvent secondaryButtonPressEvent;
+    public TriggerButtonEvent triggerButtonPressEvent;
 
     private bool _primaryLastButtonState = false;
     private bool _secondaryLastButtonState = false;
+    private bool _triggerLastButtonState = false;
 
     private void Awake()
     {
@@ -29,6 +32,9 @@ public class XRInputWatcher : MonoBehaviour
 
         if (secondaryButtonPressEvent == null)
             secondaryButtonPressEvent = new SecondaryButtonEvent();
+
+        if (triggerButtonPressEvent == null)
+            triggerButtonPressEvent = new TriggerButtonEvent();
     }
 
     private void Start()
@@ -74,6 +80,9 @@ public class XRInputWatcher : MonoBehaviour
         bool secondaryTempState = false;
         bool secondaryButtonState = false;
 
+        bool triggerTempState = false;
+        bool triggerButtonState = false;
+
         primaryTempState = _inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonState) && primaryButtonState || primaryTempState;
 
         if (primaryTempState != _primaryLastButtonState)
@@ -89,5 +98,10 @@ public class XRInputWatcher : MonoBehaviour
             secondaryButtonPressEvent.Invoke(secondaryTempState);
             _secondaryLastButtonState = secondaryTempState;
         }
+
+        triggerTempState = _inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonState) && triggerButtonState || triggerTempState;
+
+        triggerButtonPressEvent.Invoke(triggerTempState);
+        _triggerLastButtonState = triggerTempState;
     }
 }

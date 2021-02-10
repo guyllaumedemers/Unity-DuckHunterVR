@@ -9,14 +9,14 @@ public class XRInputReactorWeapon : MonoBehaviour
     private XRInputWatcher _xRInputWatcher;
     private XRGrabInteractable _xRGrabInteractable;
     [SerializeField]
-    private bool _primaryIsPressed = false, _secondaryIsPressed = false;
+    private bool _primaryIsPressed = false, _secondaryIsPressed = false, _triggerIsPressed = false;
 
     private IWeapon _iWeapon;
 
     private void Start()
     {
         _iWeapon = (IWeapon)GetComponent(typeof(IWeapon));
-        _xRGrabInteractable = GetComponent<XRGrabInteractable>();
+        _xRGrabInteractable = GetComponent<XRGrabInteractable>();       
     }
 
     public void onPrimaryButtonEvent(bool pressed)
@@ -26,13 +26,6 @@ public class XRInputReactorWeapon : MonoBehaviour
         if (pressed)
         {
             _iWeapon.Reload();
-            
-            /*if (XRInputDebugger.Instance.inputDebugEnabled)
-            {
-                string debugMessage = name + " Primary Button Event Fired";
-                Debug.Log(debugMessage);
-                XRInputDebugger.Instance.DebugLogInGame(debugMessage);
-            }*/
         }
     }
 
@@ -51,6 +44,19 @@ public class XRInputReactorWeapon : MonoBehaviour
         }
     }
 
+    public void onTriggerButtonEvent(bool pressed)
+    {
+        _triggerIsPressed = pressed;
+        
+        if (pressed)
+        {
+            if(_iWeapon.RateOfFire > 0)
+            {
+                _iWeapon.Shoot();
+            }
+        }
+    }
+
     public void AssignWatcher()
     {
         XRBaseInteractor xRBaseInteractor = _xRGrabInteractable.selectingInteractor;
@@ -58,12 +64,14 @@ public class XRInputReactorWeapon : MonoBehaviour
 
         _xRInputWatcher.primaryButtonPressEvent.AddListener(onPrimaryButtonEvent);
         _xRInputWatcher.secondaryButtonPressEvent.AddListener(onSecondaryButtonEvent);
+        _xRInputWatcher.triggerButtonPressEvent.AddListener(onTriggerButtonEvent);
     }
 
     public void ClearWatcher()
     {
         _xRInputWatcher.primaryButtonPressEvent.RemoveAllListeners();
         _xRInputWatcher.secondaryButtonPressEvent.RemoveAllListeners();
+        _xRInputWatcher.triggerButtonPressEvent.RemoveAllListeners();
         _xRInputWatcher = null;
     }
 }
