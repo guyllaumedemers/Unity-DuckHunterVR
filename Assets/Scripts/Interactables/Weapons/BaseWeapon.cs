@@ -21,6 +21,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         if (Time.time >= TimeBeforeNextShot)
         {
             MuzzleFlashParticles.Play();
+            CartridgeEjectionParticles.Play();
 
             for (int i = 0; i < nbBullets; i++)
             {
