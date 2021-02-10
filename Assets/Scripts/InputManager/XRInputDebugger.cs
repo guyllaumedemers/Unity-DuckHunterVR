@@ -116,19 +116,23 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool primary2DAxisTouch;
-        if (XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out primary2DAxisTouch) && primary2DAxisTouch)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out primary2DAxisTouch) && primary2DAxisTouch)
         {
-            string debugMessage = XRInputManager.Instance.leftHandController.name + "\nJoystick is moved.";
+            string debugMessage = XRInputManager.Instance.rightHandController.name + " - Joystick is touched.";
 
             Debug.Log(debugMessage);
-            DebugLogLeftHand(debugMessage);
+            DebugLogRightHand(debugMessage);
+
+            Vector2 primary2DAxis;
+            XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxis);
+            Debug.Log(primary2DAxis);
         }
     }
 
     private void DebugInputRightHand()
     {
         bool triggerPressed;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerPressed) && triggerPressed)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.triggerButton, out triggerPressed) && triggerPressed)
         {
             string debugMessage = XRInputManager.Instance.rightHandController.name + " - Trigger button is pressed.";
 
@@ -137,7 +141,7 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool gripPressed;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out gripPressed) && gripPressed)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.gripButton, out gripPressed) && gripPressed)
         {
             string debugMessage = XRInputManager.Instance.rightHandController.name + " - Grip button is pressed.";
 
@@ -146,7 +150,7 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool primaryButtonPressed;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out primaryButtonPressed) && primaryButtonPressed)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonPressed) && primaryButtonPressed)
         {
             string debugMessage = XRInputManager.Instance.rightHandController.name + " - Primary button (A) is pressed.";
 
@@ -155,7 +159,7 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool secondaryButtonPressed;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out secondaryButtonPressed) && secondaryButtonPressed)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.secondaryButton, out secondaryButtonPressed) && secondaryButtonPressed)
         {
             string debugMessage = XRInputManager.Instance.rightHandController.name + " - Secondary button (B) is pressed.";
 
@@ -164,7 +168,7 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool menuButtonPressed;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out menuButtonPressed) && menuButtonPressed)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.menuButton, out menuButtonPressed) && menuButtonPressed)
         {
             string debugMessage = XRInputManager.Instance.rightHandController.name + " - Menu button is pressed.";
 
@@ -173,7 +177,7 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool primary2DAxisClick;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out primary2DAxisClick) && primary2DAxisClick)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out primary2DAxisClick) && primary2DAxisClick)
         {
             string debugMessage = XRInputManager.Instance.rightHandController.name + " - Joystick click button is pressed.";
 
@@ -182,12 +186,16 @@ public class XRInputDebugger : MonoBehaviour
         }
 
         bool primary2DAxisTouch;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisTouch, out primary2DAxisTouch) && primary2DAxisTouch)
+        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out primary2DAxisTouch) && primary2DAxisTouch)
         {
-            string debugMessage = XRInputManager.Instance.rightHandController.name + " - Joystick is moved.";
+            string debugMessage = XRInputManager.Instance.rightHandController.name + " - Joystick is touched.";
 
             Debug.Log(debugMessage);
             DebugLogRightHand(debugMessage);
+
+            Vector2 primary2DAxis;
+            XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxis);
+            Debug.Log(primary2DAxis);
         }
     }
 
