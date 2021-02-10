@@ -9,10 +9,20 @@ public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
-    [SerializeField] private GameObject[] buttons;
+    [SerializeField] private GameObject[] buttonObjects;
+    private Button[] buttons;
     private int currentIndexButton;
     private const int maxIndex = 2;
     private bool isAllowedToSwitchButton;
+
+    public void Awake()
+    {
+        buttons = new Button[3];
+        for (int i = 0; i < buttonObjects.Length; i++)
+        {
+            buttons[i] = buttonObjects[i].GetComponent<Button>();
+        }
+    }
 
     public void Start()
     {
@@ -24,23 +34,23 @@ public class MainMenuScript : MonoBehaviour
 
     public void Update()
     {
-        bool isRightPrimaryButtonTriggered = false;
-        if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primaryButton, out isRightPrimaryButtonTriggered) && isRightPrimaryButtonTriggered)
-        {
-            switch (currentIndexButton)
-            {
-                case 0:
-                    LaunchGame();
-                    break;
-                case 1:
-                    AccessSettings();
-                    break;
-                case 2:
-                    ExitGame();
-                    break;
-            }
-        }
-        SwitchBetweenMenuButton();
+        //bool isRightPrimaryButtonTriggered = false;
+        //if (XRInputManager.Instance.rightHandController.TryGetFeatureValue(CommonUsages.primaryButton, out isRightPrimaryButtonTriggered) && isRightPrimaryButtonTriggered)
+        //{
+        //    switch (currentIndexButton)
+        //    {
+        //        case 0:
+        //            LaunchGame();
+        //            break;
+        //        case 1:
+        //            AccessSettings();
+        //            break;
+        //        case 2:
+        //            ExitGame();
+        //            break;
+        //    }
+        //}
+        //SwitchBetweenMenuButton();
     }
 
     public void SwitchBetweenMenuButton()
@@ -77,7 +87,7 @@ public class MainMenuScript : MonoBehaviour
         {
             currentIndexButton = maxIndex;
         }
-        buttons[currentIndexButton].GetComponent<Button>().Select();
+        buttons[currentIndexButton].Select();
         StartCoroutine(DelayJoystickToggleBetweenButtons());
     }
 
@@ -95,6 +105,12 @@ public class MainMenuScript : MonoBehaviour
     }
 
     public void AccessSettings()
+    {
+        mainMenu.SetActive(!mainMenu.activeSelf);
+        settingsMenu.SetActive(!settingsMenu.activeSelf);
+    }
+
+    public void GoBack()
     {
         mainMenu.SetActive(!mainMenu.activeSelf);
         settingsMenu.SetActive(!settingsMenu.activeSelf);
