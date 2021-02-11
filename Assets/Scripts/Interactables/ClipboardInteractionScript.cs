@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,40 @@ public class ClipboardInteractionScript : MonoBehaviour
     public void Awake()
     {
         ActivateRegularModeOnAwake();
+        // set delegates to look for Toggle value Changes
+        foreach (Toggle t in toggles)
+        {
+            t.onValueChanged.AddListener((a) => { ToggleValueChanged(t); });
+            Debug.Log("Toggle Name : " + t.name + " Toggle isOn Value : " + t.isOn);
+        }
+    }
+
+    public void Start()
+    {
+        
+    }
+
+    public void Update()
+    {
+        if (!GameManagerScript.Instance.GetRoundStatus)
+        {
+            SetGameMode((GameManagerScript.GameMode)GetIndexWithToggleIsOnActive());
+            // we could set the Round Status to true only when a button is press to tell the game the play has pick and confirm his game mode
+            // but for now its fine with setting only once
+            GameManagerScript.Instance.GetRoundStatus = true;
+        }
     }
 
     public void SetGameMode(GameManagerScript.GameMode mode)
     {
-        GameManagerScript.Instance.GetCurrentMode = mode;
+        try
+        {
+            GameManagerScript.Instance.GetCurrentMode = mode;
+        }
+        catch (System.IndexOutOfRangeException e)
+        {
+            Debug.Log("" + e.Message);
+        }
     }
 
     public void ActivateRegularModeOnAwake()
@@ -29,5 +59,27 @@ public class ClipboardInteractionScript : MonoBehaviour
                 t.isOn = true;
             }
         }
+    }
+    /// <summary>
+    /// Retrieve the index of the Game Mode Select
+    /// </summary>
+    /// <returns></returns>
+    public int GetIndexWithToggleIsOnActive()
+    {
+        int index = -1;
+        for (int i = 0; i < toggles.Length; i++)
+        {
+            if (toggles[i].isOn)
+            {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    void ToggleValueChanged(Toggle toggle)
+    {
+        Debug.Log("Toggle Name : " + toggle.name + " Toggle isOn Value : " + toggle.isOn);
     }
 }
