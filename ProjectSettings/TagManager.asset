@@ -11,6 +11,9 @@ TagManager:
   - RifleReload
   - ShotgunAmmoBox
   - RifleAmmoBox
+  - RegularMode
+  - TimedRound
+  - ChallengeMode
   layers:
   - Default
   - TransparentFX
