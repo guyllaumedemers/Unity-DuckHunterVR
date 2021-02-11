@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public interface IWeapon
 {
@@ -14,7 +15,10 @@ public interface IWeapon
     public ParticleSystem CartridgeEjectionParticles { get; set; }
     public LayerMask GunHitLayers { get; set; }
     public AudioSource AudioSource { get; set; }
+    public XRSocketInteractor xRSocketInteractor { get; set; }
 
     void Shoot();
-    void Reload();
+    void DropClip();
+
+    void InsertAmmo();
 }

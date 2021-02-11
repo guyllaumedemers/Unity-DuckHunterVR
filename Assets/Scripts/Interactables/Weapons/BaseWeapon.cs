@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
-{    
+{
     [SerializeField] private int nbBullets = 0;
     [SerializeField] private float bulletSpread = 0f;
     [field: SerializeField] public float RateOfFire { get; set; } = 0f;
@@ -16,10 +17,47 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
     [field: SerializeField] public AudioSource AudioSource { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
+    [field: SerializeField] public XRSocketInteractor xRSocketInteractor { get; set; }
+    [field: SerializeField] public MeshCollider meshCollider { get; set; }
+    [field: SerializeField] public Rigidbody Rigidbody { get; set; }
 
     void Awake()
     {
         AudioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
+        xRSocketInteractor = GetComponent<XRSocketInteractor>();
+        meshCollider = GetComponent<MeshCollider>();
+        Rigidbody = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        Debug.Log(xRSocketInteractor.name);
+        Debug.Log(xRSocketInteractor.selectTarget);
+
+        /*if (xRSocketInteractor.selectTarget == null)
+        {
+            xRSocketInteractor.socketActive = true;
+        }*/
+
+        if (xRSocketInteractor.selectTarget != null)
+        {
+            //Destroy(xRSocketInteractor.selectTarget.gameObject);
+            Rigidbody rb = xRSocketInteractor.selectTarget.gameObject.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+
+            BoxCollider bc = xRSocketInteractor.selectTarget.gameObject.GetComponent<BoxCollider>();
+            bc.isTrigger = true;
+
+            xRSocketInteractor.selectTarget.gameObject.transform.SetParent(this.transform);
+
+            xRSocketInteractor.selectTarget.gameObject.SetActive(false);
+
+
+        }
     }
 
     public virtual void Shoot()
@@ -68,13 +106,40 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         }
     }
 
-    public virtual void Reload()
+    public virtual void DropClip()
     {
-        if (XRInputDebugger.Instance.inputDebugEnabled)
+        xRSocketInteractor.socketActive = false;
+        meshCollider.enabled = false;
+        Rigidbody.isKinematic = true;
+
+        Rigidbody rb = xRSocketInteractor.selectTarget.gameObject.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+
+        BoxCollider bc = xRSocketInteractor.selectTarget.gameObject.GetComponent<BoxCollider>();
+        bc.isTrigger = false;
+
+        xRSocketInteractor.selectTarget.gameObject.SetActive(true);
+
+
+        /*if (XRInputDebugger.Instance.inputDebugEnabled)
         {
             string debugMessage = name + " Reload";
             Debug.Log(debugMessage);
             XRInputDebugger.Instance.DebugLogInGame(debugMessage);
+        }*/
+    }
+
+    public void CheckIfEmpty()
+    {
+        if (xRSocketInteractor.selectTarget.Equals(null))
+        {
+            xRSocketInteractor.socketActive = true;
         }
+    }
+
+    public void InsertAmmo()
+    {
+
+
     }
 }
