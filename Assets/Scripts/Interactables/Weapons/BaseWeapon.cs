@@ -16,10 +16,12 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
     [field: SerializeField] public AudioSource AudioSource { get; set; }
+    [field: SerializeField] public XRSocketInteractor XRSocketInteractor { get; set; }
+    [field: SerializeField] public SphereCollider AmmoReloadCollider { get; set; }
+    [field: SerializeField] public int CurrentAmmo { get; set; } = 0;
+    [field: SerializeField] public int MaxAmmo { get; set; } = 10;
+    [field: SerializeField] public bool HasClip { get; set; } = false;
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
-    [field: SerializeField] public XRSocketInteractor xRSocketInteractor { get; set; }
-    [field: SerializeField] public MeshCollider meshCollider { get; set; }
-    [field: SerializeField] public Rigidbody Rigidbody { get; set; }
 
     void Awake()
     {
@@ -28,22 +30,22 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     void Start()
     {
-        xRSocketInteractor = GetComponent<XRSocketInteractor>();
-        meshCollider = GetComponent<MeshCollider>();
-        Rigidbody = GetComponent<Rigidbody>();
+        XRSocketInteractor = GetComponent<XRSocketInteractor>();
+        //meshCollider = GetComponent<MeshCollider>();
+        //Rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        Debug.Log(xRSocketInteractor.name);
-        Debug.Log(xRSocketInteractor.selectTarget);
+        //Debug.Log(xRSocketInteractor.name);
+        //Debug.Log(xRSocketInteractor.selectTarget);
 
         /*if (xRSocketInteractor.selectTarget == null)
         {
             xRSocketInteractor.socketActive = true;
         }*/
 
-        if (xRSocketInteractor.selectTarget != null)
+        /*if (xRSocketInteractor.selectTarget != null)
         {
             //Destroy(xRSocketInteractor.selectTarget.gameObject);
             Rigidbody rb = xRSocketInteractor.selectTarget.gameObject.GetComponent<Rigidbody>();
@@ -57,49 +59,54 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
             xRSocketInteractor.selectTarget.gameObject.SetActive(false);
 
 
-        }
+        }*/
     }
 
     public virtual void Shoot()
     {
         if (Time.time >= TimeBeforeNextShot)
         {
-            AudioSource.Play();
-            MuzzleFlashParticles.Play();
-            CartridgeEjectionParticles.Play();
-
-            for (int i = 0; i < nbBullets; i++)
+            if (CurrentAmmo > 0)
             {
-                Vector3 bulletDirection = GunTip.transform.TransformDirection(Vector3.forward);
-                Vector3 spread = Random.insideUnitCircle * bulletSpread;
-                bulletDirection += spread.x * GunTip.transform.right;
-                bulletDirection += spread.y * GunTip.transform.up;
+                AudioSource.Play();
+                MuzzleFlashParticles.Play();
+                CartridgeEjectionParticles.Play();
 
-                Ray ray = new Ray(GunTip.transform.position, bulletDirection);
-                RaycastHit raycastHit;
-                Vector3 lineRendererEnd;
-
-                if (Physics.Raycast(ray, out raycastHit, GunRange, GunHitLayers.value))
+                for (int i = 0; i < nbBullets; i++)
                 {
-                    lineRendererEnd = raycastHit.point;
+                    Vector3 bulletDirection = GunTip.transform.TransformDirection(Vector3.forward);
+                    Vector3 spread = Random.insideUnitCircle * bulletSpread;
+                    bulletDirection += spread.x * GunTip.transform.right;
+                    bulletDirection += spread.y * GunTip.transform.up;
 
-                    if (XRInputDebugger.Instance.inputDebugEnabled)
+                    Ray ray = new Ray(GunTip.transform.position, bulletDirection);
+                    RaycastHit raycastHit;
+                    Vector3 lineRendererEnd;
+
+                    if (Physics.Raycast(ray, out raycastHit, GunRange, GunHitLayers.value))
                     {
-                        string debugMessage = "Raycast on: " + raycastHit.transform.name;
-                        Debug.Log(debugMessage);
-                        XRInputDebugger.Instance.DebugLogInGame(debugMessage);
+                        lineRendererEnd = raycastHit.point;
+
+                        if (XRInputDebugger.Instance.inputDebugEnabled)
+                        {
+                            string debugMessage = "Raycast on: " + raycastHit.transform.name;
+                            Debug.Log(debugMessage);
+                            XRInputDebugger.Instance.DebugLogInGame(debugMessage);
+                        }
                     }
-                }
-                else
-                {
-                    lineRendererEnd = ray.origin + ray.direction * GunRange;
+                    else
+                    {
+                        lineRendererEnd = ray.origin + ray.direction * GunRange;
+                    }
+
+                    LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
+                    bulletTrailClone.widthMultiplier = BulletTrailSize;
+                    bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
+
+                    StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
                 }
 
-                LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
-                bulletTrailClone.widthMultiplier = BulletTrailSize;
-                bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
-
-                StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
+                CurrentAmmo--;
 
                 TimeBeforeNextShot = Time.time + RateOfFire;
             }
@@ -108,8 +115,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     public virtual void DropClip()
     {
-        xRSocketInteractor.socketActive = false;
-        meshCollider.enabled = false;
+        XRSocketInteractor.socketActive = false;
+        /*meshCollider.enabled = false;
         Rigidbody.isKinematic = true;
 
         Rigidbody rb = xRSocketInteractor.selectTarget.gameObject.GetComponent<Rigidbody>();
@@ -118,7 +125,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         BoxCollider bc = xRSocketInteractor.selectTarget.gameObject.GetComponent<BoxCollider>();
         bc.isTrigger = false;
 
-        xRSocketInteractor.selectTarget.gameObject.SetActive(true);
+        xRSocketInteractor.selectTarget.gameObject.SetActive(true);*/
 
 
         /*if (XRInputDebugger.Instance.inputDebugEnabled)
@@ -127,14 +134,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
             Debug.Log(debugMessage);
             XRInputDebugger.Instance.DebugLogInGame(debugMessage);
         }*/
-    }
-
-    public void CheckIfEmpty()
-    {
-        if (xRSocketInteractor.selectTarget.Equals(null))
-        {
-            xRSocketInteractor.socketActive = true;
-        }
     }
 
     public void InsertAmmo()

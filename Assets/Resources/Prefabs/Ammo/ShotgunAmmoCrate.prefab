@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896831858885230217}
-  m_LocalRotation: {x: 0.000000012060274, y: 0.8339673, z: 0.000000018226936, w: 0.5518139}
+  m_LocalRotation: {x: 0, y: 0.8339677, z: 0, w: 0.55181336}
   m_LocalPosition: {x: -1.187, y: 0.6804, z: 0.395}
   m_LocalScale: {x: 0.0003, y: 0.0003, z: 0.0003}
   m_Children:
@@ -520,6 +520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShotgunAmmoBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886845273536535384, guid: 6877d9cea00a27e4eb1226a14d26ed95,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6877d9cea00a27e4eb1226a14d26ed95, type: 3}
