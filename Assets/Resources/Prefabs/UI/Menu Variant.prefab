@@ -82,6 +82,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2556514705285982228, guid: 72af67c1f466aef40acaf99b67d4c058,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2603553753547780970, guid: 938237bc7dd4f6f438b20dce233e4166,
+        type: 3}
+    - target: {fileID: 2556514705285982228, guid: 72af67c1f466aef40acaf99b67d4c058,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnOffAudioMixer
+      objectReference: {fileID: 0}
     - target: {fileID: 3407016893752835578, guid: 72af67c1f466aef40acaf99b67d4c058,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -121,6 +132,28 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141799309482283996, guid: 72af67c1f466aef40acaf99b67d4c058,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2603553753547780970, guid: 938237bc7dd4f6f438b20dce233e4166,
+        type: 3}
+    - target: {fileID: 6141799309482283996, guid: 72af67c1f466aef40acaf99b67d4c058,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMainSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698192753615082758, guid: 72af67c1f466aef40acaf99b67d4c058,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2603553753547780970, guid: 938237bc7dd4f6f438b20dce233e4166,
+        type: 3}
+    - target: {fileID: 6698192753615082758, guid: 72af67c1f466aef40acaf99b67d4c058,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMainMusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 7370813497614541770, guid: 72af67c1f466aef40acaf99b67d4c058,
         type: 3}

@@ -34,6 +34,16 @@ public class PlayerMenuUIScript : MonoBehaviour
     private GameObject inGameMenuUI;
     private const string gameSceneName = "gdemersTestScene";
 
+    public void Awake()
+    {
+        instance = this;
+    }
+
+    public void Start()
+    {
+        inGameMenuUI.SetActive(false);
+    }
+
     public bool IsInGameScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -52,6 +62,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         bool isLeftMenuButtonPressed = false;
         if (XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.menuButton, out isLeftMenuButtonPressed) && isLeftMenuButtonPressed)
         {
+            Debug.Log("Menu Active");
             inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
         }
     }
