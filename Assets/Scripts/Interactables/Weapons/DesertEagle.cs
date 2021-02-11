@@ -15,30 +15,35 @@ public class DesertEagle : BaseWeapon
 
     private void Update()
     {
-        if(currentClip == null)
-        {
+        Transform reloadSpot = GameObject.Find("ClipAttach").transform;
 
+        if(reloadSpot.childCount == 0)
+        {
+            currentClip = null;
         }
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag.Contains("PistolClip") && AmmoReloadCollider.tag == "PistolReload")
+        if (currentClip == null)
         {
-            currentClip = collider.gameObject;
-
-            if(currentClip != null)
+            if (collider.gameObject.tag.Contains("PistolClip") && AmmoReloadCollider.tag == "PistolReload")
             {
+                currentClip = collider.gameObject;
+
                 Rigidbody rb = currentClip.GetComponent<Rigidbody>();
-                BoxCollider bc = currentClip.GetComponent<BoxCollider>();
+                BoxCollider bc = currentClip.GetComponent<BoxCollider>();               
+                
+                bc.isTrigger = true;
+                rb.isKinematic = true;                
 
                 GameObject clipAttach = GameObject.Find("ClipAttach");
 
                 collider.gameObject.transform.SetParent(clipAttach.transform);
 
-                rb.isKinematic = true;
+                Debug.Log(bc.gameObject.name);
 
-                bc.isTrigger = true;
+                //Debug.Log(bc.isTrigger);
 
                 collider.gameObject.transform.position = new Vector3(clipAttach.transform.position.x, clipAttach.transform.position.y, clipAttach.transform.position.z);
 
@@ -46,43 +51,41 @@ public class DesertEagle : BaseWeapon
 
                 XRGrabInteractable grab = currentClip.GetComponent<XRGrabInteractable>();
 
-                Debug.Log(currentClip.name);
+                //Debug.Log(currentClip.name);
 
                 if (currentClip.name != null)
                 {
-                    Destroy(grab);
+                    //Destroy(grab);
                 }
             }
-        } 
+        }
     }
 
     /*private void OnTriggerExit(Collider collider)
     {
-
-        if (collider.gameObject.tag.Contains("PistolClip") && AmmoReloadCollider.tag == "PistolReload")
+        if(collider == null && currentClip != null)
         {
-            Debug.Log("TriggerExit");
-
-            currentClip = null;
+            BoxCollider bc = currentClip.GetComponent<BoxCollider>();
+            bc.enabled = true;
         }        
     }*/
 
     public override void DropClip()
     {
-        if(currentClip != null)
+        if (currentClip != null)
         {
             Transform reloadSpot = GameObject.Find("ClipAttach").transform;
             reloadSpot.DetachChildren();
 
             BoxCollider bc = currentClip.GetComponent<BoxCollider>();
-            bc.enabled = false;
+            bc.isTrigger = false;
 
             Rigidbody clipRb = currentClip.GetComponent<Rigidbody>();
             clipRb.isKinematic = false;
 
-            Destroy(currentClip.gameObject, 1f);
-            currentClip = null;
+            //Destroy(currentClip.gameObject, 1f);
             
+
         }
     }
 }
