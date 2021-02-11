@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1559931818777747060}
   - component: {fileID: 1559931818777746955}
   - component: {fileID: 2123591387}
-  - component: {fileID: 1562790721143829603}
+  - component: {fileID: 1526450703}
   m_Layer: 0
   m_Name: Left Hand
   m_TagString: LeftController
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xRBaseController: {fileID: 0}
---- !u!114 &1562790721143829603
+--- !u!114 &1526450703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559931818777747062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Script: {fileID: 11500000, guid: 06dbdf9fdf14a9945a499cdf38823ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -342,9 +342,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1559931818841276220}
   - component: {fileID: 1559931818841276211}
-  - component: {fileID: 1559931818841276209}
   - component: {fileID: 1559931818841276210}
   - component: {fileID: 1348987714}
+  - component: {fileID: 1258797652}
   m_Layer: 0
   m_Name: Right Hand
   m_TagString: RightController
@@ -400,7 +400,20 @@ MonoBehaviour:
   m_MoveObjectIn: 14
   m_MoveObjectOut: 15
   m_PoseProvider: {fileID: 0}
---- !u!114 &1559931818841276209
+--- !u!135 &1559931818841276210
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559931818841276221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1348987714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -409,7 +422,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559931818841276221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Script: {fileID: 11500000, guid: c74ee2c341c51e84cb1c334afaafcb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xRBaseController: {fileID: 0}
+--- !u!114 &1258797652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559931818841276221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06dbdf9fdf14a9945a499cdf38823ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -452,32 +478,6 @@ MonoBehaviour:
   m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
---- !u!135 &1559931818841276210
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559931818841276221}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1348987714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559931818841276221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74ee2c341c51e84cb1c334afaafcb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xRBaseController: {fileID: 0}
 --- !u!1001 &1559931817180693389
 PrefabInstance:
   m_ObjectHideFlags: 0
