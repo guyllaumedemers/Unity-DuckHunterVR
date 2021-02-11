@@ -14,12 +14,19 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
+    [field: SerializeField] public AudioSource AudioSource { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
+
+    void Awake()
+    {
+        AudioSource = GetComponent<AudioSource>();
+    }
 
     public virtual void Shoot()
     {
         if (Time.time >= TimeBeforeNextShot)
         {
+            AudioSource.Play();
             MuzzleFlashParticles.Play();
             CartridgeEjectionParticles.Play();
 
