@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 4957683643837967214, guid: 72af67c1f466aef40acaf99b67d4c058,
         type: 3}
       propertyPath: m_Name
-      value: Menu
+      value: Menu Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5511126527007901089, guid: 72af67c1f466aef40acaf99b67d4c058,
         type: 3}
@@ -137,5 +137,6 @@ PrefabInstance:
       propertyPath: _xRInputWatcherRight
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7725546720653097796, guid: 72af67c1f466aef40acaf99b67d4c058, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 72af67c1f466aef40acaf99b67d4c058, type: 3}

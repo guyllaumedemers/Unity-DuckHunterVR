@@ -6,29 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMenuUIScript : MonoBehaviour
 {
+    #region Singleton
+    /// <summary>
+    /// Instance
+    /// </summary>
+    private static PlayerMenuUIScript instance;
+    /// <summary>
+    /// Default Constructor
+    /// </summary>
+    private PlayerMenuUIScript() { }
+    /// <summary>
+    /// Property to retrieve instance
+    /// </summary>
+    public static PlayerMenuUIScript Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new PlayerMenuUIScript();
+            }
+            return instance;
+        }
+    }
+    #endregion
     [SerializeField]
     private GameObject inGameMenuUI;
-    private bool isGameSceneActive;
-    public void Awake()
-    {
-        isGameSceneActive = false;
-        isGameSceneActive = IsInGameScene();
-    }
-
-    public void Update()
-    {
-        if (!isGameSceneActive)
-        {
-            isGameSceneActive = IsInGameScene();
-        }
-        // this cannot be triggered at every update => it need to be triggered during an event
-        ActivateInGameMenuUI();
-    }
+    private const string gameSceneName = "gdemersTestScene";
 
     public bool IsInGameScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.IsValid() && currentScene.name.Equals("GameScene"))
+        if (currentScene.IsValid() && currentScene.name.Equals(gameSceneName))
         {
             return true;
         }
