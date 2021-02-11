@@ -6,8 +6,7 @@ TagManager:
   tags:
   - LeftController
   - RightController
-  - MachineGunClip
-  - PistolClip
+  - IngameMenu
   layers:
   - Default
   - TransparentFX

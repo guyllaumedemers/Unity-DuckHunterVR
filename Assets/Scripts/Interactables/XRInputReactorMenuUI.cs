@@ -10,7 +10,7 @@ public class XRInputReactorMenuUI : MonoBehaviour
     [SerializeField]
     private XRInputWatcher _xRInputWatcherRight;
     [SerializeField]
-    private bool _primaryIsPressed = false, _secondaryIsPressed = false;
+    private bool _primaryIsPressed = false, _secondaryIsPressed = false, _menuIsPressed = false;
 
     private void Start()
     {
@@ -53,12 +53,26 @@ public class XRInputReactorMenuUI : MonoBehaviour
         }
     }
 
+    public void onMenuButtonEvent(bool pressed)
+    {
+        _menuIsPressed = pressed;
+
+        if (pressed)
+        {
+            if (PlayerMenuUIScript.Instance.IsInGameScene())
+            {
+                PlayerMenuUIScript.Instance.ActivateInGameMenuUI();
+            }
+        }
+    }
+
     public void AssignWatcher()
     {
         _xRInputWatcherLeft = GameObject.FindGameObjectWithTag("LeftController").GetComponent<XRInputWatcher>();
 
         _xRInputWatcherLeft.primaryButtonPressEvent.AddListener(onPrimaryButtonEvent);
         _xRInputWatcherLeft.secondaryButtonPressEvent.AddListener(onSecondaryButtonEvent);
+        _xRInputWatcherLeft.menuButtonPressEvent.AddListener(onMenuButtonEvent);
 
         _xRInputWatcherRight = GameObject.FindGameObjectWithTag("RightController").GetComponent<XRInputWatcher>();
 

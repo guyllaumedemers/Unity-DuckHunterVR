@@ -8,6 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class PrimaryButtonEvent : UnityEvent<bool> { }
 public class SecondaryButtonEvent : UnityEvent<bool> { }
 public class TriggerButtonEvent : UnityEvent<bool> { }
+public class MenuButtonEvent : UnityEvent<bool> { }
 
 public class XRInputWatcher : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class XRInputWatcher : MonoBehaviour
     public PrimaryButtonEvent primaryButtonPressEvent;
     public SecondaryButtonEvent secondaryButtonPressEvent;
     public TriggerButtonEvent triggerButtonPressEvent;
+    public MenuButtonEvent menuButtonPressEvent;
 
     private bool _primaryLastButtonState = false;
     private bool _secondaryLastButtonState = false;
     private bool _triggerLastButtonState = false;
+    private bool _menuLastButtonState = false;
 
     private void Awake()
     {
@@ -35,6 +38,8 @@ public class XRInputWatcher : MonoBehaviour
 
         if (triggerButtonPressEvent == null)
             triggerButtonPressEvent = new TriggerButtonEvent();
+        if (menuButtonPressEvent == null)
+            menuButtonPressEvent = new MenuButtonEvent();
     }
 
     private void Start()
@@ -83,6 +88,9 @@ public class XRInputWatcher : MonoBehaviour
         bool triggerTempState = false;
         bool triggerButtonState = false;
 
+        bool menuTempState = false;
+        bool menuButtonState = false;
+
         primaryTempState = _inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonState) && primaryButtonState || primaryTempState;
 
         if (primaryTempState != _primaryLastButtonState)
@@ -97,6 +105,14 @@ public class XRInputWatcher : MonoBehaviour
         {
             secondaryButtonPressEvent.Invoke(secondaryTempState);
             _secondaryLastButtonState = secondaryTempState;
+        }
+
+        menuTempState = _inputDevice.TryGetFeatureValue(CommonUsages.menuButton, out menuButtonState) && menuButtonState || menuTempState;
+
+        if (menuTempState != _menuLastButtonState)
+        {
+            menuButtonPressEvent.Invoke(menuTempState);
+            _menuLastButtonState = menuTempState;
         }
 
         triggerTempState = _inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonState) && triggerButtonState || triggerTempState;
