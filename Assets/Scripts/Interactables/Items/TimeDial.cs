@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeDialChange : MonoBehaviour {
+public class TimeDial : MonoBehaviour {
     
     Text _Label;
     
