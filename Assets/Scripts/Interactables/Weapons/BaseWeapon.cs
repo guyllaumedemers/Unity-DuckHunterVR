@@ -89,6 +89,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                             Debug.Log(debugMessage);
                             XRInputDebugger.Instance.DebugLogInGame(debugMessage);
                         }
+
+                        if (raycastHit.collider.GetComponent<IShootable>() != null) {
+                            raycastHit.collider.GetComponent<IShootable>().OnHit();
+                        }
                     }
                     else
                     {
