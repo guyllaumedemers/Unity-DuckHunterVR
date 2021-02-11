@@ -6,6 +6,11 @@ TagManager:
   tags:
   - LeftController
   - RightController
+  - IngameMenu
+  - ShotgunReload
+  - RifleReload
+  - ShotgunAmmoBox
+  - RifleAmmoBox
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public interface IWeapon
 {
+    public int CurrentAmmo { get; set; }
+    public int MaxAmmo { get; set; }
+    public bool HasClip { get; set; }
+    public int NbBulletFired { get; set; }
+    public float BulletSpread { get; set; }
     public float GunRange { get; set; }
     public float BulletTrailSize { get; set; }
     public float RateOfFire { get; set; }
@@ -12,8 +18,12 @@ public interface IWeapon
     public LineRenderer BulletTrailPrefab { get; set; }
     public ParticleSystem MuzzleFlashParticles { get; set; }
     public ParticleSystem CartridgeEjectionParticles { get; set; }
+    public AudioSource AudioSource { get; set; }
+    public XRSocketInteractor XRSocketInteractor { get; set; }
+    public SphereCollider AmmoReloadCollider { get; set; }
     public LayerMask GunHitLayers { get; set; }
 
     void Shoot();
-    void Reload();
+    void DropClip();
+    void InsertAmmo();
 }
