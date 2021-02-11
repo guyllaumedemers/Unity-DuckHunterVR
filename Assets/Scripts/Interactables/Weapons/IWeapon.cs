@@ -13,6 +13,7 @@ public interface IWeapon
     public ParticleSystem MuzzleFlashParticles { get; set; }
     public ParticleSystem CartridgeEjectionParticles { get; set; }
     public LayerMask GunHitLayers { get; set; }
+    public AudioSource AudioSource { get; set; }
 
     void Shoot();
     void Reload();
