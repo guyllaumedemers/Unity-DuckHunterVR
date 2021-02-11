@@ -5,6 +5,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public interface IWeapon
 {
+    public int CurrentAmmo { get; set; }
+    public int MaxAmmo { get; set; }
+    public bool HasClip { get; set; }
+    public int NbBulletFired { get; set; }
+    public float BulletSpread { get; set; }
     public float GunRange { get; set; }
     public float BulletTrailSize { get; set; }
     public float RateOfFire { get; set; }
@@ -16,9 +21,6 @@ public interface IWeapon
     public AudioSource AudioSource { get; set; }
     public XRSocketInteractor XRSocketInteractor { get; set; }
     public SphereCollider AmmoReloadCollider { get; set; }
-    public int CurrentAmmo { get; set; }
-    public int MaxAmmo { get; set; }
-    public bool HasClip { get; set; }
     public LayerMask GunHitLayers { get; set; }
 
     void Shoot();
