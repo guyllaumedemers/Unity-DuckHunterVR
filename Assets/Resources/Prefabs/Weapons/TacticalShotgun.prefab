@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &595319514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595319515}
+  - component: {fileID: 595319516}
+  m_Layer: 0
+  m_Name: ShotgunReload
+  m_TagString: ShotgunReload
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595319515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595319514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0704, z: 0.0064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1667814228069548059}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &595319516
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595319514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &142207404927029225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4926,6 +4970,7 @@ Transform:
   - {fileID: 501523171146397525}
   - {fileID: 5242064729324829700}
   - {fileID: 1876655145201899475}
+  - {fileID: 595319515}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -5168,8 +5213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098360ff44e0fa347a40cf056da7f108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbBullets: 12
-  bulletSpread: 0.1
+  <NbBulletFired>k__BackingField: 12
+  <BulletSpread>k__BackingField: 0.125
   <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.005
@@ -5178,6 +5223,11 @@ MonoBehaviour:
   <MuzzleFlashParticles>k__BackingField: {fileID: 1923464348334411637}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 2083729383529854688}
   <AudioSource>k__BackingField: {fileID: 908259866358329058}
+  <XRSocketInteractor>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 0}
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 8
+  <HasClip>k__BackingField: 0
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512

@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1133387991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133387992}
+  - component: {fileID: 1133387993}
+  m_Layer: 0
+  m_Name: RifleReload
+  m_TagString: RifleReload
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133387992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133387991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0046, y: 0.0537, z: -0.1078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 716317574842825270}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1133387993
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133387991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1674582353077938933
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +84,7 @@ Transform:
   - {fileID: 8725017553321760449}
   - {fileID: 7286593690047594662}
   - {fileID: 7506556480776026372}
+  - {fileID: 1133387992}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -295,6 +340,11 @@ MonoBehaviour:
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <XRSocketInteractor>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 0}
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 12
+  <HasClip>k__BackingField: 0
 --- !u!82 &1322589545080390760
 AudioSource:
   m_ObjectHideFlags: 0
