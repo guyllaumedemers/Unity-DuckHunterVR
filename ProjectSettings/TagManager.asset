@@ -7,12 +7,17 @@ TagManager:
   - LeftController
   - RightController
   - IngameMenu
-  - ShotgunReload
   - RifleReload
   - ShotgunAmmoBox
   - RifleAmmoBox
-  - PistolClip
   - PistolReload
+  - TimedRound
+  - RegularMode
+  - ChallengeMode
+  - Floor
+  - SubmachineGunReload
+  - ShotgunReload
+  - PistolMagazine
   layers:
   - Default
   - TransparentFX

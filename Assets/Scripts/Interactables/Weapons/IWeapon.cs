@@ -7,7 +7,7 @@ public interface IWeapon
 {
     public int CurrentAmmo { get; set; }
     public int MaxAmmo { get; set; }
-    public bool HasClip { get; set; }
+    public bool IsAcceptingMagazine { get; set; }
     public int NbBulletFired { get; set; }
     public float BulletSpread { get; set; }
     public float GunRange { get; set; }
@@ -20,8 +20,9 @@ public interface IWeapon
     public ParticleSystem CartridgeEjectionParticles { get; set; }
     public AudioSource AudioSource { get; set; }
     public SphereCollider AmmoReloadCollider { get; set; }
+    public GameObject CurrentMagazine { get; set; }
     public LayerMask GunHitLayers { get; set; }
 
     void Shoot();
-    void DropClip();
+    void DropMagazine();
 }

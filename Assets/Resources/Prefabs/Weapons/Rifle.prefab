@@ -327,8 +327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6a0d38f10bb284cbd505b4cfd86f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbBullets: 1
-  bulletSpread: 0
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 12
+  <IsAcceptingClip>k__BackingField: 0
+  <NbBulletFired>k__BackingField: 1
+  <BulletSpread>k__BackingField: 0
   <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.02
@@ -336,15 +339,11 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 6423343621879144437}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 6057780900120454180}
-  <AudioSource>k__BackingField: {fileID: 1322589545080390760}
+  <AmmoReloadCollider>k__BackingField: {fileID: 0}
+  <CurrentClip>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
-  <XRSocketInteractor>k__BackingField: {fileID: 0}
-  <AmmoReloadCollider>k__BackingField: {fileID: 0}
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 12
-  <HasClip>k__BackingField: 0
 --- !u!82 &1322589545080390760
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5208,7 +5207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8725017553321760449}
   m_Layer: 0
-  m_Name: Model700GunTip
+  m_Name: RifleGunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

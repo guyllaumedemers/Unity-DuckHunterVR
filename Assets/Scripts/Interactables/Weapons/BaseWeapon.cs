@@ -7,7 +7,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
     [field: SerializeField] public int CurrentAmmo { get; set; } = 0;
     [field: SerializeField] public int MaxAmmo { get; set; } = 10;
-    [field: SerializeField] public bool HasClip { get; set; } = false;
+    [field: SerializeField] public bool IsAcceptingMagazine { get; set; } = false;
     [field: SerializeField] public int NbBulletFired { get; set; } = 1;
     [field: SerializeField] public float BulletSpread { get; set; } = 0f;
     [field: SerializeField] public float RateOfFire { get; set; } = 0f;
@@ -20,18 +20,14 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
     public AudioSource AudioSource { get; set; }
     [field: SerializeField] public SphereCollider AmmoReloadCollider { get; set; }
+    [field: SerializeField] public GameObject CurrentMagazine { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
-    
+
     void Start()
     {
         AudioSource = GetComponent<AudioSource>();
-        //meshCollider = GetComponent<MeshCollider>();
-        //Rigidbody = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-
+        GunTip = GameObject.Find(name + "GunTip");
+        AmmoReloadCollider = GameObject.FindGameObjectWithTag(name + "Reload").GetComponent<SphereCollider>();
     }
 
     public virtual void Shoot()
@@ -66,7 +62,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                             XRInputDebugger.Instance.DebugLogInGame(debugMessage);
                         }
 
-                        if (raycastHit.collider.GetComponent<IShootable>() != null) {
+                        if (raycastHit.collider.GetComponent<IShootable>() != null)
+                        {
                             raycastHit.collider.GetComponent<IShootable>().OnHit();
                         }
                     }
@@ -89,14 +86,67 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         }
     }
 
-    public virtual void DropClip()
+    public virtual void OnTriggerEnter(Collider collider)
     {
-        
+        if (IsAcceptingMagazine)
+        {
+            if (CurrentMagazine == null)
+            {
+                if (collider.gameObject.tag.Contains(name + "Magazine") && AmmoReloadCollider.tag == name + "Reload")
+                {
+                    CurrentMagazine = collider.gameObject;
 
-        //GameObject clipAttach = GameObject.Find("ClipAttach");
+                    Rigidbody rb = CurrentMagazine.GetComponent<Rigidbody>();
+                    BoxCollider bc = CurrentMagazine.GetComponent<BoxCollider>();
 
-        //
+                    bc.isTrigger = true;
+                    rb.isKinematic = true;
 
-        //Debug.Log(clipAttach.name);
+                    Transform magazineAttach = GameObject.FindGameObjectWithTag(name + "Reload").transform.GetChild(0);
+
+                    collider.gameObject.transform.SetParent(magazineAttach);
+
+                    collider.gameObject.transform.position = new Vector3(magazineAttach.transform.position.x, magazineAttach.transform.position.y, magazineAttach.transform.position.z);
+
+                    CurrentMagazine.transform.rotation = magazineAttach.transform.rotation;
+
+                    XRGrabInteractable magazineGrab = CurrentMagazine.GetComponent<XRGrabInteractable>();
+
+                    if (CurrentMagazine.name != null)
+                    {
+                        Destroy(magazineGrab);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (collider.gameObject.tag == name + "AmmoBox" && AmmoReloadCollider.tag == name + "Reload")
+            {
+                CurrentAmmo = MaxAmmo;
+            }
+        }
+    }
+
+    public virtual void DropMagazine()
+    {
+        if (CurrentMagazine != null)
+        {
+            CurrentMagazine.tag = "Untagged";
+
+            Transform magazineAttach = GameObject.FindGameObjectWithTag(name + "Reload").transform.GetChild(0);
+            magazineAttach.DetachChildren();
+
+            BoxCollider magazineBc = CurrentMagazine.GetComponent<BoxCollider>();
+            magazineBc.isTrigger = false;
+
+            Rigidbody magazineRb = CurrentMagazine.GetComponent<Rigidbody>();
+            magazineRb.isKinematic = false;
+
+            XRGrabInteractable magazineGrab = CurrentMagazine.AddComponent<XRGrabInteractable>();
+            magazineGrab.attachTransform = CurrentMagazine.gameObject.transform.GetChild(0);
+
+            CurrentMagazine = null;
+        }
     }
 }

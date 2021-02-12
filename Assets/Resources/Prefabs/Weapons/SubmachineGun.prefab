@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &56351231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56351232}
+  m_Layer: 0
+  m_Name: MagazineAttach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56351232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56351231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0729, z: -0.0008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1130674286}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1130674285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130674286}
+  - component: {fileID: 1130674287}
+  m_Layer: 0
+  m_Name: SubmachineGunReload
+  m_TagString: SubmachineGunReload
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1130674286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130674285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 56351232}
+  m_Father: {fileID: 8858992755433108873}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1130674287
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130674285}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: -0.025, z: 0.01}
 --- !u!1 &663602418926643862
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +115,7 @@ Transform:
   - {fileID: 2402683753898197284}
   - {fileID: 2727468575272739529}
   - {fileID: 6790059391485927054}
+  - {fileID: 1130674286}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -270,6 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d5ac0d96cccba4aa5c728d07087318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 10
+  <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0.05
   <RateOfFire>k__BackingField: 0.1
@@ -279,12 +358,8 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 8377243008650075929}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 8988365829631155089}
-  <AudioSource>k__BackingField: {fileID: 7627223362010088610}
-  <XRSocketInteractor>k__BackingField: {fileID: 0}
   <AmmoReloadCollider>k__BackingField: {fileID: 0}
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 10
-  <HasClip>k__BackingField: 0
+  <CurrentMagazine>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512

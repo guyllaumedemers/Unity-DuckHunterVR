@@ -25,7 +25,7 @@ public class XRInputReactorWeapon : MonoBehaviour
 
         if (pressed)
         {
-            _iWeapon.DropClip();
+            _iWeapon.DropMagazine();
         }
     }
 
