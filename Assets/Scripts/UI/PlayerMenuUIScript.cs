@@ -33,20 +33,22 @@ public class PlayerMenuUIScript : MonoBehaviour
     [SerializeField]
     private GameObject inGameMenuUI;
     [SerializeField]
-    private GameObject mainMenuUI;
-    private Transform mainCameraTransform;
+    private GameObject settingsMenuUI;
+    private Camera mainCamera;
     private const string gameSceneName = "gdemersTestScene";
     private const string mainMenuSceneName = "gdemersTest-MainMenuScene";
+    private GameObject settingsMenuUIInstance;
 
     public void Awake()
     {
         instance = this;
-        mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public void Start()
     {
         inGameMenuUI.SetActive(false);
+        //settingsMenuUIInstance = null;
     }
 
     public bool IsInGameScene()
@@ -62,12 +64,20 @@ public class PlayerMenuUIScript : MonoBehaviour
         }
     }
 
+    public bool IsSettingsMenuUIActive()
+    {
+        if (settingsMenuUIInstance != null)
+        {
+            return settingsMenuUIInstance.activeSelf;
+        }
+        return false;
+    }
+
     public void ActivateInGameMenuUI()
     {
         bool isLeftMenuButtonPressed = false;
         if (XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.menuButton, out isLeftMenuButtonPressed) && isLeftMenuButtonPressed)
         {
-            Debug.Log("Menu Active");
             inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
         }
     }
@@ -97,12 +107,11 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void DisplaySettings()
     {
-        inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
-        Instantiate(mainMenuUI, new Vector3(0, 0, 10) + transform.position, Quaternion.identity, mainCameraTransform);
-        if (MainMenuScript.Instance.GetMainMenuUI.activeSelf)
-        {
-            MainMenuScript.Instance.GetMainMenuUI.SetActive(!MainMenuScript.Instance.GetMainMenuUI.activeSelf);
-        }
-        MainMenuScript.Instance.GetSettingsMenuUI.SetActive(true);
+        //inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
+        //if (settingsMenuUIInstance == null)
+        //{
+        //    settingsMenuUIInstance = Instantiate(settingsMenuUI, mainCamera.transform.position + new Vector3(0, 0, 20), Quaternion.identity, mainCamera.transform);
+        //    settingsMenuUIInstance.GetComponent<Canvas>().worldCamera = mainCamera;
+        //}
     }
 }

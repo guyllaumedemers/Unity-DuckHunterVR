@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
 
     public void TurnOffAudioMixer(Toggle toggle)
     {
-        if (toggle.isOn)
+        if (!toggle.isOn)
         {
             audioMixer.ClearFloat("Master");
         }
