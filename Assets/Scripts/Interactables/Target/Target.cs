@@ -12,19 +12,27 @@ public class Target : MonoBehaviour, IShootable {
         
         foreach (Transform child in transform) {
             if (!child.name.Contains("TargetExplosion")) {
-
+                
+                /*
+                if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor) {
+                    child.gameObject.AddComponent<Rigidbody>();
+                    child.gameObject.AddComponent<BoxCollider>();
+                    child.GetComponent<Rigidbody>().isKinematic = true;
+                    child.GetComponent<BoxCollider>().enabled = false;
+                }
+                */
                 if (Application.platform == RuntimePlatform.Android) {
                     Destroy(child.GetComponent<Rigidbody>());
                     Destroy(child.GetComponent<BoxCollider>());
                 }
-
+                
                 _children.Add(child.gameObject, new TransformHolder(child.GetComponent<Transform>()));
             }
         }
     }
 
     public void Start() {
-        Invoke(nameof(OnHit), 2f);
+        Invoke(nameof(OnHit), 4f);
     }
 
     public void OnHit() {
@@ -34,7 +42,7 @@ public class Target : MonoBehaviour, IShootable {
             StartCoroutine(nameof(OnHitParticles));
     }
 
-    IEnumerator OnHitPhysics() {
+    private IEnumerator OnHitPhysics() {
 
         ExplodePhysics();
         yield return new WaitForSeconds(2);
@@ -44,7 +52,7 @@ public class Target : MonoBehaviour, IShootable {
         yield return null;
     }
 
-    IEnumerator OnHitParticles() {
+    private IEnumerator OnHitParticles() {
         ExplodeParticles();
         yield return new WaitForSeconds(2);
         DisableParticles();
