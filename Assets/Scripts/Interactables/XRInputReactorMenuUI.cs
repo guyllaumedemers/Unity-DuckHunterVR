@@ -59,7 +59,7 @@ public class XRInputReactorMenuUI : MonoBehaviour
 
         if (pressed)
         {
-            if (PlayerMenuUIScript.Instance.IsInGameScene())
+            if (PlayerMenuUIScript.Instance.IsInGameScene() && !PlayerMenuUIScript.Instance.IsSettingsMenuUIActive())
             {
                 PlayerMenuUIScript.Instance.ActivateInGameMenuUI();
             }

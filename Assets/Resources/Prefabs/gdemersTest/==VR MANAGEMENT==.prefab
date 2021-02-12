@@ -3299,7 +3299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuUI: {fileID: 2591735048752667308}
-  mainMenuUI: {fileID: 0}
+  settingsMenuUI: {fileID: 0}
 --- !u!1 &6756978375169492903
 GameObject:
   m_ObjectHideFlags: 0
