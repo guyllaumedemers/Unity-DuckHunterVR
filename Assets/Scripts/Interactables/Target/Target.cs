@@ -3,46 +3,93 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour, IShootable
-{
-    private readonly IDictionary<GameObject, TransformHolder> children = new Dictionary<GameObject, TransformHolder>();
-    
+public class Target : MonoBehaviour, IShootable {
+    public ParticleSystem particleBurst;
+
+    private readonly IDictionary<GameObject, TransformHolder> _children = new Dictionary<GameObject, TransformHolder>();
+
     void Awake() {
+        
         foreach (Transform child in transform) {
-            children.Add(child.gameObject, new TransformHolder(child.GetComponent<Transform>()));
+            if (!child.name.Contains("TargetExplosion")) {
+
+                if (Application.platform == RuntimePlatform.Android) {
+                    Destroy(child.GetComponent<Rigidbody>());
+                    Destroy(child.GetComponent<BoxCollider>());
+                }
+
+                _children.Add(child.gameObject, new TransformHolder(child.GetComponent<Transform>()));
+            }
         }
     }
 
     public void Start() {
-        //Invoke(nameof(OnHit), 2f);
+        Invoke(nameof(OnHit), 2f);
     }
-    
+
     public void OnHit() {
-        StartCoroutine(nameof(ExplodeAndDisable));
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            StartCoroutine(nameof(OnHitPhysics));
+        else if (Application.platform == RuntimePlatform.Android)
+            StartCoroutine(nameof(OnHitParticles));
     }
-    
-    IEnumerator ExplodeAndDisable() {
-        
-        foreach (var d in children) {
+
+    IEnumerator OnHitPhysics() {
+
+        ExplodePhysics();
+        yield return new WaitForSeconds(2);
+        DisablePhysics();
+        yield return new WaitForSeconds(2);
+        EnablePhysics();
+        yield return null;
+    }
+
+    IEnumerator OnHitParticles() {
+        ExplodeParticles();
+        yield return new WaitForSeconds(2);
+        DisableParticles();
+        yield return new WaitForSeconds(2);
+        EnableParticles();
+        yield return null;
+    }
+
+    private void ExplodePhysics() {
+        foreach (var d in _children) {
             d.Key.GetComponent<BoxCollider>().enabled = true;
             d.Key.GetComponent<Rigidbody>().isKinematic = false;
         }
-        
-        yield return new WaitForSeconds(2);
-        
-        foreach (var d in children) {
+    }
+
+    private void ExplodeParticles() {
+        foreach (var d in _children)
+            d.Key.SetActive(false);
+
+        particleBurst.Play();
+    }
+
+    private void DisablePhysics() {
+        foreach (var d in _children) {
             d.Key.GetComponent<Rigidbody>().isKinematic = true;
             d.Key.GetComponent<BoxCollider>().enabled = false;
             d.Key.SetActive(false);
         }
-        
-        yield return new WaitForSeconds(2);
-        
-        foreach (var d in children) {
+    }
+
+    private void DisableParticles() {
+        foreach (var d in _children) {
+            d.Key.SetActive(false);
+        }
+    }
+
+    private void EnablePhysics() {
+        foreach (var d in _children) {
             d.Key.SetActive(true);
             d.Value.Set(d.Key.GetComponent<Transform>());
         }
-        
-        yield return null;
+    }
+    
+    private void EnableParticles() {
+        foreach (var d in _children)
+            d.Key.SetActive(true);
     }
 }
