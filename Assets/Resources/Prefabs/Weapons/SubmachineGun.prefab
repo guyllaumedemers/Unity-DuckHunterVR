@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 10
-  <IsAcceptingMagazine>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 60
+  <IsAcceptingMagazine>k__BackingField: 1
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0.05
   <RateOfFire>k__BackingField: 0.1
@@ -358,8 +358,7 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 8377243008650075929}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 8988365829631155089}
-  <AmmoReloadCollider>k__BackingField: {fileID: 0}
-  <CurrentMagazine>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 1130674287}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512

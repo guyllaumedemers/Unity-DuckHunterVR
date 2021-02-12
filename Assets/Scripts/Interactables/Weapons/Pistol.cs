@@ -6,8 +6,4 @@ using UnityEngine.XR.Interaction.Toolkit;
 [System.Serializable]
 public class Pistol : BaseWeapon
 {
-    private void Awake()
-    {
-        IsAcceptingMagazine = true;
-    }
 }

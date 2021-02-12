@@ -9819,8 +9819,10 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 4641094481550635416}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 5058416083918587917}
-  <AmmoReloadCollider>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 6546543311861834801}
+  <MagazineAttach>k__BackingField: {fileID: 0}
   <CurrentMagazine>k__BackingField: {fileID: 0}
+  <AmmoContainer>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512

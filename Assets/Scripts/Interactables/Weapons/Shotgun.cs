@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class Shotgun : BaseWeapon
 {
-    private void Awake()
-    {
-        IsAcceptingMagazine = false;
-    }
 }
