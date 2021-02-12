@@ -3013,6 +3013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cdb77881366e54885284d35aa464b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameMenuUI: {fileID: 0}
+  settingsMenuUI: {fileID: 0}
 --- !u!1 &7184957104057875361
 GameObject:
   m_ObjectHideFlags: 0
