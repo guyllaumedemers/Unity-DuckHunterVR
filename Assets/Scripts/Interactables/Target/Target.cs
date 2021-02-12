@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour, IShootable {
-    public ParticleSystem particleBurst;
-
+    
+    
+    public ParticleSystem[] particleBursts;
+    
     private readonly IDictionary<GameObject, TransformHolder> _children = new Dictionary<GameObject, TransformHolder>();
 
     void Awake() {
@@ -13,17 +15,15 @@ public class Target : MonoBehaviour, IShootable {
         foreach (Transform child in transform) {
             if (!child.name.Contains("TargetExplosion")) {
                 
-                /*
                 if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor) {
                     child.gameObject.AddComponent<Rigidbody>();
                     child.gameObject.AddComponent<BoxCollider>();
+                    
+                    child.GetComponent<Rigidbody>().useGravity = false;
                     child.GetComponent<Rigidbody>().isKinematic = true;
+
+                    child.GetComponent<BoxCollider>().size = new Vector3(1.2f, 1.2f, 1.2f);
                     child.GetComponent<BoxCollider>().enabled = false;
-                }
-                */
-                if (Application.platform == RuntimePlatform.Android) {
-                    Destroy(child.GetComponent<Rigidbody>());
-                    Destroy(child.GetComponent<BoxCollider>());
                 }
                 
                 _children.Add(child.gameObject, new TransformHolder(child.GetComponent<Transform>()));
@@ -45,7 +45,7 @@ public class Target : MonoBehaviour, IShootable {
     private IEnumerator OnHitPhysics() {
 
         ExplodePhysics();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(4);
         DisablePhysics();
         yield return new WaitForSeconds(2);
         EnablePhysics();
@@ -72,9 +72,10 @@ public class Target : MonoBehaviour, IShootable {
         foreach (var d in _children)
             d.Key.SetActive(false);
 
-        particleBurst.Play();
+        foreach (var p in particleBursts)
+            p.Play();
     }
-
+    
     private void DisablePhysics() {
         foreach (var d in _children) {
             d.Key.GetComponent<Rigidbody>().isKinematic = true;
