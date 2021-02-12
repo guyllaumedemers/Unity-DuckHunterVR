@@ -16,13 +16,7 @@ public class ClipboardInteractionScript : MonoBehaviour
         foreach (Toggle t in toggles)
         {
             t.onValueChanged.AddListener((a) => { ToggleValueChanged(t); });
-            Debug.Log("Toggle Name : " + t.name + " Toggle isOn Value : " + t.isOn);
         }
-    }
-
-    public void Start()
-    {
-        
     }
 
     public void Update()
@@ -30,7 +24,7 @@ public class ClipboardInteractionScript : MonoBehaviour
         if (!GameManagerScript.Instance.GetRoundStatus)
         {
             SetGameMode((GameManagerScript.GameMode)GetIndexWithToggleIsOnActive());
-            // we could set the Round Status to true only when a button is press to tell the game the play has pick and confirm his game mode
+            // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
             // but for now its fine with setting only once
             GameManagerScript.Instance.GetRoundStatus = true;
         }
@@ -80,6 +74,12 @@ public class ClipboardInteractionScript : MonoBehaviour
 
     void ToggleValueChanged(Toggle toggle)
     {
-        Debug.Log("Toggle Name : " + toggle.name + " Toggle isOn Value : " + toggle.isOn);
+        for (int i = 0; i < toggles.Length; i++)
+        {
+            if (!toggles[i].Equals(toggle))
+            {
+                toggles[i].SetIsOnWithoutNotify(false);
+            }
+        }
     }
 }

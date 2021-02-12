@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class TransformHolder
+public class TransformHolder
 {
     private Vector3 _position;
     private Quaternion _rotation;

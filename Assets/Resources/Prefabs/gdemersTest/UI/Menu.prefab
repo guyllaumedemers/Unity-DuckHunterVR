@@ -2002,6 +2002,7 @@ MonoBehaviour:
   _xRInputWatcherRight: {fileID: 0}
   _primaryIsPressed: 0
   _secondaryIsPressed: 0
+  _menuIsPressed: 0
 --- !u!1 &6014224732797366952
 GameObject:
   m_ObjectHideFlags: 0

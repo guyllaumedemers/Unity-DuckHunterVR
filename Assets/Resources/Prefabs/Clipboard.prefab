@@ -803,19 +803,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6420936218418276262}
-        m_TargetAssemblyTypeName: UnityEditor.DefaultAsset, UnityEditor.CoreModule
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &3745125651132283488
 GameObject:
@@ -1561,7 +1549,7 @@ GameObject:
   - component: {fileID: 6420936218418276256}
   - component: {fileID: 6712575420635655756}
   - component: {fileID: 6420936218418276257}
-  - component: {fileID: 3695563500358114152}
+  - component: {fileID: 7361899760498113652}
   m_Layer: 6
   m_Name: Clipboard
   m_TagString: Untagged
@@ -1710,7 +1698,7 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 1
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
---- !u!114 &3695563500358114152
+--- !u!114 &7361899760498113652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

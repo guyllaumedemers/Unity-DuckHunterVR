@@ -302,8 +302,8 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 781176142157912364}
-  m_Father: {fileID: 6756978374959222236}
-  m_RootOrder: 7
+  m_Father: {fileID: 6756978374404503147}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2899,7 +2899,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4276386232474441543}
   m_Father: {fileID: 6756978374959222236}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3222,7 +3223,6 @@ Transform:
   - {fileID: 3202386034287252582}
   - {fileID: 6733626908882046020}
   - {fileID: 6733626907837019806}
-  - {fileID: 4276386232474441543}
   m_Father: {fileID: 6756978375134060435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3299,6 +3299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuUI: {fileID: 2591735048752667308}
+  mainMenuUI: {fileID: 0}
 --- !u!1 &6756978375169492903
 GameObject:
   m_ObjectHideFlags: 0
