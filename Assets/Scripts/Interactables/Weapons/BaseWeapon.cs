@@ -21,15 +21,15 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public AudioSource AudioSource { get; set; }
     [field: SerializeField] public SphereCollider AmmoReloadCollider { get; set; }
     public Transform MagazineAttach { get; set; }
-    public GameObject CurrentMagazine { get; set; }
-    public AmmoContainer AmmoContainer { get; set; }
+    [field: SerializeField] public GameObject CurrentMagazine { get; set; }
+    [field: SerializeField] public AmmoContainer CurrentAmmoContainer { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
 
     void Start()
     {
         AudioSource = GetComponent<AudioSource>();
         GunTip = GameObject.Find(name + "GunTip");
-        
+
         if (IsAcceptingMagazine)
             MagazineAttach = AmmoReloadCollider.transform.GetChild(0);
     }
@@ -38,56 +38,76 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (Time.time >= TimeBeforeNextShot)
         {
-            if (CurrentAmmo > 0)
+            if (IsAcceptingMagazine)
             {
-                AudioSource.Play();
-                MuzzleFlashParticles.Play();
-                CartridgeEjectionParticles.Play();
-
-                for (int i = 0; i < NbBulletFired; i++)
+                if (CurrentAmmoContainer.CurrentAmmo > 0)
                 {
-                    Vector3 bulletDirection = GunTip.transform.TransformDirection(Vector3.forward);
-                    Vector3 spread = Random.insideUnitCircle * BulletSpread;
-                    bulletDirection += spread.x * GunTip.transform.right;
-                    bulletDirection += spread.y * GunTip.transform.up;
+                    CreateBullets();
+                    CurrentAmmoContainer.CurrentAmmo--;
+                }
+            }
+            else
+            {
+                if (CurrentAmmo > 0)
+                {
+                    CreateBullets();
+                    CurrentAmmo--;
+                }
+            }
 
-                    Ray ray = new Ray(GunTip.transform.position, bulletDirection);
-                    RaycastHit raycastHit;
-                    Vector3 lineRendererEnd;
+            TimeBeforeNextShot = Time.time + RateOfFire;
+        }
+    }
 
-                    if (Physics.Raycast(ray, out raycastHit, GunRange, GunHitLayers.value))
-                    {
-                        lineRendererEnd = raycastHit.point;
+    public void CreateBullets()
+    {
+        AudioSource.Play();
+        MuzzleFlashParticles.Play();
+        CartridgeEjectionParticles.Play();
 
-                        if (XRInputDebugger.Instance.inputDebugEnabled)
-                        {
-                            string debugMessage = "Raycast on: " + raycastHit.transform.name;
-                            Debug.Log(debugMessage);
-                            XRInputDebugger.Instance.DebugLogInGame(debugMessage);
-                        }
+        for (int i = 0; i < NbBulletFired; i++)
+        {
+            Vector3 bulletDirection = GunTip.transform.TransformDirection(Vector3.forward);
+            Vector3 spread = Random.insideUnitCircle * BulletSpread;
+            bulletDirection += spread.x * GunTip.transform.right;
+            bulletDirection += spread.y * GunTip.transform.up;
 
-                        if (raycastHit.collider.GetComponent<IShootable>() != null)
-                        {
-                            raycastHit.collider.GetComponent<IShootable>().OnHit();
-                        }
-                    }
-                    else
-                    {
-                        lineRendererEnd = ray.origin + ray.direction * GunRange;
-                    }
+            Ray ray = new Ray(GunTip.transform.position, bulletDirection);
+            RaycastHit raycastHit;
+            Vector3 lineRendererEnd;
 
-                    LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
-                    bulletTrailClone.widthMultiplier = BulletTrailSize;
-                    bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
+            if (Physics.Raycast(ray, out raycastHit, GunRange, GunHitLayers.value))
+            {
+                lineRendererEnd = raycastHit.point;
 
-                    StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
+                if (XRInputDebugger.Instance.inputDebugEnabled)
+                {
+                    string debugMessage = "Raycast on: " + raycastHit.transform.name;
+                    Debug.Log(debugMessage);
+                    XRInputDebugger.Instance.DebugLogInGame(debugMessage);
                 }
 
-                CurrentAmmo--;
-
-                TimeBeforeNextShot = Time.time + RateOfFire;
+                if (raycastHit.collider.GetComponent<IShootable>() != null)
+                {
+                    raycastHit.collider.GetComponent<IShootable>().OnHit();
+                }
             }
+            else
+            {
+                lineRendererEnd = ray.origin + ray.direction * GunRange;
+            }
+
+            LineRenderer bulletTrailClone = Instantiate(BulletTrailPrefab);
+            bulletTrailClone.widthMultiplier = BulletTrailSize;
+            bulletTrailClone.SetPositions(new Vector3[] { GunTip.transform.position, lineRendererEnd });
+
+            StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
         }
+    }
+
+    public void HasMagazineShoot()
+    {
+
     }
 
     public virtual void OnTriggerEnter(Collider collider)
@@ -100,40 +120,59 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                 {
                     CurrentMagazine = collider.gameObject;
 
-                    AmmoContainer = CurrentMagazine.GetComponent<AmmoContainer>();
+                    CurrentAmmoContainer = collider.GetComponent<AmmoContainer>();
 
-                    AmmoContainer.Rigidbody.isKinematic = true;
-                    AmmoContainer.BoxCollider.isTrigger = true;
-
-                    CurrentMagazine.transform.SetParent(MagazineAttach.transform);
-
-                    CurrentMagazine.transform.position = new Vector3(MagazineAttach.transform.position.x, MagazineAttach.transform.position.y, MagazineAttach.transform.position.z);
-
-                    CurrentMagazine.transform.rotation = MagazineAttach.transform.rotation;
-
-                    GameObject magazineClone = Instantiate(CurrentMagazine, CurrentMagazine.transform.position, CurrentMagazine.transform.rotation, MagazineAttach.transform);
-                    magazineClone.transform.name = collider.name.Replace("(clone)", "").Trim();
-
-                    XRGrabInteractable magazineGrab = magazineClone.GetComponent<XRGrabInteractable>();
-
-                    if (CurrentMagazine.name != null)
+                    if (CurrentAmmoContainer.MagazineCanLoad)
                     {
-                        Destroy(CurrentMagazine);
-                        Destroy(magazineGrab);
-                        CurrentMagazine = magazineClone;
-                        AmmoContainer = CurrentMagazine.GetComponent<AmmoContainer>();
-                    }
+                        CurrentAmmoContainer.Rigidbody.isKinematic = true;
+                        CurrentAmmoContainer.BoxCollider.isTrigger = true;
 
-                    CurrentAmmo = AmmoContainer.CurrentAmmo;
+                        CurrentMagazine.transform.SetParent(MagazineAttach.transform);
+
+                        CurrentMagazine.transform.position = new Vector3(MagazineAttach.transform.position.x, MagazineAttach.transform.position.y, MagazineAttach.transform.position.z);
+
+                        CurrentMagazine.transform.rotation = MagazineAttach.transform.rotation;
+
+                        GameObject magazineClone = Instantiate(CurrentMagazine, CurrentMagazine.transform.position, CurrentMagazine.transform.rotation, MagazineAttach.transform);
+                        magazineClone.transform.name = collider.name.Replace("(clone)", "").Trim();
+
+                        if (CurrentMagazine.name != null)
+                        {
+                            Destroy(CurrentMagazine);
+                            CurrentMagazine = magazineClone;
+                            CurrentAmmoContainer = CurrentMagazine.GetComponent<AmmoContainer>();
+                            Destroy(magazineClone.GetComponent<XRGrabInteractable>());
+                        }
+
+                        //CurrentAmmo = CurrentAmmoContainer.CurrentAmmo;
+                    }
+                    else
+                    {
+                        CurrentMagazine = null;
+                        CurrentAmmoContainer = null;
+                    }
                 }
             }
         }
-        else
+        else if (collider.gameObject.CompareTag(name + "AmmoBox") && AmmoReloadCollider.CompareTag(name + "Reload"))
         {
-            if (collider.gameObject.CompareTag(name + "AmmoBox") && AmmoReloadCollider.CompareTag(name + "Reload"))
+            CurrentAmmoContainer = collider.GetComponent<AmmoContainer>();
+
+            int ammoNeeded = MaxAmmo - CurrentAmmo;
+            //int ammoRemaining = CurrentAmmoContainer.CurrentAmmo;
+
+            for (int i = 0; i < ammoNeeded; i++)
             {
-                CurrentAmmo = MaxAmmo;
+                if (CurrentAmmoContainer.CurrentAmmo != 0)
+                {
+                    CurrentAmmo++;
+                    CurrentAmmoContainer.CurrentAmmo--;
+                }
             }
+
+
+            CurrentAmmoContainer = null;
+            //CurrentAmmo = MaxAmmo;
         }
     }
 
@@ -141,26 +180,23 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (CurrentMagazine != null)
         {
-            AmmoContainer.CurrentAmmo = CurrentAmmo;
-            CurrentAmmo = 0;
-            CurrentMagazine.tag = "Untagged";
+            CurrentAmmoContainer.MagazineCanLoad = false;
+            CurrentAmmoContainer.TimeBeforeCanLoad = Time.time + CurrentAmmoContainer.TimeCanLoad;
+
+            //CurrentAmmoContainer.CurrentAmmo = CurrentAmmo;
+            //CurrentAmmo = 0;
 
             MagazineAttach.DetachChildren();
 
-            AmmoContainer.BoxCollider.isTrigger = false;
-            AmmoContainer.Rigidbody.isKinematic = false;
-            AmmoContainer.Rigidbody.useGravity = true;
+            CurrentAmmoContainer.BoxCollider.isTrigger = false;
+            CurrentAmmoContainer.Rigidbody.isKinematic = false;
+            CurrentAmmoContainer.Rigidbody.useGravity = true;
 
-            XRGrabInteractable magazineGrab = CurrentMagazine.AddComponent<XRGrabInteractable>();
-            magazineGrab.attachTransform = CurrentMagazine.gameObject.transform.GetChild(0);
-
-            if (AmmoContainer.CurrentAmmo == 0)
-            {
-                Destroy(CurrentMagazine.gameObject, 3f);
-            }
+            CurrentAmmoContainer.GrabInteractable = CurrentAmmoContainer.gameObject.AddComponent<XRGrabInteractable>();
+            CurrentAmmoContainer.GrabInteractable.attachTransform = CurrentMagazine.gameObject.transform.GetChild(0);
 
             CurrentMagazine = null;
-            AmmoContainer = null;
+            CurrentAmmoContainer = null;
         }
     }
 }

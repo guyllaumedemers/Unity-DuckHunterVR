@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7886845273536503284}
   - component: {fileID: 7886845273536503291}
   - component: {fileID: 7886845273536503290}
+  - component: {fileID: 2234685295920482090}
   m_Layer: 6
   m_Name: ShotgunAmmoBox
   m_TagString: ShotgunAmmoBox
@@ -210,3 +211,17 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 1
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
+--- !u!114 &2234685295920482090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886845273536535384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41f3078e3b738c458892f066822f2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentAmmo>k__BackingField: 16
+  <IsAmmoBox>k__BackingField: 0

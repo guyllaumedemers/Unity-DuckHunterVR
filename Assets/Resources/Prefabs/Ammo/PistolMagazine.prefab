@@ -255,4 +255,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentAmmo>k__BackingField: 15
-  <MaxAmmo>k__BackingField: 15
+  <IsMagazine>k__BackingField: 1
