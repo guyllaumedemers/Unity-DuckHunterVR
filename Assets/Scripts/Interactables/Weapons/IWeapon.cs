@@ -22,7 +22,7 @@ public interface IWeapon
     public SphereCollider AmmoReloadCollider { get; set; }
     public Transform MagazineAttach { get; set; }
     public GameObject CurrentMagazine { get; set; }
-    public AmmoContainer AmmoContainer { get; set; }
+    public AmmoContainer CurrentAmmoContainer { get; set; }
     public LayerMask GunHitLayers { get; set; }
 
     void Shoot();

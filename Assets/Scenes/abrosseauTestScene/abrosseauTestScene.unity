@@ -399,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1950516498552850, guid: 5e93b18aeba68324cb0c6196b3791c1d, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4896801035141906, guid: 5e93b18aeba68324cb0c6196b3791c1d, type: 3}
       propertyPath: m_RootOrder
@@ -803,7 +803,7 @@ PrefabInstance:
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.356
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
@@ -813,7 +813,7 @@ PrefabInstance:
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.564
+      value: 0.631
       objectReference: {fileID: 0}
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
@@ -919,10 +919,100 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2090801033329860972, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090801033329860972, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090801033329860972, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133827552431583951, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133827552431583951, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133827552431583951, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372086476568809127, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372086476568809127, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372086476568809127, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothRotation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4355570152294484982, guid: 39096418ab6e52b40b1a2171d2b06567,
         type: 3}
       propertyPath: m_Name
       value: MachineGunAmmoCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065001543365421546, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065001543365421546, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065001543365421546, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480194754682526460, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480194754682526460, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480194754682526460, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071577654694982067, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071577654694982067, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071577654694982067, guid: 39096418ab6e52b40b1a2171d2b06567,
+        type: 3}
+      propertyPath: m_SmoothRotation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39096418ab6e52b40b1a2171d2b06567, type: 3}
@@ -1347,6 +1437,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8575230934107038028, guid: 9ca421161fb1d7e41bd0418d7873dd9a,
+        type: 3}
+      propertyPath: timeCanLoad
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8575230934107038029, guid: 9ca421161fb1d7e41bd0418d7873dd9a,
         type: 3}
       propertyPath: m_Name
