@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class SubmachineGun : BaseWeapon
 {
-    private void Awake()
-    {
-        IsAcceptingMagazine = true;
-    }
 }

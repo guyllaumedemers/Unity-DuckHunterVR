@@ -256,7 +256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 360
+  m_Text: 0
 --- !u!114 &8819564753008337248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 2302118359273008588}
   - component: {fileID: 2302118359273008593}
   - component: {fileID: 2302118359273008589}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ MonoBehaviour:
   DialType: 0
   RotatingRigidbody: {fileID: 0}
   LocalRotationAxis: {x: 0, y: 1, z: 0}
-  LocalAxisStart: {x: -1, y: 0, z: 0}
+  LocalAxisStart: {x: 0, y: 0, z: -1}
   RotationAngleMaximum: 315
   Steps: 7
   SnapOnRelease: 0

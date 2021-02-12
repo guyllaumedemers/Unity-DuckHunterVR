@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1133387992}
   - component: {fileID: 1133387993}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RifleReload
   m_TagString: RifleReload
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 6919303665140666817}
   - component: {fileID: 2891073249420648997}
   - component: {fileID: 1322589545080390760}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentAmmo>k__BackingField: 0
   <MaxAmmo>k__BackingField: 12
-  <IsAcceptingClip>k__BackingField: 0
+  <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0
   <RateOfFire>k__BackingField: 0
@@ -339,8 +339,7 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 6423343621879144437}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 6057780900120454180}
-  <AmmoReloadCollider>k__BackingField: {fileID: 0}
-  <CurrentClip>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 1133387993}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
@@ -451,7 +450,7 @@ GameObject:
   - component: {fileID: 7286593690047594662}
   - component: {fileID: 6423343621879144437}
   - component: {fileID: 8687743699755207065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5206,7 +5205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8725017553321760449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RifleGunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5238,7 +5237,7 @@ GameObject:
   - component: {fileID: 7156047065447937553}
   - component: {fileID: 2085263810578955308}
   - component: {fileID: 3191117115226340157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Puff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10092,7 +10091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6457463422555836121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10124,7 +10123,7 @@ GameObject:
   - component: {fileID: 7506556480776026372}
   - component: {fileID: 6057780900120454180}
   - component: {fileID: 1970340002200633404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RifleBulletEjectEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

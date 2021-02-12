@@ -20,7 +20,9 @@ public interface IWeapon
     public ParticleSystem CartridgeEjectionParticles { get; set; }
     public AudioSource AudioSource { get; set; }
     public SphereCollider AmmoReloadCollider { get; set; }
+    public Transform MagazineAttach { get; set; }
     public GameObject CurrentMagazine { get; set; }
+    public AmmoContainer AmmoContainer { get; set; }
     public LayerMask GunHitLayers { get; set; }
 
     void Shoot();

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 56351232}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagazineAttach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130674286}
   - component: {fileID: 1130674287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubmachineGunReload
   m_TagString: SubmachineGunReload
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7519580474307034334}
   - component: {fileID: 8247187270528149816}
   - component: {fileID: 7627223362010088610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubmachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 10
-  <IsAcceptingMagazine>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 60
+  <IsAcceptingMagazine>k__BackingField: 1
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0.05
   <RateOfFire>k__BackingField: 0.1
@@ -358,8 +358,7 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 8377243008650075929}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 8988365829631155089}
-  <AmmoReloadCollider>k__BackingField: {fileID: 0}
-  <CurrentMagazine>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 1130674287}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
@@ -470,7 +469,7 @@ GameObject:
   - component: {fileID: 3708943721690334537}
   - component: {fileID: 3001401382164695569}
   - component: {fileID: 6432119561280475653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Puff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5326,7 +5325,7 @@ GameObject:
   - component: {fileID: 6790059391485927054}
   - component: {fileID: 8988365829631155089}
   - component: {fileID: 380795672425251628}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletEjectEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10091,7 +10090,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5156087646108599877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10123,7 +10122,7 @@ GameObject:
   - component: {fileID: 2727468575272739529}
   - component: {fileID: 8377243008650075929}
   - component: {fileID: 6148700514178750595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14878,7 +14877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402683753898197284}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubmachineGunGunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

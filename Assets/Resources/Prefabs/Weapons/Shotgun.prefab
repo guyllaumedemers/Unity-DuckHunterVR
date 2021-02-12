@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1325870750007198441}
   - component: {fileID: 4641094481550635416}
   - component: {fileID: 3079249161629204672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 4671017437518047550}
   - component: {fileID: 5058416083918587917}
   - component: {fileID: 646566891249353129}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShellEjectEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9542,7 +9542,7 @@ GameObject:
   - component: {fileID: 2549567703776466321}
   - component: {fileID: 5036022890715767815}
   - component: {fileID: 6215873467972587535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9809,7 +9809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentAmmo>k__BackingField: 0
   <MaxAmmo>k__BackingField: 8
-  <IsAcceptingClip>k__BackingField: 0
+  <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 12
   <BulletSpread>k__BackingField: 0.125
   <RateOfFire>k__BackingField: 0
@@ -9819,8 +9819,10 @@ MonoBehaviour:
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 4641094481550635416}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 5058416083918587917}
-  <AmmoReloadCollider>k__BackingField: {fileID: 0}
-  <CurrentClip>k__BackingField: {fileID: 0}
+  <AmmoReloadCollider>k__BackingField: {fileID: 6546543311861834801}
+  <MagazineAttach>k__BackingField: {fileID: 0}
+  <CurrentMagazine>k__BackingField: {fileID: 0}
+  <AmmoContainer>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
@@ -9929,7 +9931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6641748282593692088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShotgunGunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9961,7 +9963,7 @@ GameObject:
   - component: {fileID: 4119541942444672623}
   - component: {fileID: 5659530625933272335}
   - component: {fileID: 7040967168755080650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Puff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14816,7 +14818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6546543311861834806}
   - component: {fileID: 6546543311861834801}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShotgunReload
   m_TagString: ShotgunReload
   m_Icon: {fileID: 0}
@@ -14859,7 +14861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 659364938355250924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
