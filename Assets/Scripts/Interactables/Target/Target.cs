@@ -45,7 +45,7 @@ public class Target : MonoBehaviour, IShootable {
     private IEnumerator OnHitPhysics() {
 
         ExplodePhysics();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         DisablePhysics();
         yield return new WaitForSeconds(2);
         EnablePhysics();
@@ -54,7 +54,7 @@ public class Target : MonoBehaviour, IShootable {
 
     private IEnumerator OnHitParticles() {
         ExplodeParticles();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         DisableParticles();
         yield return new WaitForSeconds(2);
         EnableParticles();
