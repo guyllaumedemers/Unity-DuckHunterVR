@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3835848538475564541}
   - component: {fileID: 3835848538475564542}
   - component: {fileID: 3835848538475564543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunMagazine
-  m_TagString: Untagged
+  m_TagString: SubmachineGunMagazine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

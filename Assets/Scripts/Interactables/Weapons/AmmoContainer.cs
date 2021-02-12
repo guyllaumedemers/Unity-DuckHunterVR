@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoMagazine : MonoBehaviour, IAmmoMagazine
+public class AmmoContainer : MonoBehaviour, IAmmoContainer
 {
-    [field: SerializeField] public BoxCollider ClipCollider { get; set; }
+    [field: SerializeField] public int CurrentAmmo { get; set; }
+    [field: SerializeField] public int MaxAmmo { get; set; }
 
     void OnCollisionEnter(Collision collision)
     {

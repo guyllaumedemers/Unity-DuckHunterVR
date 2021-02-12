@@ -96,24 +96,30 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                 {
                     CurrentMagazine = collider.gameObject;
 
-                    Rigidbody rb = CurrentMagazine.GetComponent<Rigidbody>();
-                    BoxCollider bc = CurrentMagazine.GetComponent<BoxCollider>();
+                    Rigidbody currentMagazineRb = CurrentMagazine.GetComponent<Rigidbody>();
+                    BoxCollider currentMagazineBc = CurrentMagazine.GetComponent<BoxCollider>();
 
-                    bc.isTrigger = true;
-                    rb.isKinematic = true;
+                    currentMagazineRb.isKinematic = true;
+                    currentMagazineBc.isTrigger = true;
 
                     Transform magazineAttach = GameObject.FindGameObjectWithTag(name + "Reload").transform.GetChild(0);
 
-                    collider.gameObject.transform.SetParent(magazineAttach);
+                    CurrentMagazine.transform.SetParent(magazineAttach.transform);
 
-                    collider.gameObject.transform.position = new Vector3(magazineAttach.transform.position.x, magazineAttach.transform.position.y, magazineAttach.transform.position.z);
+                    CurrentMagazine.transform.position = new Vector3(magazineAttach.transform.position.x, magazineAttach.transform.position.y, magazineAttach.transform.position.z);
 
                     CurrentMagazine.transform.rotation = magazineAttach.transform.rotation;
 
-                    XRGrabInteractable magazineGrab = CurrentMagazine.GetComponent<XRGrabInteractable>();
+                    GameObject magazineClone = Instantiate(CurrentMagazine, CurrentMagazine.transform.position, CurrentMagazine.transform.rotation, magazineAttach.transform);
+
+                    magazineClone.transform.name = collider.name.Replace("(clone)", "").Trim();
+
+                    XRGrabInteractable magazineGrab = magazineClone.GetComponent<XRGrabInteractable>();
 
                     if (CurrentMagazine.name != null)
                     {
+                        Destroy(CurrentMagazine);
+                        CurrentMagazine = magazineClone;
                         Destroy(magazineGrab);
                     }
                 }
@@ -142,6 +148,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
             Rigidbody magazineRb = CurrentMagazine.GetComponent<Rigidbody>();
             magazineRb.isKinematic = false;
+            magazineRb.useGravity = true;
 
             XRGrabInteractable magazineGrab = CurrentMagazine.AddComponent<XRGrabInteractable>();
             magazineGrab.attachTransform = CurrentMagazine.gameObject.transform.GetChild(0);
