@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7886845273536503284}
   - component: {fileID: 7886845273536503291}
   - component: {fileID: 7886845273536503290}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShotgunAmmoBox
   m_TagString: ShotgunAmmoBox
   m_Icon: {fileID: 0}

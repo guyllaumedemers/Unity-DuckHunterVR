@@ -18,6 +18,7 @@ TagManager:
   - SubmachineGunReload
   - ShotgunReload
   - PistolMagazine
+  - SubmachineGunMagazine
   layers:
   - Default
   - TransparentFX
