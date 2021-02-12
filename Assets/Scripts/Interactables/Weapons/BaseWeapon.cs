@@ -19,43 +19,19 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
     public AudioSource AudioSource { get; set; }
-    [field: SerializeField] public XRSocketInteractor XRSocketInteractor { get; set; }
     [field: SerializeField] public SphereCollider AmmoReloadCollider { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
     
     void Start()
     {
         AudioSource = GetComponent<AudioSource>();
-        XRSocketInteractor = GetComponent<XRSocketInteractor>();
         //meshCollider = GetComponent<MeshCollider>();
         //Rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        //Debug.Log(xRSocketInteractor.name);
-        //Debug.Log(xRSocketInteractor.selectTarget);
 
-        /*if (xRSocketInteractor.selectTarget == null)
-        {
-            xRSocketInteractor.socketActive = true;
-        }*/
-
-        /*if (xRSocketInteractor.selectTarget != null)
-        {
-            //Destroy(xRSocketInteractor.selectTarget.gameObject);
-            Rigidbody rb = xRSocketInteractor.selectTarget.gameObject.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
-
-            BoxCollider bc = xRSocketInteractor.selectTarget.gameObject.GetComponent<BoxCollider>();
-            bc.isTrigger = true;
-
-            xRSocketInteractor.selectTarget.gameObject.transform.SetParent(this.transform);
-
-            xRSocketInteractor.selectTarget.gameObject.SetActive(false);
-
-
-        }*/
     }
 
     public virtual void Shoot()
@@ -115,30 +91,12 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     public virtual void DropClip()
     {
-        XRSocketInteractor.socketActive = false;
-        /*meshCollider.enabled = false;
-        Rigidbody.isKinematic = true;
+        
 
-        Rigidbody rb = xRSocketInteractor.selectTarget.gameObject.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
+        //GameObject clipAttach = GameObject.Find("ClipAttach");
 
-        BoxCollider bc = xRSocketInteractor.selectTarget.gameObject.GetComponent<BoxCollider>();
-        bc.isTrigger = false;
+        //
 
-        xRSocketInteractor.selectTarget.gameObject.SetActive(true);*/
-
-
-        /*if (XRInputDebugger.Instance.inputDebugEnabled)
-        {
-            string debugMessage = name + " Reload";
-            Debug.Log(debugMessage);
-            XRInputDebugger.Instance.DebugLogInGame(debugMessage);
-        }*/
-    }
-
-    public void InsertAmmo()
-    {
-
-
+        //Debug.Log(clipAttach.name);
     }
 }

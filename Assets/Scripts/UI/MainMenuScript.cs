@@ -7,6 +7,21 @@ using UnityEngine.XR;
 
 public class MainMenuScript : MonoBehaviour
 {
+    #region Singleton
+    private static MainMenuScript instance;
+    private MainMenuScript() { }
+    public static MainMenuScript Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new MainMenuScript();
+            }
+            return instance;
+        }
+    }
+    #endregion
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject[] buttonObjects;
@@ -17,6 +32,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void Awake()
     {
+        instance = this;
         buttons = new Button[3];
         for (int i = 0; i < buttonObjects.Length; i++)
         {
@@ -122,4 +138,7 @@ public class MainMenuScript : MonoBehaviour
         Application.Quit();
     }
     #endregion
+
+    public GameObject GetMainMenuUI { get => mainMenu; }
+    public GameObject GetSettingsMenuUI { get => settingsMenu; }
 }
