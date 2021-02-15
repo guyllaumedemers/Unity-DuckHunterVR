@@ -40,7 +40,7 @@ public class Target : MonoBehaviour, IShootable {
 
     private IEnumerator OnHitPhysics() {
         ExplodePhysics();
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
         DisablePhysics();
         yield return new WaitForSeconds(2);
         EnablePhysics();
@@ -80,9 +80,8 @@ public class Target : MonoBehaviour, IShootable {
     }
 
     private void DisableParticles() {
-        foreach (var d in _children) {
+        foreach (var d in _children)
             d.Key.SetActive(false);
-        }
     }
 
     private void EnablePhysics() {
