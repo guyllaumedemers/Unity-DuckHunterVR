@@ -41,9 +41,8 @@ public class DuckSpawner : MonoBehaviour {
                                                               size.y,
                                                               Random.Range(-size.z / 2, size.z / 2));
         
-        Quaternion rotation = Quaternion.Euler(0, Random.Range(0, 360), Random.Range(-90, 0));
+        GameObject duck = Instantiate(duckModel, spawnPoint, Quaternion.Euler(0,Random.value > 0.5f ? 180 : 0, -90));
         
-        GameObject duck = Instantiate(duckModel, spawnPoint, rotation);
         duck.transform.SetParent(duckParent);
     }
 

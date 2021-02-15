@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b04b7305690f7489c4da3fc5a8a076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 4, y: 0.1, z: 2}
+  size: {x: 10, y: 0.1, z: 3}
   spawnRate: 5
   duckModel: {fileID: 533779325115343344, guid: b7d569106e30cfc4d9099c6a3ea77175,
     type: 3}
