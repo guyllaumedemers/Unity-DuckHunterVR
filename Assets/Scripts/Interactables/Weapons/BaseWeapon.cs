@@ -38,7 +38,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (Time.time >= TimeBeforeNextShot)
         {
-            if (IsAcceptingMagazine)
+            if (IsAcceptingMagazine && CurrentAmmoContainer != null)
             {
                 if (CurrentAmmoContainer.CurrentAmmo > 0)
                 {
@@ -103,11 +103,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
             StartCoroutine(LineRendererFade.Instance.FadeLineRenderer(bulletTrailClone));
         }
-    }
-
-    public void HasMagazineShoot()
-    {
-
     }
 
     public virtual void OnTriggerEnter(Collider collider)
