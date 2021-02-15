@@ -31,10 +31,6 @@ public class Target : MonoBehaviour, IShootable {
         }
     }
 
-    public void Start() {
-        //Invoke(nameof(OnHit), 4f);
-    }
-
     public void OnHit() {
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor && usePhysics)
             StartCoroutine(nameof(OnHitPhysics));
@@ -43,7 +39,6 @@ public class Target : MonoBehaviour, IShootable {
     }
 
     private IEnumerator OnHitPhysics() {
-
         ExplodePhysics();
         yield return new WaitForSeconds(4);
         DisablePhysics();
