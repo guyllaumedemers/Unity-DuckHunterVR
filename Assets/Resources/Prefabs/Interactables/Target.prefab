@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edb5f211ab7ad4469d084940d721742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usePhysics: 1
   particleBursts:
   - {fileID: 7271454055215963919}
   - {fileID: 8446559474358455261}
@@ -2213,7 +2214,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6a2fbeb085f860840b5527ff12522a6c, type: 2}
+      objectReference: {fileID: 2100000, guid: aeee7071bea0a4c478b4fea5933c5f79, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e64cc404aa755f44a3fa2a893ad9d4b, type: 3}
 --- !u!198 &7271454055215963919 stripped
@@ -2329,7 +2330,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6a2fbeb085f860840b5527ff12522a6c, type: 2}
+      objectReference: {fileID: 2100000, guid: 5a26de236ce89e94b963be8fa2b7ade6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e64cc404aa755f44a3fa2a893ad9d4b, type: 3}
 --- !u!4 &8446559474358455262 stripped

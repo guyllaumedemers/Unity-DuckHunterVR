@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour, IShootable {
-    
-    
+
+    public bool usePhysics;
     public ParticleSystem[] particleBursts;
     
     private readonly IDictionary<GameObject, TransformHolder> _children = new Dictionary<GameObject, TransformHolder>();
@@ -36,9 +36,9 @@ public class Target : MonoBehaviour, IShootable {
     }
 
     public void OnHit() {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor && usePhysics)
             StartCoroutine(nameof(OnHitPhysics));
-        else if (Application.platform == RuntimePlatform.Android)
+        else if (Application.platform == RuntimePlatform.Android || !usePhysics)
             StartCoroutine(nameof(OnHitParticles));
     }
 

@@ -11,7 +11,7 @@ public class TimeDial : MonoBehaviour {
     }
 
     public void DialChanged(DialInteractable dial) {
-        _Label.text = (dial.CurrentAngle).ToString("n0");
-        //_Label.text = (dial.CurrentStep).ToString("n0");
+        //_Label.text = (dial.CurrentAngle).ToString("n0");
+        _Label.text = (dial.CurrentStep).ToString("n0");
     }
 }
