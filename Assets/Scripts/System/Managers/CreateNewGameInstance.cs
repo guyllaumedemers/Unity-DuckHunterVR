@@ -47,4 +47,6 @@ public class CreateNewGameInstance
     {
         instance = null;
     }
+
+    public ScorePoints GetScores { get => scorePoints; set { scorePoints = value; } }
 }
