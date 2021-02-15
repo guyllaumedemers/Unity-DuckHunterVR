@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 3835848538475564541}
   - component: {fileID: 3835848538475564542}
   - component: {fileID: 3835848538475564543}
+  - component: {fileID: 8282831897799738236}
   m_Layer: 6
-  m_Name: MachineGunMagazine
+  m_Name: SubmachineGunMagazine
   m_TagString: SubmachineGunMagazine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +212,20 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 1
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
+--- !u!114 &8282831897799738236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3835848538475465553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41f3078e3b738c458892f066822f2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentAmmo>k__BackingField: 60
+  <IsMagazine>k__BackingField: 1
 --- !u!1 &8154460072719097001
 GameObject:
   m_ObjectHideFlags: 0

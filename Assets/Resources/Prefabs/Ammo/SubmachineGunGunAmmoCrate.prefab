@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 732202326224828901}
   - component: {fileID: 9221611502338016382}
   m_Layer: 0
-  m_Name: MachineGunAmmoCrate
+  m_Name: SubmachineGunGunAmmoCrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,7 +272,7 @@ PrefabInstance:
     - target: {fileID: 3835848538475465553, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
       propertyPath: m_Name
-      value: MachineGunMagazine
+      value: SubmachineGunMagazine
       objectReference: {fileID: 0}
     - target: {fileID: 3835848538475960177, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 3835848538475465553, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
       propertyPath: m_Name
-      value: MachineGunMagazine (5)
+      value: SubmachineGunMagazine (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3835848538475960177, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
@@ -452,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 3835848538475465553, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
       propertyPath: m_Name
-      value: MachineGunMagazine (3)
+      value: SubmachineGunMagazine (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3835848538475960177, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
@@ -542,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 3835848538475465553, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
       propertyPath: m_Name
-      value: MachineGunMagazine (4)
+      value: SubmachineGunMagazine (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3835848538475960177, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
@@ -632,7 +632,7 @@ PrefabInstance:
     - target: {fileID: 3835848538475465553, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
       propertyPath: m_Name
-      value: MachineGunMagazine (1)
+      value: SubmachineGunMagazine (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3835848538475960177, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
@@ -722,7 +722,7 @@ PrefabInstance:
     - target: {fileID: 3835848538475465553, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
       propertyPath: m_Name
-      value: MachineGunMagazine (2)
+      value: SubmachineGunMagazine (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3835848538475960177, guid: eaec5022d7c985e42b68807e98cba12b,
         type: 3}
