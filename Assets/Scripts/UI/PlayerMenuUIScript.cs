@@ -35,8 +35,8 @@ public class PlayerMenuUIScript : MonoBehaviour
     [SerializeField]
     private GameObject settingsMenuUI;
     private Camera mainCamera;
-    private const string gameSceneName = "gdemersTestScene";
-    private const string mainMenuSceneName = "gdemersTest-MainMenuScene";
+    private const string mainMenuSceneName = "MainMenuScene";
+    private const string gameSceneName = "MainGameScene";
     private GameObject settingsMenuUIInstance;
 
     public void Awake()
@@ -48,7 +48,6 @@ public class PlayerMenuUIScript : MonoBehaviour
     public void Start()
     {
         inGameMenuUI.SetActive(false);
-        //settingsMenuUIInstance = null;
     }
 
     public bool IsInGameScene()
