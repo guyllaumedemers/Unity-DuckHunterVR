@@ -32,7 +32,7 @@ public class Target : MonoBehaviour, IShootable {
     }
 
     public void Start() {
-        Invoke(nameof(OnHit), 4f);
+        //Invoke(nameof(OnHit), 4f);
     }
 
     public void OnHit() {

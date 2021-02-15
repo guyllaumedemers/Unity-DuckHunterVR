@@ -25,7 +25,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private Toggle disableSounds;
-    private string gameSceneName = "gdemersTestScene";
+    private string gameSceneName = "MainGameScene";
 
     public void Awake()
     {
