@@ -6,5 +6,6 @@ public class DuckCapsule : MonoBehaviour, IShootable
 {
     public void OnHit() {
         Debug.Log($"{this.name}");
+        Destroy(gameObject);
     }
 }
