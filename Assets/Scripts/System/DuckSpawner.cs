@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DuckSpawner : MonoBehaviour {
     [Header("Size of spawn area")]
@@ -7,11 +9,26 @@ public class DuckSpawner : MonoBehaviour {
     public float spawnRate = 5f;
     [Header("Model used to instantiate")]
     public GameObject duckModel;
-    [Header("Duck Parent")] 
+    [Header("Duck Parent Transform")] 
     public Transform duckParent;
     
-    private float nextSpawn = 0;
-    
+    private float nextSpawn;
+
+    private void Start() {
+
+        nextSpawn = spawnRate;
+        
+        if (duckModel == null) {
+            Debug.Log("No duck model provided, using default model");
+            duckModel = Resources.Load("Prefabs/Ducks/DuckCapsule") as GameObject;
+        }
+
+        if (duckParent == null) {
+            Debug.Log("No duck parent transform provided, creating default object");
+            duckParent = new GameObject("Spawned Ducks").transform;
+        }
+    }
+
     private void Update() {
         if (Time.time > nextSpawn) {
             nextSpawn = Time.time + spawnRate;
