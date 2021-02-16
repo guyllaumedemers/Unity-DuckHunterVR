@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Serialization
 {
+    private static string path = "";
     /// <summary>
     /// Game Instance will be added to the file, only keeping 5 best scores
     /// </summary>
@@ -21,4 +22,6 @@ public class Serialization
 
         return new List<CreateNewGameInstance>();
     }
+
+    public static string GetPath { get => path; set { path = value; } }
 }

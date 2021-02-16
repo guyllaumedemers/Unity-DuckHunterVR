@@ -20,7 +20,7 @@ public class GameTipsTutorialScript : MonoBehaviour
     public void Awake()
     {
         currentIndex = 0;
-        textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void Start()
