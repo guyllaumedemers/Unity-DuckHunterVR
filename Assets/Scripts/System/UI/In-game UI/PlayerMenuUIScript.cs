@@ -35,8 +35,8 @@ public class PlayerMenuUIScript : MonoBehaviour
     [SerializeField]
     private GameObject settingsMenuUI;
     private Camera mainCamera;
-    private const string mainMenuSceneName = "MainMenuScene";
-    private const string gameSceneName = "MainGameScene";
+    private const string mainMenuSceneName = "MainMenuSceneFinal";
+    private const string gameSceneName = "MainGameSceneFinal";
     private GameObject settingsMenuUIInstance;
 
     public void Awake()
