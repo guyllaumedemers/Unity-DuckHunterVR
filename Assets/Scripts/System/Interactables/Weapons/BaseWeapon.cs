@@ -5,13 +5,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
-    [field: SerializeField] public int CurrentAmmo { get; set; } = 0;
-    [field: SerializeField] public int MaxAmmo { get; set; } = 10;
     [field: SerializeField] public bool IsAcceptingMagazine { get; set; } = false;
     [field: SerializeField] public int NbBulletFired { get; set; } = 1;
     [field: SerializeField] public float BulletSpread { get; set; } = 0f;
-    [field: SerializeField] public float RateOfFire { get; set; } = 0f;
-    public float TimeBeforeNextShot { get; set; } = 0f;
     [field: SerializeField] public float GunRange { get; set; } = 50f;
     [field: SerializeField] public float BulletTrailSize { get; set; } = 0.1f;
     public GameObject GunTip { get; set; }
@@ -24,6 +20,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public GameObject CurrentMagazine { get; set; }
     [field: SerializeField] public AmmoContainer CurrentAmmoContainer { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
+    [field: SerializeField] public AudioClip ShootingSound { get; set; }
+    [field: SerializeField] public AudioClip ReloadSound { get; set; }
+    [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
 
     void Start()
     {
@@ -36,31 +35,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     public virtual void Shoot()
     {
-        if (Time.time >= TimeBeforeNextShot)
-        {
-            if (IsAcceptingMagazine)
-            {
-                if (CurrentAmmoContainer.CurrentAmmo > 0)
-                {
-                    CreateBullets();
-                    CurrentAmmoContainer.CurrentAmmo--;
-                }
-            }
-            else
-            {
-                if (CurrentAmmo > 0)
-                {
-                    CreateBullets();
-                    CurrentAmmo--;
-                }
-            }
+        if (AudioSource.clip != ShootingSound)
+            AudioSource.clip = ShootingSound;
 
-            TimeBeforeNextShot = Time.time + RateOfFire;
-        }
-    }
-
-    public void CreateBullets()
-    {
         AudioSource.Play();
         MuzzleFlashParticles.Play();
         CartridgeEjectionParticles.Play();
@@ -105,11 +82,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         }
     }
 
-    public void HasMagazineShoot()
-    {
-
-    }
-
     public virtual void OnTriggerEnter(Collider collider)
     {
         if (IsAcceptingMagazine)
@@ -144,6 +116,11 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                             Destroy(magazineClone.GetComponent<XRGrabInteractable>());
                         }
 
+                        if (AudioSource.clip != ReloadSound)
+                            AudioSource.clip = ReloadSound;
+
+                        AudioSource.Play();
+
                         //CurrentAmmo = CurrentAmmoContainer.CurrentAmmo;
                     }
                     else
@@ -153,26 +130,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                     }
                 }
             }
-        }
-        else if (collider.gameObject.CompareTag(name + "AmmoBox") && AmmoReloadCollider.CompareTag(name + "Reload"))
-        {
-            CurrentAmmoContainer = collider.GetComponent<AmmoContainer>();
-
-            int ammoNeeded = MaxAmmo - CurrentAmmo;
-            //int ammoRemaining = CurrentAmmoContainer.CurrentAmmo;
-
-            for (int i = 0; i < ammoNeeded; i++)
-            {
-                if (CurrentAmmoContainer.CurrentAmmo != 0)
-                {
-                    CurrentAmmo++;
-                    CurrentAmmoContainer.CurrentAmmo--;
-                }
-            }
-
-
-            CurrentAmmoContainer = null;
-            //CurrentAmmo = MaxAmmo;
         }
     }
 

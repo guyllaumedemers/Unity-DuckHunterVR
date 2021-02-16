@@ -9807,12 +9807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098360ff44e0fa347a40cf056da7f108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 8
   <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 12
   <BulletSpread>k__BackingField: 0.125
-  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.005
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
@@ -9820,12 +9817,16 @@ MonoBehaviour:
   <MuzzleFlashParticles>k__BackingField: {fileID: 4641094481550635416}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 5058416083918587917}
   <AmmoReloadCollider>k__BackingField: {fileID: 6546543311861834801}
-  <MagazineAttach>k__BackingField: {fileID: 0}
   <CurrentMagazine>k__BackingField: {fileID: 0}
-  <AmmoContainer>k__BackingField: {fileID: 0}
+  <CurrentAmmoContainer>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <ShootingSound>k__BackingField: {fileID: 0}
+  <ReloadSound>k__BackingField: {fileID: 0}
+  <ReactorTriggerShoot>k__BackingField: 0
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 8
 --- !u!82 &6215873467972587535
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9836,7 +9837,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e9371155342b8d1468b4fc4ca11b3afa, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
