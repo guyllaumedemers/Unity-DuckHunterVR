@@ -20,6 +20,8 @@ public interface IWeapon
     public GameObject CurrentMagazine { get; set; }
     public AmmoContainer CurrentAmmoContainer { get; set; }
     public LayerMask GunHitLayers { get; set; }
+    public AudioClip ShootingSound { get; set; }
+    public AudioClip ReloadSound { get; set; }
     public bool ReactorTriggerShoot { get; set; }
 
     void Shoot();

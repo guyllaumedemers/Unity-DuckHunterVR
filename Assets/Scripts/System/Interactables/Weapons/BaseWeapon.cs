@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
-{    
+{
     [field: SerializeField] public bool IsAcceptingMagazine { get; set; } = false;
     [field: SerializeField] public int NbBulletFired { get; set; } = 1;
     [field: SerializeField] public float BulletSpread { get; set; } = 0f;
@@ -20,6 +20,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public GameObject CurrentMagazine { get; set; }
     [field: SerializeField] public AmmoContainer CurrentAmmoContainer { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
+    [field: SerializeField] public AudioClip ShootingSound { get; set; }
+    [field: SerializeField] public AudioClip ReloadSound { get; set; }
     [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
 
     void Start()
@@ -33,6 +35,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     public virtual void Shoot()
     {
+        if (AudioSource.clip != ShootingSound)
+            AudioSource.clip = ShootingSound;
+
         AudioSource.Play();
         MuzzleFlashParticles.Play();
         CartridgeEjectionParticles.Play();
@@ -110,6 +115,11 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                             CurrentAmmoContainer = CurrentMagazine.GetComponent<AmmoContainer>();
                             Destroy(magazineClone.GetComponent<XRGrabInteractable>());
                         }
+
+                        if (AudioSource.clip != ReloadSound)
+                            AudioSource.clip = ReloadSound;
+
+                        AudioSource.Play();
 
                         //CurrentAmmo = CurrentAmmoContainer.CurrentAmmo;
                     }
