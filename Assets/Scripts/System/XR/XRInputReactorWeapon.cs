@@ -16,7 +16,7 @@ public class XRInputReactorWeapon : MonoBehaviour
     private void Start()
     {
         _iWeapon = (IWeapon)GetComponent(typeof(IWeapon));
-        _xRGrabInteractable = GetComponent<XRGrabInteractable>();       
+        _xRGrabInteractable = GetComponent<XRGrabInteractable>();
     }
 
     public void onPrimaryButtonEvent(bool pressed)
@@ -47,10 +47,10 @@ public class XRInputReactorWeapon : MonoBehaviour
     public void onTriggerButtonEvent(bool pressed)
     {
         _triggerIsPressed = pressed;
-        
+
         if (pressed)
         {
-            if(_iWeapon.RateOfFire > 0)
+            if (_iWeapon.ReactorTriggerShoot)
             {
                 _iWeapon.Shoot();
             }
