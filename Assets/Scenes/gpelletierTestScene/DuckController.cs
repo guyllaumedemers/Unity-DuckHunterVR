@@ -10,9 +10,20 @@ public class DuckController : MonoBehaviour, IShootable {
     public float flightSpeed = 2f;
     
     private Animation _animations;
-    
+    private SphereCollider _collider;
+    private Rigidbody _rb;
+
     public void Start() {
         _animations = GetComponent<Animation>();
+        _collider = GetComponent<SphereCollider>();
+        _rb = GetComponent<Rigidbody>();
+
+        _collider.enabled = false;
+        _rb.detectCollisions = false;
+        
+        // Play Quack Quack sound
+        
+        Invoke(nameof(Fly), 2f);
     }
 
     public void OnHit() {
@@ -21,8 +32,17 @@ public class DuckController : MonoBehaviour, IShootable {
         StartCoroutine(nameof(PlayDeathAnimations));
     }
 
+    private void Fly() {
+        _collider.enabled = true;
+    }
+
+    private void FlyAway() {
+        
+    }
+    
     private void OnTriggerEnter(Collider other) {
-        Destroy(gameObject);
+        if(other.gameObject.layer == 3)
+            Destroy(gameObject);
     }
     
     private IEnumerator PlayDeathAnimations() {
@@ -30,7 +50,8 @@ public class DuckController : MonoBehaviour, IShootable {
         yield return new WaitForSeconds(_animations["inAirDeath"].length);
         
         _animations.Play("falling");
-        gameObject.AddComponent<Rigidbody>().useGravity = true;
+        _rb.detectCollisions = true;
+        _rb.useGravity = true;
         yield return null;
     }
 }
