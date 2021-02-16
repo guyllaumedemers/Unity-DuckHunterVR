@@ -9,11 +9,11 @@ public class SingleShotAmmo : BaseWeapon
 
     public override void Shoot()
     {
-        if(CurrentAmmo > 0)
+        if (CurrentAmmo > 0)
         {
             base.Shoot();
             CurrentAmmo--;
-        }        
+        }
     }
 
     public override void OnTriggerEnter(Collider collider)
@@ -23,7 +23,14 @@ public class SingleShotAmmo : BaseWeapon
             CurrentAmmoContainer = collider.GetComponent<AmmoContainer>();
 
             int ammoNeeded = MaxAmmo - CurrentAmmo;
-            //int ammoRemaining = CurrentAmmoContainer.CurrentAmmo;
+
+            if (ammoNeeded > 0)
+            {
+                if (AudioSource.clip != ReloadSound)
+                    AudioSource.clip = ReloadSound;
+
+                AudioSource.Play();
+            }
 
             for (int i = 0; i < ammoNeeded; i++)
             {
@@ -33,8 +40,8 @@ public class SingleShotAmmo : BaseWeapon
                     CurrentAmmoContainer.CurrentAmmo--;
                 }
             }
+
             CurrentAmmoContainer = null;
-            //CurrentAmmo = MaxAmmo;
         }
     }
 }
