@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class CreateNewGameInstance
 {
-    /// <summary>
-    /// Player can only create one game instance, otherwise there would be problems with retriving scores from the game initialized
-    /// A game instance has GameMode data and Score values
-    /// When Stop button is pressed the game instance data will be saved to file and the instance will be destroyed
-    /// Singleton is only there to avoid instanciating multiple instances
-    /// </summary>
-    #region SingletonIsh
-    private static CreateNewGameInstance instance;
-    /// <summary>
-    /// Member variables
-    /// </summary>
     private string gameModeString;
     private ScorePoints scorePoints;
     /// <summary>
@@ -22,37 +11,10 @@ public class CreateNewGameInstance
     /// </summary>
     /// <param name="gameMode"></param>
     /// <param name="points"></param>
-    private CreateNewGameInstance()
+    public CreateNewGameInstance()
     {
         gameModeString = GameManagerScript.Instance.GetCurrentMode.ToString();
         scorePoints = new ScorePoints();
-    }
-    public static CreateNewGameInstance Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new CreateNewGameInstance();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
-    public void InitializeGameInstance()
-    {
-        instance = Instance;
-        ScoringSystemManager.Instance.InitializeScoringSystem();
-    }
-    /// <summary>
-    /// We have to make a call to serialize the instance before delete it
-    /// </summary>
-    public void DestroyGameInstance()
-    {
-        Serialization.SaveFile(this, Serialization.GetPath);
-        ScoringSystemManager.Instance.DestroyScoringSystem();
-        instance = null;
     }
 
     public ScorePoints GetScores { get => scorePoints; set { scorePoints = value; } }

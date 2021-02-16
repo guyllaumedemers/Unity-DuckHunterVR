@@ -25,10 +25,10 @@ public class GameButton : MonoBehaviour
         SwapText();
         if (isRunning)
         {
-            CreateNewGameInstance.Instance.InitializeGameInstance();
+            ScoringSystemManager.Instance.InstanciateNewGameInstance();
             return;
         }
-        CreateNewGameInstance.Instance.DestroyGameInstance();
+        ScoringSystemManager.Instance.DestroyGameInstance();
     }
 
     public void SwapText()
