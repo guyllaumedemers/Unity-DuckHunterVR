@@ -43,6 +43,7 @@ public class CreateNewGameInstance
     public void InitializeGameInstance()
     {
         instance = Instance;
+        ScoringSystemManager.Instance.InitializeScoringSystem();
     }
     /// <summary>
     /// We have to make a call to serialize the instance before delete it
@@ -50,6 +51,7 @@ public class CreateNewGameInstance
     public void DestroyGameInstance()
     {
         Serialization.SaveFile(this, Serialization.GetPath);
+        ScoringSystemManager.Instance.DestroyScoringSystem();
         instance = null;
     }
 

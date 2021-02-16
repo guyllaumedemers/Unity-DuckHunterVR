@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameButton : MonoBehaviour
 {
     private TextMeshProUGUI textMeshProUGUI;
+    private new Animation animation;
     private readonly string start = "START";
     private readonly string stop = "STOP";
     private bool isRunning;
@@ -14,11 +15,13 @@ public class GameButton : MonoBehaviour
     {
         isRunning = false;
         textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+        animation = GetComponent<Animation>();
     }
 
     public void UpdateButton()
     {
         isRunning = !isRunning;
+        animation.Play("PushButton");
         SwapText();
         if (isRunning)
         {

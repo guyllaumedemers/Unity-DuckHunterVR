@@ -17,4 +17,6 @@ public class ScorePoints
     {
         points += value;
     }
+
+    public int GetPoints { get => points; }
 }
