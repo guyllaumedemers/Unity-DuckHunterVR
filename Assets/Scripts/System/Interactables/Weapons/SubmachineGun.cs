@@ -9,15 +9,18 @@ public class SubmachineGun : BaseWeapon
 
     public override void Shoot()
     {
-        if (Time.time >= TimeBeforeNextShot)
+        if(CurrentMagazine != null)
         {
-            if (CurrentAmmoContainer.CurrentAmmo > 0)
+            if (Time.time >= TimeBeforeNextShot)
             {
-                base.Shoot();
-                CurrentAmmoContainer.CurrentAmmo--;
-            }
+                if (CurrentAmmoContainer.CurrentAmmo > 0)
+                {
+                    base.Shoot();
+                    CurrentAmmoContainer.CurrentAmmo--;
+                }
 
-            TimeBeforeNextShot = Time.time + RateOfFire;
+                TimeBeforeNextShot = Time.time + RateOfFire;
+            }
         }
     }
 }

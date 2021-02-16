@@ -20,7 +20,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public GameObject CurrentMagazine { get; set; }
     [field: SerializeField] public AmmoContainer CurrentAmmoContainer { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
-    [field: SerializeField] public bool ReactorShoot { get; set; }
+    [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
 
     void Start()
     {

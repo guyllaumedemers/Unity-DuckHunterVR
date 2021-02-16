@@ -50,7 +50,7 @@ public class XRInputReactorWeapon : MonoBehaviour
 
         if (pressed)
         {
-            if (_iWeapon.ReactorShoot)
+            if (_iWeapon.ReactorTriggerShoot)
             {
                 _iWeapon.Shoot();
             }

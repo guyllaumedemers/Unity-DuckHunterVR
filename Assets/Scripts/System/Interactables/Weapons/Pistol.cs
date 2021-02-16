@@ -8,10 +8,13 @@ public class Pistol : BaseWeapon
 {
     public override void Shoot()
     {
-        if (CurrentAmmoContainer.CurrentAmmo > 0)
+        if (CurrentMagazine != null)
         {
-            base.Shoot();
-            CurrentAmmoContainer.CurrentAmmo--;
+            if (CurrentAmmoContainer.CurrentAmmo > 0)
+            {
+                base.Shoot();
+                CurrentAmmoContainer.CurrentAmmo--;
+            }
         }
     }
 }

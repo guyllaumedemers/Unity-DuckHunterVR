@@ -743,16 +743,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SubmachineGun
       objectReference: {fileID: 0}
-    - target: {fileID: 8247187270528149816, guid: c94509979ff167c49b422aef5181bf98,
-        type: 3}
-      propertyPath: <RateOfFire>k__BackingField
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8247187270528149816, guid: c94509979ff167c49b422aef5181bf98,
-        type: 3}
-      propertyPath: <ReactorShoot>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8858992755433108873, guid: c94509979ff167c49b422aef5181bf98,
         type: 3}
       propertyPath: m_RootOrder
@@ -1229,16 +1219,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pistol
-      objectReference: {fileID: 0}
-    - target: {fileID: 7526996454629541526, guid: 1bbc055f35e5aea499f36975ae5712e9,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 7526996454629541527, guid: 1bbc055f35e5aea499f36975ae5712e9,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbc055f35e5aea499f36975ae5712e9, type: 3}
