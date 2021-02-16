@@ -27,6 +27,8 @@ public class DuckSpawner : MonoBehaviour {
             Debug.Log("No duck parent transform provided, creating default object");
             duckParent = new GameObject("Spawned Ducks").transform;
         }
+        
+        SpawnDuck();
     }
 
     private void Update() {
@@ -41,11 +43,11 @@ public class DuckSpawner : MonoBehaviour {
                                                               size.y,
                                                               Random.Range(-size.z / 2, size.z / 2));
         
-        GameObject duck = Instantiate(duckModel, spawnPoint, Quaternion.Euler(0,Random.value > 0.5f ? 180 : 0, -90));
-        
+        GameObject duck = Instantiate(duckModel, spawnPoint, Quaternion.identity);
+        duck.GetComponent<DuckController>().spawnZone = new Vector2(transform.position.x + (-size.x / 2), transform.position.x + size.x / 2);
         duck.transform.SetParent(duckParent);
     }
-
+    
     private void OnDrawGizmos() {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
         Gizmos.DrawCube(transform.position, size);
