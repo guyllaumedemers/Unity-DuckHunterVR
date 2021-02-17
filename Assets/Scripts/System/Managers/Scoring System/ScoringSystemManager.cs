@@ -29,6 +29,11 @@ public class ScoringSystemManager : MonoBehaviour
         textMeshProUGUI = GameObject.FindGameObjectWithTag("Score").GetComponent<TextMeshProUGUI>();
     }
 
+    public void Start()
+    {
+        Serialization.Load(Serialization.GetPath);
+    }
+
     public void Update()
     {
         if (isActive)
@@ -77,11 +82,12 @@ public class ScoringSystemManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator AddPointCoroutine()
     {
-        while (isActive)
+        while (isActive && newGame != null)
         {
             yield return new WaitForSeconds(3.0f);
             AddPoints(newGame, 10);
-            Debug.Log("Instance points : " + newGame.GetScores.GetPoints);
         }
     }
+
+    public CreateNewGameInstance GetGameInstance { get => newGame; }
 }

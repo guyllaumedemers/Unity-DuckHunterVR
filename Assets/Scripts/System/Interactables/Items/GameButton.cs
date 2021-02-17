@@ -28,6 +28,7 @@ public class GameButton : MonoBehaviour
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
             return;
         }
+        Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
         ScoringSystemManager.Instance.DestroyGameInstance();
     }
 
