@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 9, y: 0.1, z: 3}
   spawnRate: 22
-  duckModel: {fileID: 792752698029093541, guid: b3a61b3871faf2d41bbd6be5674d9d07,
-    type: 3}
+  duckModels:
+  - {fileID: 792752698029093541, guid: b3a61b3871faf2d41bbd6be5674d9d07, type: 3}
+  - {fileID: 792752698029093541, guid: 82155982a63865541809901c8f991081, type: 3}
   duckParent: {fileID: 5346019989394260356}

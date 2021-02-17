@@ -994,6 +994,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 1559931817001148675, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbd7fcfc18e34de4eb2fe11a53167a4b, type: 3}
 --- !u!1001 &2015260935134057746
