@@ -39,7 +39,7 @@ public class DuckController : MonoBehaviour, IShootable {
     [HideInInspector]
     public float spawnSize;
     
-    [SerializeField]
+    [SerializeField][Header("State of Duck")]
     private State _state;
     private Animation _animations;
     private SphereCollider _collider;
