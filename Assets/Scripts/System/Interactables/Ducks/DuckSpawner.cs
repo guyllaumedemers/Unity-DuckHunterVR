@@ -7,17 +7,18 @@ public class DuckSpawner : MonoBehaviour {
     [Header("Size of spawn area")]
     public Vector3 size;
     [Header("Rate of instantiation")]
-    public float spawnRate = 5f;
+    public float spawnRate = 20f;
     [Header("Model used to instantiate")]
     public GameObject[] duckModels;
     [Header("Duck Parent Transform")] 
     public Transform duckParent;
     
+    [SerializeField][Header("Next Spawn Time")]
     private float nextSpawn;
 
     private void Start() {
 
-        nextSpawn = spawnRate;
+        nextSpawn = GetNextSpawnTime();
         
         if (duckModels == null) {
             Debug.Log("No duck model provided, using default model");
@@ -33,12 +34,19 @@ public class DuckSpawner : MonoBehaviour {
     }
     
     private void Update() {
-        if (Time.time > nextSpawn) {
-            nextSpawn = Time.time + spawnRate;
+        if (nextSpawn <= 0) {
+            nextSpawn = GetNextSpawnTime();
             SpawnDuck();
+        }
+        else {
+            nextSpawn -= Time.deltaTime;
         }
     }
 
+    private float GetNextSpawnTime() {
+        return Random.Range(spawnRate / 2, spawnRate);
+    }
+    
     private void SpawnDuck() {
         Vector3 spawnPoint = transform.position + new Vector3(Random.Range(-size.x / 2, size.x / 2),
                                                               size.y,

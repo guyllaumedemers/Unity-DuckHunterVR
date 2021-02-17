@@ -41,10 +41,12 @@ public class DuckController : MonoBehaviour, IShootable {
     
     [SerializeField][Header("State of Duck")]
     private State _state;
+    [SerializeField][Header("Current Duck Target")]
+    private Vector3 _target;
     private Animation _animations;
     private SphereCollider _collider;
     private Rigidbody _rb;
-    private Vector3 _target;
+    
     private bool _isDead = false;
     
     public void Start() {
@@ -52,7 +54,6 @@ public class DuckController : MonoBehaviour, IShootable {
         _collider = GetComponent<SphereCollider>();
         _rb = GetComponent<Rigidbody>();
         
-        _rb.detectCollisions = false;
         _animations.Play("fly");
         _target = GetRandomPosUp();
         _state = State.FLYING;
@@ -74,7 +75,7 @@ public class DuckController : MonoBehaviour, IShootable {
     private void Update() {
         if (!_isDead) {
             
-            if (escapeTime >= 0) //&& _state != State.FLEEING)
+            if (escapeTime <= 0) //&& _state != State.FLEEING)
                 _state = State.FLEEING;
             
             switch (_state) {
@@ -86,7 +87,7 @@ public class DuckController : MonoBehaviour, IShootable {
                 case State.FLEEING:
                     if (_collider.enabled) {
                         _collider.enabled = false;
-                        _target = new Vector3(_target.x, minMaxY.max, _target.z); 
+                        _target = new Vector3(transform.position.x, minMaxY.max, transform.position.z);
                     }
                     FlyToTarget();
                     break;
@@ -113,6 +114,7 @@ public class DuckController : MonoBehaviour, IShootable {
     private void FlyToTarget() {
         float step = flightSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _target, step);
+        transform.LookAt(_target);
     }
     
     private Vector3 GetRandomPosUp() {
@@ -120,10 +122,7 @@ public class DuckController : MonoBehaviour, IShootable {
         float dirX = transform.position.x >= 0 ? -x : x;
         float dirY = transform.position.y + Random.Range(heighRangeIncrease.min, heighRangeIncrease.max);
         
-        Vector3 pos = new Vector3(dirX, dirY, transform.position.z);
-        transform.LookAt(pos);
-        
-        return pos;
+        return new Vector3(dirX, dirY, transform.position.z);
     }
 
     private IEnumerator Die() {

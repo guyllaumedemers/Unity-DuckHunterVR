@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2951479802233253189}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9142848384021519640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L HorseLink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8643168624618026981}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4421186524110340278}
   - component: {fileID: 5227488771633364269}
   - component: {fileID: 8656342305253288874}
-  - component: {fileID: 4505494984801924605}
+  - component: {fileID: 8139148860599431983}
   - component: {fileID: -1831348676418516727}
   m_Layer: 9
   m_Name: DUCK
@@ -178,7 +178,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.21296105
   m_Center: {x: 0, y: 0.22, z: 0.01296106}
---- !u!54 &4505494984801924605
+--- !u!54 &8139148860599431983
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,16 +207,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noPoints: 1
+  HP: 1
   flightSpeed: 1
-  escapeTime: 10
-  minMaxY:
-    min: -1
-    max: 10
-  heighRange:
+  escapeTime: 30
+  heighRangeIncrease:
     min: 1
     max: 1.5
+  minMaxY:
+    min: -1
+    max: 15
   spawnSize: 0
   _state: 0
+  _target: {x: 0, y: 0, z: 0}
 --- !u!1 &1007829389555940674
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1175192572860243507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8892656485214300191}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Toe01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6218599250896083574}
   - component: {fileID: 4871892497777777445}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6268173440065698673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2472268108976183831}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Neck1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7037618439915968916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Queue de cheval 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6745979184131557018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Toe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4153181057475148181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4704415765471176067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Toe01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3590775338820317540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Toe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7573490697316223552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 206646771334148891}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ TailL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1742826598601614960}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Calf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4985129325261995626}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Toe02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 629647673866330931}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Calf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5130186565365997329}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1296114110762893966}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2812824315795767295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2955305827529467910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Clavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3905093465542083150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3204306114563350710}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R HorseLink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2955994605615885807}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Toe02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1928261185461481797}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8956069712884902573}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3736728909777372518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1088,7 +1090,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4318535835425080981}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ TailR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3995941913445028961}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ Neck2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4434196313265138263}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,7 +1182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8486255784435298080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ R Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7425952575993802029}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7205338076429489257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DUCK_ L Clavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
