@@ -7,7 +7,7 @@ public class SelectionOutline : MonoBehaviour
 {
     private MeshRenderer _meshRenderer;
     private Color _originalColor;
-    public bool _isSelected;
+    private bool _isSelected;
 
     private void Start()
     {
