@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,9 +19,14 @@ public class DuckController : MonoBehaviour, IShootable {
 
     private enum State {
         FLYING,
-        FLEEING
+        FLEEING,
+        DEAD
     }
-    
+
+    [Header("PG-13 toggle")] 
+    public bool isPg13 = true;
+    [Header("Gore Particle")]
+    public ParticleSystem particleBurst;
     [Header("Score points")]
     public float noPoints = 1f;
     [Header("Health Points")]
@@ -45,7 +50,6 @@ public class DuckController : MonoBehaviour, IShootable {
     private Animation _animations;
     private SphereCollider _collider;
     private Rigidbody _rb;
-    
     private bool _isDead = false;
     
     public void Start() {
@@ -60,22 +64,20 @@ public class DuckController : MonoBehaviour, IShootable {
         
     public void OnHit() {
         HP--;
-        Debug.Log($"{name} hit");
-        
-        if (HP <= 0) {
-            Debug.Log($"{name} killed");
-            //Add noPoints to score
-            _isDead = true;
-            StartCoroutine(nameof(Die));
-        }
+        StopCoroutine(nameof(PlayHitAnimation));
+        StartCoroutine(nameof(PlayHitAnimation));
     }
     
     private void Update() {
-        if (!_isDead) {
+        
+        if (HP <= 0) 
+            _state = State.DEAD;
+
+        if(!_isDead){
             
             if (escapeTime <= 0)
                 _state = State.FLEEING;
-            
+
             switch (_state) {
                 case State.FLYING:
                     FlyAround();
@@ -88,6 +90,10 @@ public class DuckController : MonoBehaviour, IShootable {
                         _target = new Vector3(transform.position.x, minMaxY.max, transform.position.z);
                     }
                     FlyToTarget();
+                    break;
+                
+                case State.DEAD:
+                    StartCoroutine(nameof(Die));
                     break;
             }
         }
@@ -118,13 +124,36 @@ public class DuckController : MonoBehaviour, IShootable {
         return new Vector3(dirX, dirY, transform.position.z);
     }
 
-    private IEnumerator Die() {
-        _collider.enabled = false;
+    private IEnumerator PlayHitAnimation() {
         _animations.Play("inAirDeath");
         yield return new WaitForSeconds(_animations["inAirDeath"].length);
         
-        _animations.Play("falling");
-        _rb.useGravity = true;
+        _animations.Play("fly");
+        yield return null;
+    }
+    
+    private IEnumerator Die() {
+        _isDead = true;
+        _collider.enabled = false;
+        transform.position = transform.position;
+        
+        if (isPg13) {
+            _animations.Play("inAirDeath");
+            yield return new WaitForSeconds(_animations["inAirDeath"].length);
+        
+            _animations.Play("falling");
+            _rb.useGravity = true;
+        }
+        else {
+            foreach (Transform child in transform) {
+                if(!child.name.Contains("Explosion"))
+                    child.gameObject.SetActive(false);
+            }
+            
+            particleBurst.Play();
+            _rb.useGravity = true;
+        }
+        
         yield return null;
     }
 }

@@ -30,7 +30,7 @@ public class DuckSpawner : MonoBehaviour {
             duckParent = new GameObject("Spawned Ducks").transform;
         }
         
-        SpawnDuck();
+        //SpawnDuck();
     }
     
     private void Update() {
