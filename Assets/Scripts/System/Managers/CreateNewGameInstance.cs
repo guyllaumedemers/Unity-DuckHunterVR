@@ -22,4 +22,6 @@ public class CreateNewGameInstance
     }
     [JsonIgnore]
     public ScorePoints GetScores { get => scorePoints; set { scorePoints = value; } }
+    [JsonIgnore]
+    public GameManagerScript.GameMode GetGameMode { get => gameMode; set { gameMode = value; } }
 }

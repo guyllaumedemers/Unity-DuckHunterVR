@@ -1,1 +1,3 @@
-{"gameMode":0,"scorePoints":{"points":10}}{"gameMode":0,"scorePoints":{"points":30}}
+{"gameMode":0,"scorePoints":{"points":20}}
+{"gameMode":0,"scorePoints":{"points":10}}
+{"gameMode":0,"scorePoints":{"points":40}}

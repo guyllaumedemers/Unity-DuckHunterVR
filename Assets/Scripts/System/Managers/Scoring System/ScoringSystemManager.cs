@@ -29,11 +29,6 @@ public class ScoringSystemManager : MonoBehaviour
         textMeshProUGUI = GameObject.FindGameObjectWithTag("Score").GetComponent<TextMeshProUGUI>();
     }
 
-    public void Start()
-    {
-        //Serialization.Load(Serialization.GetPath);
-    }
-
     public void Update()
     {
         if (isActive)
