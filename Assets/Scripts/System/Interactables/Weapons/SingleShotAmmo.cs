@@ -24,7 +24,7 @@ public class SingleShotAmmo : BaseWeapon
 
             int ammoNeeded = MaxAmmo - CurrentAmmo;
 
-            if (ammoNeeded > 0)
+            if (ammoNeeded > 0 && CurrentAmmoContainer.CurrentAmmo > 0)
             {
                 if (AudioSource.clip != ReloadSound)
                     AudioSource.clip = ReloadSound;
