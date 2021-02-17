@@ -19,8 +19,7 @@ public class DuckController : MonoBehaviour, IShootable {
 
     private enum State {
         FLYING,
-        FLEEING,
-        //DEAD
+        FLEEING
     }
     
     [Header("Score points")]
@@ -33,7 +32,7 @@ public class DuckController : MonoBehaviour, IShootable {
     public float escapeTime = 10f;
     [Header("Random Up Height increase")]
     public MinMax heighRangeIncrease = new MinMax(1f, 1.5f);
-    [Header("GameObject Heights limit")]
+    [Header("GameObject Height limits")]
     public MinMax minMaxY = new MinMax(-1f, 10f);
     
     [HideInInspector]
@@ -66,7 +65,6 @@ public class DuckController : MonoBehaviour, IShootable {
         if (HP <= 0) {
             Debug.Log($"{name} killed");
             //Add noPoints to score
-            //_state = State.DEAD;
             _isDead = true;
             StartCoroutine(nameof(Die));
         }
@@ -75,7 +73,7 @@ public class DuckController : MonoBehaviour, IShootable {
     private void Update() {
         if (!_isDead) {
             
-            if (escapeTime <= 0) //&& _state != State.FLEEING)
+            if (escapeTime <= 0)
                 _state = State.FLEEING;
             
             switch (_state) {
@@ -91,18 +89,13 @@ public class DuckController : MonoBehaviour, IShootable {
                     }
                     FlyToTarget();
                     break;
-                
-                //case State.DEAD:
-                //    _isDead = true;
-                //    break;
             }
         }
     }
     
     private void FixedUpdate() {
-        if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max) {
+        if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max)
             Destroy(gameObject);
-        }
     }
     
     private void FlyAround() {
