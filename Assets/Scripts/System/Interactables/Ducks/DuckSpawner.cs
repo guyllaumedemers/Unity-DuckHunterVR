@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DuckSpawner : MonoBehaviour {
@@ -8,7 +9,7 @@ public class DuckSpawner : MonoBehaviour {
     [Header("Rate of instantiation")]
     public float spawnRate = 5f;
     [Header("Model used to instantiate")]
-    public GameObject duckModel;
+    public GameObject[] duckModels;
     [Header("Duck Parent Transform")] 
     public Transform duckParent;
     
@@ -18,9 +19,9 @@ public class DuckSpawner : MonoBehaviour {
 
         nextSpawn = spawnRate;
         
-        if (duckModel == null) {
+        if (duckModels == null) {
             Debug.Log("No duck model provided, using default model");
-            duckModel = Resources.Load("Prefabs/Ducks/DuckCapsule") as GameObject;
+            duckModels[0] = Resources.Load("Prefabs/Ducks/DuckCapsule") as GameObject;
         }
 
         if (duckParent == null) {
@@ -30,7 +31,7 @@ public class DuckSpawner : MonoBehaviour {
         
         SpawnDuck();
     }
-
+    
     private void Update() {
         if (Time.time > nextSpawn) {
             nextSpawn = Time.time + spawnRate;
@@ -43,8 +44,9 @@ public class DuckSpawner : MonoBehaviour {
                                                               size.y,
                                                               Random.Range(-size.z / 2, size.z / 2));
         
-        GameObject duck = Instantiate(duckModel, spawnPoint, Quaternion.identity);
-        duck.GetComponent<DuckController>().spawnZone = new Vector2(transform.position.x + (-size.x / 2), transform.position.x + size.x / 2);
+        GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], spawnPoint, Quaternion.identity);
+        
+        duck.GetComponent<DuckController>().spawnSize = transform.position.x + (size.x / 2);
         duck.transform.SetParent(duckParent);
     }
     

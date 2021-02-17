@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4505494984801924605}
   - component: {fileID: -1831348676418516727}
   m_Layer: 9
-  m_Name: DUCK
+  m_Name: FAT DUCK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 792752698029093541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: -2.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 6218599250896083574}
   - {fileID: 6268173440065698673}
@@ -206,13 +206,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc98f1d6f6533e439eea0a9a0d05765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noPoints: 1
-  flightSpeed: 1
+  noPoints: 2
+  HP: 2
+  flightSpeed: 2
   escapeTime: 10
   minMaxY:
     min: -1
     max: 10
-  heighRange:
+  heighRangeIncrease:
     min: 1
     max: 1.5
   spawnSize: 0
