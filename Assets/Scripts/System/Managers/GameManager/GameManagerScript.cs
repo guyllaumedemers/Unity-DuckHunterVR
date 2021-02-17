@@ -34,7 +34,7 @@ public class GameManagerScript : MonoBehaviour
     {
         instance = this;
         mode = GameMode.REGULAR_MODE;
-        isRunning = true;
+        isRunning = false;
         isRoundLaunch = false;
     }
 

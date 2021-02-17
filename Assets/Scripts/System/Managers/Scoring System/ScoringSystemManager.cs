@@ -7,7 +7,6 @@ public class ScoringSystemManager : MonoBehaviour
 {
     private TextMeshProUGUI textMeshProUGUI;
     private CreateNewGameInstance newGame;
-    private bool isActive = false;
     #region Singleton
     private static ScoringSystemManager instance;
     private ScoringSystemManager() { }
@@ -31,7 +30,7 @@ public class ScoringSystemManager : MonoBehaviour
 
     public void Update()
     {
-        if (isActive)
+        if (GameManagerScript.Instance.GetGameState)
         {
             textMeshProUGUI.text = newGame.GetScores.GetPoints.ToString();
         }
@@ -40,7 +39,6 @@ public class ScoringSystemManager : MonoBehaviour
     public void InstanciateNewGameInstance()
     {
         newGame = new CreateNewGameInstance();
-        isActive = true;
         StartCoroutine(AddPointCoroutine());
     }
 
@@ -48,7 +46,6 @@ public class ScoringSystemManager : MonoBehaviour
     {
         newGame = new CreateNewGameInstance();
         newGame = null;
-        isActive = false;
     }
 
     /// <summary>
@@ -77,7 +74,7 @@ public class ScoringSystemManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator AddPointCoroutine()
     {
-        while (isActive && newGame != null)
+        while (GameManagerScript.Instance.GetGameState && newGame != null)
         {
             yield return new WaitForSeconds(3.0f);
             AddPoints(newGame, 10);

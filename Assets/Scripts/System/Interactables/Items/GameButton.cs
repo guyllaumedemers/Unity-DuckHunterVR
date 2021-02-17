@@ -20,16 +20,18 @@ public class GameButton : MonoBehaviour
 
     public void UpdateButton()
     {
-        isRunning = !isRunning;
+        GameManagerScript.Instance.GetGameState = !GameManagerScript.Instance.GetGameState;
         animation.Play("PushButton");
         SwapText();
-        if (isRunning)
+        if (GameManagerScript.Instance.GetGameState)
         {
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
             return;
         }
         Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
         ScoringSystemManager.Instance.DestroyGameInstance();
+        // reset the RoundStatus so the player can set a new GameMode => set to false since when the instance is active the update method of the clipboard set it to true
+        GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
     }
 
     public void SwapText()
@@ -43,5 +45,4 @@ public class GameButton : MonoBehaviour
             textMeshProUGUI.text = stop;
         }
     }
-
 }

@@ -24,9 +24,12 @@ public class ClipboardInteractionScript : MonoBehaviour
         if (!GameManagerScript.Instance.GetRoundStatus)
         {
             SetGameMode((GameManagerScript.GameMode)GetIndexWithToggleIsOnActive());
-            // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
-            // but for now its fine with setting only once
-            GameManagerScript.Instance.GetRoundStatus = true;
+            if (ScoringSystemManager.Instance.GetGameInstance != null)
+            {
+                // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
+                // but for now its fine with setting only once
+                GameManagerScript.Instance.GetRoundStatus = true;
+            }
         }
     }
 
