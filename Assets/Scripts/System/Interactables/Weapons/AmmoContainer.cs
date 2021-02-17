@@ -24,7 +24,7 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
 
     void Update()
     {
-        if (!MagazineCanLoad && CurrentAmmo > 0)
+       if (!MagazineCanLoad && CurrentAmmo > 0)
         {
             if (Time.time >= TimeBeforeCanLoad)
             {
@@ -33,6 +33,11 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
         }
         else if (!MagazineCanLoad && CurrentAmmo == 0 || !IsMagazine && CurrentAmmo == 0)
         {
+            GrabInteractable.onFirstHoverEntered.RemoveAllListeners();
+            GrabInteractable.onLastHoverExited.RemoveAllListeners();
+            GrabInteractable.onSelectEntered.RemoveAllListeners();
+            GrabInteractable.onSelectExited.RemoveAllListeners();
+
             Destroy(this.gameObject, 3f);
         }
     }

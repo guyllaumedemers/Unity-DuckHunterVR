@@ -5,13 +5,13 @@ using UnityEngine.Serialization;
 
 public class SelectionOutline : MonoBehaviour
 {
-    private MeshRenderer _meshRenderer;
+    public MeshRenderer _meshRenderer;
     private Color _originalColor;
     private bool _isSelected;
 
     private void Start()
-    {
-        _isSelected = false;
+    {        
+        _isSelected = false;        
         _meshRenderer = GetComponent<MeshRenderer>();
         _originalColor = _meshRenderer.material.color;
     }
