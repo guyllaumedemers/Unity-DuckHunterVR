@@ -64,20 +64,23 @@ public class DuckController : MonoBehaviour, IShootable {
         
     public void OnHit() {
         HP--;
-        StopCoroutine(nameof(PlayHitAnimation));
-        StartCoroutine(nameof(PlayHitAnimation));
+        StopCoroutine(nameof(PlayHitAnimations));
+        StartCoroutine(nameof(PlayHitAnimations));
     }
     
     private void Update() {
         
-        if (HP <= 0) 
+        if (HP <= 0 && !_isDead) 
             _state = State.DEAD;
 
         if(!_isDead){
-            
-            if (escapeTime <= 0)
-                _state = State.FLEEING;
 
+            if (escapeTime <= 0 && _state != State.FLEEING) {
+                _collider.enabled = false;
+                _target = new Vector3(transform.position.x, minMaxY.max, transform.position.z);
+                _state = State.FLEEING;
+            }
+            
             switch (_state) {
                 case State.FLYING:
                     FlyAround();
@@ -85,10 +88,6 @@ public class DuckController : MonoBehaviour, IShootable {
                     break;
                 
                 case State.FLEEING:
-                    if (_collider.enabled) {
-                        _collider.enabled = false;
-                        _target = new Vector3(transform.position.x, minMaxY.max, transform.position.z);
-                    }
                     FlyToTarget();
                     break;
                 
@@ -124,7 +123,7 @@ public class DuckController : MonoBehaviour, IShootable {
         return new Vector3(dirX, dirY, transform.position.z);
     }
 
-    private IEnumerator PlayHitAnimation() {
+    private IEnumerator PlayHitAnimations() {
         _animations.Play("inAirDeath");
         yield return new WaitForSeconds(_animations["inAirDeath"].length);
         
@@ -142,7 +141,6 @@ public class DuckController : MonoBehaviour, IShootable {
             yield return new WaitForSeconds(_animations["inAirDeath"].length);
         
             _animations.Play("falling");
-            _rb.useGravity = true;
         }
         else {
             foreach (Transform child in transform) {
@@ -151,9 +149,9 @@ public class DuckController : MonoBehaviour, IShootable {
             }
             
             particleBurst.Play();
-            _rb.useGravity = true;
         }
         
+        _rb.useGravity = true;
         yield return null;
     }
 }
