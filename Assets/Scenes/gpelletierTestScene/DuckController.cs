@@ -20,7 +20,7 @@ public class DuckController : MonoBehaviour, IShootable {
     private enum State {
         FLYING,
         FLEEING,
-        DEAD
+        //DEAD
     }
     
     [Header("Score points")]
@@ -65,7 +65,8 @@ public class DuckController : MonoBehaviour, IShootable {
         if (HP <= 0) {
             Debug.Log($"{name} killed");
             //Add noPoints to score
-            _state = State.DEAD;
+            //_state = State.DEAD;
+            _isDead = true;
             StartCoroutine(nameof(Die));
         }
     }
@@ -73,7 +74,7 @@ public class DuckController : MonoBehaviour, IShootable {
     private void Update() {
         if (!_isDead) {
             
-            if (escapeTime > 0 && _state != State.FLEEING)
+            if (escapeTime >= 0) //&& _state != State.FLEEING)
                 _state = State.FLEEING;
             
             switch (_state) {
@@ -90,9 +91,9 @@ public class DuckController : MonoBehaviour, IShootable {
                     FlyToTarget();
                     break;
                 
-                case State.DEAD:
-                    _isDead = true;
-                    break;
+                //case State.DEAD:
+                //    _isDead = true;
+                //    break;
             }
         }
     }
@@ -116,7 +117,7 @@ public class DuckController : MonoBehaviour, IShootable {
     
     private Vector3 GetRandomPosUp() {
         float x = Random.Range(0, spawnSize);
-        float dirX = transform.position.x > 0 ? -x : x;
+        float dirX = transform.position.x >= 0 ? -x : x;
         float dirY = transform.position.y + Random.Range(heighRangeIncrease.min, heighRangeIncrease.max);
         
         Vector3 pos = new Vector3(dirX, dirY, transform.position.z);
