@@ -31,7 +31,7 @@ public class ScoringSystemManager : MonoBehaviour
 
     public void Start()
     {
-        Serialization.Load(Serialization.GetPath);
+        //Serialization.Load(Serialization.GetPath);
     }
 
     public void Update()

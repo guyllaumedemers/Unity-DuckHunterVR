@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
 
 public class Serialization
 {
@@ -12,15 +14,36 @@ public class Serialization
     /// <param name="instance"></param>
     public static void SaveFile(CreateNewGameInstance instance, string path)
     {
-        try
+        //OPTION 1
+        //FileStream fileStream;
+        //if (!File.Exists(path))
+        //{
+        //    fileStream = new FileStream(path, FileMode.Create);
+        //}
+        //fileStream = new FileStream(path, FileMode.Append);
+        //BinaryFormatter binaryFormatter = new BinaryFormatter();
+        //binaryFormatter.Serialize(fileStream, instance);
+        //fileStream.Close();
+
+        //OPTION 2
+        //string json = JsonUtility.ToJson(instance);
+        //File.AppendAllText(path, json);
+
+        //OPTION 3
+        JsonSerializer jsonSerializer = new JsonSerializer();
+        FileStream fileStream;
+        if (!File.Exists(path))
         {
-            string json = JsonUtility.ToJson(instance);
-            File.AppendAllText(path, json);
+            fileStream = new FileStream(path, FileMode.Create);
         }
-        catch (ArgumentNullException e)
+        else
         {
-            Debug.Log("Argument Null Exception : " + e.Message);
+            fileStream = new FileStream(path, FileMode.Append);
         }
+        StreamWriter streamWriter = new StreamWriter(fileStream);
+        jsonSerializer.Serialize(streamWriter, instance);
+        streamWriter.Close();
+        fileStream.Close();
     }
 
     /// <summary>
@@ -28,13 +51,7 @@ public class Serialization
     /// </summary>
     public static List<CreateNewGameInstance> Load(string path)
     {
-        List<CreateNewGameInstance> games = new List<CreateNewGameInstance>();
-        string[] strings = File.ReadAllLines(path);
-        foreach (string s in strings)
-        {
-            games.Add(JsonUtility.FromJson<CreateNewGameInstance>(s));
-        }
-        return games;
+        return null;
     }
 
     public static string GetPath { get => path; set { path = value; } }

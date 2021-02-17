@@ -30,18 +30,6 @@ public class ClipboardInteractionScript : MonoBehaviour
         }
     }
 
-    public void SetGameMode(GameManagerScript.GameMode mode)
-    {
-        try
-        {
-            GameManagerScript.Instance.GetCurrentMode = mode;
-        }
-        catch (System.IndexOutOfRangeException e)
-        {
-            Debug.Log("" + e.Message);
-        }
-    }
-
     public void ActivateRegularModeOnAwake()
     {
         Toggle regularModeToggle = GameObject.FindGameObjectWithTag("RegularMode").GetComponent<Toggle>();
@@ -70,6 +58,18 @@ public class ClipboardInteractionScript : MonoBehaviour
             }
         }
         return index;
+    }
+
+    public void SetGameMode(GameManagerScript.GameMode mode)
+    {
+        try
+        {
+            GameManagerScript.Instance.GetCurrentMode = mode;
+        }
+        catch (System.IndexOutOfRangeException e)
+        {
+            Debug.Log("" + e.Message);
+        }
     }
 
     void ToggleValueChanged(Toggle toggle)

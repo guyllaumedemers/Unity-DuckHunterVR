@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class CreateNewGameInstance
 {
-    private string gameModeString;
+    [JsonProperty]
+    private GameManagerScript.GameMode gameMode;
+    [JsonProperty]
     private ScorePoints scorePoints;
     /// <summary>
     /// Need to add a Round -> so the instance can retrieve the information 
@@ -14,9 +17,9 @@ public class CreateNewGameInstance
     /// <param name="points"></param>
     public CreateNewGameInstance()
     {
-        gameModeString = GameManagerScript.Instance.GetCurrentMode.ToString();
+        gameMode = GameManagerScript.Instance.GetCurrentMode;
         scorePoints = new ScorePoints();
     }
-
+    [JsonIgnore]
     public ScorePoints GetScores { get => scorePoints; set { scorePoints = value; } }
 }
