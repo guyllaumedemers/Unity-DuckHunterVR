@@ -23,12 +23,18 @@ public class DuckController : MonoBehaviour, IShootable {
         DEAD
     }
     
+    [Header("Score points")]
     public float noPoints = 1f;
+    [Header("Health Points")]
     public float HP = 1f;
+    [Header("Flight Speed Velocity")]
     public float flightSpeed = 1f;
+    [Header("Time to escape")]
     public float escapeTime = 10f;
-    public MinMax minMaxY = new MinMax(-1f, 10f);
+    [Header("Random Up Height increase")]
     public MinMax heighRangeIncrease = new MinMax(1f, 1.5f);
+    [Header("GameObject Heights limit")]
+    public MinMax minMaxY = new MinMax(-1f, 10f);
     
     [HideInInspector]
     public float spawnSize;
