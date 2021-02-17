@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1588168803}
   - component: {fileID: 8922074623087994923}
   - component: {fileID: 6072887530505281559}
+  - component: {fileID: 331406305}
   m_Layer: 6
   m_Name: SubmachineGun
   m_TagString: Untagged
@@ -226,7 +227,19 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_OnFirstHoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 331406305}
+        m_TargetAssemblyTypeName: SelectionOutline, Assembly-CSharp
+        m_MethodName: Highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -235,7 +248,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnLastHoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 331406305}
+        m_TargetAssemblyTypeName: SelectionOutline, Assembly-CSharp
+        m_MethodName: RemoveHighlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls:
@@ -516,6 +541,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.025, y: 0.08, z: 0}
   m_Center: {x: 0, y: -0.045, z: 0.01}
+--- !u!114 &331406305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663602418926643862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300dbd790ea02b94ea5eff2405701fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1619054751652948218
 GameObject:
   m_ObjectHideFlags: 0
