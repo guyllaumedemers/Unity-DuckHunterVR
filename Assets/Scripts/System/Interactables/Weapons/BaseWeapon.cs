@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.Events;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
@@ -20,8 +22,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public GameObject CurrentMagazine { get; set; }
     [field: SerializeField] public AmmoContainer CurrentAmmoContainer { get; set; }
     [field: SerializeField] public LayerMask GunHitLayers { get; set; }
-    [field: SerializeField] public AudioClip ShootingSound { get; set; }
-    [field: SerializeField] public AudioClip ReloadSound { get; set; }
+    public AudioClip ShootingSound { get; set; }
+    public AudioClip ReloadSound { get; set; }
     [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
 
     void Start()
@@ -137,6 +139,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (CurrentMagazine != null)
         {
+            //MeshRenderer mesh = CurrentMagazine.GetComponent<MeshRenderer>();
+
+            
+
             CurrentAmmoContainer.MagazineCanLoad = false;
             CurrentAmmoContainer.TimeBeforeCanLoad = Time.time + CurrentAmmoContainer.TimeCanLoad;
 
@@ -150,6 +156,17 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
             CurrentAmmoContainer.Rigidbody.useGravity = true;
 
             CurrentAmmoContainer.GrabInteractable = CurrentAmmoContainer.gameObject.AddComponent<XRGrabInteractable>();
+
+            CurrentAmmoContainer.GrabInteractable.movementType = XRGrabInteractable.MovementType.VelocityTracking;
+
+            SelectionOutline selectionOutline = CurrentAmmoContainer.gameObject.GetComponent<SelectionOutline>();
+
+            CurrentAmmoContainer.GrabInteractable.onFirstHoverEntered.AddListener(delegate { selectionOutline.Highlight(); });
+            CurrentAmmoContainer.GrabInteractable.onLastHoverExited.AddListener(delegate { selectionOutline.RemoveHighlight(); });
+            CurrentAmmoContainer.GrabInteractable.onSelectEntered.AddListener(delegate { selectionOutline.IsSelected(); });
+            CurrentAmmoContainer.GrabInteractable.onSelectExited.AddListener(delegate { selectionOutline.IsNotSelected(); });
+
+
             CurrentAmmoContainer.GrabInteractable.attachTransform = CurrentMagazine.gameObject.transform.GetChild(0);
 
             CurrentMagazine = null;
