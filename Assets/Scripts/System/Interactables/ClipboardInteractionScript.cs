@@ -24,21 +24,12 @@ public class ClipboardInteractionScript : MonoBehaviour
         if (!GameManagerScript.Instance.GetRoundStatus)
         {
             SetGameMode((GameManagerScript.GameMode)GetIndexWithToggleIsOnActive());
-            // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
-            // but for now its fine with setting only once
-            GameManagerScript.Instance.GetRoundStatus = true;
-        }
-    }
-
-    public void SetGameMode(GameManagerScript.GameMode mode)
-    {
-        try
-        {
-            GameManagerScript.Instance.GetCurrentMode = mode;
-        }
-        catch (System.IndexOutOfRangeException e)
-        {
-            Debug.Log("" + e.Message);
+            if (ScoringSystemManager.Instance.GetGameInstance != null)
+            {
+                // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
+                // but for now its fine with setting only once
+                GameManagerScript.Instance.GetRoundStatus = true;
+            }
         }
     }
 
@@ -70,6 +61,18 @@ public class ClipboardInteractionScript : MonoBehaviour
             }
         }
         return index;
+    }
+
+    public void SetGameMode(GameManagerScript.GameMode mode)
+    {
+        try
+        {
+            GameManagerScript.Instance.GetCurrentMode = mode;
+        }
+        catch (System.IndexOutOfRangeException e)
+        {
+            Debug.Log("" + e.Message);
+        }
     }
 
     void ToggleValueChanged(Toggle toggle)
