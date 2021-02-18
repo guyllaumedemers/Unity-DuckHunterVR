@@ -8,7 +8,7 @@ public class GameManagerScript : MonoBehaviour
     public enum GameMode
     {
         REGULAR_MODE,
-        TIMED_ROUND,
+        TIMED_MODE,
         CHALLENGE_MODE
     }
     #region Singleton
