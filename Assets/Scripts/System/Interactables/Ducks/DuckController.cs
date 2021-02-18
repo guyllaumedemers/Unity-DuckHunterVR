@@ -42,8 +42,6 @@ public class DuckController : MonoBehaviour, IShootable {
     
     [HideInInspector]
     public Vector3 spawnSize;
-    [HideInInspector]
-    public DuckSpawner duckSpawner;
     
     [SerializeField][Header("State of Duck")]
     private State _state;
@@ -61,7 +59,7 @@ public class DuckController : MonoBehaviour, IShootable {
         _animations.Play("fly");
         _target = GetRandomPosUp();
         
-        minMaxY.max += duckSpawner.size.y;
+        minMaxY.max += spawnSize.y;
         
         _isDead = false;
         _state = State.FLYING;
@@ -106,7 +104,6 @@ public class DuckController : MonoBehaviour, IShootable {
     private void FixedUpdate() {
         if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max) {
             Destroy(gameObject);
-            duckSpawner.DoSpawnDuck = true;
         }
     }
     
