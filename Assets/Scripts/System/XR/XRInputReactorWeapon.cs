@@ -12,11 +12,23 @@ public class XRInputReactorWeapon : MonoBehaviour
     private bool _primaryIsPressed = false, _secondaryIsPressed = false, _triggerIsPressed = false;
 
     private IWeapon _iWeapon;
+    private SelectionOutline _selectionOutline;
 
     private void Start()
     {
         _iWeapon = (IWeapon)GetComponent(typeof(IWeapon));
-        _xRGrabInteractable = GetComponent<XRGrabInteractable>();       
+        _xRGrabInteractable = GetComponent<XRGrabInteractable>();
+
+        if (gameObject.GetComponent<SelectionOutline>() != null)
+            _selectionOutline = GetComponent<SelectionOutline>();
+    }
+
+    private void Update()
+    {
+        if (_xRInputWatcher != null)
+        {
+            _selectionOutline.RemoveHighlight();
+        }
     }
 
     public void onPrimaryButtonEvent(bool pressed)
@@ -47,10 +59,10 @@ public class XRInputReactorWeapon : MonoBehaviour
     public void onTriggerButtonEvent(bool pressed)
     {
         _triggerIsPressed = pressed;
-        
+
         if (pressed)
         {
-            if(_iWeapon.RateOfFire > 0)
+            if (_iWeapon.ReactorTriggerShoot)
             {
                 _iWeapon.Shoot();
             }
@@ -59,6 +71,9 @@ public class XRInputReactorWeapon : MonoBehaviour
 
     public void AssignWatcher()
     {
+        if (_selectionOutline != null)
+            _selectionOutline.RemoveHighlight();
+
         XRBaseInteractor xRBaseInteractor = _xRGrabInteractable.selectingInteractor;
         _xRInputWatcher = GameObject.Find(xRBaseInteractor.gameObject.name).GetComponent<XRInputWatcher>();
 
@@ -69,6 +84,9 @@ public class XRInputReactorWeapon : MonoBehaviour
 
     public void ClearWatcher()
     {
+        if (_selectionOutline != null)
+            _selectionOutline.Highlight();
+
         _xRInputWatcher.primaryButtonPressEvent.RemoveAllListeners();
         _xRInputWatcher.secondaryButtonPressEvent.RemoveAllListeners();
         _xRInputWatcher.triggerButtonPressEvent.RemoveAllListeners();

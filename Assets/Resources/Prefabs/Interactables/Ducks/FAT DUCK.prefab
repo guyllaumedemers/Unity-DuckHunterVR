@@ -1,0 +1,1351 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &128473648849475239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2951479802233253189}
+  m_Layer: 0
+  m_Name: DUCK_ Tail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2951479802233253189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128473648849475239}
+  m_LocalRotation: {x: 4.5277607e-14, y: -0.0000027725678, z: 0.9996279, w: 0.027278172}
+  m_LocalPosition: {x: 0.036385097, y: -0.043778505, z: -0.00000012075039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8956069712884902573}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0.00031759465, y: -0.0000086666205, z: 176.87375}
+--- !u!1 &296642079708125921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9142848384021519640}
+  m_Layer: 0
+  m_Name: DUCK_ L HorseLink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9142848384021519640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296642079708125921}
+  m_LocalRotation: {x: -0.000000010330337, y: -0.000000008584604, z: -0.28540462,
+    w: 0.95840716}
+  m_LocalPosition: {x: -0.033333622, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 3905093465542083150}
+  m_Father: {fileID: 1742826598601614960}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000014152921, y: -0.0000006049539, z: -33.16607}
+--- !u!1 &761043228988286675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8643168624618026981}
+  m_Layer: 0
+  m_Name: DUCK_ L Thigh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8643168624618026981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761043228988286675}
+  m_LocalRotation: {x: 0.7236588, y: -0.6878019, z: -0.037352297, w: -0.043028545}
+  m_LocalPosition: {x: 0.026054578, y: -0.011765499, z: 0.031022405}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1742826598601614960}
+  m_Father: {fileID: 8956069712884902573}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -6.526222, y: 179.70416, z: -92.8936}
+--- !u!1 &792752698029093541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4421186524110340278}
+  - component: {fileID: 5227488771633364269}
+  - component: {fileID: 8656342305253288874}
+  - component: {fileID: 4505494984801924605}
+  - component: {fileID: -1831348676418516727}
+  m_Layer: 9
+  m_Name: FAT DUCK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4421186524110340278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792752698029093541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_Children:
+  - {fileID: 6218599250896083574}
+  - {fileID: 6268173440065698673}
+  - {fileID: 9179317134330424764}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &5227488771633364269
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792752698029093541}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 1827226128182048838, guid: 87c1bc94ef6d51544a2da73c65d192ee,
+    type: 3}
+  m_Animations:
+  - {fileID: 1827226128182048838, guid: 8e45344d7827cf840a203a1dfc78f01f, type: 3}
+  - {fileID: 1827226128182048838, guid: 7ea0f25fa8103cb4390e982fbc2e7a0f, type: 3}
+  - {fileID: 1827226128182048838, guid: 2b665d52ffd6d84459dfc154596e245c, type: 3}
+  - {fileID: 1827226128182048838, guid: cae42d86d7ce3e245849345ef3e9d37a, type: 3}
+  - {fileID: 1827226128182048838, guid: 87c1bc94ef6d51544a2da73c65d192ee, type: 3}
+  - {fileID: 1827226128182048838, guid: d0fc439f4738a164089476079c95b86f, type: 3}
+  - {fileID: 1827226128182048838, guid: 1254ee6bba45f85418977520676bc015, type: 3}
+  - {fileID: 1827226128182048838, guid: f69c5d1880ccf7d4f922911914b4b7ca, type: 3}
+  - {fileID: 1827226128182048838, guid: 1c2841b802293f0429fbd2c777b57ce3, type: 3}
+  - {fileID: 1827226128182048838, guid: 75098065b95638341aca9fe9b05f8b58, type: 3}
+  - {fileID: 1827226128182048838, guid: 1d0742ad4a860f8488995ec324231197, type: 3}
+  - {fileID: 1827226128182048838, guid: ee08f39e9bd44b54d9ac1e67efaf9b85, type: 3}
+  - {fileID: 1827226128182048838, guid: 0461a3cf88684b848b61d0c82b7854ae, type: 3}
+  - {fileID: 1827226128182048838, guid: d2d092cce4fb56841a929a07315a518f, type: 3}
+  - {fileID: 1827226128182048838, guid: 56a0d7454d0c00545afb33230470dcb4, type: 3}
+  - {fileID: 1827226128182048838, guid: 177a0886b0570754ba7b438f2aaff5ed, type: 3}
+  - {fileID: 1827226128182048838, guid: 49f0fc7a5a94aca4f9e066f36a1deb0c, type: 3}
+  - {fileID: 1827226128182048838, guid: ca9a406a5502d004f93f7bd72355cbdc, type: 3}
+  - {fileID: 1827226128182048838, guid: c761079671b6b334d84faa702b34f709, type: 3}
+  - {fileID: 1827226128182048838, guid: dcee14b99844dcd4a96bccbbc6c100c9, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 1
+--- !u!135 &8656342305253288874
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792752698029093541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.21296105
+  m_Center: {x: 0, y: 0.22, z: 0.01296106}
+--- !u!54 &4505494984801924605
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792752698029093541}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-1831348676418516727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792752698029093541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc98f1d6f6533e439eea0a9a0d05765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPg13: 0
+  particleBurst: {fileID: 9179317134330424767}
+  noPoints: 2
+  HP: 2
+  flightSpeed: 1
+  escapeTime: 30
+  heighRangeIncrease:
+    min: 1
+    max: 1.5
+  minMaxY:
+    min: -1
+    max: 5
+  spawnSize: {x: 0, y: 0, z: 0}
+  duckSpawner: {fileID: 0}
+  _state: 0
+--- !u!1 &1007829389555940674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175192572860243507}
+  m_Layer: 0
+  m_Name: DUCK_ Pelvis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175192572860243507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007829389555940674}
+  m_LocalRotation: {x: -0.49999967, y: 0.50000036, z: 0.49999967, w: 0.50000036}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8956069712884902573}
+  - {fileID: 206646771334148891}
+  - {fileID: 4318535835425080981}
+  m_Father: {fileID: 6268173440065698673}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+--- !u!1 &1094304047974554204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8892656485214300191}
+  m_Layer: 0
+  m_Name: DUCK_ R Toe01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8892656485214300191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094304047974554204}
+  m_LocalRotation: {x: 3.5527137e-15, y: 3.091971e-14, z: -1.0984888e-28, w: 1}
+  m_LocalPosition: {x: -0.0138142025, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2955994605615885807}
+  m_Father: {fileID: 3590775338820317540}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 4.0711098e-13, y: 3.5431378e-12, z: 0}
+--- !u!1 &1585351463156055994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6218599250896083574}
+  - component: {fileID: 4871892497777777445}
+  m_Layer: 0
+  m_Name: DUCK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6218599250896083574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585351463156055994}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4421186524110340278}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &4871892497777777445
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585351463156055994}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f39bc9da687584d43b884bab6d4fd27b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: 8e45344d7827cf840a203a1dfc78f01f, type: 3}
+  m_Bones:
+  - {fileID: 7573490697316223552}
+  - {fileID: 7037618439915968916}
+  - {fileID: 3995941913445028961}
+  - {fileID: 8956069712884902573}
+  - {fileID: 2472268108976183831}
+  - {fileID: 1296114110762893966}
+  - {fileID: 2951479802233253189}
+  - {fileID: 206646771334148891}
+  - {fileID: 4318535835425080981}
+  - {fileID: 1175192572860243507}
+  - {fileID: 7205338076429489257}
+  - {fileID: 2955305827529467910}
+  - {fileID: 9142848384021519640}
+  - {fileID: 2955994605615885807}
+  - {fileID: 1742826598601614960}
+  - {fileID: 3204306114563350710}
+  - {fileID: 2812824315795767295}
+  - {fileID: 629647673866330931}
+  - {fileID: 8892656485214300191}
+  - {fileID: 4153181057475148181}
+  - {fileID: 8643168624618026981}
+  - {fileID: 3736728909777372518}
+  - {fileID: 5130186565365997329}
+  - {fileID: 4985129325261995626}
+  - {fileID: 3905093465542083150}
+  - {fileID: 3590775338820317540}
+  - {fileID: 4704415765471176067}
+  - {fileID: 1928261185461481797}
+  - {fileID: 7425952575993802029}
+  - {fileID: 4434196313265138263}
+  - {fileID: 6745979184131557018}
+  - {fileID: 8486255784435298080}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 1175192572860243507}
+  m_AABB:
+    m_Center: {x: 0.03553666, y: -0.050755277, z: 0.00000025331974}
+    m_Extent: {x: 0.32558006, y: 0.4332577, z: 0.48098785}
+  m_DirtyAABB: 0
+--- !u!1 &2476503010392484681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6268173440065698673}
+  m_Layer: 0
+  m_Name: DUCK_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6268173440065698673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476503010392484681}
+  m_LocalRotation: {x: -0.15304625, y: 0.1530456, z: 0.6903455, w: 0.6903456}
+  m_LocalPosition: {x: -0, y: 0.121861674, z: -0.024}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 1175192572860243507}
+  m_Father: {fileID: 4421186524110340278}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -24.999996, y: -0.00005369599, z: 90}
+--- !u!1 &2546877617223375588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2472268108976183831}
+  m_Layer: 0
+  m_Name: DUCK_ Neck1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2472268108976183831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2546877617223375588}
+  m_LocalRotation: {x: -6.4928226e-14, y: -0.000000024350388, z: 0.008779328, w: 0.9999615}
+  m_LocalPosition: {x: -0.022627143, y: -0.000018043518, z: -5.000402e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3995941913445028961}
+  m_Father: {fileID: 1296114110762893966}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.000000024489948, y: -0.0000027902408, z: 1.0060498}
+--- !u!1 &2749115285601445590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7037618439915968916}
+  m_Layer: 0
+  m_Name: DUCK_ Queue de cheval 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7037618439915968916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749115285601445590}
+  m_LocalRotation: {x: 1.2807458e-12, y: 0.0000016468533, z: -0.5937607, w: 0.8046417}
+  m_LocalPosition: {x: -0.016000442, y: 0.035434995, z: 0.000000038779763}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7573490697316223552}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00011205196, y: 0.00015184823, z: -72.84867}
+--- !u!1 &2813631719864550393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6745979184131557018}
+  m_Layer: 0
+  m_Name: DUCK_ L Toe0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6745979184131557018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813631719864550393}
+  m_LocalRotation: {x: -0.000000015454287, y: 0.000000015454342, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.015572618, y: 0.0069350605, z: 0.0000000047683715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4704415765471176067}
+  m_Father: {fileID: 3905093465542083150}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 4.4782207e-12, y: 0.0000025044787, z: -90}
+--- !u!1 &3059591429919273241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4153181057475148181}
+  m_Layer: 0
+  m_Name: DUCK_ L UpperArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4153181057475148181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059591429919273241}
+  m_LocalRotation: {x: -0.63842756, y: 0.21855724, z: -0.28570932, w: 0.68045074}
+  m_LocalPosition: {x: -0.037998654, y: 0.000000019073486, z: 0.000000019073486}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 4434196313265138263}
+  m_Father: {fileID: 7205338076429489257}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -48.068928, y: 82.32149, z: -88.15099}
+--- !u!1 &3196924437282839706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4704415765471176067}
+  m_Layer: 0
+  m_Name: DUCK_ L Toe01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4704415765471176067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196924437282839706}
+  m_LocalRotation: {x: 7.1054274e-15, y: 4.7351012e-14, z: -3.3644918e-28, w: 1}
+  m_LocalPosition: {x: -0.013814203, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4985129325261995626}
+  m_Father: {fileID: 6745979184131557018}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 8.1422195e-13, y: 5.426026e-12, z: 0}
+--- !u!1 &3214396494577641490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3590775338820317540}
+  m_Layer: 0
+  m_Name: DUCK_ R Toe0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3590775338820317540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214396494577641490}
+  m_LocalRotation: {x: 0.000000015454333, y: -0.000000015454278, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.015572617, y: 0.0069350605, z: 0.0000000047683715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8892656485214300191}
+  m_Father: {fileID: 8486255784435298080}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 4.376443e-12, y: -0.0000025044774, z: -90}
+--- !u!1 &3299483233705202175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7573490697316223552}
+  m_Layer: 0
+  m_Name: DUCK_ Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7573490697316223552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299483233705202175}
+  m_LocalRotation: {x: -4.9288633e-13, y: -0.0000008436542, z: 0.30417362, w: 0.95261663}
+  m_LocalPosition: {x: -0.03485155, y: 0.005428591, z: 3.886089e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 7037618439915968916}
+  m_Father: {fileID: 3995941913445028961}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000029406128, y: -0.000092094844, z: 35.416904}
+--- !u!1 &3474202179785728803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 206646771334148891}
+  m_Layer: 0
+  m_Name: DUCK_ TailL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &206646771334148891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3474202179785728803}
+  m_LocalRotation: {x: -0.18515308, y: 0.88739216, z: 0.08292564, w: 0.41397685}
+  m_LocalPosition: {x: 0.0126848025, y: -0.021150364, z: 0.024676988}
+  m_LocalScale: {x: 1, y: 0.99999964, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 1175192572860243507}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -17.486034, y: 132.42847, z: -15.815604}
+--- !u!1 &3547043744428024392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742826598601614960}
+  m_Layer: 0
+  m_Name: DUCK_ L Calf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742826598601614960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547043744428024392}
+  m_LocalRotation: {x: 0.000000007593817, y: 0.000000012955614, z: 0.49816695, w: 0.86708117}
+  m_LocalPosition: {x: -0.040595334, y: 0.0000000047683715, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 9142848384021519640}
+  m_Father: {fileID: 8643168624618026981}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000000014942346, y: 0.0000017207708, z: 59.757595}
+--- !u!1 &3724697932508599604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4985129325261995626}
+  m_Layer: 0
+  m_Name: DUCK_ L Toe02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4985129325261995626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724697932508599604}
+  m_LocalRotation: {x: 7.1054274e-15, y: 4.7351012e-14, z: -3.3644918e-28, w: 1}
+  m_LocalPosition: {x: -0.014911026, y: 1.4901161e-10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4704415765471176067}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 8.1422195e-13, y: 5.426026e-12, z: 0}
+--- !u!1 &4475057403996893733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629647673866330931}
+  m_Layer: 0
+  m_Name: DUCK_ R Calf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &629647673866330931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475057403996893733}
+  m_LocalRotation: {x: -0.000000007593817, y: -0.0000000129556135, z: 0.49816695,
+    w: 0.86708117}
+  m_LocalPosition: {x: -0.04059534, y: 0.0000000047683715, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 3204306114563350710}
+  m_Father: {fileID: 5130186565365997329}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000014942398, y: -0.0000017207706, z: 59.757595}
+--- !u!1 &5018421922557559873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5130186565365997329}
+  m_Layer: 0
+  m_Name: DUCK_ R Thigh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5130186565365997329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018421922557559873}
+  m_LocalRotation: {x: 0.72365886, y: -0.68780196, z: 0.03735036, w: 0.04302652}
+  m_LocalPosition: {x: 0.026054578, y: -0.011765318, z: -0.031022472}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 629647673866330931}
+  m_Father: {fileID: 8956069712884902573}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 6.5259004, y: -179.70416, z: -92.8936}
+--- !u!1 &5389386820260903789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296114110762893966}
+  m_Layer: 0
+  m_Name: DUCK_ Neck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1296114110762893966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389386820260903789}
+  m_LocalRotation: {x: -2.9328062e-13, y: -0.000000024350276, z: 0.008779329, w: 0.9999615}
+  m_LocalPosition: {x: -0.092916965, y: -0.0067984387, z: -0.000000008853695}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 7205338076429489257}
+  - {fileID: 2472268108976183831}
+  - {fileID: 2955305827529467910}
+  m_Father: {fileID: 8956069712884902573}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.000000024463672, y: -0.0000027902283, z: 1.0060499}
+--- !u!1 &5764448767088796208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2812824315795767295}
+  m_Layer: 0
+  m_Name: DUCK_ R UpperArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2812824315795767295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764448767088796208}
+  m_LocalRotation: {x: 0.63842756, y: -0.21855727, z: -0.2857093, w: 0.68045074}
+  m_LocalPosition: {x: -0.03799865, y: 0.000000019073486, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 0.9999998, z: 1}
+  m_Children:
+  - {fileID: 3736728909777372518}
+  m_Father: {fileID: 2955305827529467910}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 48.068928, y: -82.32149, z: -88.15099}
+--- !u!1 &5933724805852301065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2955305827529467910}
+  m_Layer: 0
+  m_Name: DUCK_ R Clavicle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2955305827529467910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933724805852301065}
+  m_LocalRotation: {x: 0.707082, y: -0.005926358, z: 0.707082, w: 0.005926358}
+  m_LocalPosition: {x: 0.056383695, y: -0.024836645, z: -0.004823359}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2812824315795767295}
+  m_Father: {fileID: 1296114110762893966}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.9604186, y: 90, z: 180}
+--- !u!1 &5934849355801186204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3905093465542083150}
+  m_Layer: 0
+  m_Name: DUCK_ L Foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3905093465542083150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934849355801186204}
+  m_LocalRotation: {x: 0.025539106, y: 0.05093372, z: 0.09626445, w: 0.99372363}
+  m_LocalPosition: {x: -0.04547697, y: -4.4703483e-10, z: 0.0000000047683715}
+  m_LocalScale: {x: 0.99999994, y: 1.0000002, z: 1.0000001}
+  m_Children:
+  - {fileID: 6745979184131557018}
+  m_Father: {fileID: 9142848384021519640}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 2.3469994, y: 6.0982795, z: 11.191273}
+--- !u!1 &6406212906036075716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3204306114563350710}
+  m_Layer: 0
+  m_Name: DUCK_ R HorseLink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3204306114563350710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6406212906036075716}
+  m_LocalRotation: {x: 0.0000000067599903, y: 0.000000009647819, z: -0.28540456, w: 0.95840716}
+  m_LocalPosition: {x: -0.033333614, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999976, z: 0.9999999}
+  m_Children:
+  - {fileID: 8486255784435298080}
+  m_Father: {fileID: 629647673866330931}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000010579499, y: 0.00000083849017, z: -33.166065}
+--- !u!1 &6711525606260424847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2955994605615885807}
+  m_Layer: 0
+  m_Name: DUCK_ R Toe02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2955994605615885807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6711525606260424847}
+  m_LocalRotation: {x: 3.5527137e-15, y: 3.091971e-14, z: -1.0984888e-28, w: 1}
+  m_LocalPosition: {x: -0.014911028, y: 1.4901161e-10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8892656485214300191}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 4.0711098e-13, y: 3.5431378e-12, z: 0}
+--- !u!1 &6754371115601733439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928261185461481797}
+  m_Layer: 0
+  m_Name: DUCK_ R Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928261185461481797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754371115601733439}
+  m_LocalRotation: {x: 0.6254701, y: -0.03720448, z: 0.035414204, w: 0.77855563}
+  m_LocalPosition: {x: -0.09545429, y: 0.0000000047683715, z: -0.000000009536743}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 3736728909777372518}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 77.57052, y: -3.6308212, z: 2.2907784}
+--- !u!1 &6763550191435463674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8956069712884902573}
+  m_Layer: 0
+  m_Name: DUCK_ Spine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8956069712884902573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763550191435463674}
+  m_LocalRotation: {x: -0.00000201719, y: 0.0000006349477, z: 0.081011295, w: 0.9967132}
+  m_LocalPosition: {x: -0.027612597, y: 0.007403431, z: 0.00000002802608}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8643168624618026981}
+  - {fileID: 1296114110762893966}
+  - {fileID: 5130186565365997329}
+  - {fileID: 2951479802233253189}
+  m_Father: {fileID: 1175192572860243507}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00023628752, y: 0.00005379449, z: 9.293394}
+--- !u!1 &6807314963875346712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3736728909777372518}
+  m_Layer: 0
+  m_Name: DUCK_ R Forearm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3736728909777372518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807314963875346712}
+  m_LocalRotation: {x: -0.00000003921225, y: 0.000000036728455, z: 0.22806612, w: 0.9736456}
+  m_LocalPosition: {x: -0.09804611, y: 0.000000009536743, z: 0.000000009536743}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1928261185461481797}
+  m_Father: {fileID: 2812824315795767295}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000053348504, y: 0.0000030730607, z: 26.366486}
+--- !u!1 &8024088410132407076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4318535835425080981}
+  m_Layer: 0
+  m_Name: DUCK_ TailR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4318535835425080981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024088410132407076}
+  m_LocalRotation: {x: 0.41257787, y: 0.08262877, z: 0.88804126, w: -0.18529627}
+  m_LocalPosition: {x: 0.012684752, y: -0.02115048, z: -0.024999961}
+  m_LocalScale: {x: 1.0000004, y: 0.9999997, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 1175192572860243507}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -17.43681, y: 47.389248, z: -164.12811}
+--- !u!1 &8130213822334448807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3995941913445028961}
+  m_Layer: 0
+  m_Name: DUCK_ Neck2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3995941913445028961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130213822334448807}
+  m_LocalRotation: {x: 4.822398e-14, y: -0.000000024350326, z: 0.008779327, w: 0.9999615}
+  m_LocalPosition: {x: -0.022627125, y: -0.000018014907, z: -4.9949447e-11}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 7573490697316223552}
+  m_Father: {fileID: 2472268108976183831}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000002450285, y: -0.0000027902338, z: 1.0060496}
+--- !u!1 &8153772039812725590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4434196313265138263}
+  m_Layer: 0
+  m_Name: DUCK_ L Forearm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4434196313265138263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153772039812725590}
+  m_LocalRotation: {x: 0.0000000072542243, y: 0.0000000016992251, z: 0.22806615, w: 0.9736456}
+  m_LocalPosition: {x: -0.0980461, y: 0, z: -0.000000019073486}
+  m_LocalScale: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 7425952575993802029}
+  m_Father: {fileID: 4153181057475148181}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000076495684, y: 0.0000003791704, z: 26.366488}
+--- !u!1 &8337035846966040436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8486255784435298080}
+  m_Layer: 0
+  m_Name: DUCK_ R Foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8486255784435298080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337035846966040436}
+  m_LocalRotation: {x: -0.025539026, y: -0.05093375, z: 0.096264444, w: 0.99372363}
+  m_LocalPosition: {x: -0.04547697, y: 0.000000006407499, z: -0.000000009536743}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 3590775338820317540}
+  m_Father: {fileID: 3204306114563350710}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -2.34699, y: -6.0982814, z: 11.191271}
+--- !u!1 &8627715499434939276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7425952575993802029}
+  m_Layer: 0
+  m_Name: DUCK_ L Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7425952575993802029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8627715499434939276}
+  m_LocalRotation: {x: -0.62547004, y: 0.037204456, z: 0.0354142, w: 0.77855563}
+  m_LocalPosition: {x: -0.095454365, y: 0.0000000047683715, z: 0.000000009536743}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 4434196313265138263}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -77.57048, y: 3.630811, z: 2.2907863}
+--- !u!1 &9162115317066376319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7205338076429489257}
+  m_Layer: 0
+  m_Name: DUCK_ L Clavicle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7205338076429489257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162115317066376319}
+  m_LocalRotation: {x: 0.707082, y: -0.005926358, z: -0.707082, w: -0.005926358}
+  m_LocalPosition: {x: 0.056383703, y: -0.024836672, z: 0.0048232023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4153181057475148181}
+  m_Father: {fileID: 1296114110762893966}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.9604186, y: -90, z: 180}
+--- !u!1001 &8605059907681957465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4421186524110340278}
+    m_Modifications:
+    - target: {fileID: 578761103706511896, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_Name
+      value: DuckExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e64cc404aa755f44a3fa2a893ad9d4b, type: 3}
+--- !u!4 &9179317134330424764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 578761103706512357, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8605059907681957465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &9179317134330424767 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 578761103706512358, guid: 2e64cc404aa755f44a3fa2a893ad9d4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8605059907681957465}
+  m_PrefabAsset: {fileID: 0}

@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 6919303665140666817}
   - component: {fileID: 2891073249420648997}
   - component: {fileID: 1322589545080390760}
+  - component: {fileID: 906978860}
   m_Layer: 6
   m_Name: Rifle
   m_TagString: Untagged
@@ -205,7 +206,19 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_OnFirstHoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906978860}
+        m_TargetAssemblyTypeName: SelectionOutline, Assembly-CSharp
+        m_MethodName: Highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -214,7 +227,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnLastHoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906978860}
+        m_TargetAssemblyTypeName: SelectionOutline, Assembly-CSharp
+        m_MethodName: RemoveHighlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls:
@@ -327,12 +352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6a0d38f10bb284cbd505b4cfd86f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 12
   <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0
-  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.02
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
@@ -340,9 +362,16 @@ MonoBehaviour:
   <MuzzleFlashParticles>k__BackingField: {fileID: 6423343621879144437}
   <CartridgeEjectionParticles>k__BackingField: {fileID: 6057780900120454180}
   <AmmoReloadCollider>k__BackingField: {fileID: 1133387993}
+  <CurrentMagazine>k__BackingField: {fileID: 0}
+  <CurrentAmmoContainer>k__BackingField: {fileID: 0}
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <ShootingSound>k__BackingField: {fileID: 0}
+  <ReloadSound>k__BackingField: {fileID: 0}
+  <ReactorTriggerShoot>k__BackingField: 0
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 12
 --- !u!82 &1322589545080390760
 AudioSource:
   m_ObjectHideFlags: 0
@@ -353,7 +382,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5a029546dfab2d243a6858cae2452007, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -439,6 +468,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &906978860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674582353077938933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300dbd790ea02b94ea5eff2405701fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2315847517988800781
 GameObject:
   m_ObjectHideFlags: 0
