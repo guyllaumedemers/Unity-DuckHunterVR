@@ -14,11 +14,9 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
     public float TimeBeforeCanLoad { get; set; } = 0f;
     public XRGrabInteractable GrabInteractable { get; set; }
     public Transform ammoContainerParent { get; set; }
-    public bool _isBeingDestroyed { get; set; }
-    [field: SerializeField] public float TimeToDestroy { get; set; } = 120f;
-    public float TimeBeforeDestroy { get; set; }
+    public float DestroyDistance { get; set; } = 0.2f;
 
-    void Start()
+    private void Start()
     {
         MagazineCanLoad = true;
         Rigidbody = GetComponent<Rigidbody>();
@@ -26,21 +24,8 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
         GrabInteractable = GetComponent<XRGrabInteractable>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (gameObject.transform.parent == null && !_isBeingDestroyed)
-        {
-            Debug.Log("No parent");
-            TimeBeforeDestroy = Time.time + TimeToDestroy;
-            _isBeingDestroyed = true;
-        }
-
-        if (_isBeingDestroyed)
-        {
-            if (Time.time >= TimeBeforeDestroy)
-                Destroy(gameObject);
-        }
-
         if (!MagazineCanLoad && CurrentAmmo > 0)
         {
             if (Time.time >= TimeBeforeCanLoad)
@@ -56,6 +41,19 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
             GrabInteractable.onSelectExited.RemoveAllListeners();
 
             Destroy(gameObject, 3f);
+        }
+
+        CheckDistance();
+    }
+
+    public void CheckDistance()
+    {
+        Transform parentTransform = ammoContainerParent;
+        float distance = Vector3.Distance(transform.position, parentTransform.position);
+
+        if (distance >= DestroyDistance)
+        {
+            gameObject.transform.parent = null;
         }
     }
 }
