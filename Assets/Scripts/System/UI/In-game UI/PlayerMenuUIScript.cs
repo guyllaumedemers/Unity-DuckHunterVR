@@ -48,6 +48,7 @@ public class PlayerMenuUIScript : MonoBehaviour
     public void Start()
     {
         inGameMenuUI.SetActive(false);
+        HighScoreUI.Instance.InstanciatePlayerStatistics();
     }
 
     public bool IsInGameScene()
@@ -94,9 +95,7 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void DisplayStatistics()
     {
-        // retrieve a list of data from a file
-        // load the data on a canvas => better if we instanciate the canvas and fill on demand
-        // swap the canvas from playerMenuUI to the Stats canvas
+
     }
 
     public void GetOnline()

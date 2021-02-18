@@ -1,9 +1,12 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ScorePoints
 {
+    [JsonProperty]
     private int points;
     public ScorePoints()
     {
@@ -17,4 +20,6 @@ public class ScorePoints
     {
         points += value;
     }
+    [JsonIgnore]
+    public int GetPoints { get => points; }
 }
