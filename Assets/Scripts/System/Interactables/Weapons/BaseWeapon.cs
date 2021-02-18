@@ -128,7 +128,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
                         AudioSource.Play();
 
-                        //CurrentAmmo = CurrentAmmoContainer.CurrentAmmo;
+                        SelectionOutline selectionOutline = collider.GetComponent<SelectionOutline>();
+                        selectionOutline.RemoveHighlight();
                     }
                     else
                     {
@@ -144,15 +145,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (CurrentMagazine != null)
         {
-            //MeshRenderer mesh = CurrentMagazine.GetComponent<MeshRenderer>();
-
-            
-
             CurrentAmmoContainer.MagazineCanLoad = false;
             CurrentAmmoContainer.TimeBeforeCanLoad = Time.time + CurrentAmmoContainer.TimeCanLoad;
-
-            //CurrentAmmoContainer.CurrentAmmo = CurrentAmmo;
-            //CurrentAmmo = 0;
 
             MagazineAttach.DetachChildren();
 

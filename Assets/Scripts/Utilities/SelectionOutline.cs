@@ -10,8 +10,8 @@ public class SelectionOutline : MonoBehaviour
     private bool _isSelected;
 
     private void Start()
-    {        
-        _isSelected = false;        
+    {
+        _isSelected = false;
         _meshRenderer = GetComponent<MeshRenderer>();
         _originalColor = _meshRenderer.material.color;
     }
@@ -26,12 +26,14 @@ public class SelectionOutline : MonoBehaviour
 
     public void Highlight()
     {
-        _meshRenderer.material.color = Color.green;
+        if (_meshRenderer != null)
+            _meshRenderer.material.color = Color.green;
     }
 
     public void RemoveHighlight()
     {
-        _meshRenderer.material.color = _originalColor;
+        if (_meshRenderer != null)
+            _meshRenderer.material.color = _originalColor;
     }
 
     public void IsSelected()
