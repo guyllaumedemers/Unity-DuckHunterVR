@@ -19,6 +19,8 @@ public class DuckSpawner : MonoBehaviour {
     [Header("Wave Countdown")]
     public float waveCountdown;
     
+    [SerializeField]
+    private float firstWave = 10f;
     private float _ducksInWave = 0;
     private bool _isSpawnRoutine;
     
@@ -28,18 +30,16 @@ public class DuckSpawner : MonoBehaviour {
             Debug.Log("No duck parent transform provided, creating default object");
             duckParent = new GameObject("Spawned Ducks").transform;
         }
-        
-        StartCoroutine(nameof(SpawnDuckRoutine));
     }
     
-    void RemoveOneDuck() {
-        if(_ducksInWave > 0)
-            _ducksInWave--;
-    }
-
     private void Update() {
-        if(_ducksInWave <= 0 && !_isSpawnRoutine)
-            StartCoroutine(nameof(SpawnDuckRoutine));
+        if (firstWave <= 0) {
+            if(_ducksInWave <= 0 && !_isSpawnRoutine)
+                StartCoroutine(nameof(SpawnDuckRoutine));
+        }
+        else {
+            firstWave -= Time.deltaTime;
+        }
     }
     
     private IEnumerator SpawnDuckRoutine() {
@@ -78,7 +78,6 @@ public class DuckSpawner : MonoBehaviour {
     private void InstantiateDuck() {
         try {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
-            
             duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(size.x / 2, size.y / 2, size.z / 2);
             duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveOneDuck;
@@ -86,9 +85,14 @@ public class DuckSpawner : MonoBehaviour {
             
             _ducksInWave++;
         }
-        catch (Exception ex){
+        catch (Exception ex) {
             Debug.Log(ex);
         }
+    }
+    
+    void RemoveOneDuck() {
+        if(_ducksInWave > 0)
+            _ducksInWave--;
     }
     
     private void OnDrawGizmos() {

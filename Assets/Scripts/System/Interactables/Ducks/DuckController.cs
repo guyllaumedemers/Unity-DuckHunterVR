@@ -114,8 +114,8 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     }
 
     private IEnumerator PlayHitAnimations() {
-        _animations.Play("inAirDeath");
-        yield return new WaitForSeconds(_animations["inAirDeath"].length);
+        _animations.Play("inAirDeath1");
+        yield return new WaitForSeconds(_animations["inAirDeath1"].length);
         
         _animations.Play("fly");
         yield return null;

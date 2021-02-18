@@ -7416,7 +7416,7 @@ PrefabInstance:
     - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
       propertyPath: size.z
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
@@ -7431,12 +7431,12 @@ PrefabInstance:
     - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.59
+      value: 7.03
       objectReference: {fileID: 0}
     - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.06
+      value: 35.66
       objectReference: {fileID: 0}
     - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
@@ -8637,6 +8637,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Rig Main Game
       objectReference: {fileID: 0}
+    - target: {fileID: 5335812347361765124, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5335812347361765147, guid: 07cb866f7b13a9942b466ac667977042,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8676,6 +8681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782106743188806907, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cb866f7b13a9942b466ac667977042, type: 3}
