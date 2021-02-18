@@ -260,7 +260,7 @@ MonoBehaviour:
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
   m_GravityOnDetach: 0
-  m_RetainTransformParent: 1
+  m_RetainTransformParent: 0
 --- !u!114 &5654440296633004189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300dbd790ea02b94ea5eff2405701fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isSelected: 0
+  _meshRenderer: {fileID: 0}
 --- !u!114 &1808772839978956258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentAmmo>k__BackingField: 30
   <IsMagazine>k__BackingField: 1
+  <TimeToDestroy>k__BackingField: 120
 --- !u!1 &8154460072719097001
 GameObject:
   m_ObjectHideFlags: 0

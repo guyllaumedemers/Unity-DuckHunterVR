@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f697cbad1677c4e97865bb7d5b1c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoPrefab: {fileID: 7886845273536535384, guid: 6877d9cea00a27e4eb1226a14d26ed95,
+  ammoPrefab: {fileID: 2234685295920482090, guid: 6877d9cea00a27e4eb1226a14d26ed95,
     type: 3}
   qtyAmmoSpawn: 3
-  nbChildren: 0
+  TimeToRefill: 3
 --- !u!1 &8323872533822654811
 GameObject:
   m_ObjectHideFlags: 0

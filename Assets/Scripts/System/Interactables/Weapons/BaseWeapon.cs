@@ -25,6 +25,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public AudioClip ShootingSound { get; set; }
     public AudioClip ReloadSound { get; set; }
     [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
+    protected abstract string ShootingSoundPath { get; }
+    protected abstract string ReloadingSoundPath { get; }
 
     void Start()
     {
@@ -33,6 +35,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
         if (IsAcceptingMagazine)
             MagazineAttach = AmmoReloadCollider.transform.GetChild(0);
+
+        ShootingSound = Resources.Load<AudioClip>(ShootingSoundPath);
+        ReloadSound = Resources.Load<AudioClip>(ReloadingSoundPath);
     }
 
     public virtual void Shoot()

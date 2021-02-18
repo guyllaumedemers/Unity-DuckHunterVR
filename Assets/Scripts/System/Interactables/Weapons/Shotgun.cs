@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Shotgun : SingleShotAmmo
 {
-    private void Awake()
-    {
-        ShootingSound = Resources.Load<AudioClip>("SFX/Guns/Shotgun");
-        ReloadSound = Resources.Load<AudioClip>("SFX/Guns/ShotgunReload");
-    }
+    protected override string ShootingSoundPath => "SFX/Guns/Shotgun";
+    protected override string ReloadingSoundPath => "SFX/Guns/ShotgunReload";
 }
