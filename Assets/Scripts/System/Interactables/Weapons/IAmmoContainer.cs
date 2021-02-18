@@ -13,5 +13,7 @@ public interface IAmmoContainer
     public float TimeCanLoad { get; set; }
     public float TimeBeforeCanLoad { get; set; }
     public XRGrabInteractable GrabInteractable { get; set; }
-    public float DestroyDistance { get; set; }
+    public bool _isBeingDestroyed { get; set; }
+    public float TimeToDestroy { get; set; }
+    public float TimeBeforeDestroy { get; set; }
 }
