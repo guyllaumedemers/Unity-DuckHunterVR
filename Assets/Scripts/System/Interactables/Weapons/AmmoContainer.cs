@@ -13,7 +13,6 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
     public float TimeCanLoad { get; set; } = 0.5f;
     public float TimeBeforeCanLoad { get; set; } = 0f;
     public XRGrabInteractable GrabInteractable { get; set; }
-    public Transform ammoContainerParent { get; set; }
     public float DestroyDistance { get; set; } = 0.2f;
 
     private void Start()
@@ -48,12 +47,14 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
 
     public void CheckDistance()
     {
-        Transform parentTransform = ammoContainerParent;
-        float distance = Vector3.Distance(transform.position, parentTransform.position);
-
-        if (distance >= DestroyDistance)
+        if(gameObject.transform.parent != null)
         {
-            gameObject.transform.parent = null;
-        }
+            float distance = Vector3.Distance(transform.position, gameObject.transform.parent.position);
+
+            if (distance >= DestroyDistance)
+            {
+                gameObject.transform.parent = null;
+            }
+        }        
     }
 }
