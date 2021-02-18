@@ -44,7 +44,6 @@ public class AmmoCrateRefill : MonoBehaviour
         {
             AmmoContainer magazineClone = Instantiate(ammoPrefab, transform.position, transform.rotation, ammoParent.transform);
             magazineClone.transform.SetParent(ammoParent.transform);
-            magazineClone.ammoContainerParent = ammoParent.transform;
         }
 
         _isRefilled = true;

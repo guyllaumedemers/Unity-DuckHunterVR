@@ -14,4 +14,6 @@ public interface IAmmoContainer
     public float TimeBeforeCanLoad { get; set; }
     public XRGrabInteractable GrabInteractable { get; set; }
     public float DestroyDistance { get; set; }
+
+    void CheckDistance();
 }
