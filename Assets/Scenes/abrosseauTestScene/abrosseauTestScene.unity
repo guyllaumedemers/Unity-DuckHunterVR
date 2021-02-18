@@ -1010,7 +1010,7 @@ PrefabInstance:
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.066
+      value: -0.211
       objectReference: {fileID: 0}
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
@@ -1020,7 +1020,7 @@ PrefabInstance:
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.773
+      value: 0.671
       objectReference: {fileID: 0}
     - target: {fileID: 1559931817001148674, guid: fbd7fcfc18e34de4eb2fe11a53167a4b,
         type: 3}
@@ -1357,6 +1357,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2129926950312176501, guid: bd6f15006c9e0e447ba4685ae29ab5b3,
+        type: 3}
+      propertyPath: qtyAmmoSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2129926950312176506, guid: bd6f15006c9e0e447ba4685ae29ab5b3,
         type: 3}
       propertyPath: m_Name
