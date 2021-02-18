@@ -10,7 +10,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     [Header("Gore Particle")]
     public ParticleSystem particleBurst;
     [Header("Score points")]
-    public float noPoints = 1f;
+    public int noPoints = 1;
     [Header("Health Points")]
     public float HP = 1f;
     [Header("Flight Speed Velocity")]
@@ -20,6 +20,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     [Header("GameObject Height limits")]
     public MinMax minMaxY = new MinMax(-1f, 5f);
     
+    public Vector3 SpanwerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
     
     [SerializeField][Header("State of Duck")]
@@ -29,6 +30,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     private SphereCollider _collider;
     private Rigidbody _rb;
     private bool _isDead;
+    private float _escapeHight;
     
     public void Start() {
         _animations = GetComponent<Animation>();
@@ -36,9 +38,10 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _rb = GetComponent<Rigidbody>();
         
         _animations.Play("fly");
-        _target = GetRandomPosUp();
-        
-        minMaxY.max += SpawnSize.y;
+        GetRandomPosUp();
+
+        _escapeHight = SpanwerPos.y + SpawnSize.y;
+        minMaxY.max += _escapeHight;
         
         _isDead = false;
         _state = IFlyingTarget.State.FLYING;
@@ -57,7 +60,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
 
         if(!_isDead){
 
-            if(transform.position.y >= SpawnSize.y && _state != IFlyingTarget.State.FLEEING) {
+            if(transform.position.y >= _escapeHight && _state != IFlyingTarget.State.FLEEING) {
                 _collider.enabled = false;
                 _target += Vector3.up * minMaxY.max;
                 _state = IFlyingTarget.State.FLEEING;
@@ -88,7 +91,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     private void FlyAround() {
         FlyToTarget();
         if (Vector3.Distance(transform.position, _target) < 0.1f)
-            _target = GetRandomPosUp();
+            GetRandomPosUp();
     }
 
     private void FlyToTarget() {
@@ -97,14 +100,14 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         transform.LookAt(_target);
     }
     
-    private Vector3 GetRandomPosUp() {
-        float dirX = Random.Range(-SpawnSize.x / 2, SpawnSize.x / 2);
+    private void  GetRandomPosUp() {
+        float dirX = + SpanwerPos.x + Random.Range(-SpawnSize.x, SpawnSize.x);
         float dirY = transform.position.y + Random.Range(heighRangeIncrease.min, heighRangeIncrease.max);
-        float dirZ = Random.Range(-SpawnSize.z / 2, SpawnSize.z / 2);
+        float dirZ = SpanwerPos.z + Random.Range(-SpawnSize.z, SpawnSize.z);
         
-        return new Vector3(dirX, dirY, dirZ);
+        _target = new Vector3(dirX, dirY, dirZ);
     }
-    
+
     private IEnumerator PlayHitAnimations() {
         _animations.Play("inAirDeath");
         yield return new WaitForSeconds(_animations["inAirDeath"].length);
@@ -117,6 +120,8 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _isDead = true;
         _collider.enabled = false;
         transform.position = transform.position;
+
+        CreateNewGameInstance.Instance.GetScores?.AddPoints(noPoints);
         
         if (isPg13) {
             _animations.Play("inAirDeath");

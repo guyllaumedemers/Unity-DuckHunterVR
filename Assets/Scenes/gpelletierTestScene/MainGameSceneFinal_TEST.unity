@@ -8789,6 +8789,90 @@ Transform:
   m_Father: {fileID: 815080535}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &195225550
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: size.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: size.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_Name
+      value: DuckSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
 --- !u!1 &196204669
 GameObject:
   m_ObjectHideFlags: 0
@@ -9459,12 +9543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098360ff44e0fa347a40cf056da7f108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 8
   <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 12
   <BulletSpread>k__BackingField: 0.125
-  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.005
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
@@ -9477,6 +9558,9 @@ MonoBehaviour:
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <ReactorTriggerShoot>k__BackingField: 0
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 8
 --- !u!114 &232154189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50578,12 +50662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d5ac0d96cccba4aa5c728d07087318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 60
   <IsAcceptingMagazine>k__BackingField: 1
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0.05
-  <RateOfFire>k__BackingField: 0.1
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.01
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
@@ -50596,6 +50677,8 @@ MonoBehaviour:
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <ReactorTriggerShoot>k__BackingField: 0
+  <RateOfFire>k__BackingField: 0.1
 --- !u!114 &1051114859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68193,12 +68276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f95d05ca968e44090bf7dcb92dddf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 15
   <IsAcceptingMagazine>k__BackingField: 1
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0
-  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.01
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
@@ -68211,6 +68291,7 @@ MonoBehaviour:
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <ReactorTriggerShoot>k__BackingField: 0
 --- !u!114 &1445957468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85272,12 +85353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6a0d38f10bb284cbd505b4cfd86f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentAmmo>k__BackingField: 0
-  <MaxAmmo>k__BackingField: 12
   <IsAcceptingMagazine>k__BackingField: 0
   <NbBulletFired>k__BackingField: 1
   <BulletSpread>k__BackingField: 0
-  <RateOfFire>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.02
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
@@ -85290,6 +85368,9 @@ MonoBehaviour:
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <ReactorTriggerShoot>k__BackingField: 0
+  <CurrentAmmo>k__BackingField: 0
+  <MaxAmmo>k__BackingField: 12
 --- !u!114 &1742174657
 MonoBehaviour:
   m_ObjectHideFlags: 0

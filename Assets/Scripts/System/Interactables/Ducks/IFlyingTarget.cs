@@ -7,5 +7,6 @@ public interface IFlyingTarget {
         DEAD
     }
     
+    public Vector3 SpanwerPos { set; }
     public Vector3 SpawnSize { set; }
 }

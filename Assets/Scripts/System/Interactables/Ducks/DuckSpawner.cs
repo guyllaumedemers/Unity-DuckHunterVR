@@ -63,9 +63,9 @@ public class DuckSpawner : MonoBehaviour {
     }
 
     private Vector3 GetRandomSpawnPoint() {
-        float posX = Random.Range(-size.x / 2, size.x / 2);
-        float posY = 0;
-        float posZ = Random.Range(-size.z / 2, size.z / 2);
+        float posX = transform.position.x + Random.Range(-size.x / 2, size.x / 2);
+        float posY = transform.position.y - size.y / 2;
+        float posZ = transform.position.z + Random.Range(-size.z / 2, size.z / 2);
         
         return new Vector3(posX, posY, posZ);
     }
@@ -73,8 +73,11 @@ public class DuckSpawner : MonoBehaviour {
     private void InstantiateDuck() {
         try {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
-            duck.GetComponent<IFlyingTarget>().SpawnSize = size;
+            
+            duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
+            duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(size.x / 2, size.y / 2, size.z / 2);
             duck.transform.SetParent(duckParent);
+            
             duckList.Add(duck);
         }
         catch (Exception ex){
