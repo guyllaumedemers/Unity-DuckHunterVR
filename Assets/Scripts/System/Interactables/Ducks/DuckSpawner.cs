@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class DuckSpawner : MonoBehaviour {
+    
     [Header("Size of spawn area")]
     public Vector3 size;
     [Header("Model used to instantiate")]
@@ -18,27 +19,31 @@ public class DuckSpawner : MonoBehaviour {
     [Header("Wave Countdown")]
     public float waveCountdown;
     
-    private readonly List<GameObject> duckList = new List<GameObject>();
-    private bool isSpawnDuckRunning;
+    private float _ducksInWave = 0;
+    private bool _isSpawnRoutine;
+    
     
     private void Start() {
         if (duckParent == null) {
             Debug.Log("No duck parent transform provided, creating default object");
             duckParent = new GameObject("Spawned Ducks").transform;
         }
-
+        
         StartCoroutine(nameof(SpawnDuckRoutine));
     }
     
+    void RemoveOneDuck() {
+        if(_ducksInWave > 0)
+            _ducksInWave--;
+    }
+
     private void Update() {
-        duckList.RemoveAll(item => item == null);
-        
-        if (duckList.Count == 0 && !isSpawnDuckRunning)
+        if(_ducksInWave <= 0 && !_isSpawnRoutine)
             StartCoroutine(nameof(SpawnDuckRoutine));
     }
     
     private IEnumerator SpawnDuckRoutine() {
-        isSpawnDuckRunning = true;
+        _isSpawnRoutine = true;
         waveCountdown = waveDelay;
         
         while (waveCountdown > 0) {
@@ -59,7 +64,7 @@ public class DuckSpawner : MonoBehaviour {
             }
         }
         
-        isSpawnDuckRunning = false;
+        _isSpawnRoutine = false;
     }
 
     private Vector3 GetRandomSpawnPoint() {
@@ -76,9 +81,10 @@ public class DuckSpawner : MonoBehaviour {
             
             duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(size.x / 2, size.y / 2, size.z / 2);
+            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveOneDuck;
             duck.transform.SetParent(duckParent);
             
-            duckList.Add(duck);
+            _ducksInWave++;
         }
         catch (Exception ex){
             Debug.Log(ex);

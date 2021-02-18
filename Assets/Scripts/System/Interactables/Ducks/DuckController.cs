@@ -20,8 +20,11 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     [Header("GameObject Height limits")]
     public MinMax minMaxY = new MinMax(-1f, 5f);
     
+    
+    public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
     public Vector3 SpanwerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
+    
     
     [SerializeField][Header("State of Duck")]
     private IFlyingTarget.State _state;
@@ -31,6 +34,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     private Rigidbody _rb;
     private bool _isDead;
     private float _escapeHight;
+    
     
     public void Start() {
         _animations = GetComponent<Animation>();
@@ -46,7 +50,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _isDead = false;
         _state = IFlyingTarget.State.FLYING;
     }
-        
+    
     public void OnHit() {
         HP--;
         StopCoroutine(nameof(PlayHitAnimations));
@@ -84,6 +88,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
     private void FixedUpdate() {
         if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max) {
+            DiedDelegate?.Invoke();
             Destroy(gameObject);
         }
     }
@@ -101,7 +106,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     }
     
     private void  GetRandomPosUp() {
-        float dirX = + SpanwerPos.x + Random.Range(-SpawnSize.x, SpawnSize.x);
+        float dirX = SpanwerPos.x + Random.Range(-SpawnSize.x, SpawnSize.x);
         float dirY = transform.position.y + Random.Range(heighRangeIncrease.min, heighRangeIncrease.max);
         float dirZ = SpanwerPos.z + Random.Range(-SpawnSize.z, SpawnSize.z);
         
@@ -115,29 +120,29 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _animations.Play("fly");
         yield return null;
     }
-    
+
     private IEnumerator DieRoutine() {
         _isDead = true;
         _collider.enabled = false;
         transform.position = transform.position;
-
-        ScoringSystemManager.Instance.GetGameInstance?.GetScores.AddPoints(noPoints);
         
+        ScoringSystemManager.Instance.GetGameInstance?.GetScores.AddPoints(noPoints);
+
         if (isPg13) {
             _animations.Play("inAirDeath");
             yield return new WaitForSeconds(_animations["inAirDeath"].length);
-        
+
             _animations.Play("falling");
         }
         else {
             foreach (Transform child in transform) {
-                if(!child.name.Contains("Explosion"))
+                if (!child.name.Contains("Explosion"))
                     child.gameObject.SetActive(false);
             }
-            
+
             particleBurst.Play();
         }
-        
+
         _rb.useGravity = true;
     }
 }
