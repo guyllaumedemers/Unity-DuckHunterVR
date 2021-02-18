@@ -2623,6 +2623,7 @@ MonoBehaviour:
   inGameMenuUI: {fileID: 1795404949194143224}
   settingsMenuUI: {fileID: 6087055353369160319, guid: 084d49101440c3e46986e18513c1f080,
     type: 3}
+  statsMenuUI: {fileID: 0}
 --- !u!114 &1169860312260869244
 MonoBehaviour:
   m_ObjectHideFlags: 0
