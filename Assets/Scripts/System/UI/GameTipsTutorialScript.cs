@@ -16,16 +16,14 @@ public class GameTipsTutorialScript : MonoBehaviour
         sentence3
     };
     private int currentIndex;
-    private bool isRunning;
     public void Awake()
     {
         currentIndex = 0;
-        textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void Start()
     {
-        isRunning = GameManagerScript.Instance.GetGameState;
         StartCoroutine(UpdateIndex());
     }
 
@@ -45,7 +43,7 @@ public class GameTipsTutorialScript : MonoBehaviour
 
     private IEnumerator UpdateIndex()
     {
-        while (isRunning)
+        while (GameManagerScript.Instance.GetGameState)
         {
             yield return new WaitForSeconds(5.0f);
             UpdateSentenceDisplayed();

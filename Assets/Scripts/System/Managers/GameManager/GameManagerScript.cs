@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private bool isRunning;
+    [System.Serializable]
     public enum GameMode
     {
         REGULAR_MODE,
@@ -26,14 +26,15 @@ public class GameManagerScript : MonoBehaviour
         }
     }
     #endregion
-    public GameMode mode;
     private bool isRoundLaunch;
+    private bool isRunning;
+    private GameMode mode;
 
     public void Awake()
     {
         instance = this;
-        isRunning = true;
         mode = GameMode.REGULAR_MODE;
+        isRunning = false;
         isRoundLaunch = false;
     }
 
