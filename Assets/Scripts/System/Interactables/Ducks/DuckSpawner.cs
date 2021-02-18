@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DuckSpawner : MonoBehaviour {
@@ -75,7 +73,7 @@ public class DuckSpawner : MonoBehaviour {
     private void InstantiateDuck() {
         try {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
-            duck.GetComponent<DuckController>().spawnSize = size;
+            duck.GetComponent<IFlyingTarget>().SpawnSize = size;
             duck.transform.SetParent(duckParent);
             duckList.Add(duck);
         }
