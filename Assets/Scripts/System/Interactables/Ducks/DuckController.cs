@@ -38,19 +38,20 @@ public class DuckController : MonoBehaviour, IShootable {
     [Header("Random Up Height increase")]
     public MinMax heighRangeIncrease = new MinMax(1f, 1.5f);
     [Header("GameObject Height limits")]
-    public MinMax minMaxY = new MinMax(-1f, 10f);
+    public MinMax minMaxY = new MinMax(-1f, 5f);
     
     [HideInInspector]
-    public float spawnSize;
+    public Vector3 spawnSize;
+    [HideInInspector]
+    public DuckSpawner duckSpawner;
     
     [SerializeField][Header("State of Duck")]
     private State _state;
-    [SerializeField][Header("Current Duck Target")]
     private Vector3 _target;
     private Animation _animations;
     private SphereCollider _collider;
     private Rigidbody _rb;
-    private bool _isDead = false;
+    private bool _isDead;
     
     public void Start() {
         _animations = GetComponent<Animation>();
@@ -59,6 +60,10 @@ public class DuckController : MonoBehaviour, IShootable {
         
         _animations.Play("fly");
         _target = GetRandomPosUp();
+        
+        minMaxY.max += duckSpawner.size.y;
+        
+        _isDead = false;
         _state = State.FLYING;
     }
         
@@ -75,9 +80,9 @@ public class DuckController : MonoBehaviour, IShootable {
 
         if(!_isDead){
 
-            if (escapeTime <= 0 && _state != State.FLEEING) {
+            if(transform.position.y >= spawnSize.y && _state != State.FLEEING) {
                 _collider.enabled = false;
-                _target = new Vector3(transform.position.x, minMaxY.max, transform.position.z);
+                _target += Vector3.up * minMaxY.max;
                 _state = State.FLEEING;
             }
             
@@ -92,15 +97,17 @@ public class DuckController : MonoBehaviour, IShootable {
                     break;
                 
                 case State.DEAD:
-                    StartCoroutine(nameof(Die));
+                    StartCoroutine(nameof(DieRoutine));
                     break;
             }
         }
     }
     
     private void FixedUpdate() {
-        if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max)
+        if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max) {
             Destroy(gameObject);
+            duckSpawner.DoSpawnDuck = true;
+        }
     }
     
     private void FlyAround() {
@@ -116,13 +123,13 @@ public class DuckController : MonoBehaviour, IShootable {
     }
     
     private Vector3 GetRandomPosUp() {
-        float x = Random.Range(0, spawnSize);
-        float dirX = transform.position.x >= 0 ? -x : x;
+        float dirX = Random.Range(-spawnSize.x / 2, spawnSize.x / 2);
         float dirY = transform.position.y + Random.Range(heighRangeIncrease.min, heighRangeIncrease.max);
+        float dirZ = Random.Range(-spawnSize.z / 2, spawnSize.z / 2);
         
-        return new Vector3(dirX, dirY, transform.position.z);
+        return new Vector3(dirX, dirY, dirZ);
     }
-
+    
     private IEnumerator PlayHitAnimations() {
         _animations.Play("inAirDeath");
         yield return new WaitForSeconds(_animations["inAirDeath"].length);
@@ -131,7 +138,7 @@ public class DuckController : MonoBehaviour, IShootable {
         yield return null;
     }
     
-    private IEnumerator Die() {
+    private IEnumerator DieRoutine() {
         _isDead = true;
         _collider.enabled = false;
         transform.position = transform.position;
@@ -152,6 +159,5 @@ public class DuckController : MonoBehaviour, IShootable {
         }
         
         _rb.useGravity = true;
-        yield return null;
     }
 }

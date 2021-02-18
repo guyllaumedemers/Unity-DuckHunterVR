@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -6,55 +7,72 @@ using Random = UnityEngine.Random;
 public class DuckSpawner : MonoBehaviour {
     [Header("Size of spawn area")]
     public Vector3 size;
-    [Header("Rate of instantiation")]
-    public float spawnRate = 20f;
     [Header("Model used to instantiate")]
     public GameObject[] duckModels;
     [Header("Duck Parent Transform")] 
     public Transform duckParent;
+    [Header("Number of Ducks per wave")]
+    public int nbDucks = 1;
+    [Header("Next Duck Timer")]
+    public float spawnTime;
     
-    [SerializeField][Header("Next Spawn Time")]
-    private float nextSpawn;
-
+    public bool DoSpawnDuck { get; set; } = false;
+    public bool IsSpawnerRunning { get; private set; } = false;
+    
+    private float nextSpawn = 4f;
+    
     private void Start() {
-
-        nextSpawn = GetNextSpawnTime();
-        
-        if (duckModels == null) {
-            Debug.Log("No duck model provided, using default model");
-            duckModels[0] = Resources.Load("Prefabs/Ducks/DuckCapsule") as GameObject;
-        }
-
         if (duckParent == null) {
             Debug.Log("No duck parent transform provided, creating default object");
             duckParent = new GameObject("Spawned Ducks").transform;
         }
-        
-        //SpawnDuck();
+
+        StartCoroutine(nameof(SpawnDuckRoutine));
     }
     
     private void Update() {
-        if (nextSpawn <= 0) {
-            nextSpawn = GetNextSpawnTime();
-            SpawnDuck();
-        }
-        else {
-            nextSpawn -= Time.deltaTime;
-        }
-    }
-
-    private float GetNextSpawnTime() {
-        return Random.Range(spawnRate / 2, spawnRate);
+        if (DoSpawnDuck && !IsSpawnerRunning) 
+            StartCoroutine(nameof(SpawnDuckRoutine));
     }
     
-    private void SpawnDuck() {
-        Vector3 spawnPoint = transform.position + new Vector3(Random.Range(-size.x / 2, size.x / 2),
-                                                              size.y,
-                                                              Random.Range(-size.z / 2, size.z / 2));
+    private IEnumerator SpawnDuckRoutine() {
+        IsSpawnerRunning = true;
+        DoSpawnDuck = false;
         
-        GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], spawnPoint, Quaternion.identity);
+        spawnTime = nextSpawn;
+        while (spawnTime > 0) {
+            spawnTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        for (int i = 0; i < nbDucks; i++) {
+            
+            InstantiateDuck();
+
+            if (i > 1) {
+                spawnTime = Random.Range(0, nextSpawn);
+                while (spawnTime > 0) {
+                    spawnTime -= Time.deltaTime;
+                    yield return null;
+                }
+            }
+        }
+
+        IsSpawnerRunning = false;
+    }
+
+    private Vector3 GetRandomSpawnPoint() {
+        float posX = Random.Range(-size.x / 2, size.x / 2);
+        float posY = 0;
+        float posZ = Random.Range(-size.z / 2, size.z / 2);
         
-        duck.GetComponent<DuckController>().spawnSize = transform.position.x + (size.x / 2);
+        return new Vector3(posX, posY, posZ);
+    }
+    
+    private void InstantiateDuck() {
+        GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
+        duck.GetComponent<DuckController>().duckSpawner = this;
+        duck.GetComponent<DuckController>().spawnSize = size;
         duck.transform.SetParent(duckParent);
     }
     
