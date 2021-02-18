@@ -121,7 +121,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _collider.enabled = false;
         transform.position = transform.position;
 
-        CreateNewGameInstance.Instance.GetScores?.AddPoints(noPoints);
+        ScoringSystemManager.Instance.GetGameInstance?.GetScores.AddPoints(noPoints);
         
         if (isPg13) {
             _animations.Play("inAirDeath");
