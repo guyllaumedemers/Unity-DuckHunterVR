@@ -31,6 +31,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         }
     }
     #endregion
+
     [SerializeField]
     private GameObject inGameMenuUI;
     [SerializeField]
@@ -40,7 +41,6 @@ public class PlayerMenuUIScript : MonoBehaviour
     private Camera mainCamera;
     private const string mainMenuSceneName = "MainMenuSceneFinal";
     private const string gameSceneName = "MainGameSceneFinal";
-    private readonly double MAX_HEADSET_ROTATION_VALUE = 180;
 
     public void Awake()
     {
@@ -50,10 +50,8 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void Start()
     {
-        inGameMenuUI.SetActive(false);
-        HighScoreUI.Instance.InstanciatePlayerStatistics();
-        statsMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(false);
+        HighScoreUI.Instance.InstanciatePlayerStatistics(); // needs to be first otherwise the data wont load
+        SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
     public bool IsInGameScene()
@@ -93,7 +91,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         if (XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.menuButton, out isLeftMenuButtonPressed) && isLeftMenuButtonPressed)
         {
             GetCameraTransformAndRotation(inGameMenuUI, mainCamera);
-            inGameMenuUI.SetActive(true);
+            inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
         }
     }
 
@@ -110,10 +108,8 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void DisplayStatistics()
     {
-        Vector3 recalculateStatsUIPosition = inGameMenuUI.transform.position - new Vector3(0, 2, -4);
-        statsMenuUI.transform.position = recalculateStatsUIPosition;
-        statsMenuUI.SetActive(true);
-        inGameMenuUI.SetActive(false);
+        GetCameraTransformAndRotation(statsMenuUI, mainCamera);
+        InvertUIValues(inGameMenuUI, statsMenuUI);
     }
 
     public void GetOnline()
@@ -123,10 +119,8 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void DisplaySettings()
     {
-        Vector3 temp = inGameMenuUI.transform.position;
-        inGameMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(true);
-        settingsMenuUI.transform.position = temp;
+        GetCameraTransformAndRotation(settingsMenuUI, mainCamera);
+        InvertUIValues(inGameMenuUI, settingsMenuUI);
     }
     /// <summary>
     /// Camera Headset ONLY Track Device Rotation UP TO 180 degrees THAN fall into a range of -180 => 0;
@@ -135,23 +129,32 @@ public class PlayerMenuUIScript : MonoBehaviour
     /// <param name="camera"></param>
     public void GetCameraTransformAndRotation(GameObject gameObject, Camera camera)
     {
-        double angle = camera.transform.rotation.y;
+        Vector3 angle = camera.transform.rotation.eulerAngles;
+        double rad = (Math.PI / 180) * angle.y;
         int radius = 5; /// rotation radius around the camera yAxis
-        double x = radius * Math.Cos(angle);
-        double z = radius * Math.Sin(angle); /// zAxis equals vector.forward
-        if (angle > 0)
-        {
-            gameObject.transform.position = camera.transform.position + new Vector3((float)x, 0, (float)z);
-        }
-        else if (angle < 0)
-        {
-            gameObject.transform.position = camera.transform.position - new Vector3((float)x, 0, (float)z);
-        }
+        double z = radius * Math.Cos(rad);
+        double x = radius * Math.Sin(rad); /// zAxis equals vector.forward
+        gameObject.transform.position = camera.transform.position + new Vector3((float)x, 0, (float)z);
+        gameObject.transform.rotation = Quaternion.Euler(0, angle.y, 0);
     }
 
     public void GoBackToInGameUI()
     {
-        settingsMenuUI.SetActive(false);
+        SetInactive(new GameObject[] { settingsMenuUI, statsMenuUI });
         inGameMenuUI.SetActive(true);
+    }
+
+    public void SetInactive(GameObject[] gameObjects)
+    {
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i].SetActive(false);
+        }
+    }
+
+    public void InvertUIValues(GameObject inactive, GameObject active)
+    {
+        inactive.SetActive(!inactive.activeSelf);
+        active.SetActive(!active.activeSelf);
     }
 }

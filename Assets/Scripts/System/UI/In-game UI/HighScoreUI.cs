@@ -39,10 +39,11 @@ public class HighScoreUI : MonoBehaviour
         // I need to go thru all the instances -> compare them to find the highest score
         // remove the highest score from the list and loop the process until my top10 is filled
         // update the go object with the top 10 values
+        Transform target = GameObject.FindGameObjectWithTag("UIScore").GetComponent<Transform>();
         int i = 0;
         while (i < myArr.Length && i < MAX_NUMBER_OF_SCORE_DISPLAY)
         {
-            GameObject go = Instantiate(statEntry, canvas.transform);
+            GameObject go = Instantiate(statEntry, target);
             TextMeshProUGUI[] textMeshProUGUI = go.GetComponentsInChildren<TextMeshProUGUI>();
             int value = i + 1;
             textMeshProUGUI[0].text = DisplayRank(value);
@@ -75,11 +76,6 @@ public class HighScoreUI : MonoBehaviour
         CreateNewGameInstance temp = myArr[index];
         myArr[index] = myArr[indexToSwap];
         myArr[indexToSwap] = temp;
-    }
-
-    public void UpdateStatsUI()
-    {
-
     }
 
     public string DisplayRank(int value)

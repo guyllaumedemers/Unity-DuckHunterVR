@@ -20,6 +20,7 @@ TagManager:
   - PistolMagazine
   - SubmachineGunMagazine
   - Score
+  - UIScore
   layers:
   - Default
   - TransparentFX
