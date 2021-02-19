@@ -9,24 +9,19 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     public bool isPg13 = true;
     [Header("Gore Particle")]
     public ParticleSystem particleBurst;
-    [Header("Score points")]
+    [Header("Duck Information")]
     public int noPoints = 1;
-    [Header("Health Points")]
     public float HP = 1f;
-    [Header("Flight Speed Velocity")]
     public float flightSpeed = 1f;
-    [Header("Random Up Height increase")]
     public MinMax heighRangeIncrease = new MinMax(1f, 1.5f);
-    [Header("GameObject Height limits")]
     public MinMax minMaxY = new MinMax(-1f, 5f);
-    
     
     public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
     public Vector3 SpanwerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
     
     
-    [SerializeField][Header("State of Duck")]
+    [SerializeField]
     private IFlyingTarget.State _state;
     private Vector3 _target;
     private Animation _animations;
