@@ -31,10 +31,28 @@ public class DuckSpawner : MonoBehaviour {
     public float waveCountdown;
     
     private bool _isSpawnRoutineRunning;
+    private IEnumerator _spawnRoutine;
     
     private void Start() {
 
-        SetRound();
+        switch (GameManagerScript.Instance.GetCurrentMode) {
+            
+            case GameManagerScript.GameMode.REGULAR_MODE:
+                _spawnRoutine = SpawnDuckRoutine();
+                SetRound();
+                break;
+            
+            case GameManagerScript.GameMode.TIMED_MODE:
+                break;
+            
+            case GameManagerScript.GameMode.CHALLENGE_MODE:
+                break;
+            
+            default:
+                _spawnRoutine = SpawnDuckRoutine();
+                SetRound();
+                break;
+        }
         
         if (duckParent == null) {
             Debug.Log("No duck parent transform provided, creating default object");
@@ -48,11 +66,25 @@ public class DuckSpawner : MonoBehaviour {
     }
     
     private void Update() {
+        
+        
+        switch (GameManagerScript.Instance.GetCurrentMode) {
+            
+            case GameManagerScript.GameMode.REGULAR_MODE:
+                RregularMode();
+                break;
+            
+            default:
+                RregularMode();
+                break;
+        }
+    }
 
+    private void RregularMode() {
         if (roundCountdown <= 0) {
             if (_ducksInRound > 0) {
                 if (_ducksInWave <= 0 && !_isSpawnRoutineRunning)
-                    StartCoroutine(nameof(SpawnDuckRoutine));
+                    StartCoroutine(_spawnRoutine);
             }
             else{
                 Debug.Log($"Round {roundNo} Over");
