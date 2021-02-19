@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScoringSystemManager : MonoBehaviour
 {
     private TextMeshProUGUI textMeshProUGUI;
-    private CreateNewGameInstance newGame;
+    private CreateNewGameInstance playerGameInstance;
     #region Singleton
     private static ScoringSystemManager instance;
     private ScoringSystemManager() { }
@@ -32,19 +32,19 @@ public class ScoringSystemManager : MonoBehaviour
     {
         if (GameManagerScript.Instance.GetGameState)
         {
-            textMeshProUGUI.text = newGame.GetScores.GetPoints.ToString();
+            textMeshProUGUI.text = playerGameInstance.GetScores.GetPoints.ToString();
         }
     }
 
     public void InstanciateNewGameInstance()
     {
-        newGame = new CreateNewGameInstance();
+        playerGameInstance = new CreateNewGameInstance();
     }
 
     public void DestroyGameInstance()
     {
-        newGame = new CreateNewGameInstance();
-        newGame = null;
+        playerGameInstance = new CreateNewGameInstance();
+        playerGameInstance = null;
     }
 
     /// <summary>
@@ -65,5 +65,5 @@ public class ScoringSystemManager : MonoBehaviour
         return instance.GetScores.GetPoints;
     }
 
-    public CreateNewGameInstance GetGameInstance { get => newGame; }
+    public CreateNewGameInstance GetGameInstance { get => playerGameInstance; }
 }
