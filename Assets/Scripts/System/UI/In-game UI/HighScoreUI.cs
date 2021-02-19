@@ -20,16 +20,12 @@ public class HighScoreUI : MonoBehaviour
         }
     }
     #endregion
-    [SerializeField]
-    private Canvas canvas;
     [SerializeField] private GameObject statEntry;
-    private CreateNewGameInstance[] highScoreArr = new CreateNewGameInstance[10];
     private const int MAX_NUMBER_OF_SCORE_DISPLAY = 10;
 
     public void Awake()
     {
         instance = this;
-        canvas = GetComponent<Canvas>();
     }
 
     public void InstanciatePlayerStatistics()
@@ -48,7 +44,8 @@ public class HighScoreUI : MonoBehaviour
             int value = i + 1;
             textMeshProUGUI[0].text = DisplayRank(value);
             textMeshProUGUI[1].text = myArr[i].GetScores.GetPoints.ToString();
-            textMeshProUGUI[2].text = myArr[i].GetGameMode.ToString();
+            textMeshProUGUI[2].text = myArr[i].GetRound.ToString();
+            textMeshProUGUI[3].text = myArr[i].GetGameMode.ToString();
             i++;
         }
     }

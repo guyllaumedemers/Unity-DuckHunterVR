@@ -9,11 +9,9 @@ public class GameButton : MonoBehaviour
     private new Animation animation;
     private readonly string start = "START";
     private readonly string stop = "STOP";
-    private bool isRunning;
 
     public void Awake()
     {
-        isRunning = false;
         textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
         animation = GetComponent<Animation>();
     }
@@ -26,14 +24,16 @@ public class GameButton : MonoBehaviour
         if (GameManagerScript.Instance.GetGameState)
         {
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
-            
-            if(GameManagerScript.Instance.duckSpawner != null) 
+
+            if (GameManagerScript.Instance.duckSpawner != null)
                 GameManagerScript.Instance.duckSpawner.SetActive(true);
         }
-        else {
-            if(GameManagerScript.Instance.duckSpawner != null) 
+        else
+        {
+            if (GameManagerScript.Instance.duckSpawner != null)
                 GameManagerScript.Instance.duckSpawner.SetActive(false);
-            
+            // Update Game Instance => Round value
+            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawner>().GetRound);
             Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
             ScoringSystemManager.Instance.DestroyGameInstance();
             // reset the RoundStatus so the player can set a new GameMode => set to false since when the instance is active the update method of the clipboard set it to true

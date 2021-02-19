@@ -51,7 +51,6 @@ public class Serialization
                 stringReader = new StringReader(myArr[i]);
                 CreateNewGameInstance instance = (CreateNewGameInstance)jsonSerializer.Deserialize(stringReader, typeof(CreateNewGameInstance));
                 gameInstances.Add(instance);
-                Debug.Log("GameMode : " + instance.GetGameMode + " Points : " + instance.GetScores.GetPoints);
             }
             return gameInstances;
         }
