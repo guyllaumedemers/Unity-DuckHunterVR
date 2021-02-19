@@ -17,13 +17,14 @@ public class DuckSpawner : MonoBehaviour {
     [Header("Round Information")]
     public int nbDucksPerRound = 5;
     public float roundDelay = 10f;
+    public float flightRoundIncrement = 0.1f;
     
     [Header("Wave Information")]
     public int nbDucksPerWave = 1;
     public float waveDelay = 4f;
     
     [Header("Debug Information")]
-    public short roundNo = 1;
+    public float roundNo = 1;
     [SerializeField]private int _ducksInRound = 0;
     public float roundCountdown;
     
@@ -123,6 +124,10 @@ public class DuckSpawner : MonoBehaviour {
     private void InstantiateDuck() {
         try {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
+            
+            if(roundNo <= 10)
+                duck.GetComponent<DuckController>().flightSpeed += flightRoundIncrement;
+            
             duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
             duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuckInWave;
