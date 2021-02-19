@@ -26,8 +26,17 @@ public class GameButton : MonoBehaviour
         if (GameManagerScript.Instance.GetGameState)
         {
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
+            
+            if(GameManagerScript.Instance.duckSpawner != null) 
+                GameManagerScript.Instance.duckSpawner.SetActive(true);
+            
             return;
         }
+        else {
+            if(GameManagerScript.Instance.duckSpawner != null) 
+                GameManagerScript.Instance.duckSpawner.SetActive(false);
+        }
+        
         Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
         ScoringSystemManager.Instance.DestroyGameInstance();
         // reset the RoundStatus so the player can set a new GameMode => set to false since when the instance is active the update method of the clipboard set it to true

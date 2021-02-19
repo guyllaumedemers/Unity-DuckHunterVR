@@ -15794,6 +15794,12 @@ Transform:
   m_Father: {fileID: 815080535}
   m_RootOrder: 85
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &757224089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1667229233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &759974109
 GameObject:
   m_ObjectHideFlags: 0
@@ -25623,6 +25629,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: DuckSpawner
+      value: 
+      objectReference: {fileID: 757224089}
     - target: {fileID: 6437467878737515951, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
       propertyPath: m_Name
@@ -34910,6 +34921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DuckSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}

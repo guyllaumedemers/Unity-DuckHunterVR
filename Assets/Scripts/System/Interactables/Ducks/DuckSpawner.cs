@@ -31,26 +31,17 @@ public class DuckSpawner : MonoBehaviour {
     public float waveCountdown;
     
     private bool _isSpawnRoutineRunning;
-    private IEnumerator _spawnRoutine;
-    
+
     private void Start() {
 
         switch (GameManagerScript.Instance.GetCurrentMode) {
             
             case GameManagerScript.GameMode.REGULAR_MODE:
-                _spawnRoutine = SpawnDuckRoutine();
-                SetRound();
+                SetRegularRound();
                 break;
-            
-            case GameManagerScript.GameMode.TIMED_MODE:
-                break;
-            
-            case GameManagerScript.GameMode.CHALLENGE_MODE:
-                break;
-            
+
             default:
-                _spawnRoutine = SpawnDuckRoutine();
-                SetRound();
+                SetRegularRound();
                 break;
         }
         
@@ -60,36 +51,35 @@ public class DuckSpawner : MonoBehaviour {
         }
     }
 
-    private void SetRound() {
+    private void SetRegularRound() {
         _ducksInRound = nbDucksPerRound;
         roundCountdown = roundDelay;
     }
     
     private void Update() {
-        
-        
+
         switch (GameManagerScript.Instance.GetCurrentMode) {
             
             case GameManagerScript.GameMode.REGULAR_MODE:
-                RregularMode();
+                RegularMode();
                 break;
             
             default:
-                RregularMode();
+                RegularMode();
                 break;
         }
     }
 
-    private void RregularMode() {
+    private void RegularMode() {
         if (roundCountdown <= 0) {
             if (_ducksInRound > 0) {
                 if (_ducksInWave <= 0 && !_isSpawnRoutineRunning)
-                    StartCoroutine(_spawnRoutine);
+                    StartCoroutine(nameof(SpawnDuckRoutine));
             }
             else{
                 Debug.Log($"Round {roundNo} Over");
                 roundNo++;
-                SetRound();
+                SetRegularRound();
             }
         }
         else {
