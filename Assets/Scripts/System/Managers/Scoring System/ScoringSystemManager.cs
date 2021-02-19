@@ -39,7 +39,6 @@ public class ScoringSystemManager : MonoBehaviour
     public void InstanciateNewGameInstance()
     {
         newGame = new CreateNewGameInstance();
-        StartCoroutine(AddPointCoroutine());
     }
 
     public void DestroyGameInstance()
@@ -64,21 +63,6 @@ public class ScoringSystemManager : MonoBehaviour
     public int GetScore(CreateNewGameInstance instance)
     {
         return instance.GetScores.GetPoints;
-    }
-
-    /// <summary>
-    /// Testing -> Just realized that by calling the instance of CreateNewGame I instanciate it which means the GameButton isnt in control of the instance
-    /// which is why the score board constantly update
-    /// I need to initialize the scoring system only when the GameButton is Selected
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerator AddPointCoroutine()
-    {
-        while (GameManagerScript.Instance.GetGameState && newGame != null)
-        {
-            yield return new WaitForSeconds(3.0f);
-            AddPoints(newGame, 10);
-        }
     }
 
     public CreateNewGameInstance GetGameInstance { get => newGame; }
