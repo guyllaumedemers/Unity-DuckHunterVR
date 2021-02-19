@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DuckSpawner : MonoBehaviour {
@@ -126,7 +124,7 @@ public class DuckSpawner : MonoBehaviour {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
             
             if(roundNo <= 10)
-                duck.GetComponent<DuckController>().flightSpeed += flightRoundIncrement;
+                duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement;
             
             duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);

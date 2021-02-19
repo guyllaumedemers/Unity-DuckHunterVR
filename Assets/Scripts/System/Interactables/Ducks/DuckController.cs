@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,8 +18,12 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
     public Vector3 SpanwerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
-    
-    
+    public float FlightSpeed {
+        get => flightSpeed;
+        set => value = flightSpeed;
+    }
+
+
     [SerializeField]
     private IFlyingTarget.State _state;
     private Vector3 _target;
@@ -30,7 +33,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     private bool _isDead;
     private float _escapeHight;
     
-    
+
     public void Start() {
         _animations = GetComponent<Animation>();
         _collider = GetComponent<SphereCollider>();
@@ -95,7 +98,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     }
 
     private void FlyToTarget() {
-        float step = flightSpeed * Time.deltaTime;
+        float step = FlightSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _target, step);
         transform.LookAt(_target);
     }
