@@ -25634,6 +25634,11 @@ PrefabInstance:
       propertyPath: DuckSpawner
       value: 
       objectReference: {fileID: 757224089}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: duckSpawner
+      value: 
+      objectReference: {fileID: 757224089}
     - target: {fileID: 6437467878737515951, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
       propertyPath: m_Name
@@ -60155,6 +60160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Rig Main Game
       objectReference: {fileID: 0}
+    - target: {fileID: 7403554885747376351, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8974552059715550009, guid: 07cb866f7b13a9942b466ac667977042,
         type: 3}
       propertyPath: statsMenuUI
@@ -60170,6 +60180,11 @@ PrefabInstance:
       propertyPath: settingsMenuUI
       value: 
       objectReference: {fileID: 28916707}
+    - target: {fileID: 8974552059715550015, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.93
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cb866f7b13a9942b466ac667977042, type: 3}
 --- !u!1 &4213956747438521759

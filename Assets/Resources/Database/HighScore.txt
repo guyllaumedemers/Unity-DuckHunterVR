@@ -8,3 +8,5 @@
 {"gameMode":0,"scorePoints":{"points":70}}
 {"gameMode":0,"scorePoints":{"points":0}}
 {"gameMode":0,"scorePoints":{"points":0}}
+{"gameMode":0,"scorePoints":{"points":70}}
+{"gameMode":0,"scorePoints":{"points":60}}
