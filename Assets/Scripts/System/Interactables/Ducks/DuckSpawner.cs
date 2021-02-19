@@ -1,46 +1,95 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DuckSpawner : MonoBehaviour {
+    
     [Header("Size of spawn area")]
-    public Vector3 size;
+    public Vector3 spawnSize;
     [Header("Model used to instantiate")]
     public GameObject[] duckModels;
     [Header("Duck Parent Transform")] 
     public Transform duckParent;
-    [Header("Number of Ducks per wave")]
-    public int nbDucks = 1; 
-    [Header("Time betweene waves")]
+
+    [Header("Round Information")]
+    public int nbDucksPerRound = 5;
+    public float roundDelay = 10f;
+    public float flightRoundIncrement = 0.1f;
+    
+    [Header("Wave Information")]
+    public int nbDucksPerWave = 1;
     public float waveDelay = 4f;
-    [Header("Wave Countdown")]
+    
+    [Header("Debug Information")]
+    public float roundNo = 1;
+    [SerializeField]private int _ducksInRound = 0;
+    public float roundCountdown;
+    
+    [SerializeField]private int _ducksInWave = 0;
     public float waveCountdown;
     
-    private readonly List<GameObject> duckList = new List<GameObject>();
-    private bool isSpawnDuckRunning;
-    
+    private bool _isSpawnRoutineRunning;
+
     private void Start() {
+
+        switch (GameManagerScript.Instance.GetCurrentMode) {
+            
+            case GameManagerScript.GameMode.REGULAR_MODE:
+                SetRegularRound();
+                break;
+
+            default:
+                SetRegularRound();
+                break;
+        }
+        
         if (duckParent == null) {
             Debug.Log("No duck parent transform provided, creating default object");
             duckParent = new GameObject("Spawned Ducks").transform;
         }
+    }
 
-        StartCoroutine(nameof(SpawnDuckRoutine));
+    private void SetRegularRound() {
+        _ducksInRound = nbDucksPerRound;
+        roundCountdown = roundDelay;
     }
     
     private void Update() {
-        duckList.RemoveAll(item => item == null);
-        
-        if (duckList.Count == 0 && !isSpawnDuckRunning)
-            StartCoroutine(nameof(SpawnDuckRoutine));
+
+        switch (GameManagerScript.Instance.GetCurrentMode) {
+            
+            case GameManagerScript.GameMode.REGULAR_MODE:
+                RegularMode();
+                break;
+            
+            default:
+                RegularMode();
+                break;
+        }
+    }
+
+    private void RegularMode() {
+        if (roundCountdown <= 0) {
+            if (_ducksInRound > 0) {
+                if (_ducksInWave <= 0 && !_isSpawnRoutineRunning)
+                    StartCoroutine(nameof(SpawnDuckRoutine));
+            }
+            else{
+                Debug.Log($"Round {roundNo} Over");
+                roundNo++;
+                SetRegularRound();
+            }
+        }
+        else {
+            roundCountdown -= Time.deltaTime;
+        }
     }
     
     private IEnumerator SpawnDuckRoutine() {
-        isSpawnDuckRunning = true;
+        _isSpawnRoutineRunning = true;
         waveCountdown = waveDelay;
         
         while (waveCountdown > 0) {
@@ -48,7 +97,7 @@ public class DuckSpawner : MonoBehaviour {
             yield return null;
         }
         
-        for (int i = 0; i < nbDucks; i++) {
+        for (int i = 0; i < nbDucksPerWave; i++) {
             
             InstantiateDuck();
 
@@ -61,13 +110,13 @@ public class DuckSpawner : MonoBehaviour {
             }
         }
         
-        isSpawnDuckRunning = false;
+        _isSpawnRoutineRunning = false;
     }
 
     private Vector3 GetRandomSpawnPoint() {
-        float posX = Random.Range(-size.x / 2, size.x / 2);
-        float posY = 0;
-        float posZ = Random.Range(-size.z / 2, size.z / 2);
+        float posX = transform.position.x + Random.Range(-spawnSize.x / 2, spawnSize.x / 2);
+        float posY = transform.position.y - spawnSize.y / 2;
+        float posZ = transform.position.z + Random.Range(-spawnSize.z / 2, spawnSize.z / 2);
         
         return new Vector3(posX, posY, posZ);
     }
@@ -75,17 +124,36 @@ public class DuckSpawner : MonoBehaviour {
     private void InstantiateDuck() {
         try {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
-            duck.GetComponent<DuckController>().spawnSize = size;
+            
+            if(roundNo <= 10)
+                duck.GetComponent<DuckController>().flightSpeed += flightRoundIncrement;
+            
+            duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
+            duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
+            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuckInWave;
+            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuckInRound;
+            
             duck.transform.SetParent(duckParent);
-            duckList.Add(duck);
+            
+            _ducksInWave++;
         }
-        catch (Exception ex){
+        catch (Exception ex) {
             Debug.Log(ex);
         }
     }
     
+    void RemoveDuckInWave() {
+        if(_ducksInWave > 0)
+            _ducksInWave--;
+    }
+
+    void RemoveDuckInRound() {
+        if(_ducksInRound > 0)
+            _ducksInRound--;
+    }
+    
     private void OnDrawGizmos() {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
-        Gizmos.DrawCube(transform.position, size);
+        Gizmos.DrawCube(transform.position, spawnSize);
     }
 }

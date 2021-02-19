@@ -1,3 +1,12 @@
 {"gameMode":2,"scorePoints":{"points":30}}
 {"gameMode":0,"scorePoints":{"points":10}}
 {"gameMode":0,"scorePoints":{"points":30}}
+{"gameMode":0,"scorePoints":{"points":120}}
+{"gameMode":0,"scorePoints":{"points":10}}
+{"gameMode":0,"scorePoints":{"points":20}}
+{"gameMode":0,"scorePoints":{"points":0}}
+{"gameMode":0,"scorePoints":{"points":70}}
+{"gameMode":0,"scorePoints":{"points":0}}
+{"gameMode":0,"scorePoints":{"points":0}}
+{"gameMode":0,"scorePoints":{"points":70}}
+{"gameMode":0,"scorePoints":{"points":60}}

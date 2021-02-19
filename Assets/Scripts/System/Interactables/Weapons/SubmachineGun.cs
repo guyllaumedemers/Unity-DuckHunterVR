@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class SubmachineGun : BaseWeapon
 {
+    protected override string ShootingSoundPath => "SFX/Guns/AR15";
+    protected override string ReloadingSoundPath => "SFX/Guns/MagazineReload";
+
     [field: SerializeField] public float RateOfFire { get; set; } = 0f;
     public float TimeBeforeNextShot { get; set; } = 0f;
-
-    private void Awake()
-    {
-        ShootingSound = Resources.Load<AudioClip>("SFX/Guns/AR15");
-        ReloadSound = Resources.Load<AudioClip>("SFX/Guns/MagazineReload");
-    }
 
     public override void Shoot()
     {

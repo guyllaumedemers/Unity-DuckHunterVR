@@ -25,6 +25,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public AudioClip ShootingSound { get; set; }
     public AudioClip ReloadSound { get; set; }
     [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
+    protected abstract string ShootingSoundPath { get; }
+    protected abstract string ReloadingSoundPath { get; }
 
     void Start()
     {
@@ -33,6 +35,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
         if (IsAcceptingMagazine)
             MagazineAttach = AmmoReloadCollider.transform.GetChild(0);
+
+        ShootingSound = Resources.Load<AudioClip>(ShootingSoundPath);
+        ReloadSound = Resources.Load<AudioClip>(ReloadingSoundPath);
     }
 
     public virtual void Shoot()
@@ -123,7 +128,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
                         AudioSource.Play();
 
-                        //CurrentAmmo = CurrentAmmoContainer.CurrentAmmo;
+                        SelectionOutline selectionOutline = collider.GetComponent<SelectionOutline>();
+                        selectionOutline.RemoveHighlight();
                     }
                     else
                     {
@@ -139,15 +145,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         if (CurrentMagazine != null)
         {
-            //MeshRenderer mesh = CurrentMagazine.GetComponent<MeshRenderer>();
-
-            
-
             CurrentAmmoContainer.MagazineCanLoad = false;
             CurrentAmmoContainer.TimeBeforeCanLoad = Time.time + CurrentAmmoContainer.TimeCanLoad;
-
-            //CurrentAmmoContainer.CurrentAmmo = CurrentAmmo;
-            //CurrentAmmo = 0;
 
             MagazineAttach.DetachChildren();
 

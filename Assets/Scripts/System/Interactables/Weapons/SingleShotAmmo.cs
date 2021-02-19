@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleShotAmmo : BaseWeapon
+public abstract class SingleShotAmmo : BaseWeapon
 {
     [field: SerializeField] public int CurrentAmmo { get; set; } = 0;
     [field: SerializeField] public int MaxAmmo { get; set; } = 10;
