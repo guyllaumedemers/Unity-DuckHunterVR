@@ -35,7 +35,7 @@ public class GameManagerScript : MonoBehaviour
 
     [Header("Duck Spawner information")]
     public GameObject duckSpawnerGo;
-    public Vector3 duckSpawnerPos = new Vector3(30.7900009f,6.5999999f,35.7299995f);
+    public Vector3 duckSpawnerPos = new Vector3(31f,6.5f,36f);
     public Vector3 duckSpawnerSize = new Vector3(10, 10, 28);
     
     public void Awake()
