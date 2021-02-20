@@ -19,8 +19,9 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
     public Vector3 SpanwerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
-    
-    
+    public float FlightSpeed { get => flightSpeed; set => flightSpeed = value; }
+
+
     [SerializeField]
     private IFlyingTarget.State _state;
     private Vector3 _target;
@@ -30,7 +31,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     private bool _isDead;
     private float _escapeHight;
     
-    
+
     public void Start() {
         _animations = GetComponent<Animation>();
         _collider = GetComponent<SphereCollider>();
@@ -83,7 +84,6 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
     private void FixedUpdate() {
         if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max) {
-            DiedDelegate?.Invoke();
             Destroy(gameObject);
         }
     }
@@ -139,5 +139,9 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         }
 
         _rb.useGravity = true;
+    }
+
+    private void OnDestroy() {
+        DiedDelegate?.Invoke();
     }
 }

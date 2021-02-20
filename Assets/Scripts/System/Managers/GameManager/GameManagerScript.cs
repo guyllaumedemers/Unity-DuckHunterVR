@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,18 +33,24 @@ public class GameManagerScript : MonoBehaviour
     private bool isRunning;
     private GameMode mode;
 
-    public GameObject duckSpawner;
-
+    [Header("Duck Spawner information")]
+    public GameObject duckSpawnerGo;
+    public Vector3 duckSpawnerPos = new Vector3(31f,6.5f,36f);
+    public Vector3 duckSpawnerSize = new Vector3(10, 10, 28);
+    
     public void Awake()
     {
         instance = this;
         mode = GameMode.REGULAR_MODE;
         isRunning = false;
         isRoundLaunch = false;
+        
+        Instantiate(duckSpawnerGo, Instance.duckSpawnerPos, Quaternion.identity);
+        duckSpawnerGo.GetComponent<DuckSpawnerController>().spawnSize = duckSpawnerSize;
     }
-
+    
     public GameMode GetCurrentMode { get => mode; set { mode = value; } }
     public bool GetRoundStatus { get => isRoundLaunch; set { isRoundLaunch = value; } }
     public bool GetGameState { get => isRunning; set { isRunning = value; } }
-    public GameObject GetDuckSpawnerObject { get => duckSpawner; }
+    public GameObject GetDuckSpawnerObject { get => duckSpawnerGo; }
 }
