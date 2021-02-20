@@ -30,6 +30,25 @@ public class DuckSpawnerController : MonoBehaviour {
     public float waveCountdown;
     
     private bool _isSpawnRoutineRunning;
+    private float p_roundNo;
+    
+    private void Awake() {
+        p_roundNo = roundNo;
+    }
+
+    private void OnEnable() {
+        roundNo = p_roundNo;
+        _ducksInWave = 0;
+        _ducksInRound = 0;
+        _ducksInRound = nbDucksPerRound;
+        roundCountdown = roundDelay;
+        waveCountdown = waveDelay;
+        duckParent = new GameObject("Spawned Ducks").transform;
+    }
+
+    private void OnDisable() {
+        Destroy(duckParent.gameObject);
+    }
 
     private void Start() {
 
@@ -46,7 +65,7 @@ public class DuckSpawnerController : MonoBehaviour {
         
         if (duckParent == null) {
             Debug.Log("No duck parent transform provided, creating default object");
-            duckParent = new GameObject("Spawned Ducks").transform;
+            //duckParent = new GameObject("Spawned Ducks").transform;
         }
     }
 

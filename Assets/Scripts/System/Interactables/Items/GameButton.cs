@@ -29,12 +29,14 @@ public class GameButton : MonoBehaviour
         {
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
             
-            Instantiate(duckSpawner, GameManagerScript.Instance.duckSpawnerPos, Quaternion.identity);
-            duckSpawner.GetComponent<DuckSpawnerController>().spawnSize = GameManagerScript.Instance.duckSpawnerSize;
+            duckSpawner.SetActive(true);
+            //Instantiate(duckSpawner, GameManagerScript.Instance.duckSpawnerPos, Quaternion.identity);
+            //duckSpawner.GetComponent<DuckSpawnerController>().spawnSize = GameManagerScript.Instance.duckSpawnerSize;
         }
         else
         {
-            Destroy(duckSpawner);
+            duckSpawner.SetActive(false);
+            //Destroy(duckSpawner);
             
             // Update Game Instance => Round value
             ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
