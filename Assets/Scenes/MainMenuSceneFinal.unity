@@ -50236,11 +50236,41 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7089563513808804242, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563513808804242, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563513808804242, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7089563513906613871, guid: a909690266b323f489dca563cf99f739,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 4075094167112725816}
+    - target: {fileID: 7089563514366770665, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563514366770665, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563514366770665, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7089563514377492331, guid: a909690266b323f489dca563cf99f739,
         type: 3}
       propertyPath: m_RootOrder
@@ -50386,6 +50416,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7089563515266479734, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563515266479734, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563515266479734, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a909690266b323f489dca563cf99f739, type: 3}
 --- !u!1001 &7132841161125695712
@@ -50454,6 +50499,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Rig Main Menu UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517084364891180079, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9832549
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517084364891180079, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.18223555
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517084364891180079, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f81d1f6046a874195704fdf9c26c7c, type: 3}

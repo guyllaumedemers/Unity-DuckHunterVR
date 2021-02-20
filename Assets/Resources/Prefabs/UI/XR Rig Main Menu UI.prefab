@@ -1426,9 +1426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xRInputWatcherLeft: {fileID: 0}
-  _xRInputWatcherRight: {fileID: 0}
-  _primaryIsPressed: 0
-  _secondaryIsPressed: 0
   _menuIsPressed: 0
 --- !u!1 &6517084364926453632
 GameObject:
