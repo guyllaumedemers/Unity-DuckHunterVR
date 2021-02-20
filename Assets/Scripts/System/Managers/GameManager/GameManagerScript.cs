@@ -27,13 +27,13 @@ public class GameManagerScript : MonoBehaviour
         }
     }
     #endregion
-    
+
     private bool isRoundLaunch;
     private bool isRunning;
     private GameMode mode;
 
     public GameObject duckSpawner;
-    
+
     public void Awake()
     {
         instance = this;
@@ -41,8 +41,9 @@ public class GameManagerScript : MonoBehaviour
         isRunning = false;
         isRoundLaunch = false;
     }
-    
+
     public GameMode GetCurrentMode { get => mode; set { mode = value; } }
     public bool GetRoundStatus { get => isRoundLaunch; set { isRoundLaunch = value; } }
     public bool GetGameState { get => isRunning; set { isRunning = value; } }
+    public GameObject GetDuckSpawnerObject { get => duckSpawner; }
 }

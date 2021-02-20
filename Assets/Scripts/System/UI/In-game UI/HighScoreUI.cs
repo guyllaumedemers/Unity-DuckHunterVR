@@ -20,16 +20,12 @@ public class HighScoreUI : MonoBehaviour
         }
     }
     #endregion
-    [SerializeField]
-    private Canvas canvas;
     [SerializeField] private GameObject statEntry;
-    private CreateNewGameInstance[] highScoreArr = new CreateNewGameInstance[10];
     private const int MAX_NUMBER_OF_SCORE_DISPLAY = 10;
 
     public void Awake()
     {
         instance = this;
-        canvas = GetComponent<Canvas>();
     }
 
     public void InstanciatePlayerStatistics()
@@ -39,15 +35,17 @@ public class HighScoreUI : MonoBehaviour
         // I need to go thru all the instances -> compare them to find the highest score
         // remove the highest score from the list and loop the process until my top10 is filled
         // update the go object with the top 10 values
+        Transform target = GameObject.FindGameObjectWithTag("UIScore").GetComponent<Transform>();
         int i = 0;
         while (i < myArr.Length && i < MAX_NUMBER_OF_SCORE_DISPLAY)
         {
-            GameObject go = Instantiate(statEntry, canvas.transform);
+            GameObject go = Instantiate(statEntry, target);
             TextMeshProUGUI[] textMeshProUGUI = go.GetComponentsInChildren<TextMeshProUGUI>();
             int value = i + 1;
             textMeshProUGUI[0].text = DisplayRank(value);
             textMeshProUGUI[1].text = myArr[i].GetScores.GetPoints.ToString();
-            textMeshProUGUI[2].text = myArr[i].GetGameMode.ToString();
+            textMeshProUGUI[2].text = myArr[i].GetRound.ToString();
+            textMeshProUGUI[3].text = myArr[i].GetGameMode.ToString();
             i++;
         }
     }
@@ -75,11 +73,6 @@ public class HighScoreUI : MonoBehaviour
         CreateNewGameInstance temp = myArr[index];
         myArr[index] = myArr[indexToSwap];
         myArr[indexToSwap] = temp;
-    }
-
-    public void UpdateStatsUI()
-    {
-
     }
 
     public string DisplayRank(int value)
