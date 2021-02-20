@@ -45,8 +45,8 @@ public class GameManagerScript : MonoBehaviour
         isRunning = false;
         isRoundLaunch = false;
         
-        //Instantiate(duckSpawnerGo, Instance.duckSpawnerPos, Quaternion.identity);
-        //duckSpawnerGo.GetComponent<DuckSpawnerController>().spawnSize = duckSpawnerSize;
+        Instantiate(duckSpawnerGo, Instance.duckSpawnerPos, Quaternion.identity);
+        duckSpawnerGo.GetComponent<DuckSpawnerController>().spawnSize = duckSpawnerSize;
     }
     
     public GameMode GetCurrentMode { get => mode; set { mode = value; } }
