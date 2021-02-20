@@ -2266,8 +2266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuUI: {fileID: 0}
-  settingsMenuUI: {fileID: 0}
   statsMenuUI: {fileID: 0}
+  settingsMenuUI: {fileID: 0}
 --- !u!114 &7900329837326311395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,9 +2281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xRInputWatcherLeft: {fileID: 0}
-  _xRInputWatcherRight: {fileID: 0}
-  _primaryIsPressed: 0
-  _secondaryIsPressed: 0
   _menuIsPressed: 0
 --- !u!1 &8974552059751539467
 GameObject:

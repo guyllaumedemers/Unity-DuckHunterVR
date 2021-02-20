@@ -22,9 +22,12 @@ public class MainMenuScript : MonoBehaviour
         }
     }
     #endregion
+    [Header("Requiered Components")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private Toggle disableSounds;
+
+    [Header("Scene Name")]
     private string gameSceneName = "MainGameSceneFinal";
 
     public void Awake()
@@ -42,7 +45,6 @@ public class MainMenuScript : MonoBehaviour
     #region OnClick Event interaction
     public void LaunchGame()
     {
-        Debug.Log("Called");
         SceneManager.LoadScene(gameSceneName, LoadSceneMode.Single);
     }
 

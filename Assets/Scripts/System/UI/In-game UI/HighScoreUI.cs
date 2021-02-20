@@ -20,7 +20,9 @@ public class HighScoreUI : MonoBehaviour
         }
     }
     #endregion
+    [Header("Required Components")]
     [SerializeField] private GameObject statEntry;
+
     private const int MAX_NUMBER_OF_SCORE_DISPLAY = 10;
 
     public void Awake()
@@ -49,10 +51,7 @@ public class HighScoreUI : MonoBehaviour
             i++;
         }
     }
-    /// <summary>
-    /// Everything is pointer => also change sign for swaping so the highest score is on top
-    /// </summary>
-    /// <param name="instances"></param>
+
     public CreateNewGameInstance[] BubbleSortArray(CreateNewGameInstance[] myArr)
     {
         for (int i = 0; i < myArr.Length - 1; i++)

@@ -31,14 +31,13 @@ public class PlayerMenuUIScript : MonoBehaviour
         }
     }
     #endregion
-
-    [SerializeField]
-    private GameObject inGameMenuUI;
-    [SerializeField]
-    private GameObject settingsMenuUI;
-    [SerializeField]
-    private GameObject statsMenuUI;
+    [Header("Requiered Components")]
+    [SerializeField] private GameObject inGameMenuUI;
+    [SerializeField] private GameObject statsMenuUI;
+    [SerializeField] private GameObject settingsMenuUI;
     private Camera mainCamera;
+
+    [Header("Scene Name")]
     private const string mainMenuSceneName = "MainMenuSceneFinal";
     private const string gameSceneName = "MainGameSceneFinal";
 
@@ -54,6 +53,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
+    #region Scene Checks
     public bool IsInGameScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -84,6 +84,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         }
         return false;
     }
+    #endregion
 
     public void ActivateInGameMenuUI()
     {
@@ -95,6 +96,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         }
     }
 
+    #region Button Actions
     public void GoBackToMainMenuScene()
     {
         inGameMenuUI.SetActive(false);
@@ -109,7 +111,7 @@ public class PlayerMenuUIScript : MonoBehaviour
     public void DisplayStatistics()
     {
         GetCameraTransformAndRotation(statsMenuUI, mainCamera);
-        InvertUIValues(inGameMenuUI, statsMenuUI);
+        InvertActiveUIValues(inGameMenuUI, statsMenuUI);
     }
 
     public void GetOnline()
@@ -120,13 +122,16 @@ public class PlayerMenuUIScript : MonoBehaviour
     public void DisplaySettings()
     {
         GetCameraTransformAndRotation(settingsMenuUI, mainCamera);
-        InvertUIValues(inGameMenuUI, settingsMenuUI);
+        InvertActiveUIValues(inGameMenuUI, settingsMenuUI);
     }
-    /// <summary>
-    /// Camera Headset ONLY Track Device Rotation UP TO 180 degrees THAN fall into a range of -180 => 0;
-    /// </summary>
-    /// <param name="gameObject"></param>
-    /// <param name="camera"></param>
+
+    public void GoBackToInGameUI()
+    {
+        SetInactive(new GameObject[] { settingsMenuUI, statsMenuUI });
+        inGameMenuUI.SetActive(true);
+    }
+    #endregion
+
     public void GetCameraTransformAndRotation(GameObject gameObject, Camera camera)
     {
         Vector3 angle = camera.transform.rotation.eulerAngles;
@@ -138,12 +143,6 @@ public class PlayerMenuUIScript : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Euler(0, angle.y, 0);
     }
 
-    public void GoBackToInGameUI()
-    {
-        SetInactive(new GameObject[] { settingsMenuUI, statsMenuUI });
-        inGameMenuUI.SetActive(true);
-    }
-
     public void SetInactive(GameObject[] gameObjects)
     {
         for (int i = 0; i < gameObjects.Length; i++)
@@ -152,7 +151,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         }
     }
 
-    public void InvertUIValues(GameObject inactive, GameObject active)
+    public void InvertActiveUIValues(GameObject inactive, GameObject active)
     {
         inactive.SetActive(!inactive.activeSelf);
         active.SetActive(!active.activeSelf);
