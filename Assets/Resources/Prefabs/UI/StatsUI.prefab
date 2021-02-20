@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 5068826437169569530}
   m_Layer: 5
   m_Name: StatsUI
-  m_TagString: Untagged
+  m_TagString: StatsMenuUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &768145514088271035
 MonoBehaviour:
   m_ObjectHideFlags: 0

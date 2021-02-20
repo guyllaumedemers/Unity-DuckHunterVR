@@ -1159,11 +1159,11 @@ GameObject:
   - component: {fileID: 6534511508350927907}
   m_Layer: 5
   m_Name: In-gameMenuUI
-  m_TagString: Untagged
+  m_TagString: IngameMenuUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5651178004686073412
 RectTransform:
   m_ObjectHideFlags: 0
