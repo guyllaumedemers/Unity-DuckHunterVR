@@ -13,7 +13,7 @@ public class DuckSpawner : MonoBehaviour {
     public Transform duckParent;
 
     [Header("Round Information")]
-    public int nbDucksPerRound = 5;
+    public int nbDucksPerRound = 10;
     public float roundDelay = 10f;
     public float flightRoundIncrement = 0.1f;
     

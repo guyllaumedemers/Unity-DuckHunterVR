@@ -15367,12 +15367,6 @@ Transform:
   m_Father: {fileID: 815080535}
   m_RootOrder: 85
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &757224089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1667229233}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &759974109
 GameObject:
   m_ObjectHideFlags: 0
@@ -24925,14 +24919,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
-      propertyPath: DuckSpawner
+      propertyPath: duckSpawnerGo
       value: 
-      objectReference: {fileID: 757224089}
+      objectReference: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+        type: 3}
     - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
-      propertyPath: duckSpawner
-      value: 
-      objectReference: {fileID: 757224089}
+      propertyPath: duckSpawnerPos.x
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: duckSpawnerPos.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: duckSpawnerPos.z
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: duckSpawnerSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: duckSpawnerSize.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
+        type: 3}
+      propertyPath: duckSpawnerSize.z
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 6437467878737515951, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
       propertyPath: m_Name
@@ -33861,130 +33881,6 @@ Transform:
   m_Father: {fileID: 815080535}
   m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1667229233
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: size.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: size.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: size.z
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: waveDelay
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: roundDelay
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: spawnSize.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: spawnSize.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: spawnSize.z
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: nbDucksPerRound
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: flightRoundIncrement
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 30.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 35.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_Name
-      value: DuckSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
 --- !u!1 &1668595134
 GameObject:
   m_ObjectHideFlags: 0

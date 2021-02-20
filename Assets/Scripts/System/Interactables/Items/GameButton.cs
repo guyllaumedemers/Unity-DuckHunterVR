@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
@@ -10,10 +11,13 @@ public class GameButton : MonoBehaviour
     private readonly string start = "START";
     private readonly string stop = "STOP";
 
+    private GameObject duckSpawner;
+    
     public void Awake()
     {
         textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
         animation = GetComponent<Animation>();
+        duckSpawner = GameManagerScript.Instance.duckSpawnerGo;
     }
 
     public void UpdateButton()
@@ -24,14 +28,14 @@ public class GameButton : MonoBehaviour
         if (GameManagerScript.Instance.GetGameState)
         {
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
-
-            if (GameManagerScript.Instance.duckSpawner != null)
-                GameManagerScript.Instance.duckSpawner.SetActive(true);
+            
+            Instantiate(duckSpawner, GameManagerScript.Instance.duckSpawnerPos, Quaternion.identity);
+            duckSpawner.GetComponent<DuckSpawner>().spawnSize = new Vector3(10, 10, 28);
         }
         else
         {
-            if (GameManagerScript.Instance.duckSpawner != null)
-                GameManagerScript.Instance.duckSpawner.SetActive(false);
+            Destroy(duckSpawner);
+            
             // Update Game Instance => Round value
             ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawner>().GetRound);
             Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);

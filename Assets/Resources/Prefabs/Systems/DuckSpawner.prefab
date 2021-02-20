@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5346019990624616925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0.1, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,10 +43,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b04b7305690f7489c4da3fc5a8a076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 9, y: 5, z: 5}
+  spawnSize: {x: 0, y: 0, z: 0}
   duckModels:
   - {fileID: 792752698029093541, guid: b3a61b3871faf2d41bbd6be5674d9d07, type: 3}
   - {fileID: 792752698029093541, guid: 82155982a63865541809901c8f991081, type: 3}
   duckParent: {fileID: 0}
-  nbDucksToSpawn: 1
-  spawnTime: 0
+  nbDucksPerRound: 10
+  roundDelay: 10
+  flightRoundIncrement: 0.1
+  nbDucksPerWave: 1
+  waveDelay: 4
+  roundNo: 1
+  _ducksInRound: 0
+  roundCountdown: 0
+  _ducksInWave: 0
+  waveCountdown: 0
