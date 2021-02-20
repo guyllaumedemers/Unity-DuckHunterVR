@@ -9837,8 +9837,6 @@ MonoBehaviour:
   <GunHitLayers>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
-  <ShootingSound>k__BackingField: {fileID: 0}
-  <ReloadSound>k__BackingField: {fileID: 0}
   <ReactorTriggerShoot>k__BackingField: 0
 --- !u!82 &5226628099067603099
 AudioSource:
@@ -9849,7 +9847,8 @@ AudioSource:
   m_GameObject: {fileID: 5226628099067603098}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6573715210238380954, guid: 7a9e3dde7fb159a4d96ecab6abdbd58d,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -10013,6 +10012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300dbd790ea02b94ea5eff2405701fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
 --- !u!1 &5743796747294126174
 GameObject:
   m_ObjectHideFlags: 0
