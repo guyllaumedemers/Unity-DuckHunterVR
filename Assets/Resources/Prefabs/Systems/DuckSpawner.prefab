@@ -50,7 +50,7 @@ MonoBehaviour:
   duckParent: {fileID: 0}
   nbDucksPerRound: 10
   roundDelay: 10
-  flightRoundIncrement: 0.1
+  flightRoundIncrement: 0.15
   nbDucksPerWave: 1
   waveDelay: 4
   roundNo: 1
