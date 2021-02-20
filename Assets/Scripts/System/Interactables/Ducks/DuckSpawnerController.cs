@@ -50,6 +50,10 @@ public class DuckSpawnerController : MonoBehaviour {
         Destroy(duckParent.gameObject);
     }
 
+    private void OnDestroy() {
+        Destroy(duckParent.gameObject);
+    }
+
     private void Start() {
 
         switch (GameManagerScript.Instance.GetCurrentMode) {
@@ -65,7 +69,7 @@ public class DuckSpawnerController : MonoBehaviour {
         
         if (duckParent == null) {
             Debug.Log("No duck parent transform provided, creating default object");
-            //duckParent = new GameObject("Spawned Ducks").transform;
+            duckParent = new GameObject("Spawned Ducks").transform;
         }
     }
 
