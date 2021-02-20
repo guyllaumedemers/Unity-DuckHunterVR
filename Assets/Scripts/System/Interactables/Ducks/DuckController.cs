@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,10 +19,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
     public Vector3 SpanwerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
-    public float FlightSpeed {
-        get => flightSpeed;
-        set => value = flightSpeed;
-    }
+    public float FlightSpeed { get => flightSpeed; set => flightSpeed = value; }
 
 
     [SerializeField]
@@ -86,7 +84,6 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
     private void FixedUpdate() {
         if (transform.position.y <= minMaxY.min || transform.position.y >= minMaxY.max) {
-            DiedDelegate?.Invoke();
             Destroy(gameObject);
         }
     }
@@ -98,7 +95,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     }
 
     private void FlyToTarget() {
-        float step = FlightSpeed * Time.deltaTime;
+        float step = flightSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _target, step);
         transform.LookAt(_target);
     }
@@ -142,5 +139,9 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         }
 
         _rb.useGravity = true;
+    }
+
+    private void OnDestroy() {
+        DiedDelegate?.Invoke();
     }
 }
