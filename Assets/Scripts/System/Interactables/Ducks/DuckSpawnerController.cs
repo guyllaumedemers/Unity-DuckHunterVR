@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DuckSpawner : MonoBehaviour {
+public class DuckSpawnerController : MonoBehaviour {
     
     [Header("Size of spawn area")]
     public Vector3 spawnSize;
@@ -15,7 +15,7 @@ public class DuckSpawner : MonoBehaviour {
     [Header("Round Information")]
     public int nbDucksPerRound = 10;
     public float roundDelay = 10f;
-    public float flightRoundIncrement = 0.1f;
+    public float flightRoundIncrement = 0.15f;
     
     [Header("Wave Information")]
     public int nbDucksPerWave = 1;
@@ -124,12 +124,11 @@ public class DuckSpawner : MonoBehaviour {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
             
             if(roundNo <= 10)
-                duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement;
+                duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement * roundNo;
             
             duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
-            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuckInWave;
-            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuckInRound;
+            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuck;
             
             duck.transform.SetParent(duckParent);
             
@@ -140,16 +139,13 @@ public class DuckSpawner : MonoBehaviour {
         }
     }
     
-    void RemoveDuckInWave() {
+    void RemoveDuck() {
         if(_ducksInWave > 0)
             _ducksInWave--;
-    }
-
-    void RemoveDuckInRound() {
         if(_ducksInRound > 0)
             _ducksInRound--;
     }
-    
+
     private void OnDrawGizmos() {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
         Gizmos.DrawCube(transform.position, spawnSize);

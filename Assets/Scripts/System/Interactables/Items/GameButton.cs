@@ -30,14 +30,14 @@ public class GameButton : MonoBehaviour
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
             
             Instantiate(duckSpawner, GameManagerScript.Instance.duckSpawnerPos, Quaternion.identity);
-            duckSpawner.GetComponent<DuckSpawner>().spawnSize = new Vector3(10, 10, 28);
+            duckSpawner.GetComponent<DuckSpawnerController>().spawnSize = GameManagerScript.Instance.duckSpawnerSize;
         }
         else
         {
             Destroy(duckSpawner);
             
             // Update Game Instance => Round value
-            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawner>().GetRound);
+            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
             Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
             ScoringSystemManager.Instance.DestroyGameInstance();
             // reset the RoundStatus so the player can set a new GameMode => set to false since when the instance is active the update method of the clipboard set it to true
