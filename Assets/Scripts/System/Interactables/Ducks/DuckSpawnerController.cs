@@ -51,7 +51,8 @@ public class DuckSpawnerController : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        Destroy(duckParent.gameObject);
+        if (duckParent != null)
+            Destroy(duckParent.gameObject);
     }
 
     private void Start() {
