@@ -13,7 +13,6 @@ public class GameButton : MonoBehaviour
     private readonly string start = "START";
     private readonly string stop = "STOP";
 
-
     public void Awake()
     {
         textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
@@ -28,11 +27,16 @@ public class GameButton : MonoBehaviour
         if (GameManagerScript.Instance.GetGameState == true)
         {
             GameManagerScript.Instance.duckSpawnerGo.SetActive(true);
+            if (GameManagerScript.Instance.duckSpawnerGo != null)
+            {
+                DisplayRoundTimeUI.Instance.GetDuckSpawnerToReset = GameManagerScript.Instance.duckSpawnerGo.GetComponent<DuckSpawnerController>();
+                DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
+            }
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
-            DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
         }
         else
         {
+            DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
             ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
             Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
             ScoringSystemManager.Instance.DestroyGameInstance();
