@@ -13,14 +13,11 @@ public class GameButton : MonoBehaviour
     private readonly string start = "START";
     private readonly string stop = "STOP";
 
-    [SerializeField] private GameObject duckSpawner;
-
 
     public void Awake()
     {
         textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
         animation = GetComponent<Animation>();
-        duckSpawner = GameManagerScript.Instance.duckSpawnerGo;
     }
 
     public void UpdateButton()
@@ -30,15 +27,16 @@ public class GameButton : MonoBehaviour
         SwapText();
         if (GameManagerScript.Instance.GetGameState == true)
         {
-            duckSpawner.SetActive(true);
+            GameManagerScript.Instance.duckSpawnerGo.SetActive(true);
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
+            DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
         }
         else
         {
             ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
             Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
             ScoringSystemManager.Instance.DestroyGameInstance();
-            duckSpawner.SetActive(false);
+            GameManagerScript.Instance.duckSpawnerGo.SetActive(false);
             GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
         }
     }
