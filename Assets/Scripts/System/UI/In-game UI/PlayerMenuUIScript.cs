@@ -39,7 +39,8 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     [Header("Scene Name")]
     private const string mainMenuSceneName = "MainMenuSceneFinal";
-    private const string gameSceneName = "MainGameSceneFinal";
+    //private const string gameSceneName = "MainGameSceneFinal";
+    private const string gameSceneName = "MainGameSceneFinal With Shadows";
 
     public void Awake()
     {
@@ -52,7 +53,6 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void Start()
     {
-        HighScoreUI.Instance.InstanciatePlayerStatistics(); // needs to be first otherwise the data wont load
         SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
@@ -94,7 +94,7 @@ public class PlayerMenuUIScript : MonoBehaviour
         bool isLeftMenuButtonPressed = false;
         if (XRInputManager.Instance.leftHandController.TryGetFeatureValue(CommonUsages.menuButton, out isLeftMenuButtonPressed) && isLeftMenuButtonPressed)
         {
-            GetCameraTransformAndRotation(inGameMenuUI, mainCamera);
+            Utilities.GetCameraTransformAndRotation(inGameMenuUI, mainCamera);
             inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
         }
     }
@@ -113,8 +113,9 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void DisplayStatistics()
     {
-        GetCameraTransformAndRotation(statsMenuUI, mainCamera);
+        Utilities.GetCameraTransformAndRotation(statsMenuUI, mainCamera);
         InvertActiveUIValues(inGameMenuUI, statsMenuUI);
+        HighScoreUI.Instance.InstanciatePlayerStatistics();
     }
 
     public void GetOnline()
@@ -124,7 +125,7 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void DisplaySettings()
     {
-        GetCameraTransformAndRotation(settingsMenuUI, mainCamera);
+        Utilities.GetCameraTransformAndRotation(settingsMenuUI, mainCamera);
         InvertActiveUIValues(inGameMenuUI, settingsMenuUI);
     }
 
@@ -134,17 +135,6 @@ public class PlayerMenuUIScript : MonoBehaviour
         inGameMenuUI.SetActive(true);
     }
     #endregion
-
-    public void GetCameraTransformAndRotation(GameObject gameObject, Camera camera)
-    {
-        Vector3 angle = camera.transform.rotation.eulerAngles;
-        double rad = (Math.PI / 180) * angle.y;
-        int radius = 5; /// rotation radius around the camera yAxis
-        double z = radius * Math.Cos(rad);
-        double x = radius * Math.Sin(rad); /// zAxis equals vector.forward
-        gameObject.transform.position = camera.transform.position + new Vector3((float)x, 0, (float)z);
-        gameObject.transform.rotation = Quaternion.Euler(0, angle.y, 0);
-    }
 
     public void SetInactive(GameObject[] gameObjects)
     {

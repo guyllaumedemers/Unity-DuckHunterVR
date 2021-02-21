@@ -19,7 +19,7 @@ public class DuckSpawnerController : MonoBehaviour
     public float roundDelay = 10f;
     public float flightRoundIncrement = 0.15f;
     public float maxRoundIncrement = 10;
-    
+
     [Header("Wave Information")]
     public int nbDucksPerWave = 1;
     public float waveDelay = 4f;
@@ -35,7 +35,7 @@ public class DuckSpawnerController : MonoBehaviour
     private bool _isSpawnRoutineRunning;
     private float p_roundNo;
     private string strDuckGoName = "Spawned Ducks";
-    
+
     private void Awake()
     {
         p_roundNo = roundNo;
@@ -50,14 +50,14 @@ public class DuckSpawnerController : MonoBehaviour
         roundCountdown = roundDelay;
         waveCountdown = waveDelay;
         _isSpawnRoutineRunning = false;
-        
-        if(duckParent == null)
+
+        if (duckParent == null)
             duckParent = new GameObject(strDuckGoName).transform;
     }
 
     private void OnDisable()
     {
-        if(duckParent != null)
+        if (duckParent != null)
             Destroy(duckParent.gameObject);
     }
 
@@ -166,7 +166,7 @@ public class DuckSpawnerController : MonoBehaviour
         try
         {
             GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
-            
+
             if (roundNo <= maxRoundIncrement)
                 duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement * roundNo;
 
@@ -176,7 +176,7 @@ public class DuckSpawnerController : MonoBehaviour
 
             if (duckParent == null)
                 duckParent = new GameObject(strDuckGoName).transform;
-            
+
             duck.transform.SetParent(duckParent);
 
             _ducksInWave++;
@@ -203,4 +203,5 @@ public class DuckSpawnerController : MonoBehaviour
 
     public float GetRound { get => roundNo; set { roundNo = value; } }
 
+    public float GetRoundCountdown { get => roundCountdown; }
 }
