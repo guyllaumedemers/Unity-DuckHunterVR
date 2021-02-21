@@ -12,6 +12,7 @@ public class CreateNewGameInstance
     private ScorePoints scorePoints;
     [JsonProperty]
     private float roundNo;
+    private const float startRoundNo = 1;
     /// <summary>
     /// Need to add a Round -> so the instance can retrieve the information 
     /// </summary>
@@ -21,7 +22,7 @@ public class CreateNewGameInstance
     {
         gameMode = GameManagerScript.Instance.GetCurrentMode;
         scorePoints = new ScorePoints();
-        roundNo = GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound;
+        roundNo = startRoundNo;
     }
 
     public void UpdateRoundInstance(float nbRound)

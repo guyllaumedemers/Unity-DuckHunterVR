@@ -51,6 +51,7 @@ MonoBehaviour:
   nbDucksPerRound: 10
   roundDelay: 10
   flightRoundIncrement: 0.15
+  maxRoundIncrement: 10
   nbDucksPerWave: 1
   waveDelay: 4
   roundNo: 1

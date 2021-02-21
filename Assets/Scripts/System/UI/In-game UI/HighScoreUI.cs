@@ -34,9 +34,7 @@ public class HighScoreUI : MonoBehaviour
     {
         List<CreateNewGameInstance> instances = Serialization.Load(Serialization.GetPath);
         CreateNewGameInstance[] myArr = BubbleSortArray(instances.ToArray());
-        // I need to go thru all the instances -> compare them to find the highest score
-        // remove the highest score from the list and loop the process until my top10 is filled
-        // update the go object with the top 10 values
+
         Transform target = GameObject.FindGameObjectWithTag("UIScore").GetComponent<Transform>();
         int i = 0;
         while (i < myArr.Length && i < MAX_NUMBER_OF_SCORE_DISPLAY)
