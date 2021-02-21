@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ScoringSystemManager : MonoBehaviour
 {
-    private TextMeshProUGUI textMeshProUGUI;
-    private CreateNewGameInstance playerGameInstance;
     #region Singleton
     private static ScoringSystemManager instance;
     private ScoringSystemManager() { }
@@ -22,6 +20,12 @@ public class ScoringSystemManager : MonoBehaviour
         }
     }
     #endregion
+
+    [Header("Requiered COmponents")]
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+
+    private CreateNewGameInstance playerGameInstance;
+
     public void Awake()
     {
         instance = this;
