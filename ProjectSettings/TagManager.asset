@@ -21,6 +21,9 @@ TagManager:
   - SubmachineGunMagazine
   - Score
   - UIScore
+  - StatsMenuUI
+  - IngameMenuUI
+  - SettingsMenuUI
   layers:
   - Default
   - TransparentFX

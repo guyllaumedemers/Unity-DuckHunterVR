@@ -35,7 +35,7 @@ public class PlayerMenuUIScript : MonoBehaviour
     [SerializeField] private GameObject inGameMenuUI;
     [SerializeField] private GameObject statsMenuUI;
     [SerializeField] private GameObject settingsMenuUI;
-    private Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
 
     [Header("Scene Name")]
     private const string mainMenuSceneName = "MainMenuSceneFinal";
@@ -44,6 +44,9 @@ public class PlayerMenuUIScript : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        inGameMenuUI = GameObject.FindGameObjectWithTag("IngameMenuUI");
+        statsMenuUI = GameObject.FindGameObjectWithTag("StatsMenuUI");
+        settingsMenuUI = GameObject.FindGameObjectWithTag("SettingsMenuUI");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 

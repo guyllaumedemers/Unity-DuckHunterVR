@@ -50386,6 +50386,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7089563515132362024, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563515132362024, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563515132362024, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089563515132362024, guid: a909690266b323f489dca563cf99f739,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7089563515209676531, guid: a909690266b323f489dca563cf99f739,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -50499,6 +50519,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Rig Main Menu UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254758461296733166, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254758461296733166, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: m_RendererIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517084364162704856, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6517084364891180079, guid: b6f81d1f6046a874195704fdf9c26c7c,
         type: 3}

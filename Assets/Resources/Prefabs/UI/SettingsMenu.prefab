@@ -1641,11 +1641,11 @@ GameObject:
   - component: {fileID: 8018809364999168967}
   m_Layer: 5
   m_Name: SettingsMenu
-  m_TagString: Untagged
+  m_TagString: SettingsMenuUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8898762377379471025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1711,7 +1711,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &279267075618249444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
