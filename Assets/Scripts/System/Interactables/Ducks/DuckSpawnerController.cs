@@ -33,12 +33,15 @@ public class DuckSpawnerController : MonoBehaviour
 
     private bool _isSpawnRoutineRunning;
     private float p_roundNo;
-    
-    private void Awake() {
+
+    private void Awake()
+    {
         p_roundNo = roundNo;
+        duckGameObjectList = new System.Collections.Generic.List<GameObject>();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         roundNo = p_roundNo;
         _ducksInWave = 0;
         _ducksInRound = 0;
@@ -48,18 +51,20 @@ public class DuckSpawnerController : MonoBehaviour
         duckParent = new GameObject("Spawned Ducks").transform;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
+        foreach (GameObject go in duckGameObjectList)
+        {
+            Destroy(go);
+        }
+        duckGameObjectList.Clear();
         Destroy(duckParent.gameObject);
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         if (duckParent != null)
             Destroy(duckParent.gameObject);
-    }
-
-    public void Awake()
-    {
-        duckGameObjectList = new System.Collections.Generic.List<GameObject>();
     }
 
     private void Start()
