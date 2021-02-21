@@ -32,6 +32,30 @@ public class DuckSpawnerController : MonoBehaviour
     public float waveCountdown;
 
     private bool _isSpawnRoutineRunning;
+    private float p_roundNo;
+    
+    private void Awake() {
+        p_roundNo = roundNo;
+    }
+
+    private void OnEnable() {
+        roundNo = p_roundNo;
+        _ducksInWave = 0;
+        _ducksInRound = 0;
+        _ducksInRound = nbDucksPerRound;
+        roundCountdown = roundDelay;
+        waveCountdown = waveDelay;
+        duckParent = new GameObject("Spawned Ducks").transform;
+    }
+
+    private void OnDisable() {
+        Destroy(duckParent.gameObject);
+    }
+
+    private void OnDestroy() {
+        if (duckParent != null)
+            Destroy(duckParent.gameObject);
+    }
 
     public void Awake()
     {
