@@ -21,7 +21,7 @@ public class CreateNewGameInstance
     {
         gameMode = GameManagerScript.Instance.GetCurrentMode;
         scorePoints = new ScorePoints();
-        roundNo = GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound = 1;
+        roundNo = GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound;
     }
 
     public void UpdateRoundInstance(float nbRound)
