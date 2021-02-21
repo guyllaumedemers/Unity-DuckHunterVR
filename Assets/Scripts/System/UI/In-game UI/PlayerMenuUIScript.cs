@@ -52,7 +52,6 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void Start()
     {
-        HighScoreUI.Instance.InstanciatePlayerStatistics(); // needs to be first otherwise the data wont load
         SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
@@ -115,6 +114,7 @@ public class PlayerMenuUIScript : MonoBehaviour
     {
         GetCameraTransformAndRotation(statsMenuUI, mainCamera);
         InvertActiveUIValues(inGameMenuUI, statsMenuUI);
+        HighScoreUI.Instance.InstanciatePlayerStatistics();
     }
 
     public void GetOnline()
