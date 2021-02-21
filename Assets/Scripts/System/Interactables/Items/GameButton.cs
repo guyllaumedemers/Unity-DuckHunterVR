@@ -39,7 +39,6 @@ public class GameButton : MonoBehaviour
             foreach (GameObject go in duckGameObjectList)
             {
                 DestroyImmediate(go, true);
-                Debug.Log("Called");
             }
             duckGameObjectList.Clear();
             Destroy(duckSpawner);
