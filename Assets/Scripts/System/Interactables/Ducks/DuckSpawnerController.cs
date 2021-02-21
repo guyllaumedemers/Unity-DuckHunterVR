@@ -49,13 +49,14 @@ public class DuckSpawnerController : MonoBehaviour
         roundCountdown = roundDelay;
         waveCountdown = waveDelay;
         duckParent = new GameObject("Spawned Ducks").transform;
+        duckGameObjectList = new System.Collections.Generic.List<GameObject>();
     }
 
     private void OnDisable()
     {
         foreach (GameObject go in duckGameObjectList)
         {
-            Destroy(go);
+            DestroyImmediate(go);
         }
         duckGameObjectList.Clear();
         Destroy(duckParent.gameObject);
