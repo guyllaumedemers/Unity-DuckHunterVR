@@ -37,11 +37,10 @@ public class DisplayRoundTimeUI : MonoBehaviour
     {
         if (roundTimer.activeSelf == true)
         {
-            if (spawnerController == null)
+            if (spawnerController != null)
             {
-                spawnerController = GameManagerScript.Instance.duckSpawnerGo.GetComponent<DuckSpawnerController>();
+                StartCoroutine(StartRoundTimeDisplay(spawnerController));
             }
-            StartCoroutine(StartRoundTimeDisplay(spawnerController));
         }
     }
 
@@ -65,4 +64,6 @@ public class DisplayRoundTimeUI : MonoBehaviour
         }
         yield return null;
     }
+
+    public DuckSpawnerController GetDuckSpawnerToReset { get => spawnerController; set { spawnerController = value; } }
 }

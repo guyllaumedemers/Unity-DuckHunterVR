@@ -53,6 +53,7 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void Start()
     {
+        //HighScoreUI.Instance.InstanciatePlayerStatistics();
         SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
