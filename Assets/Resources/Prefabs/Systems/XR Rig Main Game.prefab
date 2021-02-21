@@ -1297,10 +1297,9 @@ GameObject:
   - component: {fileID: 8951812987487244855}
   - component: {fileID: 8951812987487244848}
   - component: {fileID: 8951812987487244849}
-  - component: {fileID: 8951812987487244862}
   m_Layer: 11
   m_Name: RightHandUI
-  m_TagString: RightController
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,19 +1635,6 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
---- !u!114 &8951812987487244862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8951812987487244851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74ee2c341c51e84cb1c334afaafcb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xRBaseController: {fileID: 0}
 --- !u!1 &8951812988523374825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,10 +1648,9 @@ GameObject:
   - component: {fileID: 8951812988523374829}
   - component: {fileID: 8951812988523374830}
   - component: {fileID: 8951812988523374831}
-  - component: {fileID: 8951812988523374806}
   m_Layer: 11
   m_Name: LeftHandUI
-  m_TagString: LeftController
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2001,19 +1986,6 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
---- !u!114 &8951812988523374806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8951812988523374825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74ee2c341c51e84cb1c334afaafcb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xRBaseController: {fileID: 0}
 --- !u!1 &8974552059615953849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2087,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_SelectActionTrigger: 1
-  m_HideControllerOnSelect: 0
+  m_HideControllerOnSelect: 1
   m_PlayAudioClipOnSelectEntered: 0
   m_AudioClipForOnSelectEntered: {fileID: 0}
   m_PlayAudioClipOnSelectExited: 0
@@ -2220,7 +2192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8974552059715550014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45, y: 2.2, z: 36.1}
+  m_LocalPosition: {x: 45, y: 1.93, z: 36.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8974552059943856496}
@@ -2384,7 +2356,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_SelectActionTrigger: 1
-  m_HideControllerOnSelect: 0
+  m_HideControllerOnSelect: 1
   m_PlayAudioClipOnSelectEntered: 0
   m_AudioClipForOnSelectEntered: {fileID: 0}
   m_PlayAudioClipOnSelectExited: 0
@@ -2795,7 +2767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: 0
