@@ -46,19 +46,22 @@ public class DuckSpawnerController : MonoBehaviour {
         _isSpawnRoutineRunning = false;
     }
     
-    private void Awake() => _startRoundNo = roundNo;
+    private void Awake() { 
+        _startRoundNo = roundNo;
+        DisplayRoundTimeUI.Instance.duckSpawner = this;
+    }
     
     private void OnEnable() {
         Initialize();
-
         DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
-        DisplayRoundTimeUI.Instance.duckSpawner = this;
     }
 
     private void OnDisable()
     {
         if (_duckParent != null)
             Destroy(_duckParent.gameObject);
+        
+        DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
     }
 
     private void OnDestroy()

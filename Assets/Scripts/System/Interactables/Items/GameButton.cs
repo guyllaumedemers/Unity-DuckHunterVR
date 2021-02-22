@@ -32,7 +32,6 @@ public class GameButton : MonoBehaviour
         }
         else
         {
-            DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
             ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.duckSpawner.GetComponent<DuckSpawnerController>().roundNo);
             GameManagerScript.Instance.duckSpawner.SetActive(false);
             
