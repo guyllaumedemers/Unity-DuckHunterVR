@@ -5,10 +5,21 @@ using UnityEngine;
 public class WeaponSpawn : MonoBehaviour
 {
     public GameObject weaponSpawnPrefab;
+    private GameObject weaponSpawnClone;
 
     private void Awake()
     {
-        GameObject weaponSpawnClone = Instantiate(weaponSpawnPrefab, transform.position, Quaternion.identity, transform);
-        weaponSpawnClone.transform.name = weaponSpawnClone.name.Replace("(clone)", "").Trim();
+        WeaponResetButton.Instance.AddSpawnerToList(this);
+    }
+
+    public void InstanciateWeapon()
+    {
+        weaponSpawnClone = Instantiate(weaponSpawnPrefab, transform.position, transform.rotation, transform);
+        weaponSpawnClone.name = weaponSpawnPrefab.name;
+    }
+
+    public void DestroyWeapon()
+    {
+        Destroy(weaponSpawnClone.gameObject);
     }
 }

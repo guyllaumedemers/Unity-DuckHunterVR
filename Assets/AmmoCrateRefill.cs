@@ -43,6 +43,7 @@ public class AmmoCrateRefill : MonoBehaviour
         for (int i = 0; i < qtyAmmoSpawn; i++)
         {
             AmmoContainer magazineClone = Instantiate(ammoPrefab, transform.position, transform.rotation, ammoParent.transform);
+            magazineClone.name = ammoPrefab.name;
             magazineClone.transform.SetParent(ammoParent.transform);
         }
 
