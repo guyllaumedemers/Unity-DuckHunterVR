@@ -27,19 +27,29 @@ public class GameButton : MonoBehaviour
         SwapText();
         if (GameManagerScript.Instance.GetGameState)
         {
-            GameManagerScript.Instance.duckSpawner.SetActive(true);
-            ScoringSystemManager.Instance.InstanciateNewGameInstance();
+            StartGame();
         }
         else
         {
-            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.duckSpawner.GetComponent<DuckSpawnerController>().roundNo);
-            GameManagerScript.Instance.duckSpawner.SetActive(false);
-            
-            Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
-            ScoringSystemManager.Instance.DestroyGameInstance();
-            GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
-            
+            StopGame();
         }
+    }
+
+    public void StartGame()
+    {
+        GameManagerScript.Instance.duckSpawner.SetActive(true);
+        ScoringSystemManager.Instance.InstanciateNewGameInstance();
+    }
+
+    public void StopGame()
+    {
+        ScoringSystemManager.Instance.GetGameInstance.UpdateInstanceRoundValue(GameManagerScript.Instance.duckSpawner.GetComponent<DuckSpawnerController>().roundNo);
+        GameManagerScript.Instance.duckSpawner.SetActive(false);
+
+        Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+
+        ScoringSystemManager.Instance.DestroyGameInstance();
+        GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
     }
 
     public void SwapText()

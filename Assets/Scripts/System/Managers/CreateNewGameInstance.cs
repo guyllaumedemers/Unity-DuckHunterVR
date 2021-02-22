@@ -25,7 +25,7 @@ public class CreateNewGameInstance
         roundNo = startRoundNo;
     }
 
-    public void UpdateRoundInstance(float nbRound)
+    public void UpdateInstanceRoundValue(float nbRound)
     {
         roundNo = nbRound;
     }
