@@ -40,7 +40,6 @@ public class PlayerMenuUIScript : MonoBehaviour
     [Header("Scene Name")]
     private const string mainMenuSceneName = "MainMenuSceneFinal";
     private const string gameSceneName = "MainGameSceneFinal";
-    //private const string gameSceneName = "MainGameSceneFinal With Shadows";
 
     public void Awake()
     {
@@ -53,7 +52,6 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void Start()
     {
-        //HighScoreUI.Instance.InstanciatePlayerStatistics();
         SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
