@@ -28,23 +28,23 @@ public class GameButton : MonoBehaviour
         if (GameManagerScript.Instance.GetGameState == true)
         {
             GameManagerScript.Instance.duckSpawnerClone = Instantiate(GameManagerScript.Instance.duckSpawnerPrefab, GameManagerScript.Instance.duckSpawnerPos, Quaternion.identity);
-            GameManagerScript.Instance.duckSpawnerPrefab.GetComponent<DuckSpawnerController>().spawnSize = GameManagerScript.Instance.duckSpawnerSize;
+            GameManagerScript.Instance.duckSpawnerClone.GetComponent<DuckSpawnerController>().spawnSize = GameManagerScript.Instance.duckSpawnerSize;
 
-            if (GameManagerScript.Instance.duckSpawnerPrefab != null)
+            if (GameManagerScript.Instance.duckSpawnerClone != null)
             {
-                DisplayRoundTimeUI.Instance.GetDuckSpawnerToReset = GameManagerScript.Instance.duckSpawnerPrefab.GetComponent<DuckSpawnerController>();
+                DisplayRoundTimeUI.Instance.GetDuckSpawnerToReset = GameManagerScript.Instance.duckSpawnerClone.GetComponent<DuckSpawnerController>();
                 DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
             }
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
         }
         else
         {
-            Destroy(GameManagerScript.Instance.duckSpawnerClone.gameObject);
             DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
-            //ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
+            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
             //Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
-            ScoringSystemManager.Instance.DestroyGameInstance();            
+            ScoringSystemManager.Instance.DestroyGameInstance();
             GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
+            Destroy(GameManagerScript.Instance.duckSpawnerClone.gameObject);
         }
     }
 

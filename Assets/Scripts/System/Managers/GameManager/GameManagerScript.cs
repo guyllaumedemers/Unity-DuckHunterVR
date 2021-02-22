@@ -50,5 +50,5 @@ public class GameManagerScript : MonoBehaviour
     public GameMode GetCurrentMode { get => mode; set { mode = value; } }
     public bool GetRoundStatus { get => isRoundLaunch; set { isRoundLaunch = value; } }
     public bool GetGameState { get => isRunning; set { isRunning = value; } }
-    public GameObject GetDuckSpawnerObject { get => duckSpawnerPrefab; }
+    public GameObject GetDuckSpawnerObject { get => duckSpawnerClone; }
 }
