@@ -39,14 +39,14 @@ public class HighScoreUI : MonoBehaviour
         int i = 0;
         while (i < myArr.Length && i < MAX_NUMBER_OF_SCORE_DISPLAY)
         {
-            GameObject go = Instantiate(statEntry, target);
-            TextMeshProUGUI[] textMeshProUGUI = go.GetComponentsInChildren<TextMeshProUGUI>(true);
-            int value = i + 1;
-            textMeshProUGUI[0].text = DisplayRank(value);
-            textMeshProUGUI[1].text = myArr[i].GetScores.GetPoints.ToString();
-            textMeshProUGUI[2].text = myArr[i].GetRound.ToString();
-            textMeshProUGUI[3].text = myArr[i].GetGameMode.ToString();
-            i++;
+           GameObject go = Instantiate(statEntry, target);
+           TextMeshProUGUI[] textMeshProUGUI = go.GetComponentsInChildren<TextMeshProUGUI>(true);
+           int value = i + 1;
+           textMeshProUGUI[0].text = DisplayRank(value);
+           textMeshProUGUI[1].text = myArr[i].GetScores.GetPoints.ToString();
+           textMeshProUGUI[2].text = myArr[i].GetRound.ToString();
+           textMeshProUGUI[3].text = myArr[i].GetGameMode.ToString();
+           i++;
         }
     }
 

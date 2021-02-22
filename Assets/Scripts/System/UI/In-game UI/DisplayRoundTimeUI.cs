@@ -24,6 +24,10 @@ public class DisplayRoundTimeUI : MonoBehaviour
     [Header("Requiered Components")]
     [SerializeField] private GameObject roundTimer;
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    /// <summary>
+    /// Spawner controller gets set inside the GameButton Initialize function
+    /// At each instanciation, the spawner controller gets a new Instance which means its internal values are than reset
+    /// </summary>
     private DuckSpawnerController spawnerController;
 
     public void Awake()
@@ -35,11 +39,20 @@ public class DisplayRoundTimeUI : MonoBehaviour
 
     public void Update()
     {
+        // Check if the round is displayed
         if (roundTimer.activeSelf == true)
         {
+            // Check if the duck spawner is active. if its not, we cannont retrieve the RoundCountdown Time
             if (spawnerController != null)
             {
-                StartCoroutine(StartRoundTimeDisplay(spawnerController));
+                if (spawnerController.GetRoundCountdown > 0)
+                {
+                    UpdateTime(spawnerController);
+                }
+                else
+                {
+                    roundTimer.SetActive(false);
+                }
             }
         }
     }
@@ -50,20 +63,7 @@ public class DisplayRoundTimeUI : MonoBehaviour
         textMeshProUGUI.text = "ROUND START IN : " + time.ToString();
     }
 
-    public GameObject GetTimeDisplayObject { get => roundTimer; }
+    public GameObject GetRoundTimerObject { get => roundTimer; }
 
-    public IEnumerator StartRoundTimeDisplay(DuckSpawnerController duckSpawnerController)
-    {
-        if (duckSpawnerController.GetRoundCountdown > 0)
-        {
-            UpdateTime(duckSpawnerController);
-        }
-        else
-        {
-            roundTimer.SetActive(false);
-        }
-        yield return null;
-    }
-
-    public DuckSpawnerController GetDuckSpawnerToReset { get => spawnerController; set { spawnerController = value; } }
+    public DuckSpawnerController GetDuckSpawner { get => spawnerController; set { spawnerController = value; } }
 }
