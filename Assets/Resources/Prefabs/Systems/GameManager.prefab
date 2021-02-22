@@ -43,7 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2912f9e68f0744d4eace35c8863d7482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckSpawnerGo: {fileID: 5346019990624616925, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-    type: 3}
-  duckSpawnerPos: {x: 31, y: 6.5, z: 36}
-  duckSpawnerSize: {x: 10, y: 10, z: 28}
+  duckSpawner: {fileID: 0}

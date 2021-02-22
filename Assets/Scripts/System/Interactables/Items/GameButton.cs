@@ -25,26 +25,21 @@ public class GameButton : MonoBehaviour
         GameManagerScript.Instance.GetGameState = !GameManagerScript.Instance.GetGameState;
         animation.Play("PushButton");
         SwapText();
-        if (GameManagerScript.Instance.GetGameState == true)
+        if (GameManagerScript.Instance.GetGameState)
         {
-            GameManagerScript.Instance.duckSpawnerClone = Instantiate(GameManagerScript.Instance.duckSpawnerPrefab, GameManagerScript.Instance.duckSpawnerPos, Quaternion.identity);
-            GameManagerScript.Instance.duckSpawnerClone.GetComponent<DuckSpawnerController>().spawnSize = GameManagerScript.Instance.duckSpawnerSize;
-
-            if (GameManagerScript.Instance.duckSpawnerClone != null)
-            {
-                DisplayRoundTimeUI.Instance.GetDuckSpawnerToReset = GameManagerScript.Instance.duckSpawnerClone.GetComponent<DuckSpawnerController>();
-                DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
-            }
+            GameManagerScript.Instance.duckSpawner.SetActive(true);
             ScoringSystemManager.Instance.InstanciateNewGameInstance();
         }
         else
         {
             DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
-            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
+            ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.duckSpawner.GetComponent<DuckSpawnerController>().roundNo);
+            GameManagerScript.Instance.duckSpawner.SetActive(false);
+            
             Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
             ScoringSystemManager.Instance.DestroyGameInstance();
             GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
-            Destroy(GameManagerScript.Instance.duckSpawnerClone.gameObject);
+            
         }
     }
 
