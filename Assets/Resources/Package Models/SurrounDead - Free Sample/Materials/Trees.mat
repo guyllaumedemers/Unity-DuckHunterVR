@@ -103,7 +103,7 @@ Material:
     - _GlossinessSource: 0
     - _GlossyReflections: 1
     - _HueVariationKwToggle: 0
-    - _Metallic: 0
+    - _Metallic: 0.5
     - _Mode: 0
     - _NormalMapKwToggle: 0
     - _OcclusionStrength: 1
