@@ -41,7 +41,7 @@ public class GameButton : MonoBehaviour
         {
             DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
             ScoringSystemManager.Instance.GetGameInstance.UpdateRoundInstance(GameManagerScript.Instance.GetDuckSpawnerObject.GetComponent<DuckSpawnerController>().GetRound);
-            //Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+            Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
             ScoringSystemManager.Instance.DestroyGameInstance();
             GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
             Destroy(GameManagerScript.Instance.duckSpawnerClone.gameObject);
