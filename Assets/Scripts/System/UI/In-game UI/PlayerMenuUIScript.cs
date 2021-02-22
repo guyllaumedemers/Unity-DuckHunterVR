@@ -39,8 +39,8 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     [Header("Scene Name")]
     private const string mainMenuSceneName = "MainMenuSceneFinal";
-    //private const string gameSceneName = "MainGameSceneFinal";
-    private const string gameSceneName = "MainGameSceneFinal With Shadows";
+    private const string gameSceneName = "MainGameSceneFinal";
+    //private const string gameSceneName = "MainGameSceneFinal With Shadows";
 
     public void Awake()
     {
