@@ -39,6 +39,7 @@ public class DuckSpawnerController : MonoBehaviour
     private void Awake()
     {
         p_roundNo = roundNo;
+        spawnSize = GameManagerScript.Instance.duckSpawnerSize;
     }
 
     private void OnEnable()
