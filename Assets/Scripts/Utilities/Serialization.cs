@@ -8,7 +8,8 @@ using System.Text;
 
 public class Serialization
 {
-    private static string path = Application.persistentDataPath + "/HighScore.txt";
+    //private static string path = Application.persistentDataPath + "/HighScore.txt";
+    private static string path = "Assets/Resources/Database/HighScore.txt";
     /// <summary>
     /// Game Instance will be added to the file, only keeping 5 best scores
     /// </summary>

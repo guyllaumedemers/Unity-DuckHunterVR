@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5346019990624616915
 Transform:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b04b7305690f7489c4da3fc5a8a076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSize: {x: 0, y: 0, z: 0}
+  spawnSize: {x: 10, y: 10, z: 28}
   duckModels:
   - {fileID: 792752698029093541, guid: b3a61b3871faf2d41bbd6be5674d9d07, type: 3}
   - {fileID: 792752698029093541, guid: 82155982a63865541809901c8f991081, type: 3}

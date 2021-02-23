@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DisplayRoundTimeUI : MonoBehaviour
 {
+    [HideInInspector]public DuckSpawnerController duckSpawner;
+    
     #region Singleton
     private static DisplayRoundTimeUI instance;
     private DisplayRoundTimeUI() { }
@@ -13,9 +15,8 @@ public class DisplayRoundTimeUI : MonoBehaviour
         get
         {
             if (instance == null)
-            {
                 instance = new DisplayRoundTimeUI();
-            }
+            
             return instance;
         }
     }
@@ -24,8 +25,9 @@ public class DisplayRoundTimeUI : MonoBehaviour
     [Header("Requiered Components")]
     [SerializeField] private GameObject roundTimer;
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
-    private DuckSpawnerController spawnerController;
-
+    
+    public GameObject GetTimeDisplayObject { get => roundTimer; }
+        
     public void Awake()
     {
         instance = this;
@@ -35,35 +37,20 @@ public class DisplayRoundTimeUI : MonoBehaviour
 
     public void Update()
     {
-        if (roundTimer.activeSelf == true)
+        if (roundTimer.activeSelf)
         {
-            if (spawnerController != null)
-            {
-                StartCoroutine(StartRoundTimeDisplay(spawnerController));
-            }
+            if (duckSpawner != null)
+                RoundTimeDisplay();
         }
     }
-
-    public void UpdateTime(DuckSpawnerController duckSpawnerController)
+    
+    public void RoundTimeDisplay()
     {
-        int time = (int)duckSpawnerController.GetRoundCountdown;
-        textMeshProUGUI.text = "ROUND START IN : " + time.ToString();
-    }
-
-    public GameObject GetTimeDisplayObject { get => roundTimer; }
-
-    public IEnumerator StartRoundTimeDisplay(DuckSpawnerController duckSpawnerController)
-    {
-        if (duckSpawnerController.GetRoundCountdown > 0)
-        {
-            UpdateTime(duckSpawnerController);
-        }
+        if (duckSpawner.roundCountdown > 0)
+            UpdateText();
         else
-        {
             roundTimer.SetActive(false);
-        }
-        yield return null;
     }
-
-    public DuckSpawnerController GetDuckSpawnerToReset { get => spawnerController; set { spawnerController = value; } }
+    
+    public void UpdateText() => textMeshProUGUI.text = $"ROUND {duckSpawner.roundNo} STARTS IN : {duckSpawner.roundCountdown:n0}";
 }

@@ -23,15 +23,19 @@ public class HighScoreUI : MonoBehaviour
     [Header("Required Components")]
     [SerializeField] private GameObject statEntry;
 
+    private List<GameObject> entries;
     private const int MAX_NUMBER_OF_SCORE_DISPLAY = 10;
+    private const int INITIAL_RANK_VALUE = 1;
 
     public void Awake()
     {
         instance = this;
+        entries = new List<GameObject>();
     }
 
     public void InstanciatePlayerStatistics()
     {
+        DeleteEntriesGameObject(entries);
         List<CreateNewGameInstance> instances = Serialization.Load(Serialization.GetPath);
         CreateNewGameInstance[] myArr = BubbleSortArray(instances.ToArray());
 
@@ -39,13 +43,9 @@ public class HighScoreUI : MonoBehaviour
         int i = 0;
         while (i < myArr.Length && i < MAX_NUMBER_OF_SCORE_DISPLAY)
         {
-            GameObject go = Instantiate(statEntry, target);
-            TextMeshProUGUI[] textMeshProUGUI = go.GetComponentsInChildren<TextMeshProUGUI>(true);
-            int value = i + 1;
-            textMeshProUGUI[0].text = DisplayRank(value);
-            textMeshProUGUI[1].text = myArr[i].GetScores.GetPoints.ToString();
-            textMeshProUGUI[2].text = myArr[i].GetRound.ToString();
-            textMeshProUGUI[3].text = myArr[i].GetGameMode.ToString();
+            StatEntryScript entry = Instantiate(statEntry, target).GetComponent<StatEntryScript>();
+            entries.Add(entry.gameObject);
+            entry.InitializeDataEntry(myArr[i], i + INITIAL_RANK_VALUE);
             i++;
         }
     }
@@ -72,16 +72,12 @@ public class HighScoreUI : MonoBehaviour
         myArr[indexToSwap] = temp;
     }
 
-    public string DisplayRank(int value)
+    public void DeleteEntriesGameObject(List<GameObject> entries)
     {
-        string rankString;
-        rankString = value switch
+        foreach (GameObject go in entries)
         {
-            1 => value.ToString() + "ST",
-            2 => value.ToString() + "ND",
-            3 => value.ToString() + "RD",
-            _ => value.ToString() + "TH",
-        };
-        return rankString;
+            Destroy(go);
+        }
+        entries.Clear();
     }
 }

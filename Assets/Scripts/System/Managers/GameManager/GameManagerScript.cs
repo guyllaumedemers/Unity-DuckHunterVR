@@ -13,6 +13,9 @@ public class GameManagerScript : MonoBehaviour
         TIMED_MODE,
         CHALLENGE_MODE
     }
+    
+    public GameObject duckSpawner;
+    
     #region Singleton
     private static GameManagerScript instance;
     private GameManagerScript() { }
@@ -32,13 +35,8 @@ public class GameManagerScript : MonoBehaviour
     private bool isRoundLaunch;
     private bool isRunning;
     private GameMode mode;
-    [HideInInspector] public GameObject duckSpawnerClone;
     
-    [Header("Duck Spawner information")]
-    public GameObject duckSpawnerPrefab;
-    public Vector3 duckSpawnerPos = new Vector3(31f, 6.5f, 36f);
-    public Vector3 duckSpawnerSize = new Vector3(10, 10, 28);
-
+    
     public void Awake()
     {
         instance = this;
@@ -50,5 +48,4 @@ public class GameManagerScript : MonoBehaviour
     public GameMode GetCurrentMode { get => mode; set { mode = value; } }
     public bool GetRoundStatus { get => isRoundLaunch; set { isRoundLaunch = value; } }
     public bool GetGameState { get => isRunning; set { isRunning = value; } }
-    public GameObject GetDuckSpawnerObject { get => duckSpawnerClone; }
 }

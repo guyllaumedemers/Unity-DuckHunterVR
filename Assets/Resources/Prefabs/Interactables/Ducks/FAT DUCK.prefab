@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc98f1d6f6533e439eea0a9a0d05765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPg13: 0
+  isPg13: 1
   particleBurst: {fileID: 9179317134330424767}
   noPoints: 2
   HP: 2
