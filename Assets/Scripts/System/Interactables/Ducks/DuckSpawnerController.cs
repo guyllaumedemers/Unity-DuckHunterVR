@@ -28,17 +28,16 @@ public class DuckSpawnerController : MonoBehaviour {
     public float roundNo = 1;
     [SerializeField] private int _ducksInRound = 0;
     public float roundCountdown;
-
     [SerializeField] private int _ducksInWave = 0;
     public float waveCountdown;
-
-    [HideInInspector]public bool isPg13;
+    public bool isPg13;
+    public GameObject roundTimeUI;
     
     private bool _isSpawnRoutineRunning;
     private float _startRoundNo;
     private Transform _duckParent;
     private string strDuckParentGoName = "Spawned Ducks";
-
+    private DisplayRoundTimeUI _displayRoundTime;
     
     private void Initialize() {
         roundNo = _startRoundNo;
@@ -52,12 +51,12 @@ public class DuckSpawnerController : MonoBehaviour {
     
     private void Awake() { 
         _startRoundNo = roundNo;
-        DisplayRoundTimeUI.Instance.duckSpawner = this;
+        _displayRoundTime = roundTimeUI.GetComponent<DisplayRoundTimeUI>();
     }
     
     private void OnEnable() {
         Initialize();
-        DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
+        roundTimeUI.SetActive(true);
     }
 
     private void OnDisable()
@@ -65,7 +64,7 @@ public class DuckSpawnerController : MonoBehaviour {
         if (_duckParent != null)
             Destroy(_duckParent.gameObject);
         
-        DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(false);
+        roundTimeUI.SetActive(false);
     }
 
     private void OnDestroy()
@@ -124,23 +123,28 @@ public class DuckSpawnerController : MonoBehaviour {
     private void RegularModeUpdate()
     {
         if (roundCountdown <= 0) {
+            roundTimeUI.SetActive(false);
+            
             if (_ducksInRound > 0) {
                 if (_ducksInWave <= 0 && !_isSpawnRoutineRunning)
                     StartCoroutine(nameof(SpawnDuckRoutine));
             }
             else {
                 roundNo++;
-                DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
+                roundTimeUI.SetActive(true);
                 SetRegularRound();
             }
         }
         else {
             roundCountdown -= Time.deltaTime;
+            _displayRoundTime.UpdateText(roundNo, roundCountdown);
         }
     }
 
     private void TimedModeUpdate() {
         if (roundCountdown <= 0) {
+            roundTimeUI.SetActive(false);
+            
             if (roundTimer > 0) {
                 if (_ducksInWave <= 0 && !_isSpawnRoutineRunning) {
                     StartCoroutine(nameof(SpawnDuckRoutine));
@@ -150,11 +154,13 @@ public class DuckSpawnerController : MonoBehaviour {
             }
             else {
                 isTimedRoundOver = true;
-                DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
+                roundTimeUI.SetActive(true);
+                _displayRoundTime.TimeRoundEndText();
             }
         }
         else {
             roundCountdown -= Time.deltaTime;
+            _displayRoundTime.UpdateText(roundNo, roundCountdown);
         }
     }
 
