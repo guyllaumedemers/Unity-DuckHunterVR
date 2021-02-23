@@ -14753,6 +14753,7 @@ MonoBehaviour:
   <BulletSpread>k__BackingField: 0
   <GunRange>k__BackingField: 50
   <BulletTrailSize>k__BackingField: 0.02
+  <GunTip>k__BackingField: {fileID: 6367753529515599444}
   <BulletTrailPrefab>k__BackingField: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011,
     type: 3}
   <MuzzleFlashParticles>k__BackingField: {fileID: 3076354555445746295}
