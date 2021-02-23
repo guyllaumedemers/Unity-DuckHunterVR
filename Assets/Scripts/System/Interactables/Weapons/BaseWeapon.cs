@@ -12,7 +12,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField] public float BulletSpread { get; set; } = 0f;
     [field: SerializeField] public float GunRange { get; set; } = 50f;
     [field: SerializeField] public float BulletTrailSize { get; set; } = 0.1f;
-    public GameObject GunTip { get; set; }
+    [field: SerializeField] public GameObject GunTip { get; set; }
     [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
     [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
     [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
@@ -30,8 +30,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
-        GunTip = GameObject.Find(name + "GunTip");
+        AudioSource = GetComponent<AudioSource>();        
 
         if (IsAcceptingMagazine)
             MagazineAttach = AmmoReloadCollider.transform.GetChild(0);
