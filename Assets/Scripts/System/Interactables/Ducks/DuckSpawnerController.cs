@@ -14,6 +14,9 @@ public class DuckSpawnerController : MonoBehaviour {
     [Header("Round Information")]
     public int nbDucksPerRound = 10;
     public float roundDelay = 10f;
+    public float timedRoundTime = 60f;
+    public float roundTimer;
+    public bool isTimedRoundOver;
     public float flightRoundIncrement = 0.15f;
     public float maxRoundIncrement = 10;
 
@@ -29,13 +32,14 @@ public class DuckSpawnerController : MonoBehaviour {
     [SerializeField] private int _ducksInWave = 0;
     public float waveCountdown;
 
+    [HideInInspector]public bool isPg13;
     
     private bool _isSpawnRoutineRunning;
     private float _startRoundNo;
     private Transform _duckParent;
     private string strDuckParentGoName = "Spawned Ducks";
-    
 
+    
     private void Initialize() {
         roundNo = _startRoundNo;
         _ducksInWave = 0;
@@ -78,6 +82,10 @@ public class DuckSpawnerController : MonoBehaviour {
                 SetRegularRound();
                 break;
 
+            case GameManagerScript.GameMode.TIMED_MODE:
+                SetTimedRound();
+                break;
+            
             default:
                 Debug.Log("Invalid Game Mode, defaulting to regular mode");
                 SetRegularRound();
@@ -85,45 +93,67 @@ public class DuckSpawnerController : MonoBehaviour {
         }
     }
 
-    private void SetRegularRound()
-    {
+    private void SetTimedRound() {
+        roundCountdown = roundDelay;
+        roundTimer = timedRoundTime;
+        isTimedRoundOver = false;
+    }
+
+    private void SetRegularRound() {
         _ducksInRound = nbDucksPerRound;
         roundCountdown = roundDelay;
     }
 
-    private void Update()
-    {
-        switch (GameManagerScript.Instance.GetCurrentMode)
-        {
+    private void Update() {
+        
+        switch (GameManagerScript.Instance.GetCurrentMode) {
             case GameManagerScript.GameMode.REGULAR_MODE:
                 RegularModeUpdate();
                 break;
 
+            case GameManagerScript.GameMode.TIMED_MODE:
+                TimedModeUpdate();
+                break;
+            
             default:
                 RegularModeUpdate();
                 break;
         }
     }
-
+    
     private void RegularModeUpdate()
     {
-        if (roundCountdown <= 0)
-        {
-            if (_ducksInRound > 0)
-            {
+        if (roundCountdown <= 0) {
+            if (_ducksInRound > 0) {
                 if (_ducksInWave <= 0 && !_isSpawnRoutineRunning)
                     StartCoroutine(nameof(SpawnDuckRoutine));
             }
-            else
-            {
-                Debug.Log($"Round {roundNo} Over");
+            else {
                 roundNo++;
                 DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
                 SetRegularRound();
             }
         }
-        else
-        {
+        else {
+            roundCountdown -= Time.deltaTime;
+        }
+    }
+
+    private void TimedModeUpdate() {
+        if (roundCountdown <= 0) {
+            if (roundTimer > 0) {
+                if (_ducksInWave <= 0 && !_isSpawnRoutineRunning) {
+                    StartCoroutine(nameof(SpawnDuckRoutine));
+                    nbDucksPerWave++;
+                }
+                roundTimer -= Time.deltaTime;
+            }
+            else {
+                isTimedRoundOver = true;
+                DisplayRoundTimeUI.Instance.GetTimeDisplayObject.SetActive(true);
+            }
+        }
+        else {
             roundCountdown -= Time.deltaTime;
         }
     }
@@ -167,16 +197,17 @@ public class DuckSpawnerController : MonoBehaviour {
 
             if (roundNo <= maxRoundIncrement)
                 duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement * roundNo;
-
+            
             duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
             duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuck;
 
             if (_duckParent == null)
                 _duckParent = new GameObject(strDuckParentGoName).transform;
-
+            
             duck.transform.SetParent(_duckParent);
-
+            duck.GetComponent<DuckController>().isPg13 = isPg13;
+            
             _ducksInWave++;
         }
         catch (Exception ex)
