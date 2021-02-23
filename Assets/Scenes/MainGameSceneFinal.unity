@@ -45684,10 +45684,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 5335812348019592489}
-    - target: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
-        type: 3}
-      propertyPath: timedRound
-      value: 60
+    - target: {fileID: 1567593666, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567593666, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.055
       objectReference: {fileID: 0}
     - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
@@ -85044,6 +85047,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Rig Main Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403554885747376351, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cb866f7b13a9942b466ac667977042, type: 3}

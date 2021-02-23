@@ -16,5 +16,5 @@ public class DisplayRoundTimeUI : MonoBehaviour
     
     public void UpdateTimedRoundText(float timeLeft) => textMeshProUGUI.text = $"{timeLeft:0}";
     
-    public void TimeRoundEndText() => textMeshProUGUI.text = $"TIMED ROUND SCORE: {ScoringSystemManager.Instance.GetGameInstance?.GetScores.GetPoints}";
+    public void TimeRoundEndText() => textMeshProUGUI.text = $"TIMED ROUND SCORE : {ScoringSystemManager.Instance.GetGameInstance?.GetScores.GetPoints}";
 }

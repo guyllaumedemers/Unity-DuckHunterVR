@@ -21,14 +21,11 @@ public class GameButton : MonoBehaviour
         GameManagerScript.Instance.GetGameState = !GameManagerScript.Instance.GetGameState;
         animation.Play("PushButton");
         SwapText();
+        
         if (GameManagerScript.Instance.GetGameState)
-        {
             StartGame();
-        }
         else
-        {
             StopGame();
-        }
     }
 
     public void StartGame()
@@ -51,12 +48,8 @@ public class GameButton : MonoBehaviour
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))
-        {
             textMeshProUGUI.text = start;
-        }
         else
-        {
             textMeshProUGUI.text = stop;
-        }
     }
 }

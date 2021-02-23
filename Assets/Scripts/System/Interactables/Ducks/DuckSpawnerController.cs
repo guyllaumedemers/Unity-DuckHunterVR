@@ -55,15 +55,17 @@ public class DuckSpawnerController : MonoBehaviour {
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);
         
-        StartSpawner();
+        //GameManagerScript.Instance.gameButton.UpdateButton();
     }
     
     private void SetRegularRound() {
+
         _ducksInRound = nbDucksPerRound;
         roundCountdown = roundDelay;
     }
     
     private void SetTimedRound() {
+
         _timedRoundOver = false;
         roundCountdown = roundDelay;
         timedRoundTimer = timedRound;
@@ -78,7 +80,6 @@ public class DuckSpawnerController : MonoBehaviour {
         _isSpawnRoutineRunning = false;
         
         roundTimeUI.SetActive(true);
-        
         switch (GameManagerScript.Instance.GetCurrentMode) {
             
             case GameManagerScript.GameMode.REGULAR_MODE:
@@ -164,7 +165,8 @@ public class DuckSpawnerController : MonoBehaviour {
                 roundTimeUI.SetActive(true);
                 timedRoundUI.SetActive(false);
                 _displayRoundTime.TimeRoundEndText();
-                GameManagerScript.Instance.gameButton.StopGame();
+                
+                GameManagerScript.Instance.gameButton.UpdateButton();
             }
         }
         else {

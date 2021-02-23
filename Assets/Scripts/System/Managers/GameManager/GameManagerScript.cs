@@ -40,7 +40,7 @@ public class GameManagerScript : MonoBehaviour
     public void Awake()
     {
         instance = this;
-        mode = GameMode.REGULAR_MODE;
+        //mode = GameMode.REGULAR_MODE;
         isRunning = false;
         isRoundLaunch = false;
     }
