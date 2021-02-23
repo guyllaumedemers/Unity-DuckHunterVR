@@ -10,7 +10,11 @@ public class DisplayRoundTimeUI : MonoBehaviour
         
     private void Awake() => textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>(true);
     
-    public void UpdateText(float roundNo, float roundCountdown) => textMeshProUGUI.text = $"ROUND {roundNo} STARTS IN : {roundCountdown:n0}";
+    public void UpdateRoundText(float roundNo, float roundCountdown) => textMeshProUGUI.text = $"ROUND{DisplayRound(roundNo)} STARTS IN : {roundCountdown:n0}";
+
+    private string DisplayRound(float round) => round > 0 ? " " + round.ToString("n0") : string.Empty;
     
-    public void TimeRoundEndText() => textMeshProUGUI.text = $"TIMED ROUND OVER, SCORE: {ScoringSystemManager.Instance.GetGameInstance?.GetScores.GetPoints}";
+    public void UpdateTimedRoundText(float timeLeft) => textMeshProUGUI.text = $"{timeLeft:0}";
+    
+    public void TimeRoundEndText() => textMeshProUGUI.text = $"TIMED ROUND SCORE: {ScoringSystemManager.Instance.GetGameInstance?.GetScores.GetPoints}";
 }

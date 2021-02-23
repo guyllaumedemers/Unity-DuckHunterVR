@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -14,11 +10,15 @@ public class GameManagerScript : MonoBehaviour
         CHALLENGE_MODE
     }
     
-    public GameObject duckSpawner;
+    public DuckSpawnerController duckSpawnerController;
+    public GameButton gameButton;
+    
     
     #region Singleton
     private static GameManagerScript instance;
+    
     private GameManagerScript() { }
+    
     public static GameManagerScript Instance
     {
         get

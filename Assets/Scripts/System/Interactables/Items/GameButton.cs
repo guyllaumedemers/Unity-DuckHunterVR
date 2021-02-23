@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GameButton : MonoBehaviour
@@ -37,21 +33,21 @@ public class GameButton : MonoBehaviour
 
     public void StartGame()
     {
-        GameManagerScript.Instance.duckSpawner.SetActive(true);
+        GameManagerScript.Instance.duckSpawnerController.StartSpawner();
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
     public void StopGame()
     {
-        ScoringSystemManager.Instance.GetGameInstance.UpdateInstanceRoundValue(GameManagerScript.Instance.duckSpawner.GetComponent<DuckSpawnerController>().roundNo);
-        GameManagerScript.Instance.duckSpawner.SetActive(false);
-
+        GameManagerScript.Instance.duckSpawnerController.StopSpawner();
+        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManagerScript.Instance.duckSpawnerController.roundNo);
+        
         Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
 
         ScoringSystemManager.Instance.DestroyGameInstance();
         GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
     }
-
+    
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))

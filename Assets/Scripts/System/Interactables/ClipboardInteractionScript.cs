@@ -9,6 +9,8 @@ public class ClipboardInteractionScript : MonoBehaviour
     [SerializeField]
     private Toggle[] toggles;
 
+    private Toggle _currentToggle;
+    
     public void Awake()
     {
         ActivateRegularModeOnAwake();
@@ -21,16 +23,16 @@ public class ClipboardInteractionScript : MonoBehaviour
 
     public void Update()
     {
-        if (!GameManagerScript.Instance.GetRoundStatus)
-        {
-            SetGameMode((GameManagerScript.GameMode)GetIndexWithToggleIsOnActive());
-            if (ScoringSystemManager.Instance.GetGameInstance != null)
-            {
-                // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
-                // but for now its fine with setting only once
-                GameManagerScript.Instance.GetRoundStatus = true;
-            }
-        }
+        // if (!GameManagerScript.Instance.GetRoundStatus)
+        // {
+        //     SetGameMode((GameManagerScript.GameMode)GetIndexWithToggleIsOnActive());
+        //     if (ScoringSystemManager.Instance.GetGameInstance != null)
+        //     {
+        //         // we could set the Round Status to true only when a button is press to tell the game the player has pick and confirm his game mode
+        //         // but for now its fine with setting only once
+        //         GameManagerScript.Instance.GetRoundStatus = true;
+        //     }
+        // }
     }
 
     public void ActivateRegularModeOnAwake()
@@ -82,6 +84,7 @@ public class ClipboardInteractionScript : MonoBehaviour
             if (!toggles[i].Equals(toggle))
             {
                 toggles[i].SetIsOnWithoutNotify(false);
+                SetGameMode((GameManagerScript.GameMode)i);
             }
         }
     }
