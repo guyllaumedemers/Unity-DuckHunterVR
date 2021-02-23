@@ -73,21 +73,8 @@ public class ClipboardInteractionScript : MonoBehaviour
     //     }
     // }
 
-    void ToggleValueChanged(Toggle toggle)
-    {
-        switch (toggle.tag) {
-            case "RegularMode":
-                GameManagerScript.Instance.GetCurrentMode = GameManagerScript.GameMode.REGULAR_MODE;
-                break;
-            
-            case "TimedRound":
-                GameManagerScript.Instance.GetCurrentMode = GameManagerScript.GameMode.TIMED_MODE;
-                break;
-            
-            default:
-                GameManagerScript.Instance.GetCurrentMode = GameManagerScript.GameMode.REGULAR_MODE;
-                break;
-        }
+    void ToggleValueChanged(Toggle toggle) {
+        GameManagerScript.Instance.CurrentMode = toggle.tag.ToEnum<GameMode.Mode>();
         
         for (int i = 0; i < toggles.Length; i++) {
             if (!toggles[i].Equals(toggle))

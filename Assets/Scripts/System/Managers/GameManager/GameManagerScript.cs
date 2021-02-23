@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    [System.Serializable]
-    public enum GameMode
-    {
-        REGULAR_MODE,
-        TIMED_MODE,
-        CHALLENGE_MODE
-    }
+    //[System.Serializable]
+    // public enum GameMode
+    // {
+    //     REGULAR_MODE,
+    //     TIMED_MODE,
+    //     CHALLENGE_MODE
+    // }
     
     public DuckSpawnerController duckSpawnerController;
     public GameButton gameButton;
@@ -34,7 +34,7 @@ public class GameManagerScript : MonoBehaviour
 
     private bool isRoundLaunch;
     private bool isRunning;
-    private GameMode mode;
+    private GameMode.Mode mode;
     
     
     public void Awake()
@@ -45,7 +45,7 @@ public class GameManagerScript : MonoBehaviour
         isRoundLaunch = false;
     }
 
-    public GameMode GetCurrentMode { get => mode; set { mode = value; } }
+    public GameMode.Mode CurrentMode { get => mode; set { mode = value; } }
     public bool GetRoundStatus { get => isRoundLaunch; set { isRoundLaunch = value; } }
     public bool GetGameState { get => isRunning; set { isRunning = value; } }
 }
