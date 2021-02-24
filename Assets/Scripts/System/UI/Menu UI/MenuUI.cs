@@ -196,17 +196,16 @@ public class MenuUI : MonoBehaviour
     /// </summary>
     public void GoBack()
     {
-        GameObject temp_target = target;
         foreach (GameObject go in menus)
         {
             if (go.activeSelf)
             {
-                temp_target = go;
+                target = go;
                 break;
             }
         }
         current.SetActive(!current.activeSelf);
-        temp_target.SetActive(!target.activeSelf);
+        target.SetActive(!target.activeSelf);
     }
     public void ExitGame()
     {
