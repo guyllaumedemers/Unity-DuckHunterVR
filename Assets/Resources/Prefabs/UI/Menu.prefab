@@ -233,8 +233,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMenuUIScript, Assembly-CSharp
+      - m_Target: {fileID: 4423595234354873257}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: DisplaySettings
         m_Mode: 1
         m_Arguments:
@@ -907,8 +907,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMenuUIScript, Assembly-CSharp
+      - m_Target: {fileID: 4423595234354873257}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: GoBackToMainMenuScene
         m_Mode: 1
         m_Arguments:
@@ -1040,8 +1040,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMenuUIScript, Assembly-CSharp
+      - m_Target: {fileID: 4423595234354873257}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: ExitGameApplication
         m_Mode: 1
         m_Arguments:
@@ -1759,8 +1759,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMenuUIScript, Assembly-CSharp
+      - m_Target: {fileID: 4423595234354873257}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: GetOnline
         m_Mode: 1
         m_Arguments:
@@ -2997,8 +2997,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMenuUIScript, Assembly-CSharp
+      - m_Target: {fileID: 4423595234354873257}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: DisplayStatistics
         m_Mode: 1
         m_Arguments:
@@ -3501,9 +3501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf2018cc53e4c545980d9f205430202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckSpawner: {fileID: 0}
-  roundTimer: {fileID: 3221892974798139916}
-  textMeshProUGUI: {fileID: 0}
 --- !u!1 &4423595234625622739
 GameObject:
   m_ObjectHideFlags: 0
@@ -5847,9 +5844,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMenuUIScript, Assembly-CSharp
-        m_MethodName: GoBackToInGameUI
+      - m_Target: {fileID: 4423595234354873257}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
