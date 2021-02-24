@@ -56,6 +56,9 @@ public class WeaponResetButton : MonoBehaviour
         {
             weaponSpawn.InstanciateWeapon();
         }
+
+        XRUIHandsBehavior.Instance.ItemIsNotHeld("Left");
+        XRUIHandsBehavior.Instance.ItemIsNotHeld("Right");
     }
 
     public void AddSpawnerToList(WeaponSpawn weaponSpawn)
