@@ -21374,8 +21374,13 @@ MonoBehaviour:
   - {fileID: 1285130058839842505}
   current: {fileID: 0}
   target: {fileID: 0}
-  sliders: []
-  toggles: []
+  camera: {fileID: 0}
+  sliders:
+  - {fileID: 1613816155642606583}
+  - {fileID: 2282658715870033197}
+  toggles:
+  - {fileID: 7632263778979909349}
+  - {fileID: 5035716291473869247}
 --- !u!4 &1350245974
 Transform:
   m_ObjectHideFlags: 0
@@ -32995,7 +33000,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 4075094167112725816}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -43547,7 +43552,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 4075094167112725816}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -49366,7 +49371,7 @@ MonoBehaviour:
   m_MinValue: -18
   m_MaxValue: -6
   m_WholeNumbers: 0
-  m_Value: -13.38
+  m_Value: -6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -49694,7 +49699,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 4075094167112725816}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -53893,8 +53898,8 @@ MonoBehaviour:
       - m_Target: {fileID: 2603553753547780970, guid: 938237bc7dd4f6f438b20dce233e4166,
           type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: TurnOffAudioMixer
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 5035716291473869247}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
@@ -55300,6 +55305,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 23.254
       objectReference: {fileID: 0}
+    - target: {fileID: 6636983307672824909, guid: b6f81d1f6046a874195704fdf9c26c7c,
+        type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 7a9e3dde7fb159a4d96ecab6abdbd58d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f81d1f6046a874195704fdf9c26c7c, type: 3}
 --- !u!222 &7184933835070762191
@@ -57097,7 +57108,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 4075094167112725816}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

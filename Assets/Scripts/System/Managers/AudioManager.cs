@@ -5,61 +5,70 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioMixer))]
 public class AudioManager : MonoBehaviour
 {
+    #region Singleton
+    private static AudioManager instance;
+    private AudioManager() { }
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new AudioManager();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
     [Header("Requiered Components")]
-    public static AudioMixer audioMixer;
+    public AudioMixer audioMixer;
 
     [Tooltip("Setting Value retrieve from MenuUI to acces Toggle state and Volume")]
-    [SerializeField] private static bool isDisable;
+    [SerializeField] private bool isDisable;
 
     [Tooltip("Slider Value To Retrieve for Menu Update")]
-    [SerializeField] private static float music_volume;
-    [SerializeField] private static float sfx_volume;
+    [SerializeField] private float music_volume;
+    [SerializeField] private float sfx_volume;
 
     [Header("Slider Tag")]
     private readonly string music_slider = "Music";
     private readonly string sfx_slider = "SFX";
 
-    private GameObject settingsUI;
+    private void Awake()
+    {
+        InitializeChannelVolumesValues();
+    }
 
     private void Start()
     {
         isDisable = false;
-        settingsUI = MenuUI.Instance.GetSettingsState;
-    }
-
-    private void Update()
-    {
-        if (settingsUI != null)
-        {
-            UpdateMixerValues();
-        }
     }
 
     /// <summary>
-    /// Retrieve the Audio Mixer values both channels => Music, SFX and update its local variable
-    /// so the MenuUI can retrieve the data and keep its slider values displayed Updated
+    /// Initialize the local variables that are going to be return to set the displayed values of the slider
+    /// when a new tab scene open => so that if we change scene from the MenuUI => to the game scene
+    /// Our sliders values will be the same as the last scene
     /// </summary>
-    private void UpdateMixerValues()
+    private void InitializeChannelVolumesValues()
     {
-        if (settingsUI.activeSelf && settingsUI.CompareTag(MenuUI.Instance.GetSettingTag))
-        {
-            audioMixer.GetFloat(music_slider, out music_volume);
-            audioMixer.GetFloat(sfx_slider, out sfx_volume);
-        }
+        audioMixer.GetFloat(music_slider, out music_volume);
+        audioMixer.GetFloat(sfx_slider, out sfx_volume);
     }
 
     #region Actions
-    public static void SetMainMusicVolume(Slider sliderVolume)
+    public void SetMainMusicVolume(Slider sliderVolume)
     {
         audioMixer.SetFloat("Music", sliderVolume.value);
     }
-    public static void SetMainSFXVolume(Slider sliderVolume)
+    public void SetMainSFXVolume(Slider sliderVolume)
     {
         audioMixer.SetFloat("SFX", sliderVolume.value);
     }
-    public static void TurnOffAudioMixer(Toggle toggle)
+    public void TurnOffAudioMixer(Toggle toggle)
     {
         if (!toggle.isOn)
         {
@@ -74,9 +83,9 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    public static bool GetMixerToggleState { get => isDisable; }
+    public bool GetMixerToggleState { get => isDisable; }
 
-    public static float GetMusicVolume { get => music_volume; }
+    public float GetMusicVolume { get => music_volume; }
 
-    public static float GetSFXVolume { get => sfx_volume; }
+    public float GetSFXVolume { get => sfx_volume; }
 }

@@ -26,6 +26,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private GameObject[] menus;
     [SerializeField] private GameObject current;
     [SerializeField] private GameObject target;
+    [SerializeField] private Camera camera;
     private readonly string CURRENT_ACTIVE_UI = "MainMenuUI";
     private readonly string TARGET_UI = "SettingsMenuUI";
 
@@ -35,6 +36,9 @@ public class MenuUI : MonoBehaviour
     [Header("Settings Menu Components")]
     [SerializeField] private Slider[] sliders;
     [SerializeField] private Toggle[] toggles;
+
+    [Header("Camera Tag")]
+    private readonly string CAMERA_TAG = "MainCamera";
 
     [Header("Slider Tag")]
     private readonly string MUSIC_SLIDER = "MusicSlider";
@@ -47,20 +51,19 @@ public class MenuUI : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        camera = GameObject.FindGameObjectWithTag(CAMERA_TAG).GetComponent<Camera>();
         DisableAllUI();
     }
 
     private void Start()
     {
         InitializeAllComponents();
+        UpdateUIElements();
     }
 
     private void Update()
     {
-        if (target != null)
-        {
-            UpdateUIElements();
-        }
+
     }
 
     private void DisableAllUI()
@@ -85,19 +88,16 @@ public class MenuUI : MonoBehaviour
 
     private void UpdateUIElements()
     {
-        if (target.CompareTag(TARGET_UI) && target.activeSelf)
-        {
-            Slider music = GetSliderWithTag(MUSIC_SLIDER);
-            music.value = AudioManager.GetMusicVolume;
+        Slider music = GetSliderWithTag(MUSIC_SLIDER);
+        music.value = AudioManager.Instance.GetMusicVolume;
 
-            Slider sfx = GetSliderWithTag(SFX_SLIDER);
-            sfx.value = AudioManager.GetSFXVolume;
+        Slider sfx = GetSliderWithTag(SFX_SLIDER);
+        sfx.value = AudioManager.Instance.GetSFXVolume;
 
-            Toggle disable_sound = GetToggleWithTag(DISABLE_SOUND_TOGGLE);
-            disable_sound.isOn = AudioManager.GetMixerToggleState;
+        //Toggle disable_sound = GetToggleWithTag(DISABLE_SOUND_TOGGLE);
+        //disable_sound.isOn = AudioManager.Instance.GetMixerToggleState;
 
-            // need to update the enable gore
-        }
+        // need to update the enable gore
     }
 
     private GameObject GetUIWithTag(string tag)
@@ -145,8 +145,9 @@ public class MenuUI : MonoBehaviour
 
     public void AccessSettings()
     {
-        target.SetActive(!target.activeSelf);
-        current.SetActive(!current.activeSelf);
+        Utilities.GetCameraTransformAndRotation(target, camera);
+        current.SetActive(false);
+        target.SetActive(true);
     }
 
     public void GoBack()
