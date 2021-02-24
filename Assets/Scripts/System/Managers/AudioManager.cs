@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         InitializeChannelVolumesValues();
     }
 
@@ -72,12 +73,12 @@ public class AudioManager : MonoBehaviour
     {
         if (!toggle.isOn)
         {
-            isDisable = !toggle.isOn;
+            isDisable = false;
             audioMixer.ClearFloat("Master");
         }
         else
         {
-            isDisable = toggle.isOn;
+            isDisable = true;
             audioMixer.SetFloat("Master", -80);
         }
     }
