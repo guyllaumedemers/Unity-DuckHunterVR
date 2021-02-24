@@ -479,7 +479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567593665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0, z: 1.055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 984895215}
@@ -759,11 +759,12 @@ MonoBehaviour:
   - {fileID: 792752698029093541, guid: 82155982a63865541809901c8f991081, type: 3}
   nbDucksPerRound: 10
   roundDelay: 10
-  timedRound: 10
+  timedRound: 60
   flightRoundIncrement: 0.15
   maxRoundIncrement: 10
   nbDucksPerWave: 1
   waveDelay: 2
+  addToWaveDelay: 10
   roundNo: 1
   roundTimer: 0
   _ducksInRound: 0
@@ -772,6 +773,7 @@ MonoBehaviour:
   waveCountdown: 0
   timedRoundTimer: 0
   isPg13: 1
+  gameMode: 0
+  isRunning: 0
   roundTimeUI: {fileID: 1015784284}
   timedRoundUI: {fileID: 1567593665}
-  isRunning: 0

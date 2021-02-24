@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.XR.Interaction.Toolkit;
 using Random = UnityEngine.Random;
 
 public class DuckSpawnerController : MonoBehaviour {
@@ -17,35 +15,39 @@ public class DuckSpawnerController : MonoBehaviour {
     public float roundDelay = 10f;
     public float timedRound = 60f;
     public float flightRoundIncrement = 0.15f;
-    public float maxRoundIncrement = 10;
+    public float maxRoundIncrement = 10f;
 
     [Header("Wave Information")]
     public int nbDucksPerWave = 1;
     public float waveDelay = 4f;
-
+    public float addToWaveDelay = 10f;
+    
     [Header("Debug Information")]
     public float roundNo = 1;
     public float roundTimer;
-    [SerializeField] private int _ducksInRound = 0;
+    [SerializeField] private int _ducksInRound;
     public float roundCountdown;
-    [SerializeField] private int _ducksInWave = 0;
+    [SerializeField] private int _ducksInWave;
     public float waveCountdown;
     public float timedRoundTimer;
     public bool isPg13;
-    public GameObject roundTimeUI;
-    public GameObject timedRoundUI;
-    [SerializeField] private GameMode.Mode mode;
-    
-    private bool _isSpawnRoutineRunning;
-    private float _startRoundNo;
-    private Transform _duckParent;
-    private string strDuckParentGoName = "Spawned Ducks";
-    
-    private DisplayRoundTimeUI _displayRoundTime;
-    private DisplayRoundTimeUI _displayTimedRoundTime;
-    private bool _timedRoundOver;
+    [SerializeField]
+    private GameMode.Mode gameMode;
     public bool isRunning;
     
+    [Header("Text GameObjects")]
+    public GameObject roundTimeUI;
+    public GameObject timedRoundUI;
+    
+    private bool _timedRoundOver;
+    private float _startRoundNo;
+    private string strDuckParentGoName = "Spawned Ducks";
+    
+    private Transform _duckParent;
+    private Coroutine _addDuckRoutine;
+    private Coroutine _duckSpawnerRoutine;
+    private DisplayRoundTimeUI _displayRoundTime;
+    private DisplayRoundTimeUI _displayTimedRoundTime;
     
     public void Start() {
         _startRoundNo = roundNo;
@@ -54,31 +56,32 @@ public class DuckSpawnerController : MonoBehaviour {
         
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);
+
+        gameMode = GameManagerScript.Instance.CurrentMode;
         
         //GameManagerScript.Instance.gameButton.UpdateButton();
     }
     
     private void SetRegularRound() {
-
         _ducksInRound = nbDucksPerRound;
         roundCountdown = roundDelay;
     }
     
     private void SetTimedRound() {
-
         _timedRoundOver = false;
         roundCountdown = roundDelay;
         timedRoundTimer = timedRound;
-        waveDelay = 0.5f;
+        waveDelay = 0.1f;
         roundNo = 0;
     }
     
     public void StartSpawner() {
-        mode = GameManagerScript.Instance.CurrentMode;
+        gameMode = GameManagerScript.Instance.CurrentMode;
         _ducksInWave = 0;
         _ducksInRound = 0;
         roundNo = _startRoundNo;
-        _isSpawnRoutineRunning = false;
+        _duckSpawnerRoutine = null;
+        _addDuckRoutine = null;
         
         roundTimeUI.SetActive(true);
         
@@ -100,7 +103,7 @@ public class DuckSpawnerController : MonoBehaviour {
         
         isRunning = true;
     }
-    
+
     public void StopSpawner() {
         isRunning = false;
         
@@ -119,8 +122,9 @@ public class DuckSpawnerController : MonoBehaviour {
                     break;
 
                 case GameMode.Mode.TIMEDROUND:
-                    if(!_timedRoundOver)
+                    if (!_timedRoundOver) {
                         TimedModeUpdate();
+                    }
                     break;
             
                 default:
@@ -136,8 +140,8 @@ public class DuckSpawnerController : MonoBehaviour {
             roundTimeUI.SetActive(false);
             
             if (_ducksInRound > 0) {
-                if (_ducksInWave <= 0 && !_isSpawnRoutineRunning)
-                    StartCoroutine(nameof(SpawnDuckRoutine));
+                if (_ducksInWave <= 0 && _duckSpawnerRoutine == null)
+                    _duckSpawnerRoutine = StartCoroutine(nameof(SpawnDuckRoutine));
             }
             else {
                 roundNo++;
@@ -157,13 +161,15 @@ public class DuckSpawnerController : MonoBehaviour {
             roundTimeUI.SetActive(false);
             timedRoundUI.SetActive(true);
             
+            if (_addDuckRoutine == null)
+                _addDuckRoutine = StartCoroutine(nameof(AddDuckToWaveRoutine));
+            
             if (timedRoundTimer > 0) {
-                if (_ducksInWave <= 0 && !_isSpawnRoutineRunning) {
-                    StartCoroutine(nameof(SpawnDuckRoutine));
+                if (_ducksInWave <= 0 && _duckSpawnerRoutine == null) {
+                    _duckSpawnerRoutine = StartCoroutine(nameof(SpawnDuckRoutine));
                 }
                 timedRoundTimer -= Time.deltaTime;
                 _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
-
             }
             else {
                 roundTimeUI.SetActive(true);
@@ -180,7 +186,6 @@ public class DuckSpawnerController : MonoBehaviour {
     }
 
     private IEnumerator SpawnDuckRoutine() {
-        _isSpawnRoutineRunning = true;
         waveCountdown = waveDelay;
 
         while (waveCountdown > 0) {
@@ -191,13 +196,23 @@ public class DuckSpawnerController : MonoBehaviour {
         for (int i = 0; i < nbDucksPerWave; i++) {
             if (i > 0)
                 yield return new WaitForSeconds(Random.Range(1, waveDelay));
-            
+
+            if (!isRunning) break;
             InstantiateDuck();
         }
 
-        _isSpawnRoutineRunning = false;
+        _duckSpawnerRoutine = null;
     }
 
+    private IEnumerator AddDuckToWaveRoutine() {
+        while (true) {
+            if(!isRunning) break;
+            yield return new WaitForSeconds(addToWaveDelay);
+            nbDucksPerWave++;
+        }
+        _addDuckRoutine = null;
+    }
+    
     private Vector3 GetRandomSpawnPoint() {
         float posX = transform.position.x + Random.Range(-spawnSize.x / 2, spawnSize.x / 2);
         float posY = transform.position.y - spawnSize.y / 2;

@@ -45684,14 +45684,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 5335812348019592489}
-    - target: {fileID: 1567593666, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567593666, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.055
-      objectReference: {fileID: 0}
     - target: {fileID: 5346019990624616915, guid: 3c02697e5da79cd4db6d0c54a30b863a,
         type: 3}
       propertyPath: m_RootOrder
