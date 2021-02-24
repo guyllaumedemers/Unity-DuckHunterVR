@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class SelectionOutline : MonoBehaviour
 {
     public MeshRenderer _meshRenderer;
     private Color _originalColor;
     private bool _isSelected;
+    private XRBaseInteractor _xRBaseInteractor;
 
     private void Start()
     {
@@ -39,11 +41,15 @@ public class SelectionOutline : MonoBehaviour
     public void IsSelected()
     {
         _isSelected = true;
+        _xRBaseInteractor = GetComponent<XRGrabInteractable>().selectingInteractor;
+
+        XRUIHandsBehavior.Instance.ItemIsHeld(_xRBaseInteractor.name);
     }
 
     public void IsNotSelected()
     {
         _isSelected = false;
+        XRUIHandsBehavior.Instance.ItemIsNotHeld(_xRBaseInteractor.name);
         Highlight();
     }
 }
