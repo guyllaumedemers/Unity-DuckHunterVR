@@ -22,37 +22,42 @@ public class SelectionOutline : MonoBehaviour
     {
         if (_isSelected)
         {
-            RemoveHighlight();
-            XRUIHandsBehavior.Instance.ItemIsHeld(_xRBaseInteractor.name);
+            IsSelected();
         }
     }
 
     public void Highlight()
     {
-        if (_meshRenderer != null)
+        if (_meshRenderer != null && _meshRenderer.material.color == _originalColor)
             _meshRenderer.material.color = Color.green;
     }
 
     public void RemoveHighlight()
     {
-        if (_meshRenderer != null)
+        if (_meshRenderer != null && _meshRenderer.material.color == Color.green)
             _meshRenderer.material.color = _originalColor;
     }
 
     public void IsSelected()
     {
         _isSelected = true;
-        _xRBaseInteractor = GetComponent<XRGrabInteractable>().selectingInteractor;
+
+        if (_xRBaseInteractor == null)
+            _xRBaseInteractor = GetComponent<XRGrabInteractable>().selectingInteractor;
 
         XRUIHandsBehavior.Instance.ItemIsHeld(_xRBaseInteractor.name);
+
+        RemoveHighlight();
     }
 
     public void IsNotSelected()
     {
         _isSelected = false;
-        
+
         XRUIHandsBehavior.Instance.ItemIsNotHeld(_xRBaseInteractor.name);
 
         Highlight();
+
+        _xRBaseInteractor = null;
     }
 }

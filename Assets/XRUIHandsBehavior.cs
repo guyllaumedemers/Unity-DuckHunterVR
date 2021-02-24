@@ -46,13 +46,13 @@ public class XRUIHandsBehavior : MonoBehaviour
 
     public void ItemIsHeld(string interactorName)
     {
-        if (interactorName.Contains("Left"))
+        if (interactorName.Contains("Left") && leftHandUILineVisual.enabled == true)
         {
             leftHandUILineVisual.enabled = false;
             leftHandUIRayInteractor.raycastMask = 0;
         }
 
-        if (interactorName.Contains("Right"))
+        if (interactorName.Contains("Right") && rightHandUILineVisual.enabled == true)
         {
             rightHandUILineVisual.enabled = false;
             rightHandUIRayInteractor.raycastMask = 0;
@@ -61,13 +61,13 @@ public class XRUIHandsBehavior : MonoBehaviour
 
     public void ItemIsNotHeld(string interactorName)
     {
-        if (interactorName.Contains("Left"))
+        if (interactorName.Contains("Left") && leftHandUILineVisual.enabled == false)
         {
             leftHandUILineVisual.enabled = true;
             leftHandUIRayInteractor.raycastMask = leftHandUIMaskDefault;
         }
 
-        if (interactorName.Contains("Right"))
+        if (interactorName.Contains("Right") && rightHandUILineVisual.enabled == false)
         {
             rightHandUILineVisual.enabled = true;
             rightHandUIRayInteractor.raycastMask = rightHandUIMaskDefault;
