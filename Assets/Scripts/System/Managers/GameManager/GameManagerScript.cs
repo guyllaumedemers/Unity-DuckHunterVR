@@ -1,46 +1,18 @@
 using UnityEngine;
 
-public class GameManagerScript : MonoBehaviour
+public class GameManagerScript : Singleton<GameManagerScript>
 {
-    //[System.Serializable]
-    // public enum GameMode
-    // {
-    //     REGULAR_MODE,
-    //     TIMED_MODE,
-    //     CHALLENGE_MODE
-    // }
-    
     public DuckSpawnerController duckSpawnerController;
     public GameButton gameButton;
     
-    
-    #region Singleton
-    private static GameManagerScript instance;
-    
-    private GameManagerScript() { }
-    
-    public static GameManagerScript Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new GameManagerScript();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
     private bool isRoundLaunch;
     private bool isRunning;
     private GameMode.Mode mode;
-    
-    
-    public void Awake()
+
+
+    protected override void Awake()
     {
-        instance = this;
-        //mode = GameMode.REGULAR_MODE;
+        base.Awake();
         isRunning = false;
         isRoundLaunch = false;
     }

@@ -1,34 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoringSystemManager : MonoBehaviour
+public class ScoringSystemManager : Singleton<ScoringSystemManager>
 {
-    #region Singleton
-    private static ScoringSystemManager instance;
-    private ScoringSystemManager() { }
-    public static ScoringSystemManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new ScoringSystemManager();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
-    [Header("Requiered COmponents")]
+    [Header("Requiered Components")]
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
     private CreateNewGameInstance playerGameInstance;
 
-    public void Awake()
+    protected override void Awake()
     {
-        instance = this;
+        base.Awake();
         textMeshProUGUI = GameObject.FindGameObjectWithTag("Score").GetComponent<TextMeshProUGUI>();
     }
 
