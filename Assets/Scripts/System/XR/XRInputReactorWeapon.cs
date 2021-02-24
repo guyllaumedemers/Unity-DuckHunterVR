@@ -8,8 +8,10 @@ public class XRInputReactorWeapon : MonoBehaviour
     [SerializeField]
     private XRInputWatcher _xRInputWatcher;
     private XRGrabInteractable _xRGrabInteractable;
-    [SerializeField]
-    private bool _primaryIsPressed = false, _secondaryIsPressed = false, _triggerIsPressed = false;
+    [Header("Debug")]
+    [SerializeField] private bool _primaryIsPressed = false;
+    [SerializeField] private bool _secondaryIsPressed = false;
+    [SerializeField] private bool _triggerIsPressed = false;
 
     private IWeapon _iWeapon;
     private SelectionOutline _selectionOutline;
