@@ -6,9 +6,9 @@ using Random = UnityEngine.Random;
 public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
     [Header("PG-13 toggle")] 
-    public bool isPg13;
+    public bool isPg13 = false;
     [Header("Gore Particle")]
-    public ParticleSystem particleBurst;
+    public GameObject goreObjectPrefab;
     [Header("Duck Information")]
     public int noPoints = 1;
     public float HP = 1f;
@@ -28,6 +28,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     private Animation _animations;
     private SphereCollider _collider;
     private Rigidbody _rb;
+    private SkinnedMeshRenderer _skinnedMeshRenderer;
     private bool _isDead;
     private float _escapeHight;
     
@@ -36,13 +37,14 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _animations = GetComponent<Animation>();
         _collider = GetComponent<SphereCollider>();
         _rb = GetComponent<Rigidbody>();
+        _skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         
         _animations.Play("fly");
         GetRandomPosUp();
 
         _escapeHight = SpanwerPos.y + SpawnSize.y;
         minMaxY.max += _escapeHight;
-        
+
         _isDead = false;
         _state = IFlyingTarget.State.FLYING;
     }
@@ -133,12 +135,8 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
             _animations.Play("falling");
         }
         else {
-            foreach (Transform child in transform) {
-                if (!child.name.Contains("Explosion"))
-                    child.gameObject.SetActive(false);
-            }
-
-            particleBurst.Play();
+            _skinnedMeshRenderer.enabled = false;
+            GameObject goreObjectClone = Instantiate(goreObjectPrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
         }
 
         _rb.useGravity = true;
