@@ -85385,6 +85385,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Rig Main Game
       objectReference: {fileID: 0}
+    - target: {fileID: 8951812987487244851, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightHandUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951812988523374825, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_TagString
+      value: LeftHandUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951812988523374829, guid: 07cb866f7b13a9942b466ac667977042,
+        type: 3}
+      propertyPath: m_MaxRaycastDistance
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cb866f7b13a9942b466ac667977042, type: 3}
 --- !u!1 &4213956747438521759
