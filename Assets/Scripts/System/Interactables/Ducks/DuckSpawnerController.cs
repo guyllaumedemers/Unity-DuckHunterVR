@@ -57,8 +57,6 @@ public class DuckSpawnerController : MonoBehaviour {
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);
 
-        gameMode = GameManagerScript.Instance.CurrentMode;
-        
         //GameManagerScript.Instance.gameButton.UpdateButton();
     }
     
@@ -75,8 +73,8 @@ public class DuckSpawnerController : MonoBehaviour {
         roundNo = 0;
     }
     
-    public void StartSpawner() {
-        gameMode = GameManagerScript.Instance.CurrentMode;
+    public void StartSpawner(GameMode.Mode mode) {
+        gameMode = mode;
         _ducksInWave = 0;
         _ducksInRound = 0;
         roundNo = _startRoundNo;
@@ -85,7 +83,7 @@ public class DuckSpawnerController : MonoBehaviour {
         
         roundTimeUI.SetActive(true);
         
-        switch (GameManagerScript.Instance.CurrentMode) {
+        switch (gameMode) {
             
             case GameMode.Mode.REGULARMODE:
                 SetRegularRound();
@@ -115,7 +113,7 @@ public class DuckSpawnerController : MonoBehaviour {
         
         if (isRunning) {
             
-            switch (GameManagerScript.Instance.CurrentMode) {
+            switch (gameMode) {
             
                 case GameMode.Mode.REGULARMODE:
                     RegularModeUpdate();
@@ -136,7 +134,7 @@ public class DuckSpawnerController : MonoBehaviour {
     
     private void RegularModeUpdate() {
         
-        if (roundCountdown <= 0) {
+        if (roundCountdown <= 0.9f) {
             roundTimeUI.SetActive(false);
             
             if (_ducksInRound > 0) {
@@ -157,7 +155,7 @@ public class DuckSpawnerController : MonoBehaviour {
 
     private void TimedModeUpdate() {
 
-        if (roundCountdown <= 0) {
+        if (roundCountdown <= 0.9f) {
             roundTimeUI.SetActive(false);
             timedRoundUI.SetActive(true);
             

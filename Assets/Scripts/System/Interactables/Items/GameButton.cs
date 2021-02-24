@@ -30,13 +30,13 @@ public class GameButton : MonoBehaviour
 
     public void StartGame()
     {
-        GameManagerScript.Instance.duckSpawnerController.StartSpawner();
+        GameManagerScript.Instance.StartDuckSpawner();
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
     public void StopGame()
     {
-        GameManagerScript.Instance.duckSpawnerController.StopSpawner();
+        GameManagerScript.Instance.StopDuckSpawner();
         ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManagerScript.Instance.duckSpawnerController.roundNo);
         
         Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);

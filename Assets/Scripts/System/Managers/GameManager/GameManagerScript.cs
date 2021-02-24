@@ -7,7 +7,7 @@ public class GameManagerScript : Singleton<GameManagerScript>
     
     private bool isRoundLaunch;
     private bool isRunning;
-    private GameMode.Mode mode;
+    private GameMode.Mode gameMode;
 
 
     protected override void Awake()
@@ -17,7 +17,10 @@ public class GameManagerScript : Singleton<GameManagerScript>
         isRoundLaunch = false;
     }
 
-    public GameMode.Mode CurrentMode { get => mode; set { mode = value; } }
+    public GameMode.Mode CurrentMode { get => gameMode; set { gameMode = value; } }
     public bool GetRoundStatus { get => isRoundLaunch; set { isRoundLaunch = value; } }
     public bool GetGameState { get => isRunning; set { isRunning = value; } }
+
+    public void StartDuckSpawner() => duckSpawnerController.StartSpawner(gameMode);
+    public void StopDuckSpawner() => duckSpawnerController.StopSpawner();
 }
