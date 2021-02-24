@@ -968,6 +968,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a18a3718587c2e4fbb5b331e6f7471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHandUIRayInteractor: {fileID: 0}
+  rightHandUIRayInteractor: {fileID: 0}
+  leftHandUILineVisual: {fileID: 0}
+  rightHandUILineVisual: {fileID: 0}
+  leftHandUIMaskDefault:
+    serializedVersion: 2
+    m_Bits: 0
+  rightHandUIMaskDefault:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6529954802771760507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,16 +1021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849509cb75a270240bf21f9d59910b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandUIRayInteractor: {fileID: 0}
-  rightHandUIRayInteractor: {fileID: 0}
-  leftHandUIMaskDefault:
-    serializedVersion: 2
-    m_Bits: 0
-  rightHandUIMaskDefault:
-    serializedVersion: 2
-    m_Bits: 0
-  leftHandUILineVisual: {fileID: 0}
-  rightHandUILineVisual: {fileID: 0}
 --- !u!1 &6734608535077109036
 GameObject:
   m_ObjectHideFlags: 0

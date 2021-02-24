@@ -23,6 +23,7 @@ public class SelectionOutline : MonoBehaviour
         if (_isSelected)
         {
             RemoveHighlight();
+            XRUIHandsBehavior.Instance.ItemIsHeld(_xRBaseInteractor.name);
         }
     }
 
@@ -49,7 +50,9 @@ public class SelectionOutline : MonoBehaviour
     public void IsNotSelected()
     {
         _isSelected = false;
+        
         XRUIHandsBehavior.Instance.ItemIsNotHeld(_xRBaseInteractor.name);
+
         Highlight();
     }
 }
