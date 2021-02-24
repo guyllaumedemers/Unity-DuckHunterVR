@@ -23,9 +23,9 @@ public class XRUIHandsBehavior : MonoBehaviour
     }
     #endregion
 
-    public XRRayInteractor leftHandUIRayInteractor, rightHandUIRayInteractor;
-    public XRInteractorLineVisual leftHandUILineVisual, rightHandUILineVisual;
-    public LayerMask leftHandUIMaskDefault, rightHandUIMaskDefault;
+    [HideInInspector] public XRRayInteractor leftHandUIRayInteractor, rightHandUIRayInteractor;
+    [HideInInspector] public XRInteractorLineVisual leftHandUILineVisual, rightHandUILineVisual;
+    [HideInInspector] public LayerMask leftHandUIMaskDefault, rightHandUIMaskDefault;
 
     private void Awake()
     {

@@ -20,7 +20,7 @@ public class CreateNewGameInstance
     /// <param name="points"></param>
     public CreateNewGameInstance()
     {
-        gameMode = GameManagerScript.Instance.CurrentMode;
+        gameMode = GameManager.Instance.CurrentMode;
         scorePoints = new ScorePoints();
         roundNo = startRoundNo;
     }
