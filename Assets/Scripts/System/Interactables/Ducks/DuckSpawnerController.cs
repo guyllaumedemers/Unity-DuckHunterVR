@@ -174,7 +174,7 @@ public class DuckSpawnerController : MonoBehaviour {
                 timedRoundUI.SetActive(false);
                 _displayRoundTime.TimeRoundEndText();
                 
-                GameManagerScript.Instance.gameButton.UpdateButton();
+                GameManager.Instance.gameButton.UpdateButton();
             }
         }
         else {
@@ -234,7 +234,6 @@ public class DuckSpawnerController : MonoBehaviour {
                 _duckParent = new GameObject(strDuckParentGoName).transform;
             
             duck.transform.SetParent(_duckParent);
-            duck.GetComponent<DuckController>().isPg13 = isPg13;
             
             _ducksInWave++;
         }

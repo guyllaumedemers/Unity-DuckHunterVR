@@ -5,8 +5,6 @@ using Random = UnityEngine.Random;
 
 public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
-    [Header("PG-13 toggle")] 
-    public bool isPg13 = false;
     [Header("Gore Particle")]
     public GameObject goreObjectPrefab;
     [Header("Duck Information")]
@@ -128,15 +126,15 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         
         ScoringSystemManager.Instance.GetGameInstance?.GetScores.AddPoints(noPoints);
 
-        if (isPg13) {
+        if (GameManager.Instance.isGoreEnabled) {
+            _skinnedMeshRenderer.enabled = false;
+            GameObject goreObjectClone = Instantiate(goreObjectPrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
+        }
+        else {
             _animations.Play("inAirDeath1");
             yield return new WaitForSeconds(_animations["inAirDeath1"].length);
 
-            _animations.Play("falling");
-        }
-        else {
-            _skinnedMeshRenderer.enabled = false;
-            GameObject goreObjectClone = Instantiate(goreObjectPrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
+            _animations.Play("falling");            
         }
 
         _rb.useGravity = true;
