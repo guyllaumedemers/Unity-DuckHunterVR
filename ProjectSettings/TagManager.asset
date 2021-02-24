@@ -24,6 +24,8 @@ TagManager:
   - StatsMenuUI
   - IngameMenuUI
   - SettingsMenuUI
+  - LeftHandUI
+  - RightHandUI
   layers:
   - Default
   - TransparentFX
