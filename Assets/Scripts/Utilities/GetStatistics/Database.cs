@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class HighScoreUI : MonoBehaviour
+public class Database : MonoBehaviour
 {
     #region Singleton
-    private static HighScoreUI instance;
-    private HighScoreUI() { }
-    public static HighScoreUI Instance
+    private static Database instance;
+    private Database() { }
+    public static Database Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = new HighScoreUI();
+                instance = new Database();
             }
             return instance;
         }
@@ -43,7 +43,7 @@ public class HighScoreUI : MonoBehaviour
         int i = 0;
         while (i < myArr.Length && i < MAX_NUMBER_OF_SCORE_DISPLAY)
         {
-            StatEntryScript entry = Instantiate(statEntry, target).GetComponent<StatEntryScript>();
+            StatEntry entry = Instantiate(statEntry, target).GetComponent<StatEntry>();
             entries.Add(entry.gameObject);
             entry.InitializeDataEntry(myArr[i], i + INITIAL_RANK_VALUE);
             i++;

@@ -26,7 +26,6 @@ public class MenuUI : MonoBehaviour
     [Header("Requiered Components")]
     [SerializeField] private GameObject[] menus;
     [SerializeField] private GameObject current;
-    [Tooltip("Target is always going to be refering to Settings Menu UI for convenience sake")]
     [SerializeField] private GameObject target;
     [SerializeField] private new Camera camera;
 
@@ -124,6 +123,18 @@ public class MenuUI : MonoBehaviour
             }
         }
     }
+
+    private GameObject UpdateTargetGameobject()
+    {
+        foreach (GameObject go in menus)
+        {
+            if (go.activeSelf)
+            {
+                return go;
+            }
+        }
+        return null;
+    }
     private GameObject GetUIWithTag(string tag)
     {
         for (int i = 0; i < menus.Length; i++)
@@ -185,9 +196,12 @@ public class MenuUI : MonoBehaviour
     }
     public void AccessSettings()
     {
-        Utilities.GetCameraTransformAndRotation(target, camera);
-        current.SetActive(false);
-        target.SetActive(true);
+        target = GetUIWithTag(TARGET_SETTINGS_MENU_UI);
+        if (target != null)
+        {
+            Utilities.GetCameraTransformAndRotation(target, camera);
+            InvertActiveUIValues(current, target);
+        }
     }
     /// <summary>
     /// If we are in the settings Menu we can simply go back by settings our active self to the invert since we are currently active
@@ -196,16 +210,11 @@ public class MenuUI : MonoBehaviour
     /// </summary>
     public void GoBack()
     {
-        foreach (GameObject go in menus)
+        target = UpdateTargetGameobject();
+        if (target != null)
         {
-            if (go.activeSelf)
-            {
-                target = go;
-                break;
-            }
+            InvertActiveUIValues(current, target);
         }
-        current.SetActive(!current.activeSelf);
-        target.SetActive(!target.activeSelf);
     }
     public void ExitGame()
     {
@@ -226,9 +235,13 @@ public class MenuUI : MonoBehaviour
     }
     public void DisplayStatistics()
     {
-        Utilities.GetCameraTransformAndRotation(GetUIWithTag(TARGET_STATS_MENU_UI), camera);
-        InvertActiveUIValues(current, GetUIWithTag(TARGET_STATS_MENU_UI));
-        HighScoreUI.Instance.InstanciatePlayerStatistics();
+        target = GetUIWithTag(TARGET_STATS_MENU_UI);
+        if (target != null)
+        {
+            Utilities.GetCameraTransformAndRotation(target, camera);
+            InvertActiveUIValues(current, target);
+            Database.Instance.InstanciatePlayerStatistics();
+        }
     }
     public void GetOnline()
     {
@@ -236,13 +249,12 @@ public class MenuUI : MonoBehaviour
     }
     public void DisplaySettings()
     {
-        Utilities.GetCameraTransformAndRotation(target, camera);
-        InvertActiveUIValues(current, target);
-    }
-    public void GoBackToInGameUI()
-    {
-        SetInactive(new GameObject[] { target, GetUIWithTag(TARGET_STATS_MENU_UI) });
-        current.SetActive(true);
+        target = GetUIWithTag(TARGET_SETTINGS_MENU_UI);
+        if (target != null)
+        {
+            Utilities.GetCameraTransformAndRotation(target, camera);
+            InvertActiveUIValues(current, target);
+        }
     }
     #endregion
 
@@ -253,13 +265,6 @@ public class MenuUI : MonoBehaviour
     public string GetSettingTag { get => TARGET_SETTINGS_MENU_UI; }
 
     #region Quick Functions to change State
-    public void SetInactive(GameObject[] gameObjects)
-    {
-        for (int i = 0; i < gameObjects.Length; i++)
-        {
-            gameObjects[i].SetActive(false);
-        }
-    }
     public void InvertActiveUIValues(GameObject inactive, GameObject active)
     {
         inactive.SetActive(!inactive.activeSelf);
