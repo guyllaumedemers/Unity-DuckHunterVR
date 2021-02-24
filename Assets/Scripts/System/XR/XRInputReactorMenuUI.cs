@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRInputReactorMenuUI : MonoBehaviour
@@ -23,7 +24,10 @@ public class XRInputReactorMenuUI : MonoBehaviour
         _menuIsPressed = pressed;
         if (pressed)
         {
-            MenuUI.Instance.GetGameSceneUICallback();
+            if (SceneManager.GetActiveScene().name.Equals(MenuUI.Instance.GetGameSceneName) && !MenuUI.Instance.GetTarget.activeSelf)
+            {
+                MenuUI.Instance.GetGameSceneUICallback();
+            }
         }
     }
 

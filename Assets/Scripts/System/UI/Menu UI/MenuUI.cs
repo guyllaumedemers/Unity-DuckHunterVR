@@ -264,6 +264,10 @@ public class MenuUI : MonoBehaviour
 
     public string GetSettingTag { get => TARGET_SETTINGS_MENU_UI; }
 
+    public string GetGameSceneName { get => TARGET_SCENE; }
+
+    public GameObject GetTarget { get => target; }
+
     #region Quick Functions to change State
     public void InvertActiveUIValues(GameObject inactive, GameObject active)
     {
