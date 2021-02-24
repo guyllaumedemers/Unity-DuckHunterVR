@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StatEntryScript : MonoBehaviour
+public class StatEntry : MonoBehaviour
 {
     [Header("Required Components")]
     private TextMeshProUGUI[] textMeshProUGUI;
