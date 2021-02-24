@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,52 +6,15 @@ using UnityEngine;
 
 public class DisplayRoundTimeUI : MonoBehaviour
 {
-    [HideInInspector]public DuckSpawnerController duckSpawner;
-    
-    #region Singleton
-    private static DisplayRoundTimeUI instance;
-    private DisplayRoundTimeUI() { }
-    public static DisplayRoundTimeUI Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new DisplayRoundTimeUI();
-            
-            return instance;
-        }
-    }
-    #endregion
-
-    [Header("Requiered Components")]
-    [SerializeField] private GameObject roundTimer;
-    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
-    
-    public GameObject GetTimeDisplayObject { get => roundTimer; }
+    private TextMeshProUGUI textMeshProUGUI;
         
-    public void Awake()
-    {
-        instance = this;
-        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>(true);
-        roundTimer.SetActive(false);
-    }
+    private void Awake() => textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>(true);
+    
+    public void UpdateRoundText(float roundNo, float roundCountdown) => textMeshProUGUI.text = $"ROUND{DisplayRound(roundNo)} STARTS IN : {roundCountdown:n0}";
 
-    public void Update()
-    {
-        if (roundTimer.activeSelf)
-        {
-            if (duckSpawner != null)
-                RoundTimeDisplay();
-        }
-    }
+    private string DisplayRound(float round) => round > 0 ? " " + round.ToString("n0") : string.Empty;
     
-    public void RoundTimeDisplay()
-    {
-        if (duckSpawner.roundCountdown > 0)
-            UpdateText();
-        else
-            roundTimer.SetActive(false);
-    }
+    public void UpdateTimedRoundText(float timeLeft) => textMeshProUGUI.text = $"{timeLeft:0}";
     
-    public void UpdateText() => textMeshProUGUI.text = $"ROUND {duckSpawner.roundNo} STARTS IN : {duckSpawner.roundCountdown:n0}";
+    public void TimeRoundEndText() => textMeshProUGUI.text = $"TIMED ROUND SCORE : {ScoringSystemManager.Instance.GetGameInstance?.GetScores.GetPoints}";
 }

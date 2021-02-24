@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
     [Header("PG-13 toggle")] 
-    public bool isPg13 = true;
+    public bool isPg13;
     [Header("Gore Particle")]
     public ParticleSystem particleBurst;
     [Header("Duck Information")]
@@ -49,8 +49,11 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     
     public void OnHit() {
         HP--;
-        StopCoroutine(nameof(PlayHitAnimations));
-        StartCoroutine(nameof(PlayHitAnimations));
+        
+        if (HP > 0) {
+            StopCoroutine(nameof(PlayHitAnimations));
+            StartCoroutine(nameof(PlayHitAnimations));
+        }
     }
     
     private void Update() {
@@ -124,8 +127,8 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         ScoringSystemManager.Instance.GetGameInstance?.GetScores.AddPoints(noPoints);
 
         if (isPg13) {
-            _animations.Play("inAirDeath");
-            yield return new WaitForSeconds(_animations["inAirDeath"].length);
+            _animations.Play("inAirDeath1");
+            yield return new WaitForSeconds(_animations["inAirDeath1"].length);
 
             _animations.Play("falling");
         }
