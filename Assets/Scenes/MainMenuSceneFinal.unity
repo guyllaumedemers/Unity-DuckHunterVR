@@ -48077,8 +48077,19 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8760838472653422489, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: roundTimer
+      value: 
+      objectReference: {fileID: 4423595235694501373}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3664ca638856e824a98de35747089062, type: 3}
+--- !u!1 &4423595235694501373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3221892974798139916, guid: 3664ca638856e824a98de35747089062,
+    type: 3}
+  m_PrefabInstance: {fileID: 4423595235694501372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4522654527165756960
 GameObject:
   m_ObjectHideFlags: 0

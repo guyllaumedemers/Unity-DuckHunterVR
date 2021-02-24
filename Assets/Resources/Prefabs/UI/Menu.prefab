@@ -3421,6 +3421,7 @@ GameObject:
   - component: {fileID: 4423595234354873258}
   - component: {fileID: 4423595234354873257}
   - component: {fileID: 7309286751536179761}
+  - component: {fileID: 6933134763507243826}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -3488,6 +3489,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statEntry: {fileID: 7560576477128573127, guid: 063c0229b1251fc4da2bf469a5ed5fcc,
     type: 3}
+--- !u!114 &6933134763507243826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423595234354873256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf2018cc53e4c545980d9f205430202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckSpawner: {fileID: 0}
+  roundTimer: {fileID: 3221892974798139916}
+  textMeshProUGUI: {fileID: 0}
 --- !u!1 &4423595234625622739
 GameObject:
   m_ObjectHideFlags: 0

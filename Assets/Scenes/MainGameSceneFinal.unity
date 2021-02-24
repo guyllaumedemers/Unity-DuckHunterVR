@@ -38241,6 +38241,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8760838472653422489, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: roundTimer
+      value: 
+      objectReference: {fileID: 1266777425}
     - target: {fileID: 8878924182827182284, guid: 3664ca638856e824a98de35747089062,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -39001,6 +39006,12 @@ Transform:
   m_Father: {fileID: 378482819}
   m_RootOrder: 86
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1266777425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3221892974798139916, guid: 3664ca638856e824a98de35747089062,
+    type: 3}
+  m_PrefabInstance: {fileID: 1228993803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1267750452
 GameObject:
   m_ObjectHideFlags: 0
