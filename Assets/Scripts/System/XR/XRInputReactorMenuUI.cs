@@ -23,9 +23,9 @@ public class XRInputReactorMenuUI : MonoBehaviour
         _menuIsPressed = pressed;
         if (pressed)
         {
-            if (PlayerMenuUIScript.Instance.IsInGameScene() && PlayerMenuUIScript.Instance.IsSettingsMenuUIActive() == false && PlayerMenuUIScript.Instance.IsStatsMenuUIActive() == false)
+            if (PlayerMenuUI.Instance.IsInGameScene() && PlayerMenuUI.Instance.IsSettingsMenuUIActive() == false && PlayerMenuUI.Instance.IsStatsMenuUIActive() == false)
             {
-                PlayerMenuUIScript.Instance.ActivateInGameMenuUI();
+                PlayerMenuUI.Instance.ActivateInGameMenuUI();
             }
         }
     }

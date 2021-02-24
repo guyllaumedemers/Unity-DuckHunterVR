@@ -24,6 +24,11 @@ TagManager:
   - StatsMenuUI
   - IngameMenuUI
   - SettingsMenuUI
+  - MainMenuUI
+  - MusicSlider
+  - SfxSlider
+  - DisableSound
+  - EnableGore
   layers:
   - Default
   - TransparentFX

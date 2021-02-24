@@ -4,28 +4,29 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
-public class PlayerMenuUIScript : MonoBehaviour
+public class PlayerMenuUI : MonoBehaviour
 {
     #region Singleton
     /// <summary>
     /// Instance
     /// </summary>
-    private static PlayerMenuUIScript instance;
+    private static PlayerMenuUI instance;
     /// <summary>
     /// Default Constructor
     /// </summary>
-    private PlayerMenuUIScript() { }
+    private PlayerMenuUI() { }
     /// <summary>
     /// Property to retrieve instance
     /// </summary>
-    public static PlayerMenuUIScript Instance
+    public static PlayerMenuUI Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = new PlayerMenuUIScript();
+                instance = new PlayerMenuUI();
             }
             return instance;
         }
@@ -36,6 +37,7 @@ public class PlayerMenuUIScript : MonoBehaviour
     [SerializeField] private GameObject statsMenuUI;
     [SerializeField] private GameObject settingsMenuUI;
     [SerializeField] private Camera mainCamera;
+    private Toggle[] toggles;
 
     [Header("Scene Name")]
     private const string mainMenuSceneName = "MainMenuSceneFinal";
@@ -52,6 +54,7 @@ public class PlayerMenuUIScript : MonoBehaviour
 
     public void Start()
     {
+        toggles = settingsMenuUI.GetComponentsInChildren<Toggle>();
         SetInactive(new GameObject[] { inGameMenuUI, settingsMenuUI, statsMenuUI });
     }
 
