@@ -1181,6 +1181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7a9e3dde7fb159a4d96ecab6abdbd58d, type: 2}
+  isDisable: 0
+  music_volume: 0
+  sfx_volume: 0
 --- !u!82 &7403554885747376351
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2229,7 +2232,6 @@ GameObject:
   - component: {fileID: 8974552059715550015}
   - component: {fileID: 8974552059715549984}
   - component: {fileID: 8974552059715549985}
-  - component: {fileID: 8974552059715550009}
   - component: {fileID: 7900329837326311395}
   m_Layer: 0
   m_Name: XRRig
@@ -2279,22 +2281,6 @@ MonoBehaviour:
   m_TrackingOriginMode: 2
   m_TrackingSpace: 3
   m_CameraYOffset: 0
---- !u!114 &8974552059715550009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8974552059715550014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5cdb77881366e54885284d35aa464b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inGameMenuUI: {fileID: 0}
-  statsMenuUI: {fileID: 0}
-  settingsMenuUI: {fileID: 0}
-  mainCamera: {fileID: 0}
 --- !u!114 &7900329837326311395
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,11 +18,11 @@ public class GameButton : MonoBehaviour
 
     public void UpdateButton()
     {
-        GameManagerScript.Instance.GetGameState = !GameManagerScript.Instance.GetGameState;
+        GameManager.Instance.GetGameState = !GameManager.Instance.GetGameState;
         animation.Play("PushButton");
         SwapText();
         
-        if (GameManagerScript.Instance.GetGameState)
+        if (GameManager.Instance.GetGameState)
             StartGame();
         else
             StopGame();
@@ -30,19 +30,19 @@ public class GameButton : MonoBehaviour
 
     public void StartGame()
     {
-        GameManagerScript.Instance.StartDuckSpawner();
+        GameManager.Instance.StartDuckSpawner();
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
     public void StopGame()
     {
-        GameManagerScript.Instance.StopDuckSpawner();
-        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManagerScript.Instance.duckSpawnerController.roundNo);
+        GameManager.Instance.StopDuckSpawner();
+        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
         
         Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
 
         ScoringSystemManager.Instance.DestroyGameInstance();
-        GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
+        GameManager.Instance.GetRoundStatus = !GameManager.Instance.GetRoundStatus;
     }
     
     public void SwapText()

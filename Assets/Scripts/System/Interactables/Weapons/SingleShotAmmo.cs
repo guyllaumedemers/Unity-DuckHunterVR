@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class SingleShotAmmo : BaseWeapon
 {
+    [field: Header("Ammunition State")]
     [field: SerializeField] public int CurrentAmmo { get; set; } = 0;
     [field: SerializeField] public int MaxAmmo { get; set; } = 10;
 

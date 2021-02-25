@@ -19,7 +19,7 @@ public class ClipboardInteractionScript : MonoBehaviour
     }
 
     private void ToggleValueChanged(Toggle toggle) {
-        GameManagerScript.Instance.CurrentMode = toggle.tag.ToEnum<GameMode.Mode>();
+        GameManager.Instance.CurrentMode = toggle.tag.ToEnum<GameMode.Mode>();
         foreach (Toggle t in toggles) {
             if (!t.Equals(toggle))
                 t.SetIsOnWithoutNotify(false);
