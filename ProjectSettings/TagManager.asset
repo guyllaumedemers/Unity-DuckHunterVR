@@ -26,6 +26,11 @@ TagManager:
   - SettingsMenuUI
   - LeftHandUI
   - RightHandUI
+  - MainMenuUI
+  - MusicSlider
+  - SfxSlider
+  - DisableSound
+  - EnableGore
   layers:
   - Default
   - TransparentFX
