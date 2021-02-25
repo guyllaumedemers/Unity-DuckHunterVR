@@ -124,7 +124,7 @@ public class MenuUI : MonoBehaviour
         Toggle enable_gore = GetToggleWithTag(ENABLE_GORE_TOGGLE);
         if (enable_gore != null)
         {
-            enable_gore.isOn = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false; ;
+            enable_gore.isOn = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
         }
     }
     private void SetUIElementsToSavedValues()

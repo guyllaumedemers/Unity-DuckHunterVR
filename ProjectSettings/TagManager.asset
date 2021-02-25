@@ -31,6 +31,7 @@ TagManager:
   - SfxSlider
   - DisableSound
   - EnableGore
+  - TargetPractice
   layers:
   - Default
   - TransparentFX

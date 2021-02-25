@@ -4,10 +4,8 @@ using UnityEngine.UI;
 
 public class ClipboardInteractionScript : MonoBehaviour
 {
-    [SerializeField]
-    private Toggle[] toggles;
-
-    private Toggle _currentToggle;
+    [Header("Requiered Components")]
+    [SerializeField] private Toggle[] toggles;
     
     public void Awake()
     {
