@@ -4,22 +4,15 @@ using UnityEngine;
 public class GameButton : MonoBehaviour
 {
     [Header("Requiered Components")]
-    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
-    [SerializeField] private new Animation animation;
+    public TextMeshProUGUI textMeshProUGUI;
 
     private readonly string start = "START";
     private readonly string stop = "STOP";
-
-    public void Awake()
-    {
-        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
-        animation = GetComponent<Animation>();
-    }
-
+    
     public void UpdateButton()
     {
         GameManager.Instance.GetGameState = !GameManager.Instance.GetGameState;
-        animation.Play("PushButton");
+        GetComponent<Animation>().Play("PushButton");
         SwapText();
         
         if (GameManager.Instance.GetGameState)
