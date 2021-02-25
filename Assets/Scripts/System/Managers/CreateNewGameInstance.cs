@@ -7,9 +7,12 @@ using UnityEngine;
 public class CreateNewGameInstance
 {
     [JsonProperty]
-    private GameManagerScript.GameMode gameMode;
+    private GameMode.Mode gameMode;
     [JsonProperty]
     private ScorePoints scorePoints;
+    [JsonProperty]
+    private float roundNo;
+    private const float startRoundNo = 1;
     /// <summary>
     /// Need to add a Round -> so the instance can retrieve the information 
     /// </summary>
@@ -17,11 +20,20 @@ public class CreateNewGameInstance
     /// <param name="points"></param>
     public CreateNewGameInstance()
     {
-        gameMode = GameManagerScript.Instance.GetCurrentMode;
+        gameMode = GameManager.Instance.CurrentMode;
         scorePoints = new ScorePoints();
+        roundNo = startRoundNo;
     }
+
+    public void UpdateInstanceRoundValue(float nbRound)
+    {
+        roundNo = nbRound;
+    }
+
     [JsonIgnore]
     public ScorePoints GetScores { get => scorePoints; set { scorePoints = value; } }
     [JsonIgnore]
-    public GameManagerScript.GameMode GetGameMode { get => gameMode; set { gameMode = value; } }
+    public GameMode.Mode GetGameMode { get => gameMode; set { gameMode = value; } }
+    [JsonIgnore]
+    public float GetRound { get => roundNo; }
 }

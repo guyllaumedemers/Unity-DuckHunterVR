@@ -1426,9 +1426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xRInputWatcherLeft: {fileID: 0}
-  _xRInputWatcherRight: {fileID: 0}
-  _primaryIsPressed: 0
-  _secondaryIsPressed: 0
   _menuIsPressed: 0
 --- !u!1 &6517084364926453632
 GameObject:
@@ -2719,7 +2716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7c8a25e29b57641a8265ed1daa71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 7a9e3dde7fb159a4d96ecab6abdbd58d, type: 2}
+  audioMixer: {fileID: 0}
+  isDisable: 0
+  music_volume: 0
+  sfx_volume: 0
 --- !u!82 &4630795318405609423
 AudioSource:
   m_ObjectHideFlags: 0

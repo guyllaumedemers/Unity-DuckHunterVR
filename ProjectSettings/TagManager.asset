@@ -20,6 +20,12 @@ TagManager:
   - PistolMagazine
   - SubmachineGunMagazine
   - Score
+  - UIScore
+  - StatsMenuUI
+  - IngameMenuUI
+  - SettingsMenuUI
+  - LeftHandUI
+  - RightHandUI
   layers:
   - Default
   - TransparentFX

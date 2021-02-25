@@ -5,33 +5,37 @@ using UnityEditor;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
 
+[System.Serializable]
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
+    [field: Header("Weapon Components")]
+    [field: SerializeField] public GameObject GunTip { get; set; }
+    [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
+    [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
+    [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
+    [field: SerializeField] public SphereCollider AmmoReloadCollider { get; set; }
+    public Transform MagazineAttach { get; set; }
+    public GameObject CurrentMagazine { get; set; }
+    public AmmoContainer CurrentAmmoContainer { get; set; }
+    [field: SerializeField] public LayerMask GunHitLayers { get; set; }
+
+    [field: Header("Weapon Stats")]
     [field: SerializeField] public bool IsAcceptingMagazine { get; set; } = false;
     [field: SerializeField] public int NbBulletFired { get; set; } = 1;
     [field: SerializeField] public float BulletSpread { get; set; } = 0f;
     [field: SerializeField] public float GunRange { get; set; } = 50f;
     [field: SerializeField] public float BulletTrailSize { get; set; } = 0.1f;
-    public GameObject GunTip { get; set; }
-    [field: SerializeField] public LineRenderer BulletTrailPrefab { get; set; }
-    [field: SerializeField] public ParticleSystem MuzzleFlashParticles { get; set; }
-    [field: SerializeField] public ParticleSystem CartridgeEjectionParticles { get; set; }
+    [field: Tooltip("This option is ONLY mean for automatic fire weapon.")] [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
+
     public AudioSource AudioSource { get; set; }
-    [field: SerializeField] public SphereCollider AmmoReloadCollider { get; set; }
-    public Transform MagazineAttach { get; set; }
-    [field: SerializeField] public GameObject CurrentMagazine { get; set; }
-    [field: SerializeField] public AmmoContainer CurrentAmmoContainer { get; set; }
-    [field: SerializeField] public LayerMask GunHitLayers { get; set; }
     public AudioClip ShootingSound { get; set; }
-    public AudioClip ReloadSound { get; set; }
-    [field: SerializeField] public bool ReactorTriggerShoot { get; set; }
+    public AudioClip ReloadSound { get; set; }    
     protected abstract string ShootingSoundPath { get; }
     protected abstract string ReloadingSoundPath { get; }
 
     void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
-        GunTip = GameObject.Find(name + "GunTip");
+        AudioSource = GetComponent<AudioSource>();        
 
         if (IsAcceptingMagazine)
             MagazineAttach = AmmoReloadCollider.transform.GetChild(0);

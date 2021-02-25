@@ -1,0 +1,232 @@
+using System;
+using System.Collections;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class DuckSpawnerController : MonoBehaviour {
+
+    [Header("Size of spawn area")]
+    public Vector3 spawnSize;
+    [Header("Model used to instantiate")]
+    public GameObject[] duckModels;
+
+    [Header("Round Information")]
+    public int nbDucksPerRound = 10;
+    public float roundDelay = 10f;
+    public float timedRound = 60f;
+    public float flightRoundIncrement = 0.15f;
+    public float maxRoundIncrement = 10f;
+
+    [Header("Wave Information")]
+    public int nbDucksPerWave = 1;
+    public float waveDelay = 2f;
+    
+    [Header("Debug Information")]
+    public float roundNo = 1;
+    public float roundTimer;
+    public int ducksInRound;
+    public float roundCountdown;
+    public int ducksInWave;
+    public float waveCountdown;
+    public float timedRoundTimer;
+    public GameMode.Mode gameMode;
+    public bool isRunning;
+    
+    [Header("Text GameObjects")]
+    public GameObject roundTimeUI;
+    public GameObject timedRoundUI;
+    
+    private string strDuckParentGoName = "Spawned Ducks";
+    private Transform _duckParent;
+    private Coroutine _addDuckRoutine;
+    private Coroutine _duckSpawnerRoutine;
+    private Coroutine _roundCountdownRoutine;
+    private Coroutine _timedRoundCountdownRoutine;
+    private DisplayRoundTimeUI _displayRoundTime;
+    private DisplayRoundTimeUI _displayTimedRoundTime;
+
+    
+    private void Start() {
+        _displayRoundTime = roundTimeUI.GetComponent<DisplayRoundTimeUI>();
+        _displayTimedRoundTime = timedRoundUI.GetComponent<DisplayRoundTimeUI>();
+        
+        roundTimeUI.SetActive(false);
+        timedRoundUI.SetActive(false);
+
+        //GameManager.Instance.gameButton.UpdateButton();
+    }
+    
+    private void SetRegularRound() {
+        ducksInRound = nbDucksPerRound;
+    }
+    
+    private void SetTimedRound() {
+        roundNo = 0;
+        nbDucksPerWave = 0;
+    }
+    
+    public void StartSpawner(GameMode.Mode mode) {
+        gameMode = mode;
+        roundNo = 1;
+        ducksInWave = 0;
+        ducksInRound = 0;
+        _duckSpawnerRoutine = null;
+        isRunning = true;
+        
+        _roundCountdownRoutine = StartCoroutine(nameof(RoundCountdownRoutine));
+        
+        switch (gameMode) {
+            case GameMode.Mode.REGULARMODE:
+                SetRegularRound();
+                StartCoroutine(nameof(RegularModeRoutine));
+                break;
+            case GameMode.Mode.TIMEDROUND:
+                SetTimedRound();
+                StartCoroutine(nameof(TimedModeRoutine));
+                break;
+            default:
+                Debug.Log("Invalid Game Mode, defaulting to regular mode");
+                SetRegularRound();
+                StartCoroutine(nameof(RegularModeRoutine));
+                break;
+        }
+    }
+
+    public void StopSpawner() {
+        isRunning = false;
+        
+        if (_duckParent != null)
+            Destroy(_duckParent.gameObject);
+    }
+
+    private IEnumerator RegularModeRoutine() {
+        while (isRunning) {
+            if (_roundCountdownRoutine is null) {
+                if (ducksInRound > 0) {
+                    if (ducksInWave <= 0 && _duckSpawnerRoutine is null)
+                        _duckSpawnerRoutine = StartCoroutine(nameof(SpawnDuckRoutine));
+                }
+                else {
+                    roundNo++;
+                    SetRegularRound();
+                    _roundCountdownRoutine = StartCoroutine(nameof(RoundCountdownRoutine));
+                }
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator TimedModeRoutine() {
+        timedRoundTimer = timedRound;
+        
+        _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
+        timedRoundUI.SetActive(true);
+        
+        while (isRunning) {
+            if (_roundCountdownRoutine is null) {
+                if(timedRoundTimer > 0.9f) {
+                    timedRoundTimer -= Time.deltaTime;
+                    _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
+
+                    if (ducksInWave <= 0 && _duckSpawnerRoutine is null) {
+                        nbDucksPerWave++;
+                        _duckSpawnerRoutine = StartCoroutine(nameof(SpawnDuckRoutine));
+                    }
+                }
+                else {
+                    timedRoundUI.SetActive(false);
+                    StartCoroutine(nameof(DisplayTimedRoundScoreRoutine));
+                    
+                    if(GameManager.Instance.gameButton != null)
+                        GameManager.Instance.gameButton.UpdateButton();
+
+                    yield break;
+                }
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator DisplayTimedRoundScoreRoutine() {
+        roundTimeUI.SetActive(true);
+        _displayRoundTime.TimeRoundEndText();
+        yield return new WaitForSeconds(5);
+        roundTimeUI.SetActive(false);
+    }
+    
+    private IEnumerator RoundCountdownRoutine() {
+        roundCountdown = roundDelay;
+        roundTimeUI.SetActive(true);
+        
+        while (roundCountdown > 0.9f) {
+            if (!isRunning) break;
+            roundCountdown -= Time.deltaTime;
+            _displayRoundTime.UpdateRoundText(roundNo, roundCountdown);
+            yield return null;
+        }
+        
+        roundTimeUI.SetActive(false);
+        _roundCountdownRoutine = null;
+    }
+
+    private IEnumerator SpawnDuckRoutine() {
+        waveCountdown = waveDelay;
+
+        while (waveCountdown > 0.9f) {
+            waveCountdown -= Time.deltaTime;
+            yield return null;
+        }
+
+        for (int i = 0; i < nbDucksPerWave; i++) {
+            if (i > 0)
+                yield return new WaitForSeconds(Random.Range(1, waveDelay));
+
+            InstantiateDuck();
+        }
+        
+        _duckSpawnerRoutine = null;
+    }
+
+    private Vector3 GetRandomSpawnPoint() {
+        float posX = transform.position.x + Random.Range(-spawnSize.x / 2, spawnSize.x / 2);
+        float posY = transform.position.y - spawnSize.y / 2;
+        float posZ = transform.position.z + Random.Range(-spawnSize.z / 2, spawnSize.z / 2);
+
+        return new Vector3(posX, posY, posZ);
+    }
+
+    private void InstantiateDuck() {
+        try {
+            GameObject duck = Instantiate(duckModels[Random.Range(0, duckModels.Length)], GetRandomSpawnPoint(), Quaternion.identity);
+
+            if (roundNo <= maxRoundIncrement)
+                duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement * roundNo;
+            
+            duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
+            duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
+            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuck;
+
+            if (_duckParent == null)
+                _duckParent = new GameObject(strDuckParentGoName).transform;
+            
+            duck.transform.SetParent(_duckParent);
+            
+            ducksInWave++;
+        }
+        catch (Exception ex) {
+            Debug.Log(ex);
+        }
+    }
+
+    private void RemoveDuck() {
+        if (ducksInWave > 0)
+            ducksInWave--;
+        if (ducksInRound > 0)
+            ducksInRound--;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = new Color(0, 1, 0, 0.5f);
+        Gizmos.DrawCube(transform.position, spawnSize);
+    }
+}

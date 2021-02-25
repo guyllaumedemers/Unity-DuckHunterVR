@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952712142564334670}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &389793138109037362
 MonoBehaviour:
@@ -455,7 +455,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952712142564334670}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &952712141848756755
 MonoBehaviour:
@@ -915,6 +915,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6529954802771760505}
+  - {fileID: 5424109389484169373}
   - {fileID: 8415283610454238482}
   - {fileID: 952712141848756754}
   - {fileID: 6734608535077109073}
@@ -924,6 +925,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1087322350366388091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5424109389484169373}
+  - component: {fileID: 6895481846468347150}
+  m_Layer: 0
+  m_Name: XR UI Hands Behavior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5424109389484169373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087322350366388091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 952712142564334670}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6895481846468347150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087322350366388091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a18a3718587c2e4fbb5b331e6f7471d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandUIRayInteractor: {fileID: 0}
+  rightHandUIRayInteractor: {fileID: 0}
+  leftHandUILineVisual: {fileID: 0}
+  rightHandUILineVisual: {fileID: 0}
+  leftHandUIMaskDefault:
+    serializedVersion: 2
+    m_Bits: 0
+  rightHandUIMaskDefault:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6529954802771760507
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +1051,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952712142564334670}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6734608535077109074
 MonoBehaviour:
@@ -1064,7 +1118,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952712142564334670}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8415283610454238483
 MonoBehaviour:
@@ -1112,7 +1166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952712142564334670}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8855795509563366237
 MonoBehaviour:
@@ -1127,6 +1181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7a9e3dde7fb159a4d96ecab6abdbd58d, type: 2}
+  isDisable: 0
+  music_volume: 0
+  sfx_volume: 0
 --- !u!82 &7403554885747376351
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1297,10 +1354,9 @@ GameObject:
   - component: {fileID: 8951812987487244855}
   - component: {fileID: 8951812987487244848}
   - component: {fileID: 8951812987487244849}
-  - component: {fileID: 8951812987487244862}
   m_Layer: 11
   m_Name: RightHandUI
-  m_TagString: RightController
+  m_TagString: RightHandUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,19 +1692,6 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
---- !u!114 &8951812987487244862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8951812987487244851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74ee2c341c51e84cb1c334afaafcb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xRBaseController: {fileID: 0}
 --- !u!1 &8951812988523374825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,10 +1705,9 @@ GameObject:
   - component: {fileID: 8951812988523374829}
   - component: {fileID: 8951812988523374830}
   - component: {fileID: 8951812988523374831}
-  - component: {fileID: 8951812988523374806}
   m_Layer: 11
   m_Name: LeftHandUI
-  m_TagString: LeftController
+  m_TagString: LeftHandUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2001,19 +2043,6 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
---- !u!114 &8951812988523374806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8951812988523374825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74ee2c341c51e84cb1c334afaafcb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xRBaseController: {fileID: 0}
 --- !u!1 &8974552059615953849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,8 +2143,8 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_SelectActionTrigger: 1
-  m_HideControllerOnSelect: 0
+  m_SelectActionTrigger: 2
+  m_HideControllerOnSelect: 1
   m_PlayAudioClipOnSelectEntered: 0
   m_AudioClipForOnSelectEntered: {fileID: 0}
   m_PlayAudioClipOnSelectExited: 0
@@ -2203,7 +2232,6 @@ GameObject:
   - component: {fileID: 8974552059715550015}
   - component: {fileID: 8974552059715549984}
   - component: {fileID: 8974552059715549985}
-  - component: {fileID: 8974552059715550009}
   - component: {fileID: 7900329837326311395}
   m_Layer: 0
   m_Name: XRRig
@@ -2220,12 +2248,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8974552059715550014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45, y: 2.2, z: 36.1}
+  m_LocalPosition: {x: 45, y: 1.93, z: 36.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8974552059943856496}
   m_Father: {fileID: 952712142564334670}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &8974552059715549984
 AudioListener:
@@ -2253,21 +2281,6 @@ MonoBehaviour:
   m_TrackingOriginMode: 2
   m_TrackingSpace: 3
   m_CameraYOffset: 0
---- !u!114 &8974552059715550009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8974552059715550014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5cdb77881366e54885284d35aa464b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inGameMenuUI: {fileID: 0}
-  settingsMenuUI: {fileID: 0}
-  statsMenuUI: {fileID: 0}
 --- !u!114 &7900329837326311395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,9 +2294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xRInputWatcherLeft: {fileID: 0}
-  _xRInputWatcherRight: {fileID: 0}
-  _primaryIsPressed: 0
-  _secondaryIsPressed: 0
   _menuIsPressed: 0
 --- !u!1 &8974552059751539467
 GameObject:
@@ -2385,8 +2395,8 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_SelectActionTrigger: 1
-  m_HideControllerOnSelect: 0
+  m_SelectActionTrigger: 2
+  m_HideControllerOnSelect: 1
   m_PlayAudioClipOnSelectEntered: 0
   m_AudioClipForOnSelectEntered: {fileID: 0}
   m_PlayAudioClipOnSelectExited: 0
@@ -2745,12 +2755,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2797,16 +2807,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0

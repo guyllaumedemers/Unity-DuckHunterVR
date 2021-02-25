@@ -8,8 +8,10 @@ public class XRInputReactorWeapon : MonoBehaviour
     [SerializeField]
     private XRInputWatcher _xRInputWatcher;
     private XRGrabInteractable _xRGrabInteractable;
-    [SerializeField]
-    private bool _primaryIsPressed = false, _secondaryIsPressed = false, _triggerIsPressed = false;
+    [Header("Debug")]
+    [SerializeField] private bool _primaryIsPressed = false;
+    [SerializeField] private bool _secondaryIsPressed = false;
+    [SerializeField] private bool _triggerIsPressed = false;
 
     private IWeapon _iWeapon;
     private SelectionOutline _selectionOutline;
@@ -77,6 +79,8 @@ public class XRInputReactorWeapon : MonoBehaviour
         XRBaseInteractor xRBaseInteractor = _xRGrabInteractable.selectingInteractor;
         _xRInputWatcher = GameObject.Find(xRBaseInteractor.gameObject.name).GetComponent<XRInputWatcher>();
 
+        XRUIHandsBehavior.Instance.ItemIsHeld(_xRInputWatcher.name);
+
         _xRInputWatcher.primaryButtonPressEvent.AddListener(onPrimaryButtonEvent);
         _xRInputWatcher.secondaryButtonPressEvent.AddListener(onSecondaryButtonEvent);
         _xRInputWatcher.triggerButtonPressEvent.AddListener(onTriggerButtonEvent);
@@ -86,6 +90,8 @@ public class XRInputReactorWeapon : MonoBehaviour
     {
         if (_selectionOutline != null)
             _selectionOutline.Highlight();
+
+        XRUIHandsBehavior.Instance.ItemIsNotHeld(_xRInputWatcher.name);
 
         _xRInputWatcher.primaryButtonPressEvent.RemoveAllListeners();
         _xRInputWatcher.secondaryButtonPressEvent.RemoveAllListeners();

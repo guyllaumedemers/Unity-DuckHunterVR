@@ -1,55 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class GameButton : MonoBehaviour
 {
-    private TextMeshProUGUI textMeshProUGUI;
-    private new Animation animation;
+    [Header("Requiered Components")]
+    public TextMeshProUGUI textMeshProUGUI;
+
     private readonly string start = "START";
     private readonly string stop = "STOP";
-    private bool isRunning;
-
-    public void Awake()
-    {
-        isRunning = false;
-        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
-        animation = GetComponent<Animation>();
-    }
-
+    
     public void UpdateButton()
     {
-        GameManagerScript.Instance.GetGameState = !GameManagerScript.Instance.GetGameState;
-        animation.Play("PushButton");
+        GameManager.Instance.GetGameState = !GameManager.Instance.GetGameState;
+        GetComponent<Animation>().Play("PushButton");
         SwapText();
-        if (GameManagerScript.Instance.GetGameState)
-        {
-            ScoringSystemManager.Instance.InstanciateNewGameInstance();
-            
-            if(GameManagerScript.Instance.duckSpawner != null) 
-                GameManagerScript.Instance.duckSpawner.SetActive(true);
-        }
-        else {
-            if(GameManagerScript.Instance.duckSpawner != null) 
-                GameManagerScript.Instance.duckSpawner.SetActive(false);
-            
-            Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
-            ScoringSystemManager.Instance.DestroyGameInstance();
-            // reset the RoundStatus so the player can set a new GameMode => set to false since when the instance is active the update method of the clipboard set it to true
-            GameManagerScript.Instance.GetRoundStatus = !GameManagerScript.Instance.GetRoundStatus;
-        }
+        
+        if (GameManager.Instance.GetGameState)
+            StartGame();
+        else
+            StopGame();
     }
 
+    public void StartGame()
+    {
+        GameManager.Instance.StartDuckSpawner();
+        ScoringSystemManager.Instance.InstanciateNewGameInstance();
+    }
+
+    public void StopGame()
+    {
+        GameManager.Instance.StopDuckSpawner();
+        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
+        
+        Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+
+        ScoringSystemManager.Instance.DestroyGameInstance();
+        GameManager.Instance.GetRoundStatus = !GameManager.Instance.GetRoundStatus;
+    }
+    
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))
-        {
             textMeshProUGUI.text = start;
-        }
         else
-        {
             textMeshProUGUI.text = stop;
-        }
     }
 }

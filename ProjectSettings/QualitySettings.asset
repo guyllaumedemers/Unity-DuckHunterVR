@@ -19,9 +19,9 @@ QualitySettings:
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
     shadowmaskMode: 0
     skinWeights: 2
-    textureQuality: 0
+    textureQuality: 1
     anisotropicTextures: 0
-    antiAliasing: 0
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 0
     realtimeReflectionProbes: 0
@@ -44,6 +44,7 @@ QualitySettings:
       type: 2}
     excludedTargetPlatforms:
     - Standalone
+    - Windows Store Apps
   - serializedVersion: 2
     name: Beautiful
     pixelLightCount: 3
@@ -56,14 +57,14 @@ QualitySettings:
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
     shadowmaskMode: 1
-    skinWeights: 4
+    skinWeights: 2
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 0
+    antiAliasing: 4
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
-    billboardsFaceCameraPosition: 1
+    billboardsFaceCameraPosition: 0
     vSyncCount: 1
     lodBias: 1.5
     maximumLODLevel: 0
@@ -82,6 +83,7 @@ QualitySettings:
       type: 2}
     excludedTargetPlatforms:
     - Android
+    - Windows Store Apps
   m_PerPlatformDefaultQuality:
     Android: 0
     Nintendo 3DS: 1

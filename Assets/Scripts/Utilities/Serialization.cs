@@ -8,6 +8,7 @@ using System.Text;
 
 public class Serialization
 {
+    //private static string path = Application.persistentDataPath + "/HighScore.txt";
     private static string path = "Assets/Resources/Database/HighScore.txt";
     /// <summary>
     /// Game Instance will be added to the file, only keeping 5 best scores
@@ -51,7 +52,6 @@ public class Serialization
                 stringReader = new StringReader(myArr[i]);
                 CreateNewGameInstance instance = (CreateNewGameInstance)jsonSerializer.Deserialize(stringReader, typeof(CreateNewGameInstance));
                 gameInstances.Add(instance);
-                Debug.Log("GameMode : " + instance.GetGameMode + " Points : " + instance.GetScores.GetPoints);
             }
             return gameInstances;
         }

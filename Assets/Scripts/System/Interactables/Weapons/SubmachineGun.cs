@@ -7,6 +7,7 @@ public class SubmachineGun : BaseWeapon
     protected override string ShootingSoundPath => "SFX/Guns/AR15";
     protected override string ReloadingSoundPath => "SFX/Guns/MagazineReload";
 
+    [field: Header("Automatic Weapon Options")]
     [field: SerializeField] public float RateOfFire { get; set; } = 0f;
     public float TimeBeforeNextShot { get; set; } = 0f;
 

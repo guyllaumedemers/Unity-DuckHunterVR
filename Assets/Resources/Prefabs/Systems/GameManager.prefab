@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2912f9e68f0744d4eace35c8863d7482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  duckSpawnerController: {fileID: 0}
+  gameButton: {fileID: 0}
