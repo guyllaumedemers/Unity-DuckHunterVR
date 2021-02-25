@@ -44,7 +44,7 @@ public class TutorialScript1 : MonoBehaviour
 
     private IEnumerator UpdateIndex()
     {
-        while (!GameManagerScript.Instance.GetGameState)
+        while (!GameManager.Instance.GetGameState)
         {
             yield return new WaitForSeconds(5.0f);
             UpdateSentenceDisplayed();
