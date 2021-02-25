@@ -124,7 +124,7 @@ public class MenuUI : MonoBehaviour
         Toggle enable_gore = GetToggleWithTag(ENABLE_GORE_TOGGLE);
         if (enable_gore != null)
         {
-            enable_gore.isOn = GameManager.Instance.GetToggleEnableForGore;
+            enable_gore.isOn = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false; ;
         }
     }
     private void SetUIElementsToSavedValues()
@@ -211,12 +211,13 @@ public class MenuUI : MonoBehaviour
     {
         if (toggle.isOn)
         {
-            GameManager.Instance.isGoreEnabled = true;
+            PlayerPrefs.SetInt("EnableGore", 1);
         }
         else
         {
-            GameManager.Instance.isGoreEnabled = false;
+            PlayerPrefs.SetInt("EnableGore", 0);
         }
+        PlayerPrefs.Save();
     }
 
     /************************************************************************************/
