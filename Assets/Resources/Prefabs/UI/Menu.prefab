@@ -1312,6 +1312,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1738030007117241489, guid: 334598c00ccf5f647ad8763b0d0045df,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738030007117241489, guid: 334598c00ccf5f647ad8763b0d0045df,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4423595234354873257}
+    - target: {fileID: 1738030007117241489, guid: 334598c00ccf5f647ad8763b0d0045df,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateUIGoreToggleValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738030007117241489, guid: 334598c00ccf5f647ad8763b0d0045df,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2877101525436131039, guid: 334598c00ccf5f647ad8763b0d0045df,
         type: 3}
       propertyPath: m_AnchorMax.y
