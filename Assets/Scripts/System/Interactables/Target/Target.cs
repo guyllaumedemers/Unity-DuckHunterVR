@@ -3,26 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour, IShootable
+public class Target : MonoBehaviour, IShootable, IFlyingTarget
 {
-
     public bool usePhysics;
     public ParticleSystem[] particleBursts;
     [Header("Target Movement")]
-    public bool moveLeftAndRight;
-    public bool moveUpAndDown;
+    [SerializeField] private bool _moveLeftAndRight = false;
+    [SerializeField] private bool _moveUpAndDown = false;
     public float moveRange;
     private Vector3 _originalPosition;
     private bool _moveRight;
     private bool _moveDown;
+    public float flightSpeed = 2f;
 
     private readonly IDictionary<GameObject, TransformHolder> _children = new Dictionary<GameObject, TransformHolder>();
+
+    public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
+    public Vector3 SpanwerPos { get; set; }
+    public Vector3 SpawnSize { get; set; }
+    public float FlightSpeed { get => flightSpeed; set => flightSpeed = value; }
 
     void Awake()
     {
         _originalPosition = transform.position;
-        _moveRight = true;
-        _moveDown = true;
+
+        do
+        {
+            float randomMoveRight = UnityEngine.Random.Range(0f, 1f);
+            float randomMoveDown = UnityEngine.Random.Range(0f, 1f);
+
+            _moveLeftAndRight = (randomMoveRight < 0.5f);
+            _moveUpAndDown = (randomMoveDown < 0.5f);
+        } while (_moveLeftAndRight == false && _moveUpAndDown == false);
 
         foreach (Transform child in transform)
         {
@@ -48,8 +60,10 @@ public class Target : MonoBehaviour, IShootable
 
     public void OnHit()
     {
-        moveLeftAndRight = false;
-        moveUpAndDown = false;
+        DiedDelegate?.Invoke();
+
+        _moveLeftAndRight = false;
+        _moveUpAndDown = false;
 
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor && usePhysics)
             StartCoroutine(nameof(OnHitPhysics));
@@ -128,10 +142,10 @@ public class Target : MonoBehaviour, IShootable
 
     private void Update()
     {
-        if (moveLeftAndRight)
+        if (_moveLeftAndRight)
             MoveLeftAndRight();
 
-        if (moveUpAndDown)
+        if (_moveUpAndDown)
             MoveUpAndDown();
     }
 
@@ -140,14 +154,14 @@ public class Target : MonoBehaviour, IShootable
         if (_moveDown == true)
         {
             if (transform.position.y <= _originalPosition.y + moveRange)
-                transform.position += new Vector3(0, 0.01f, 0);
+                transform.position += new Vector3(0, flightSpeed * Time.deltaTime, 0);
             else
                 _moveDown = false;
         }
         else
         {
             if (transform.position.y >= _originalPosition.y)
-                transform.position -= new Vector3(0, 0.01f, 0);
+                transform.position -= new Vector3(0, flightSpeed * Time.deltaTime, 0);
             else
                 _moveDown = true;
         }
@@ -157,15 +171,15 @@ public class Target : MonoBehaviour, IShootable
     {
         if (_moveRight == true)
         {
-            if (transform.position.x <= _originalPosition.x + moveRange)
-                transform.position += new Vector3(0.01f, 0, 0);
+            if (transform.position.z <= _originalPosition.z + moveRange)
+                transform.position += new Vector3(0, 0, flightSpeed * Time.deltaTime);
             else
                 _moveRight = false;
         }
         else
         {
-            if (transform.position.x >= _originalPosition.x)
-                transform.position -= new Vector3(0.01f, 0, 0);
+            if (transform.position.z >= _originalPosition.z)
+                transform.position -= new Vector3(0, 0, flightSpeed * Time.deltaTime);
             else
                 _moveRight = true;
         }
