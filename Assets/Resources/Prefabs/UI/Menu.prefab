@@ -1167,6 +1167,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1067166492853756844, guid: 334598c00ccf5f647ad8763b0d0045df,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnableGore
+      objectReference: {fileID: 0}
     - target: {fileID: 1538008655079474207, guid: 334598c00ccf5f647ad8763b0d0045df,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1346,6 +1351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907712170953605495, guid: 334598c00ccf5f647ad8763b0d0045df,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisableSound
       objectReference: {fileID: 0}
     - target: {fileID: 5255773237217275401, guid: 334598c00ccf5f647ad8763b0d0045df,
         type: 3}
