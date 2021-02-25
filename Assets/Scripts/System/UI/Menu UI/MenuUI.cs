@@ -207,6 +207,18 @@ public class MenuUI : MonoBehaviour
         }
     }
 
+    public void UpdateUIGoreToggleValue(Toggle toggle)
+    {
+        if (toggle.isOn)
+        {
+            GameManager.Instance.isGoreEnabled = true;
+        }
+        else
+        {
+            GameManager.Instance.isGoreEnabled = false;
+        }
+    }
+
     /************************************************************************************/
     #region OnClick Event => Opening Menu Interaction
     public void LaunchGame()
