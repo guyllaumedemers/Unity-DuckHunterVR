@@ -115,15 +115,16 @@ public class MenuUI : MonoBehaviour
     }
     private void SetUIToggles()
     {
-        Debug.Log("Toggle isDisable : " + GameManager.Instance.GetToggleDisableForSound);
         Toggle sound_disable = GetToggleWithTag(DISABLE_SOUND_TOGGLE);
         if (sound_disable != null)
         {
             sound_disable.isOn = GameManager.Instance.GetToggleDisableForSound;
         }
-        else
+
+        Toggle enable_gore = GetToggleWithTag(ENABLE_GORE_TOGGLE);
+        if (enable_gore != null)
         {
-            Debug.Log("Toggle NULL");
+            enable_gore.isOn = GameManager.Instance.GetToggleEnableForGore;
         }
     }
     private void SetUIElementsToSavedValues()
