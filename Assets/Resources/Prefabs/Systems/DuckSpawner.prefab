@@ -767,9 +767,9 @@ MonoBehaviour:
   addToWaveDelay: 10
   roundNo: 1
   roundTimer: 0
-  _ducksInRound: 0
+  ducksInRound: 0
   roundCountdown: 0
-  _ducksInWave: 0
+  ducksInWave: 0
   waveCountdown: 0
   timedRoundTimer: 0
   isPg13: 1
