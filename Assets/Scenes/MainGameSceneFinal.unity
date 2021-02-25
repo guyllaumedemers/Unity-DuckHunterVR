@@ -25608,6 +25608,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875030190}
   m_Mesh: {fileID: 4300080, guid: bee660b4cd360de4bac5f10964f279fe, type: 3}
+--- !u!114 &875719801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6091394567113003801, guid: 3664ca638856e824a98de35747089062,
+    type: 3}
+  m_PrefabInstance: {fileID: 1909354215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &876198637
 GameObject:
   m_ObjectHideFlags: 0
@@ -38137,31 +38149,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c69f93809da70d34885d50ca5586bef8, type: 3}
---- !u!1 &1268178413 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6437467878737515951, guid: c69f93809da70d34885d50ca5586bef8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1268178412}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1268178414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268178413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f477198f574eb21488ee34a7e88ede68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duckSpawnerController: {fileID: 1499569120}
-  gameButton: {fileID: 8508843393230280760, guid: c98ca5c1a053fdc488888b402c3871dd,
-    type: 3}
-  isGoreEnabled: 0
 --- !u!1 &1268626778
 GameObject:
   m_ObjectHideFlags: 0
@@ -46644,6 +46633,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516203960}
   m_Mesh: {fileID: 4300120, guid: bee660b4cd360de4bac5f10964f279fe, type: 3}
+--- !u!114 &1525402583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8683416327330518083, guid: 3664ca638856e824a98de35747089062,
+    type: 3}
+  m_PrefabInstance: {fileID: 1909354215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1525826509
 GameObject:
   m_ObjectHideFlags: 0
@@ -60027,6 +60028,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2631432617322383781, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisableSound
+      objectReference: {fileID: 0}
     - target: {fileID: 2913628676467369691, guid: 3664ca638856e824a98de35747089062,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -60177,6 +60183,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4423595234354873257, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: toggles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423595234354873257, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: toggles.Array.data[0]
+      value: 
+      objectReference: {fileID: 875719801}
+    - target: {fileID: 4423595234354873257, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: toggles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1525402583}
+    - target: {fileID: 4423595234354873257, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: toggles.Array.data[2]
+      value: 
+      objectReference: {fileID: 1525402583}
+    - target: {fileID: 4423595234354873257, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: toggles.Array.data[3]
+      value: 
+      objectReference: {fileID: 1525402583}
     - target: {fileID: 4423595234354873258, guid: 3664ca638856e824a98de35747089062,
         type: 3}
       propertyPath: m_RootOrder
@@ -60561,6 +60592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948957198088072062, guid: 3664ca638856e824a98de35747089062,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnableGore
       objectReference: {fileID: 0}
     - target: {fileID: 8525871646771899166, guid: 3664ca638856e824a98de35747089062,
         type: 3}

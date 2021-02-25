@@ -40,8 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6437467878737515951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2912f9e68f0744d4eace35c8863d7482, type: 3}
+  m_Script: {fileID: 11500000, guid: f477198f574eb21488ee34a7e88ede68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duckSpawnerController: {fileID: 0}
   gameButton: {fileID: 0}
+  isGoreEnabled: 0

@@ -98,19 +98,39 @@ public class MenuUI : MonoBehaviour
             current = GetUIWithTag(CURRENT_GAME_MENU_UI);
         }
         target = GetUIWithTag(TARGET_SETTINGS_MENU_UI);
-        if (target != null)
+    }
+    private void SetUISliders()
+    {
+        Slider music = GetSliderWithTag(MUSIC_SLIDER);
+        if (music != null)
         {
-            sliders = target.GetComponentsInChildren<Slider>();
-            toggles = target.GetComponentsInChildren<Toggle>();
+            music.value = AudioManager.Instance.GetMusicVolume;
+        }
+
+        Slider sfx = GetSliderWithTag(SFX_SLIDER);
+        if (sfx != null)
+        {
+            sfx.value = AudioManager.Instance.GetSFXVolume;
+        }
+    }
+    private void SetUIToggles()
+    {
+        Toggle sound_disable = GetToggleWithTag(DISABLE_SOUND_TOGGLE);
+        if (sound_disable != null)
+        {
+            sound_disable.isOn = GameManager.Instance.GetToggleDisableForSound;
+        }
+
+        Toggle enable_gore = GetToggleWithTag(ENABLE_GORE_TOGGLE);
+        if (enable_gore != null)
+        {
+            enable_gore.isOn = GameManager.Instance.GetToggleEnableForGore;
         }
     }
     private void SetUIElementsToSavedValues()
     {
-        Slider music = GetSliderWithTag(MUSIC_SLIDER);
-        music.value = AudioManager.Instance.GetMusicVolume;
-
-        Slider sfx = GetSliderWithTag(SFX_SLIDER);
-        sfx.value = AudioManager.Instance.GetSFXVolume;
+        SetUISliders();
+        SetUIToggles();
     }
     private void UpdateUIElements()
     {
@@ -123,7 +143,6 @@ public class MenuUI : MonoBehaviour
             }
         }
     }
-
     private GameObject UpdateTargetGameobject()
     {
         foreach (GameObject go in menus)
@@ -259,13 +278,9 @@ public class MenuUI : MonoBehaviour
     #endregion
 
     /************************************************************************************/
-
     public GameObject GetSettingsState { get => target; }
-
     public string GetSettingTag { get => TARGET_SETTINGS_MENU_UI; }
-
     public string GetGameSceneName { get => TARGET_SCENE; }
-
     public GameObject GetTarget { get => target; }
 
     #region Quick Functions to change State
