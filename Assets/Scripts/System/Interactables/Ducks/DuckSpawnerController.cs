@@ -29,7 +29,6 @@ public class DuckSpawnerController : MonoBehaviour {
     public int ducksInWave;
     public float waveCountdown;
     public float timedRoundTimer;
-    public bool isPg13;
     public GameMode.Mode gameMode;
     public bool isRunning;
     
@@ -54,7 +53,7 @@ public class DuckSpawnerController : MonoBehaviour {
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);
 
-        GameManagerScript.Instance.gameButton.UpdateButton();
+        //GameManager.Instance.gameButton.UpdateButton();
     }
     
     private void SetRegularRound() {
@@ -138,8 +137,8 @@ public class DuckSpawnerController : MonoBehaviour {
                     timedRoundUI.SetActive(false);
                     StartCoroutine(nameof(DisplayTimedRoundScoreRoutine));
                     
-                    if(GameManagerScript.Instance.gameButton != null)
-                        GameManagerScript.Instance.gameButton.UpdateButton();
+                    if(GameManager.Instance.gameButton != null)
+                        GameManager.Instance.gameButton.UpdateButton();
 
                     yield break;
                 }
@@ -211,7 +210,6 @@ public class DuckSpawnerController : MonoBehaviour {
                 _duckParent = new GameObject(strDuckParentGoName).transform;
             
             duck.transform.SetParent(_duckParent);
-            duck.GetComponent<DuckController>().isPg13 = isPg13;
             
             ducksInWave++;
         }
