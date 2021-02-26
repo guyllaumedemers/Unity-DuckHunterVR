@@ -32,8 +32,8 @@ public class GameButton : MonoBehaviour
 
     public void StartGame()
     {
-        ScoringSystemManager.Instance.InstanciateNewGameInstance();
         GameManager.Instance.StartDuckSpawner();
+        ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
     /// <summary>
