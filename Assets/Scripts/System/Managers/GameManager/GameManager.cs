@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager>
     public bool isGoreEnabled;
     public GameObject gorePrefab;
     private bool _disableAllSound;
-    private bool _isRoundLaunch;
     private bool _isRunning;
     private GameMode.Mode _gameMode;
 
@@ -26,13 +25,11 @@ public class GameManager : Singleton<GameManager>
         isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
         _disableAllSound = false;
         _isRunning = false;
-        _isRoundLaunch = false;
 
         gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
     }
 
     public GameMode.Mode CurrentMode { get => _gameMode; set { _gameMode = value; } }
-    public bool GetRoundStatus { get => _isRoundLaunch; set { _isRoundLaunch = value; } }
     public bool GetGameState { get => _isRunning; set { _isRunning = value; } }
     /// <summary>
     /// False it is not disable, True it is disable

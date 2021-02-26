@@ -35,7 +35,6 @@ public class GameButton : MonoBehaviour
         Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
 
         ScoringSystemManager.Instance.DestroyGameInstance();
-        GameManager.Instance.GetRoundStatus = !GameManager.Instance.GetRoundStatus;
     }
     
     public void SwapText()
