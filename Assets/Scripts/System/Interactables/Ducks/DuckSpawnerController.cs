@@ -44,14 +44,13 @@ public class DuckSpawnerController : MonoBehaviour {
     private Coroutine _timedRoundCountdownRoutine;
     private DisplayRoundTimeUI _displayRoundTime;
     private DisplayRoundTimeUI _displayTimedRoundTime;
-
     
     private void Start() {
         _displayRoundTime = roundTimeUI.GetComponent<DisplayRoundTimeUI>();
         _displayTimedRoundTime = timedRoundUI.GetComponent<DisplayRoundTimeUI>();
         
         roundTimeUI.SetActive(false);
-        timedRoundUI.SetActive(false);
+        timedRoundUI.SetActive(false);      
 
         //GameManager.Instance.gameButton.UpdateButton();
     }

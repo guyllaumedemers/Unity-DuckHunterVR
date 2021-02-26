@@ -7,7 +7,9 @@ public class GameManager : Singleton<GameManager>
     public DuckSpawnerController duckSpawnerController;
     public GameButton gameButton;
 
+    [Header("Gore Options")]
     public bool isGoreEnabled;
+    public GameObject gorePrefab;
     private bool _disableAllSound;
     private bool _isRoundLaunch;
     private bool _isRunning;
@@ -25,6 +27,8 @@ public class GameManager : Singleton<GameManager>
         _disableAllSound = false;
         _isRunning = false;
         _isRoundLaunch = false;
+
+        gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
     }
 
     public GameMode.Mode CurrentMode { get => _gameMode; set { _gameMode = value; } }
