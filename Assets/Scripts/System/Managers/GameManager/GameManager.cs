@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,8 @@ public class GameManager : Singleton<GameManager>
 {
     public DuckSpawnerController duckSpawnerController;
     public GameButton gameButton;
-
+    public GameObject timeDial;
+    
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;
@@ -22,7 +24,9 @@ public class GameManager : Singleton<GameManager>
 
     private void InitializeAllBooleans()
     {
-        isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
+        isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
+        //PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
+        
         _disableAllSound = false;
         _isRunning = false;
 

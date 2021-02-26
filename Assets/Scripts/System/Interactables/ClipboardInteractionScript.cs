@@ -6,8 +6,7 @@ public class ClipboardInteractionScript : MonoBehaviour
 {
     [Header("Requiered Components")]
     [SerializeField] private Toggle[] toggles;
-    public GameObject timeDial;
-    
+
     public void Awake()
     {
         // set delegates to look for Toggle value Changes
@@ -20,10 +19,16 @@ public class ClipboardInteractionScript : MonoBehaviour
     private void ToggleValueChanged(Toggle toggle) {
         GameManager.Instance.CurrentMode = toggle.tag.ToEnum<GameMode.Mode>();
 
-        if (GameManager.Instance.CurrentMode == GameMode.Mode.TIMEDROUND)
-            timeDial.SetActive(true);
-        else
-            timeDial.SetActive(false);
+        if (GameManager.Instance.CurrentMode == GameMode.Mode.TIMEDROUND) {
+            if (GameManager.Instance.timeDial != null)
+                GameManager.Instance.timeDial.SetActive(true);
+        }
+            
+        else {
+            if (GameManager.Instance.timeDial != null)
+                GameManager.Instance.timeDial.SetActive(true);
+        }
+        
 
         foreach (Toggle t in toggles) {
             if (!t.Equals(toggle))

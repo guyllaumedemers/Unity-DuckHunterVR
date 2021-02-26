@@ -17,10 +17,6 @@ public class TimeDial : MonoBehaviour {
         currentTime = timeIncrement;
     }
 
-    void Start() {
-
-    }
-
     public void DialChanged(DialInteractable dial) {
         _currentAngle = dial.CurrentAngle;
         _currentStep = dial.CurrentStep;

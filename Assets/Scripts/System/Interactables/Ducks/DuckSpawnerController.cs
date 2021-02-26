@@ -37,8 +37,7 @@ public class DuckSpawnerController : MonoBehaviour
     [Header("Text GameObjects")]
     public GameObject roundTimeUI;
     public GameObject timedRoundUI;
-    public GameObject timeDial;
-
+    
     private string strDuckParentGoName = "Spawned Ducks";
     private Transform _duckParent;
     private Coroutine _addDuckRoutine;
@@ -70,9 +69,10 @@ public class DuckSpawnerController : MonoBehaviour
         roundNo = 1;
         nbDucksPerWave = 0;
 
-        timedRoundTime = timeDial.GetComponentInChildren<TimeDial>().currentTime;
-        if(timeDial.activeSelf)
-            timeDial.SetActive(false);
+        if (GameManager.Instance.timeDial != null) {
+            timedRoundTime = GameManager.Instance.timeDial.GetComponentInChildren<TimeDial>().currentTime;
+            GameManager.Instance.timeDial.SetActive(false);
+        }
     }
 
     private void InitializeRoundVariables()
@@ -165,11 +165,11 @@ public class DuckSpawnerController : MonoBehaviour
                     timedRoundUI.SetActive(false);
                     StartCoroutine(nameof(DisplayTimedRoundScoreRoutine));
                     
-                    if(GameManager.Instance.gameButton != null)
+                    if(GameManager.Instance.gameButton != null){}
                         GameManager.Instance.gameButton.UpdateButton();
                     
-                    if(!timeDial.activeSelf) 
-                        timeDial.SetActive(true);
+                    if(GameManager.Instance.timeDial != null)
+                        GameManager.Instance.timeDial.SetActive(false);
                     
                     break;
                 }
