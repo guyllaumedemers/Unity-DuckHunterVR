@@ -35,6 +35,7 @@ public class DuckSpawnerController : MonoBehaviour {
     [Header("Text GameObjects")]
     public GameObject roundTimeUI;
     public GameObject timedRoundUI;
+    public GameObject timeDial;
     
     private string strDuckParentGoName = "Spawned Ducks";
     private Transform _duckParent;
@@ -63,6 +64,9 @@ public class DuckSpawnerController : MonoBehaviour {
     private void SetTimedRound() {
         roundNo = 0;
         nbDucksPerWave = 0;
+        
+        if(timeDial.activeSelf) 
+            timeDial.SetActive(false);
     }
     
     public void StartSpawner(GameMode.Mode mode) {
@@ -129,7 +133,7 @@ public class DuckSpawnerController : MonoBehaviour {
         
         while (isRunning) {
             if (_roundCountdownRoutine is null) {
-                if(timedRoundTimer > 0.9f) {
+                if(timedRoundTimer > 1f) {
                     timedRoundTimer -= Time.deltaTime;
                     _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
 
@@ -145,7 +149,7 @@ public class DuckSpawnerController : MonoBehaviour {
                     if(GameManager.Instance.gameButton != null)
                         GameManager.Instance.gameButton.UpdateButton();
 
-                    yield break;
+                    break;
                 }
             }
             yield return null;
@@ -163,7 +167,7 @@ public class DuckSpawnerController : MonoBehaviour {
         roundCountdown = roundDelay;
         roundTimeUI.SetActive(true);
         
-        while (roundCountdown > 0.9f) {
+        while (roundCountdown > 1f) {
             if (!isRunning) break;
             roundCountdown -= Time.deltaTime;
             _displayRoundTime.UpdateRoundText(roundNo, roundCountdown);
@@ -177,7 +181,7 @@ public class DuckSpawnerController : MonoBehaviour {
     private IEnumerator SpawnDuckRoutine() {
         waveCountdown = waveDelay;
 
-        while (waveCountdown > 0.9f) {
+        while (waveCountdown > 1f) {
             waveCountdown -= Time.deltaTime;
             yield return null;
         }
