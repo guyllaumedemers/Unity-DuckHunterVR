@@ -9,7 +9,7 @@ public interface IFlyingTarget {
     
     public delegate void DieDelegate();
     public DieDelegate DiedDelegate { get; set; }
-    public Vector3 SpanwerPos { set; }
+    public Vector3 SpawnerPos { set; }
     public Vector3 SpawnSize { set; }
     public float FlightSpeed { get; set; }
 }
