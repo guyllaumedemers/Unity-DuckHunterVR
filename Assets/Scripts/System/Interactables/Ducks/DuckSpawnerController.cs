@@ -144,7 +144,7 @@ public class DuckSpawnerController : MonoBehaviour
         }
     }
 
-    private IEnumerator TimedModeRoutine()
+    private IEnumerator TimedModeRoutine() {
         timedRoundTimer = timedRoundTime;
         
         _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
