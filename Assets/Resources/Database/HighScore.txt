@@ -1,2 +1,15 @@
-{"gameMode":1,"scorePoints":{"points":9},"roundNo":0.0}
-{"gameMode":0,"scorePoints":{"points":2},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":5},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
