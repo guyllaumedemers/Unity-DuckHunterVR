@@ -18,7 +18,10 @@ public class ScoringSystemManager : Singleton<ScoringSystemManager>
     {
         if (GameManager.Instance.GetGameState)
         {
-            textMeshProUGUI.text = playerGameInstance.GetScores.GetPoints.ToString();
+            if (playerGameInstance != null)
+            {
+                textMeshProUGUI.text = playerGameInstance.GetScores.GetPoints.ToString();
+            }
         }
     }
 
