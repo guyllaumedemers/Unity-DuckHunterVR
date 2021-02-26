@@ -4,9 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
-    
-    [Header("Gore Particle")]
-    public GameObject goreObjectPrefab;
+
     [Header("Duck Information")]
     public int noPoints = 1;
     public float HP = 1f;
@@ -128,7 +126,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
 
         if (GameManager.Instance.isGoreEnabled) {
             _skinnedMeshRenderer.enabled = false;
-            GameObject goreObjectClone = Instantiate(goreObjectPrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
+            GameObject goreObjectClone = Instantiate(GameManager.Instance.gorePrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
         }
         else {
             _animations.Play("inAirDeath1");

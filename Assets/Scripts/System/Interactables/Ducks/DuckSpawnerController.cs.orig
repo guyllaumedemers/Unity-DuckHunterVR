@@ -37,8 +37,12 @@ public class DuckSpawnerController : MonoBehaviour
     [Header("Text GameObjects")]
     public GameObject roundTimeUI;
     public GameObject timedRoundUI;
+<<<<<<< HEAD
     public GameObject timeDial;
+    
+=======
 
+>>>>>>> main
     private string strDuckParentGoName = "Spawned Ducks";
     private Transform _duckParent;
     private Coroutine _addDuckRoutine;
@@ -144,7 +148,8 @@ public class DuckSpawnerController : MonoBehaviour
         }
     }
 
-    private IEnumerator TimedModeRoutine()
+<<<<<<< HEAD
+    private IEnumerator TimedModeRoutine() {
         timedRoundTimer = timedRoundTime;
         
         _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
@@ -153,19 +158,36 @@ public class DuckSpawnerController : MonoBehaviour
         while (isRunning) {
             if (_roundCountdownRoutine is null) {
                 if(timedRoundTimer > 1f) {
+=======
+    private IEnumerator TimedModeRoutine()
+    {
+        timedRoundTimer = timedRound;
+
+        _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
+        timedRoundUI.SetActive(true);
+
+        while (isRunning)
+        {
+            if (_roundCountdownRoutine is null)
+            {
+                if (timedRoundTimer > 0.9f)
+                {
+>>>>>>> main
                     timedRoundTimer -= Time.deltaTime;
                     _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
 
-                    if (ducksInWave <= 0 && _duckSpawnerRoutine is null) {
+                    if (ducksInWave <= 0 && _duckSpawnerRoutine is null)
+                    {
                         nbDucksPerWave++;
                         _duckSpawnerRoutine = StartCoroutine(nameof(SpawnDuckRoutine));
                     }
                 }
-                else {
+                else
+                {
                     timedRoundUI.SetActive(false);
                     StartCoroutine(nameof(DisplayTimedRoundScoreRoutine));
-                    
-                    if(GameManager.Instance.gameButton != null)
+
+                    if (GameManager.Instance.gameButton != null)
                         GameManager.Instance.gameButton.UpdateButton();
                     
                     if(!timeDial.activeSelf) 
@@ -178,51 +200,67 @@ public class DuckSpawnerController : MonoBehaviour
         }
     }
 
-    private IEnumerator DisplayTimedRoundScoreRoutine() {
+    private IEnumerator DisplayTimedRoundScoreRoutine()
+    {
         roundTimeUI.SetActive(true);
         _displayRoundTime.TimeRoundEndText();
         yield return new WaitForSeconds(5);
         roundTimeUI.SetActive(false);
     }
-    
-    private IEnumerator RoundCountdownRoutine() {
+
+    private IEnumerator RoundCountdownRoutine()
+    {
         roundCountdown = roundDelay;
         roundTimeUI.SetActive(true);
+<<<<<<< HEAD
         
         while (roundCountdown > 1f) {
+=======
+
+        while (roundCountdown > 0.9f)
+        {
+>>>>>>> main
             if (!isRunning) break;
             roundCountdown -= Time.deltaTime;
             _displayRoundTime.UpdateRoundText(roundNo, roundCountdown);
             yield return null;
         }
-        
+
         roundTimeUI.SetActive(false);
         _roundCountdownRoutine = null;
     }
 
-    private IEnumerator SpawnDuckRoutine() {
+    private IEnumerator SpawnDuckRoutine()
+    {
         waveCountdown = waveDelay;
 
+<<<<<<< HEAD
         while (waveCountdown > 1f) {
+=======
+        while (waveCountdown > 0.9f)
+        {
+>>>>>>> main
             waveCountdown -= Time.deltaTime;
             yield return null;
         }
 
-        for (int i = 0; i < nbDucksPerWave; i++) {
+        for (int i = 0; i < nbDucksPerWave; i++)
+        {
             if (i > 0)
                 yield return new WaitForSeconds(Random.Range(1, waveDelay));
 
             InstantiateDuck();
         }
-        
+
         _duckSpawnerRoutine = null;
     }
 
-    private Vector3 GetRandomSpawnPoint() {
+    private Vector3 GetRandomSpawnPoint()
+    {
         float posX = transform.position.x + Random.Range(-spawnSize.x / 2, spawnSize.x / 2);
         float posY = 0;
 
-        if(gameMode == GameMode.Mode.TARGETPRACTICE)
+        if (gameMode == GameMode.Mode.TARGETPRACTICE)
         {
             posY = transform.position.y + Random.Range(-spawnSize.y / 2, spawnSize.y / 2);
         }
@@ -230,14 +268,16 @@ public class DuckSpawnerController : MonoBehaviour
         {
             posY = transform.position.y - spawnSize.y / 2;
         }
-        
+
         float posZ = transform.position.z + Random.Range(-spawnSize.z / 2, spawnSize.z / 2);
 
         return new Vector3(posX, posY, posZ);
     }
 
-    private void InstantiateDuck() {
-        try {
+    private void InstantiateDuck()
+    {
+        try
+        {
             GameObject duck;
 
             if (gameMode == GameMode.Mode.TARGETPRACTICE)
@@ -264,19 +304,22 @@ public class DuckSpawnerController : MonoBehaviour
 
             ducksInWave++;
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             Debug.Log(ex);
         }
     }
 
-    private void RemoveDuck() {
+    private void RemoveDuck()
+    {
         if (ducksInWave > 0)
             ducksInWave--;
         if (ducksInRound > 0)
             ducksInRound--;
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
         Gizmos.DrawCube(transform.position, spawnSize);
     }

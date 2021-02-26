@@ -8,8 +8,6 @@
             REGULARMODE,
             [Description("TimedRound")]
             TIMEDROUND,
-            [Description("ChallengeMode")]
-            CHALLENGEMODE,
             [Description("TargetPractice")]
             TARGETPRACTICE
     };
