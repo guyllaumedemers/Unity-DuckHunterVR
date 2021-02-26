@@ -12,6 +12,7 @@ public class CreateNewGameInstance
     private ScorePoints scorePoints;
     [JsonProperty]
     private float roundNo;
+    [JsonIgnore]
     private const float startRoundNo = 1;
     /// <summary>
     /// Need to add a Round -> so the instance can retrieve the information 

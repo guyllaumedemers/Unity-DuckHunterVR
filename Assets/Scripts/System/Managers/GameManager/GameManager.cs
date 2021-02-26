@@ -4,7 +4,11 @@ using UnityEngine.UI;
 [System.Serializable]
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Required Components")]
     public DuckSpawnerController duckSpawnerController;
+
+    [Header("DuckSpawner Tag")]
+    private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
 
     [Header("Required Informations")]
     [SerializeField] private bool _disableAllSound;
@@ -14,9 +18,14 @@ public class GameManager : Singleton<GameManager>
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;
-
+    /// <summary>
+    /// DuckSpawnerController must be first in order to be able to launch the game when coming from the Menu scene
+    /// However, it is producing a msg error inside the console since the bas.Awake() of the gamemanager is called AFTER
+    /// </summary>
     protected override void Awake()
     {
+        /*IMPORTANT DO NOT CHANGE THE ORDER*/
+        duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
         base.Awake();
         InitializeAllBooleans();
     }
