@@ -87522,7 +87522,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 481540665133786411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3408740915f286041b2cccbad596ae55, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bff1b904df55ee4ab8ae0a884873034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5647580702887064471
@@ -87608,21 +87608,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 5335812348019592489}
-    - target: {fileID: 5904661084266441736, guid: a4b0e1434fa85d045bd3373da7b85cf8,
-        type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904661084266441736, guid: a4b0e1434fa85d045bd3373da7b85cf8,
-        type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904661084266441736, guid: a4b0e1434fa85d045bd3373da7b85cf8,
-        type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5904661084266446575, guid: a4b0e1434fa85d045bd3373da7b85cf8,
         type: 3}
       propertyPath: m_Name

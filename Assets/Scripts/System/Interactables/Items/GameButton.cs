@@ -8,35 +8,43 @@ public class GameButton : MonoBehaviour
 
     private readonly string start = "START";
     private readonly string stop = "STOP";
-    
+
     public void UpdateButton()
     {
         GameManager.Instance.GetGameState = !GameManager.Instance.GetGameState;
         GetComponent<Animation>().Play("PushButton");
         SwapText();
-        
+
         if (GameManager.Instance.GetGameState)
             StartGame();
         else
             StopGame();
     }
 
+    /// <summary>
+    /// DO NOT CHANGE THE ORDER
+    /// </summary>
     public void StartGame()
     {
         GameManager.Instance.StartDuckSpawner();
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
+    /// <summary>
+    /// DO NOT CHANGE THE ORDER
+    /// </summary>
     public void StopGame()
     {
-        GameManager.Instance.StopDuckSpawner();
-        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
-        
-        Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+        if (GameManager.Instance.duckSpawnerController != null)
+        {
+            ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
+            GameManager.Instance.StopDuckSpawner();
 
-        ScoringSystemManager.Instance.DestroyGameInstance();
+            Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+            ScoringSystemManager.Instance.DestroyGameInstance();
+        }
     }
-    
+
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))

@@ -37,6 +37,18 @@ public class GameManager : Singleton<GameManager>
     public bool GetToggleDisableForSound { get => _disableAllSound; set { _disableAllSound = value; } }
     public bool GetToggleEnableForGore { get => isGoreEnabled; set { isGoreEnabled = value; } }
 
-    public void StartDuckSpawner() => duckSpawnerController.StartSpawner(_gameMode);
-    public void StopDuckSpawner() => duckSpawnerController.StopSpawner();
+    public void StartDuckSpawner()
+    {
+        if (duckSpawnerController != null)
+
+            duckSpawnerController.StartSpawner(_gameMode);
+    }
+
+    public void StopDuckSpawner()
+    {
+        if (duckSpawnerController != null)
+        {
+            duckSpawnerController.StopSpawner();
+        }
+    }
 }
