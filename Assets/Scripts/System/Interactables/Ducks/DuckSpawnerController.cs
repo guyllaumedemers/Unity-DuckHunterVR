@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DuckSpawnerController : MonoBehaviour {
@@ -13,7 +14,6 @@ public class DuckSpawnerController : MonoBehaviour {
     [Header("Round Information")]
     public int nbDucksPerRound = 10;
     public float roundDelay = 10f;
-    public float timedRound = 60f;
     public float flightRoundIncrement = 0.15f;
     public float maxRoundIncrement = 10f;
 
@@ -28,6 +28,7 @@ public class DuckSpawnerController : MonoBehaviour {
     public float roundCountdown;
     public int ducksInWave;
     public float waveCountdown;
+    public float timedRoundTime;
     public float timedRoundTimer;
     public GameMode.Mode gameMode;
     public bool isRunning;
@@ -54,7 +55,7 @@ public class DuckSpawnerController : MonoBehaviour {
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);
 
-        //GameManager.Instance.gameButton.UpdateButton();
+        GameManager.Instance.gameButton.UpdateButton();
     }
     
     private void SetRegularRound() {
@@ -64,8 +65,9 @@ public class DuckSpawnerController : MonoBehaviour {
     private void SetTimedRound() {
         roundNo = 0;
         nbDucksPerWave = 0;
-        
-        if(timeDial.activeSelf) 
+
+        timedRoundTime = timeDial.GetComponentInChildren<TimeDial>().currentTime;
+        if(timeDial.activeSelf)
             timeDial.SetActive(false);
     }
     
@@ -126,7 +128,7 @@ public class DuckSpawnerController : MonoBehaviour {
     }
 
     private IEnumerator TimedModeRoutine() {
-        timedRoundTimer = timedRound;
+        timedRoundTimer = timedRoundTime;
         
         _displayTimedRoundTime.UpdateTimedRoundText(timedRoundTimer);
         timedRoundUI.SetActive(true);
@@ -148,7 +150,10 @@ public class DuckSpawnerController : MonoBehaviour {
                     
                     if(GameManager.Instance.gameButton != null)
                         GameManager.Instance.gameButton.UpdateButton();
-
+                    
+                    if(!timeDial.activeSelf) 
+                        timeDial.SetActive(true);
+                    
                     break;
                 }
             }

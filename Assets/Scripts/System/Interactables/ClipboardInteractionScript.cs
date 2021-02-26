@@ -14,7 +14,7 @@ public class ClipboardInteractionScript : MonoBehaviour
         foreach (Toggle t in toggles)
             t.onValueChanged.AddListener((a) => { ToggleValueChanged(t); });
         
-        GameObject.FindGameObjectWithTag(GameMode.Mode.REGULARMODE.GetDescription()).GetComponent<Toggle>().isOn = true;
+        GameObject.FindGameObjectWithTag(GameMode.Mode.TIMEDROUND.GetDescription()).GetComponent<Toggle>().isOn = true;
     }
 
     private void ToggleValueChanged(Toggle toggle) {
