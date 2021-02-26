@@ -5,14 +5,15 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     public DuckSpawnerController duckSpawnerController;
-    public GameButton gameButton;
+
+    [Header("Required Informations")]
+    [SerializeField] private bool _disableAllSound;
+    [SerializeField] private bool _isRunning;
+    [SerializeField] private GameMode.Mode _gameMode;
 
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;
-    private bool _disableAllSound;
-    private bool _isRunning;
-    private GameMode.Mode _gameMode;
 
     protected override void Awake()
     {
@@ -29,19 +30,24 @@ public class GameManager : Singleton<GameManager>
         gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
     }
 
+    private void Update()
+    {
+        isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
+    }
+
     public GameMode.Mode CurrentMode { get => _gameMode; set { _gameMode = value; } }
     public bool GetGameState { get => _isRunning; set { _isRunning = value; } }
     /// <summary>
     /// False it is not disable, True it is disable
     /// </summary>
     public bool GetToggleDisableForSound { get => _disableAllSound; set { _disableAllSound = value; } }
-    public bool GetToggleEnableForGore { get => isGoreEnabled; set { isGoreEnabled = value; } }
 
     public void StartDuckSpawner()
     {
         if (duckSpawnerController != null)
-
+        {
             duckSpawnerController.StartSpawner(_gameMode);
+        }
     }
 
     public void StopDuckSpawner()

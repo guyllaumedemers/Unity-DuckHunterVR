@@ -54,8 +54,6 @@ public class DuckSpawnerController : MonoBehaviour
 
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);      
-
-        //GameManager.Instance.gameButton.UpdateButton();
     }
 
     private void SetRegularRound()
@@ -81,7 +79,6 @@ public class DuckSpawnerController : MonoBehaviour
     public void StartSpawner(GameMode.Mode mode)
     {
         gameMode = mode;
-        //gameMode = GameMode.Mode.TARGETPRACTICE;
         InitializeRoundVariables();
 
         _roundCountdownRoutine = StartCoroutine(nameof(RoundCountdownRoutine));
@@ -165,9 +162,6 @@ public class DuckSpawnerController : MonoBehaviour
                     timedRoundUI.SetActive(false);
                     StartCoroutine(nameof(DisplayTimedRoundScoreRoutine));
 
-                    if (GameManager.Instance.gameButton != null)
-                        GameManager.Instance.gameButton.UpdateButton();
-
                     yield break;
                 }
             }
@@ -248,7 +242,6 @@ public class DuckSpawnerController : MonoBehaviour
 
             if (gameMode == GameMode.Mode.TARGETPRACTICE)
             {
-                Debug.Log("Target");
                 duck = Instantiate(duckModels[2], GetRandomSpawnPoint(), Quaternion.Euler(new Vector3(0, 90, 0)));
             }
             else
@@ -260,7 +253,7 @@ public class DuckSpawnerController : MonoBehaviour
                 duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement * roundNo;
 
             duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
-            duck.GetComponent<IFlyingTarget>().SpanwerPos = transform.position;
+            duck.GetComponent<IFlyingTarget>().SpawnerPos = transform.position;
             duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuck;
 
             if (_duckParent == null)

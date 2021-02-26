@@ -4,10 +4,15 @@ using UnityEngine;
 public class GameButton : MonoBehaviour
 {
     [Header("Requiered Components")]
-    public TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
     private readonly string start = "START";
     private readonly string stop = "STOP";
+
+    public void Awake()
+    {
+        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     public void UpdateButton()
     {
@@ -16,18 +21,19 @@ public class GameButton : MonoBehaviour
         SwapText();
 
         if (GameManager.Instance.GetGameState)
+        {
             StartGame();
+        }
         else
+        {
             StopGame();
+        }
     }
 
-    /// <summary>
-    /// DO NOT CHANGE THE ORDER
-    /// </summary>
     public void StartGame()
     {
-        GameManager.Instance.StartDuckSpawner();
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
+        GameManager.Instance.StartDuckSpawner();
     }
 
     /// <summary>
@@ -48,8 +54,12 @@ public class GameButton : MonoBehaviour
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))
+        {
             textMeshProUGUI.text = start;
+        }
         else
+        {
             textMeshProUGUI.text = stop;
+        }
     }
 }
