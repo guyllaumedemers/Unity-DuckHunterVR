@@ -1,20 +1,36 @@
 using TMPro;
 using UnityEngine;
 
-public class ScoringSystemManager : Singleton<ScoringSystemManager>
+public class ScoringSystemManager : MonoBehaviour
 {
+    private static ScoringSystemManager instance;
+
+    private ScoringSystemManager() { }
+
+    public static ScoringSystemManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new ScoringSystemManager();
+            }
+            return instance;
+        }
+    }
+
     [Header("Requiered Components")]
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
     private CreateNewGameInstance playerGameInstance;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+        instance = this;
         textMeshProUGUI = GameObject.FindGameObjectWithTag("Score").GetComponent<TextMeshProUGUI>();
     }
 
-    public void Update()
+    private void Update()
     {
         if (GameManager.Instance.GetGameState && playerGameInstance != null)
         {
