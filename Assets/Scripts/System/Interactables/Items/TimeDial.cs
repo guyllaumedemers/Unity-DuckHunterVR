@@ -4,14 +4,24 @@ using UnityEngine.UI;
 
 public class TimeDial : MonoBehaviour {
     
-    Text _Label;
+    public float timeIncrement = 60f;
+    public float currentTime;
     
-    void Start() {
-        _Label = GetComponent<Text>();
+    private float _currentAngle;
+    private int _currentStep;
+    private Text _label;
+
+    private void Awake() {
+        _label = GetComponent<Text>();
+        currentTime = timeIncrement;
+        _label.text = $"{currentTime:n0}";
     }
 
     public void DialChanged(DialInteractable dial) {
-        _Label.text = (dial.CurrentAngle).ToString("n0");
-        //_Label.text = (dial.CurrentStep).ToString("n0");
+        _currentAngle = dial.CurrentAngle;
+        _currentStep = dial.CurrentStep;
+
+        currentTime = timeIncrement * (_currentStep + 1);
+        _label.text = $"{currentTime:n0}";
     }
 }

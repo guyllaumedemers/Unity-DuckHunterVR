@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -23,67 +21,45 @@ public class GameManager : MonoBehaviour
 
     [Header("Required Components")]
     public DuckSpawnerController duckSpawnerController;
-    public GameObject gameButton;
-    public GameObject clipBoard;
-    [FormerlySerializedAs("currenTime")] public float timedRoundTime;
-    private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
+<<<<<<< HEAD
+    public GameButton gameButton;
+    public GameObject timeDial;
     
+=======
+
+    [Header("DuckSpawner Tag")]
+    private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
+
     [Header("Required Informations")]
     [SerializeField] private bool _disableAllSound;
     [SerializeField] private bool _isRunning;
     [SerializeField] private GameMode.Mode _gameMode;
-    
+
+>>>>>>> main
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;
-    public int gorePrefabPoolSize = 10;
-    public List<GameObject> gorePrefabPool;    
-    private Transform _gorePrefabParent;
 
     private void Awake()
     {
         instance = this;
-        if(duckSpawnerController is null)
-            duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
-        
+        duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
         InitializeAllBooleans();
-
-        gorePrefabPool = new List<GameObject>(new GameObject[gorePrefabPoolSize]);
-
-        gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
-
-        _gorePrefabParent = GameObject.Find("GorePool").transform;
     }
 
     private void InitializeAllBooleans()
     {
-        PlayerPrefs.SetInt("EnableGore", Convert.ToInt32(isGoreEnabled));
+        isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
         
         _disableAllSound = false;
-        _isRunning = false;        
+        _isRunning = false;
+
+        gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
     }
 
     private void Update()
     {
-        isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
-
-        StartCoroutine("FillGorePool");
-    }
-
-    IEnumerator FillGorePool()
-    {
-        if(Time.time > 5f)
-        {
-            yield return new WaitForSeconds(30.0f);
-        }        
-
-        for (int i = 0; i < gorePrefabPool.Count; i++)
-        {
-            if (gorePrefabPool[i] == null)
-            {
-                gorePrefabPool[i] = Instantiate(gorePrefab, _gorePrefabParent);
-            }
-        }
+        isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
     }
 
     public GameMode.Mode CurrentMode { get => _gameMode; set { _gameMode = value; } }
@@ -100,7 +76,7 @@ public class GameManager : MonoBehaviour
             duckSpawnerController.StartSpawner(_gameMode);
         }
     }
-    
+
     public void StopDuckSpawner()
     {
         if (duckSpawnerController != null)
