@@ -5,7 +5,6 @@ public class GameButton : MonoBehaviour
 {
     [Header("Requiered Components")]
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
-    [SerializeField] private new Animation animation;
 
     private readonly string start = "START";
     private readonly string stop = "STOP";
@@ -13,19 +12,22 @@ public class GameButton : MonoBehaviour
     public void Awake()
     {
         textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
-        animation = GetComponent<Animation>();
     }
 
     public void UpdateButton()
     {
         GameManager.Instance.GetGameState = !GameManager.Instance.GetGameState;
-        animation.Play("PushButton");
+        GetComponent<Animation>().Play("PushButton");
         SwapText();
-        
+
         if (GameManager.Instance.GetGameState)
+        {
             StartGame();
+        }
         else
+        {
             StopGame();
+        }
     }
 
     public void StartGame()
@@ -34,22 +36,30 @@ public class GameButton : MonoBehaviour
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
+    /// <summary>
+    /// DO NOT CHANGE THE ORDER
+    /// </summary>
     public void StopGame()
     {
-        GameManager.Instance.StopDuckSpawner();
-        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
-        
-        Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+        if (GameManager.Instance.duckSpawnerController != null)
+        {
+            ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
+            GameManager.Instance.StopDuckSpawner();
 
-        ScoringSystemManager.Instance.DestroyGameInstance();
-        GameManager.Instance.GetRoundStatus = !GameManager.Instance.GetRoundStatus;
+            Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+            ScoringSystemManager.Instance.DestroyGameInstance();
+        }
     }
-    
+
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))
+        {
             textMeshProUGUI.text = start;
+        }
         else
+        {
             textMeshProUGUI.text = stop;
+        }
     }
 }

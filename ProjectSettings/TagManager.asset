@@ -13,7 +13,6 @@ TagManager:
   - PistolReload
   - TimedRound
   - RegularMode
-  - ChallengeMode
   - Floor
   - SubmachineGunReload
   - ShotgunReload
@@ -26,6 +25,13 @@ TagManager:
   - SettingsMenuUI
   - LeftHandUI
   - RightHandUI
+  - MainMenuUI
+  - MusicSlider
+  - SfxSlider
+  - DisableSound
+  - EnableGore
+  - TargetPractice
+  - DuckSpawner
   layers:
   - Default
   - TransparentFX

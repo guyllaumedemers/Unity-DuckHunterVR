@@ -4,9 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
-    
-    [Header("Gore Particle")]
-    public GameObject goreObjectPrefab;
+
     [Header("Duck Information")]
     public int noPoints = 1;
     public float HP = 1f;
@@ -15,7 +13,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     public MinMax minMaxY = new MinMax(-1f, 5f);
     
     public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
-    public Vector3 SpanwerPos { get; set; }
+    public Vector3 SpawnerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
     public float FlightSpeed { get => flightSpeed; set => flightSpeed = value; }
 
@@ -40,7 +38,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
         _animations.Play("fly");
         GetRandomPosUp();
 
-        _escapeHight = SpanwerPos.y + SpawnSize.y;
+        _escapeHight = SpawnerPos.y + SpawnSize.y;
         minMaxY.max += _escapeHight;
 
         _isDead = false;
@@ -104,9 +102,9 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
     }
     
     private void  GetRandomPosUp() {
-        float dirX = SpanwerPos.x + Random.Range(-SpawnSize.x, SpawnSize.x);
+        float dirX = SpawnerPos.x + Random.Range(-SpawnSize.x, SpawnSize.x);
         float dirY = transform.position.y + Random.Range(heighRangeIncrease.min, heighRangeIncrease.max);
-        float dirZ = SpanwerPos.z + Random.Range(-SpawnSize.z, SpawnSize.z);
+        float dirZ = SpawnerPos.z + Random.Range(-SpawnSize.z, SpawnSize.z);
         
         _target = new Vector3(dirX, dirY, dirZ);
     }
@@ -128,7 +126,7 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
 
         if (GameManager.Instance.isGoreEnabled) {
             _skinnedMeshRenderer.enabled = false;
-            GameObject goreObjectClone = Instantiate(goreObjectPrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
+            GameObject goreObjectClone = Instantiate(GameManager.Instance.gorePrefab, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity, null);
         }
         else {
             _animations.Play("inAirDeath1");

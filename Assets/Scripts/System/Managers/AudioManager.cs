@@ -44,11 +44,6 @@ public class AudioManager : MonoBehaviour
         InitializeChannelVolumesValues();
     }
 
-    private void Start()
-    {
-        isDisable = false;
-    }
-
     /// <summary>
     /// Initialize the local variables that are going to be return to set the displayed values of the slider
     /// when a new tab scene open => so that if we change scene from the MenuUI => to the game scene
@@ -73,12 +68,12 @@ public class AudioManager : MonoBehaviour
     {
         if (!toggle.isOn)
         {
-            isDisable = false;
+            GameManager.Instance.GetToggleDisableForSound = false;
             audioMixer.ClearFloat("Master");
         }
         else
         {
-            isDisable = true;
+            GameManager.Instance.GetToggleDisableForSound = true;
             audioMixer.SetFloat("Master", -80);
         }
     }
