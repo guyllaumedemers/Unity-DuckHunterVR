@@ -29,13 +29,13 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     public AudioSource AudioSource { get; set; }
     public AudioClip ShootingSound { get; set; }
-    public AudioClip ReloadSound { get; set; }    
+    public AudioClip ReloadSound { get; set; }
     protected abstract string ShootingSoundPath { get; }
     protected abstract string ReloadingSoundPath { get; }
 
     void Start()
     {
-        AudioSource = GetComponent<AudioSource>();        
+        AudioSource = GetComponent<AudioSource>();
 
         if (IsAcceptingMagazine)
             MagazineAttach = AmmoReloadCollider.transform.GetChild(0);
@@ -121,6 +121,14 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
                         if (CurrentMagazine.name != null)
                         {
+                            try
+                            {
+                                XRUIHandsBehavior.Instance.ItemIsNotHeld(CurrentMagazine.transform.GetComponent<XRGrabInteractable>().selectingInteractor.name);
+                            }
+                            catch (System.Exception)
+                            {
+                            }
+                            
                             Destroy(CurrentMagazine);
                             CurrentMagazine = magazineClone;
                             CurrentAmmoContainer = CurrentMagazine.GetComponent<AmmoContainer>();

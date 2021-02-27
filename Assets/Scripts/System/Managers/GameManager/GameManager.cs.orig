@@ -21,15 +21,21 @@ public class GameManager : MonoBehaviour
 
     [Header("Required Components")]
     public DuckSpawnerController duckSpawnerController;
-
+<<<<<<< HEAD
+    public GameButton gameButton;
     public GameObject timeDial;
+    
+=======
+
+    [Header("DuckSpawner Tag")]
     private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
 
     [Header("Required Informations")]
     [SerializeField] private bool _disableAllSound;
     [SerializeField] private bool _isRunning;
     [SerializeField] private GameMode.Mode _gameMode;
-    
+
+>>>>>>> main
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;

@@ -39,6 +39,14 @@ public class AmmoContainer : MonoBehaviour, IAmmoContainer
             GrabInteractable.onSelectEntered.RemoveAllListeners();
             GrabInteractable.onSelectExited.RemoveAllListeners();
 
+            try
+            {
+                XRUIHandsBehavior.Instance.ItemIsNotHeld(GrabInteractable.selectingInteractor.name);
+            }
+            catch (System.Exception)
+            {
+            }
+
             Destroy(gameObject, 3f);
         }
 

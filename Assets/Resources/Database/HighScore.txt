@@ -13,3 +13,12 @@
 {"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
 {"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
 {"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":0,"scorePoints":{"points":0},"roundNo":1.0}
+{"gameMode":1,"scorePoints":{"points":7},"roundNo":1.0}

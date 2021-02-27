@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf2018cc53e4c545980d9f205430202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 0}
 --- !u!1 &1431923454
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf2018cc53e4c545980d9f205430202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 0}
 --- !u!1 &1724838911
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +722,7 @@ GameObject:
   - component: {fileID: 5346019990624616914}
   m_Layer: 0
   m_Name: DuckSpawner
-  m_TagString: Untagged
+  m_TagString: DuckSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
