@@ -36,7 +36,7 @@ public class MenuUI : MonoBehaviour
     private readonly string TARGET_STATS_MENU_UI = "StatsMenuUI";
 
     [Header("Scene Name")]
-    private readonly string TARGET_SCENE = "MainGameSceneFinal";
+    private readonly string TARGET_SCENE = "TechnicalDemoScene";
     private readonly string PREVIOUS_SCENE = "MainMenuSceneFinal";
 
     [Header("Settings Menu Components")]
