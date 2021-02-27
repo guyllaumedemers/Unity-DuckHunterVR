@@ -19,7 +19,7 @@ public class Target : MonoBehaviour, IShootable, IFlyingTarget
     private readonly IDictionary<GameObject, TransformHolder> _children = new Dictionary<GameObject, TransformHolder>();
 
     public IFlyingTarget.DieDelegate DiedDelegate { get; set; }
-    public Vector3 SpanwerPos { get; set; }
+    public Vector3 SpawnerPos { get; set; }
     public Vector3 SpawnSize { get; set; }
     public float FlightSpeed { get => flightSpeed; set => flightSpeed = value; }
 

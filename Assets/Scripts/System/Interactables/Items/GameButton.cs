@@ -4,21 +4,30 @@ using UnityEngine;
 public class GameButton : MonoBehaviour
 {
     [Header("Requiered Components")]
-    public TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
     private readonly string start = "START";
     private readonly string stop = "STOP";
-    
+
+    public void Awake()
+    {
+        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
     public void UpdateButton()
     {
         GameManager.Instance.GetGameState = !GameManager.Instance.GetGameState;
         GetComponent<Animation>().Play("PushButton");
         SwapText();
-        
+
         if (GameManager.Instance.GetGameState)
+        {
             StartGame();
+        }
         else
+        {
             StopGame();
+        }
     }
 
     public void StartGame()
@@ -27,21 +36,30 @@ public class GameButton : MonoBehaviour
         ScoringSystemManager.Instance.InstanciateNewGameInstance();
     }
 
+    /// <summary>
+    /// DO NOT CHANGE THE ORDER
+    /// </summary>
     public void StopGame()
     {
-        GameManager.Instance.StopDuckSpawner();
-        ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
-        
-        Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+        if (GameManager.Instance.duckSpawnerController != null)
+        {
+            ScoringSystemManager.Instance.GetGameInstance?.UpdateInstanceRoundValue(GameManager.Instance.duckSpawnerController.roundNo);
+            GameManager.Instance.StopDuckSpawner();
 
-        ScoringSystemManager.Instance.DestroyGameInstance();
+            Serialization.SaveFile(ScoringSystemManager.Instance.GetGameInstance, Serialization.GetPath);
+            ScoringSystemManager.Instance.DestroyGameInstance();
+        }
     }
-    
+
     public void SwapText()
     {
         if (textMeshProUGUI.text.Equals(stop))
+        {
             textMeshProUGUI.text = start;
+        }
         else
+        {
             textMeshProUGUI.text = stop;
+        }
     }
 }
