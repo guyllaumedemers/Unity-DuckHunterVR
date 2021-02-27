@@ -118,6 +118,9 @@ public class DuckSpawnerController : MonoBehaviour
     {
         isRunning = false;
 
+        if(_duckSpawnerRoutine != null)
+            StopCoroutine(_duckSpawnerRoutine);
+        
         if (_duckParent != null)
             Destroy(_duckParent.gameObject);
     }
@@ -169,7 +172,7 @@ public class DuckSpawnerController : MonoBehaviour
                         GameManager.Instance.gameButton.UpdateButton();
                     
                     if(GameManager.Instance.timeDial != null)
-                        GameManager.Instance.timeDial.SetActive(false);
+                        GameManager.Instance.timeDial.SetActive(true);
                     
                     break;
                 }
@@ -212,6 +215,7 @@ public class DuckSpawnerController : MonoBehaviour
             if (i > 0)
                 yield return new WaitForSeconds(Random.Range(1, waveDelay));
 
+            if (!isRunning) break;
             InstantiateDuck();
         }
         
