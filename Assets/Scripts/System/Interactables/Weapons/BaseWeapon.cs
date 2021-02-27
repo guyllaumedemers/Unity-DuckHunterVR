@@ -123,13 +123,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
                         {
                             try
                             {
-                                string controllerName = CurrentMagazine.transform.GetComponent<XRGrabInteractable>().selectingInteractor.name;
-
-                                XRUIHandsBehavior.Instance.ItemIsNotHeld(controllerName);
+                                XRUIHandsBehavior.Instance.ItemIsNotHeld(CurrentMagazine.transform.GetComponent<XRGrabInteractable>().selectingInteractor.name);
                             }
-                            catch (System.Exception ex)
+                            catch (System.Exception)
                             {
-                                //Debug.Log(ex);
                             }
                             
                             Destroy(CurrentMagazine);
