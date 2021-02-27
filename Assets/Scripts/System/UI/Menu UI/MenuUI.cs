@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -217,7 +218,13 @@ public class MenuUI : MonoBehaviour
         {
             PlayerPrefs.SetInt("EnableGore", 0);
         }
+
         PlayerPrefs.Save();
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
+        }
     }
 
     /************************************************************************************/

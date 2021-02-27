@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GoreExplosion : MonoBehaviour
 {
-
     public GameObject intestinesA;
     public Transform intestinesARig;
     public GameObject intestinesB;
@@ -13,26 +12,24 @@ public class GoreExplosion : MonoBehaviour
     public GameObject explodeFX;
     public Material intenstinesMaterial;
     public Material heartMaterial;
-    private AudioSource _goreSound;
+    public AudioSource goreSound;
 
-    void Start()
+    private void Start()
     {
         Color color = intenstinesMaterial.color;
         color.a = 1.0f;
         intenstinesMaterial.color = color;
         heartMaterial.color = color;
-
-        _goreSound = GetComponent<AudioSource>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         StartCoroutine("Explosion");
     }
 
     IEnumerator Explosion()
     {
-        _goreSound.Play();
+        goreSound.Play();
 
         intestinesARig.GetComponent<Rigidbody>().AddForce(Random.Range(0, 10), Random.Range(25, 50), Random.Range(0, 10), ForceMode.Impulse);
         intestinesBRig.GetComponent<Rigidbody>().AddForce(Random.Range(0, 10), Random.Range(50, 75), Random.Range(0, 10), ForceMode.Impulse);
