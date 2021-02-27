@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,26 +34,51 @@ public class GameManager : MonoBehaviour
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;
+    public int gorePrefabPoolSize = 10;
+    public List<GameObject> gorePrefabPool;    
+    private Transform _gorePrefabParent;
 
     private void Awake()
     {
         instance = this;
         duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
         InitializeAllBooleans();
+
+        gorePrefabPool = new List<GameObject>(new GameObject[gorePrefabPoolSize]);
+
+        gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
+
+        _gorePrefabParent = GameObject.Find("GorePool").transform;
     }
 
     private void InitializeAllBooleans()
     {
         isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
         _disableAllSound = false;
-        _isRunning = false;
-
-        gorePrefab = Resources.Load("Package Models/Gore_Explosion/Prefabs/Gore_Explosion") as GameObject;
+        _isRunning = false;        
     }
 
     private void Update()
     {
         isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
+
+        StartCoroutine("FillGorePool");
+    }
+
+    IEnumerator FillGorePool()
+    {
+        if(Time.time > 5f)
+        {
+            yield return new WaitForSeconds(30.0f);
+        }        
+
+        for (int i = 0; i < gorePrefabPool.Count; i++)
+        {
+            if (gorePrefabPool[i] == null)
+            {
+                gorePrefabPool[i] = Instantiate(gorePrefab, _gorePrefabParent);
+            }
+        }
     }
 
     public GameMode.Mode CurrentMode { get => _gameMode; set { _gameMode = value; } }

@@ -13,6 +13,7 @@ public class GoreExplosion : MonoBehaviour
     public GameObject explodeFX;
     public Material intenstinesMaterial;
     public Material heartMaterial;
+    private AudioSource _goreSound;
 
     void Start()
     {
@@ -21,11 +22,18 @@ public class GoreExplosion : MonoBehaviour
         intenstinesMaterial.color = color;
         heartMaterial.color = color;
 
+        _goreSound = GetComponent<AudioSource>();
+    }
+
+    void OnEnable()
+    {
         StartCoroutine("Explosion");
     }
 
     IEnumerator Explosion()
     {
+        _goreSound.Play();
+
         intestinesARig.GetComponent<Rigidbody>().AddForce(Random.Range(0, 10), Random.Range(25, 50), Random.Range(0, 10), ForceMode.Impulse);
         intestinesBRig.GetComponent<Rigidbody>().AddForce(Random.Range(0, 10), Random.Range(50, 75), Random.Range(0, 10), ForceMode.Impulse);
         heart.GetComponent<Rigidbody>().AddForce(Random.Range(0, 5), Random.Range(10, 20), Random.Range(0, 5), ForceMode.Impulse);
