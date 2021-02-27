@@ -20257,6 +20257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeDial
       objectReference: {fileID: 0}
+    - target: {fileID: 2302118359313828444, guid: 63d93e5b82576ac48936091f9f2053f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d93e5b82576ac48936091f9f2053f7, type: 3}
 --- !u!1 &674275897 stripped
@@ -37864,12 +37869,12 @@ PrefabInstance:
         type: 3}
       propertyPath: gameButton
       value: 
-      objectReference: {fileID: 1665397689479961469}
+      objectReference: {fileID: 6992354796919194438}
     - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
       propertyPath: duckSpawnerController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1499569119}
     - target: {fileID: 6437467878737515951, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
       propertyPath: m_Name
@@ -44778,6 +44783,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c02697e5da79cd4db6d0c54a30b863a, type: 3}
+--- !u!114 &1499569119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5346019990624616914, guid: 3c02697e5da79cd4db6d0c54a30b863a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1499569118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b04b7305690f7489c4da3fc5a8a076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1500049395
 GameObject:
   m_ObjectHideFlags: 0
@@ -77732,18 +77749,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6992354796919194437}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1665397689479961469 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8508843393230280760, guid: c98ca5c1a053fdc488888b402c3871dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6992354796919194437}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083b4ab9f7c06d840aa3d56a5641a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1670704127019883777
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86157,17 +86162,17 @@ PrefabInstance:
     - target: {fileID: 5904661084266439675, guid: a4b0e1434fa85d045bd3373da7b85cf8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.934
+      value: 54.08
       objectReference: {fileID: 0}
     - target: {fileID: 5904661084266439675, guid: a4b0e1434fa85d045bd3373da7b85cf8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.823
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 5904661084266439675, guid: a4b0e1434fa85d045bd3373da7b85cf8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.412
+      value: 44.58
       objectReference: {fileID: 0}
     - target: {fileID: 5904661084266439675, guid: a4b0e1434fa85d045bd3373da7b85cf8,
         type: 3}
@@ -86736,6 +86741,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c98ca5c1a053fdc488888b402c3871dd, type: 3}
+--- !u!1 &6992354796919194438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8508843393230280767, guid: c98ca5c1a053fdc488888b402c3871dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6992354796919194437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7156648137916500927
 PrefabInstance:
   m_ObjectHideFlags: 0

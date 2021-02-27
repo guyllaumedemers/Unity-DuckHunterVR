@@ -55,7 +55,8 @@ public class DuckSpawnerController : MonoBehaviour
 
         roundTimeUI.SetActive(false);
         timedRoundUI.SetActive(false);      
-        //GameManager.Instance.gameButton.UpdateButton();
+        
+        //GameManager.Instance.gameButton.GetComponent<GameButton>().UpdateButton();
     }
 
     private void SetRegularRound()
@@ -167,7 +168,7 @@ public class DuckSpawnerController : MonoBehaviour
                     StartCoroutine(nameof(DisplayTimedRoundScoreRoutine));
                     
                     if(GameManager.Instance.gameButton != null){}
-                        GameManager.Instance.gameButton.UpdateButton();
+                        GameManager.Instance.gameButton.GetComponent<GameButton>().UpdateButton();
                     
                     if(GameManager.Instance.timeDial != null)
                         GameManager.Instance.timeDial.SetActive(true);

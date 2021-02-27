@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Required Components")]
     public DuckSpawnerController duckSpawnerController;
-
+    public GameObject gameButton;
     public GameObject timeDial;
     private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
 
@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
+        if(duckSpawnerController is null)
+            duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
+        
         InitializeAllBooleans();
     }
 
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
+        isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
     }
 
     public GameMode.Mode CurrentMode { get => _gameMode; set { _gameMode = value; } }
