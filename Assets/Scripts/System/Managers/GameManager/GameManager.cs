@@ -32,13 +32,9 @@ public class GameManager : MonoBehaviour
     [Header("Gore Options")]
     public bool isGoreEnabled;
     public GameObject gorePrefab;
-    /// <summary>
-    /// DuckSpawnerController must be first in order to be able to launch the game when coming from the Menu scene
-    /// However, it is producing a msg error inside the console since the bas.Awake() of the gamemanager is called AFTER
-    /// </summary>
+
     private void Awake()
     {
-        /*IMPORTANT DO NOT CHANGE THE ORDER*/
         instance = this;
         duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
         InitializeAllBooleans();
