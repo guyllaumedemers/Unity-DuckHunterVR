@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -22,9 +23,10 @@ public class GameManager : MonoBehaviour
     [Header("Required Components")]
     public DuckSpawnerController duckSpawnerController;
     public GameObject gameButton;
-    public GameObject timeDial;
+    public GameObject clipBoard;
+    [FormerlySerializedAs("currenTime")] public float timedRoundTime;
     private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
-
+    
     [Header("Required Informations")]
     [SerializeField] private bool _disableAllSound;
     [SerializeField] private bool _isRunning;
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void InitializeAllBooleans()
     {
-        isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
+        PlayerPrefs.SetInt("EnableGore", Convert.ToInt32(isGoreEnabled));
         
         _disableAllSound = false;
         _isRunning = false;
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
             duckSpawnerController.StartSpawner(_gameMode);
         }
     }
-
+    
     public void StopDuckSpawner()
     {
         if (duckSpawnerController != null)
