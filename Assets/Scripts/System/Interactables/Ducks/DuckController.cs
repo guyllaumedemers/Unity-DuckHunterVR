@@ -131,15 +131,13 @@ public class DuckController : MonoBehaviour, IFlyingTarget, IShootable {
             {
                 if(GameManager.Instance.gorePrefabPool[i] != null)
                 {
-                    GameObject gore = GameManager.Instance.gorePrefabPool[i];
+                    GameObject gorePrefabClone = GameManager.Instance.gorePrefabPool[i];
                     GameManager.Instance.gorePrefabPool[i] = null;
-                    gore.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-                    gore.SetActive(true);
+                    gorePrefabClone.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+                    gorePrefabClone.SetActive(true);
                     break;
                 }
             }
-
-            //GameObject goreObjectClone = Instantiate(GameManager.Instance.gorePrefab, , Quaternion.identity, null);
         }
         else {
             _animations.Play("inAirDeath1");

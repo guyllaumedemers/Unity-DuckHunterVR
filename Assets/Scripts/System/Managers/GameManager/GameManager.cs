@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
+        //isGoreEnabled = PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
 
         StartCoroutine("FillGorePool");
     }
