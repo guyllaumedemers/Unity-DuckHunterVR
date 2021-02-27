@@ -1,9 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+    private GameManager() { }
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameManager();
+            }
+            return instance;
+        }
+    }
+
     [Header("Required Components")]
     public DuckSpawnerController duckSpawnerController;
 
@@ -22,11 +36,11 @@ public class GameManager : Singleton<GameManager>
     /// DuckSpawnerController must be first in order to be able to launch the game when coming from the Menu scene
     /// However, it is producing a msg error inside the console since the bas.Awake() of the gamemanager is called AFTER
     /// </summary>
-    protected override void Awake()
+    private void Awake()
     {
         /*IMPORTANT DO NOT CHANGE THE ORDER*/
+        instance = this;
         duckSpawnerController = GameObject.FindGameObjectWithTag(DUCKSPAWNER_TAG).GetComponent<DuckSpawnerController>();
-        base.Awake();
         InitializeAllBooleans();
     }
 
