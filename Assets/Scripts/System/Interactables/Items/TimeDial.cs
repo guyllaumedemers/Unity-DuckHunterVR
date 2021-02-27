@@ -13,8 +13,8 @@ public class TimeDial : MonoBehaviour {
 
     private void Awake() {
         _label = GetComponent<Text>();
-        _label.text = timeIncrement.ToString("n0");
         currentTime = timeIncrement;
+        _label.text = $"{currentTime:n0}";
     }
 
     public void DialChanged(DialInteractable dial) {

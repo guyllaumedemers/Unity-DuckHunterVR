@@ -38221,11 +38221,6 @@ PrefabInstance:
       objectReference: {fileID: 1665397689479961469}
     - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
         type: 3}
-      propertyPath: gorePrefab
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6437467878737515949, guid: c69f93809da70d34885d50ca5586bef8,
-        type: 3}
       propertyPath: duckSpawnerController
       value: 
       objectReference: {fileID: 1499569120}

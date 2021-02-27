@@ -25,7 +25,6 @@ public class GameManager : Singleton<GameManager>
     private void InitializeAllBooleans()
     {
         isGoreEnabled = Convert.ToBoolean(PlayerPrefs.GetInt("EnableGore"));
-        //PlayerPrefs.GetInt("EnableGore") == 1 ? true : false;
         
         _disableAllSound = false;
         _isRunning = false;
