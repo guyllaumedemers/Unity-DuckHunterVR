@@ -227,18 +227,19 @@ public class DuckSpawnerController : MonoBehaviour
     private Vector3 GetRandomSpawnPoint() {
         float posX = transform.position.x + Random.Range(-spawnSize.x / 2, spawnSize.x / 2);
         float posY = 0;
+        float posZ = 0;
 
         if(gameMode == GameMode.Mode.TARGETPRACTICE)
         {
             posY = transform.position.y + Random.Range(-spawnSize.y / 2, spawnSize.y / 2);
+            posZ = transform.position.z + Random.Range(-spawnSize.z / 4, spawnSize.z / 4);
         }
         else
         {
             posY = transform.position.y - (spawnSize.y / 2) + 0.5f;
+            posZ = transform.position.z + Random.Range(-spawnSize.z / 2, spawnSize.z / 2);
         }
         
-        float posZ = transform.position.z + Random.Range(-spawnSize.z / 2, spawnSize.z / 2);
-
         return new Vector3(posX, posY, posZ);
     }
 
