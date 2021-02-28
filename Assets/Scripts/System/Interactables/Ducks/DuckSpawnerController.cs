@@ -234,7 +234,7 @@ public class DuckSpawnerController : MonoBehaviour
         }
         else
         {
-            posY = transform.position.y - spawnSize.y / 2;
+            posY = transform.position.y - (spawnSize.y / 2) + 0.5f;
         }
         
         float posZ = transform.position.z + Random.Range(-spawnSize.z / 2, spawnSize.z / 2);

@@ -207,9 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc98f1d6f6533e439eea0a9a0d05765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPg13: 0
-  goreObjectPrefab: {fileID: 1634891203905684, guid: aa3351c83bc68e74d86a342f73533d53,
-    type: 3}
   noPoints: 1
   HP: 1
   flightSpeed: 2
@@ -217,7 +214,7 @@ MonoBehaviour:
     min: 1
     max: 2
   minMaxY:
-    min: -1
+    min: 0
     max: 5
   _state: 0
 --- !u!1 &1007829389555940674
