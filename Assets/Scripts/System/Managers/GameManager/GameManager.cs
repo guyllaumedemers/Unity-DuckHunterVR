@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public DuckSpawnerController duckSpawnerController;
     public GameObject gameButton;
     public GameObject clipBoard;
-    [FormerlySerializedAs("currenTime")] public float timedRoundTime;
+    public float timedRoundTime;
     private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
 
     [Header("Required Informations")]
