@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public DuckSpawnerController duckSpawnerController;
     public GameObject gameButton;
     public GameObject clipBoard;
+    public GameObject helpCanvas;
     public float timedRoundTime;
     private readonly string DUCKSPAWNER_TAG = "DuckSpawner";
 
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
         if (duckSpawnerController != null)
         {
             duckSpawnerController.StartSpawner(_gameMode);
+            helpCanvas.SetActive(false);
         }
     }
 
