@@ -41,8 +41,8 @@ public class Target : MonoBehaviour, IShootable, IFlyingTarget
             if (!child.name.Contains("TargetExplosion"))
             {
 
-                if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-                {
+                //if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+                //{
                     child.gameObject.AddComponent<Rigidbody>();
                     child.gameObject.AddComponent<BoxCollider>();
 
@@ -51,7 +51,7 @@ public class Target : MonoBehaviour, IShootable, IFlyingTarget
 
                     child.GetComponent<BoxCollider>().size = new Vector3(1.2f, 1.2f, 1.2f);
                     child.GetComponent<BoxCollider>().enabled = false;
-                }
+                //}
 
                 _children.Add(child.gameObject, new TransformHolder(child.GetComponent<Transform>()));
             }
@@ -65,10 +65,10 @@ public class Target : MonoBehaviour, IShootable, IFlyingTarget
         _moveLeftAndRight = false;
         _moveUpAndDown = false;
 
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor && usePhysics)
+        //if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor && usePhysics)
             StartCoroutine(nameof(OnHitPhysics));
-        else if (Application.platform == RuntimePlatform.Android || !usePhysics)
-            StartCoroutine(nameof(OnHitParticles));
+        //else if (Application.platform == RuntimePlatform.Android || !usePhysics)
+        //    StartCoroutine(nameof(OnHitParticles));
     }
 
     private IEnumerator OnHitPhysics()

@@ -6,9 +6,9 @@ using UnityEngine;
 public class GameTipsTutorialScript : MonoBehaviour
 {
     private TextMeshProUGUI textMeshProUGUI;
-    private const string sentence1 = "SELECT YOUR GAME MODE WITH THE CLIPBOARD";
-    private const string sentence2 = "GUN AMMO ARE AVAILABLE IN THE CRATES BEHIND YOU";
-    private const string sentence3 = "BATHROOM ARE ON THE LEFT... BUT I WOULDN'T SUGGEST USING IT";
+    private const string sentence1 = "THIS WILL PROVIDE YOU WITH A GENERAL OVERVIEW\nOF THE GAME AND CONTROLS";
+    private const string sentence2 = "WELCOME TO DUCK HUNT VR!";
+    private const string sentence3 = "IN ORDER TO KNOW HOW THE GAME WORKS, PRESS THE\n-MENU BUTTON- ON THE LEFT CONTROLLER AND SELECT README";
     private string[] strings = new string[]
     {
         sentence1,

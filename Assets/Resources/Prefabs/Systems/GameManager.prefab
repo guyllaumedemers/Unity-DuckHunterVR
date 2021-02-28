@@ -45,6 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duckSpawnerController: {fileID: 0}
   gameButton: {fileID: 0}
-  timeDial: {fileID: 0}
+  clipBoard: {fileID: 0}
+  timedRoundTime: 0
+  _disableAllSound: 0
+  _isRunning: 0
+  _gameMode: 0
   isGoreEnabled: 0
   gorePrefab: {fileID: 0}
+  gorePrefabPoolSize: 10
+  gorePrefabPool: []
