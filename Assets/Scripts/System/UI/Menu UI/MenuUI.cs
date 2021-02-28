@@ -34,6 +34,7 @@ public class MenuUI : MonoBehaviour
     private readonly string TARGET_SETTINGS_MENU_UI = "SettingsMenuUI";
     private readonly string CURRENT_GAME_MENU_UI = "IngameMenuUI";
     private readonly string TARGET_STATS_MENU_UI = "StatsMenuUI";
+    private readonly string TARGET_HELP_MENU_UI = "HelpMenuUI";
 
     [Header("Scene Name")]
     private readonly string TARGET_SCENE = "MainGameSceneFinal";
@@ -275,9 +276,14 @@ public class MenuUI : MonoBehaviour
             Database.Instance.InstanciatePlayerStatistics();
         }
     }
-    public void GetOnline()
+    public void GetHelp()
     {
-        // follow the online website of the game
+        target = GetUIWithTag(TARGET_HELP_MENU_UI);
+        if (target != null)
+        {
+            Utilities.GetCameraTransformAndRotation(target, camera);
+            InvertActiveUIValues(current, target);
+        }
     }
     public void DisplaySettings()
     {
