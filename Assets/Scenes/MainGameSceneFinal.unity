@@ -84751,6 +84751,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1018521826, guid: 3664ca638856e824a98de35747089062, type: 3}
+      propertyPath: m_text
+      value: 'Welcome to Duck Hunt VR!
+
+
+        If you want to move, simply point
+        your hand toward the Teleporter you want to
+
+        move to and move the
+        -JOYSTICK- forward.
+
+
+        In order to reload, if the weapon has a magazine,
+        take the magazine with one hand
+
+        and insert it in the weapon. If
+        you are using the Shotgun or Rifle, take an ammo box
+
+        and touch the
+        "bullet slot" of the proper weapon to reload it. You will hear a sound.
+
+
+        The
+        ammo boxes are showing the weapon that are meant to be used with.
+
+
+        In
+        order to drop a magazine, press the - PRIMARY - button (A or X) on the controller
+        holding the weapon.'
+      objectReference: {fileID: 0}
     - target: {fileID: 1281247396, guid: 3664ca638856e824a98de35747089062, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
