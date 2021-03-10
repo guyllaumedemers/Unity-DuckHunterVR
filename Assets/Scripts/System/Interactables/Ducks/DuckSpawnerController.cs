@@ -247,21 +247,18 @@ public class DuckSpawnerController : MonoBehaviour
         try {
             GameObject duck;
 
-            if (gameMode == GameMode.Mode.TARGETPRACTICE)
-            {
-                duck = Instantiate(duckModels[2], GetRandomSpawnPoint(), Quaternion.Euler(new Vector3(0, 90, 0)));
-            }
-            else
-            {
-                duck = Instantiate(duckModels[Random.Range(0, duckModels.Length - 1)], GetRandomSpawnPoint(), Quaternion.identity);
-            }
+            duck = gameMode == GameMode.Mode.TARGETPRACTICE ? 
+                Instantiate(duckModels[2], GetRandomSpawnPoint(), Quaternion.Euler(new Vector3(0, 90, 0))) : 
+                Instantiate(duckModels[Random.Range(0, duckModels.Length - 1)], GetRandomSpawnPoint(), Quaternion.identity);
+            
+            var flyingTarget = duck.GetComponent<IFlyingTarget>();
 
             if (roundNo <= maxRoundIncrement)
-                duck.GetComponent<IFlyingTarget>().FlightSpeed += flightRoundIncrement * roundNo;
+                flyingTarget.FlightSpeed += flightRoundIncrement * roundNo;
 
-            duck.GetComponent<IFlyingTarget>().SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
-            duck.GetComponent<IFlyingTarget>().SpawnerPos = transform.position;
-            duck.GetComponent<IFlyingTarget>().DiedDelegate += RemoveDuck;
+            flyingTarget.SpawnSize = new Vector3(spawnSize.x / 2, spawnSize.y / 2, spawnSize.z / 2);
+            flyingTarget.SpawnerPos = transform.position;
+            flyingTarget.DiedDelegate += RemoveDuck;
 
             if (_duckParent == null)
                 _duckParent = new GameObject(strDuckParentGoName).transform;
